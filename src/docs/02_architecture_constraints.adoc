@@ -1,8 +1,43 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+= Architecture Constraints
 
 
 [role="arc42help"]
-****
-Trying to solve some problems we are having with git
-****
+
+== Organizational constraints
+[%header,cols=2*] 
+|===
+|Constraints
+|Reason
+
+|Version control
+|Our team was not used to use this kind of tecnology, so we had to learn everything almost from zero.
+
+|New Team
+|The team is made up by 6 people that didn't know each others before starting this proyect.
+
+|Time
+|The project must be developped in a too short period of time, taking on account that it is being built up at the same time we are having other projects.This makes it difficult to carry out some good ideas.
+
+|Documentation
+|Arc42 model and asciidoc
+|===
+
+== Technical Constraints
+[%header,cols=2*] 
+|===
+|Constraints
+|Reason
+
+|
+|
+
+|
+|
+
+|
+|
+
+|
+|
+|===
