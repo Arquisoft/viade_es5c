@@ -29,15 +29,40 @@
 |Constraints
 |Reason
 
-|
-|
-
-|
+|SOLID
 |
 
-|
+|Browser
 |
 
+|Arc42
 |
+
+|React
 |
+
+|Open Source
+|
+|===
+
+== Technical Constraints
+[%header,cols=2*] 
+|===
+|Constraints
+|Reason
+
+|SOLID
+|The descentralized routes must be decentralized, based on the solid specifications.
+
+|Browser
+|The application must be compatible with most browsers (Chrome, Firefox...) 
+
+|Arc42
+|The documentation must use arc42, that is written with the .adoc extension.
+
+|React
+|The system must be developed using the React framework.
+
+|Open Source
+|The application must be developed with open source.
 |===
