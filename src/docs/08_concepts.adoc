@@ -1,6 +1,16 @@
 [[section-concepts]]
 == Cross-cutting Concepts
+This section describes the approaches relevants in multiple parts of our system. 
 
+=== Concepts Mind Map
+
+=== Concepts Detailed
+
+==== UI/UX
+The user interface is written with React, it might be in English, and is the design of the app. For user experience is very important. We want the user to use it easily, and comfortably, without any problem.
+
+==== Patterns
+The decentralized routes management system follows de MVC (ModelViewController) architecture pattern.
 
 [role="arc42help"]
 ****
