@@ -20,6 +20,10 @@ In this part you will find the summary of fundamental decisions and strategies
 |HTML, CSS
 |For de view of the application.
 
+
+|Google API
+|Google API Directions is the best idea we have for the routes.
+
 |===
 
 .Decisions about the top-level decomposition of the system
@@ -36,13 +40,11 @@ In this part you will find the summary of fundamental decisions and strategies
 |===
 
 |Usable
-|
+|The application must be usable, 
 
 |Testing
-|
+|For testing we want to use Cucumber and Jest. Cucumber is a software tool that supports behavior-driven development and Jest is a JavaScript Testing Framework.
 
-|Google API
-|
 
 |===
 
@@ -51,7 +53,7 @@ In this part you will find the summary of fundamental decisions and strategies
 |===
 
 |Meeting once a week
-|
+|Comunication is the base of the project so we meet one a week to solve de problems, and discuss new ideas.
 
 |===
 
