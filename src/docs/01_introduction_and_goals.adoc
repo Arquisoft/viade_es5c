@@ -4,9 +4,9 @@
 [role="arc42help"]
 ****
 
-Este proyecto se basa en un sistema de gestion de rutas descentralizadas basado en las especificaciones SOLID.
+This project is based on a decentralized route management system based on the SOLID specifications.
 
-* Proyecto desarollado utilizando el framework React y SOLID
+* Project developed using the React and SOLID framework
 
 ****
 
@@ -14,14 +14,15 @@ Este proyecto se basa en un sistema de gestion de rutas descentralizadas basado 
 
 [role="arc42help"]
 ****
-* El sistema se basará en una arquitectura descentralizada en la que los datos están separados de la aplicación
-* Los usuarios pueden almacenar las rutas en sus pods propios.
-* Los usuarios podrán visualizar las rutas en un mapa.
-* La aplicación permitirá al usuario compartir fotos, vídeos u otro tipo de ficheros con otros amigos.
-* Un usuario puede obtener notificaciones cuando algún amigo quiera compartir una ruta con él.
-* Los usuarios pueden tener grupos de amigos con quienes ellos puedan querer compartir una ruta.
-* Debería ser posible ver las rutas cargadas por usuarios que están utilizando una app diferente, de forma que la interoperabilidad con otros sistemas de gestión de rutas debería tenerse en cuenta. 
+* The system will be based on a decentralized architecture in which the data is separated from the application
+* Users can store the routes on their own pods.
+* Users can view the routes on a map.
+* The application will allow the user to share photos, videos or other files with other friends.
+* A user can get notifications when a friend wants to share a route with him.
+* Users may have groups of friends with whom they may want to share a route.
+* It should be possible to see the routes loaded by users who are using a different app, so that interoperability with other route management systems should be taken into account.
 
+***
 === Quality Goals
 
 [role="arc42help"]
