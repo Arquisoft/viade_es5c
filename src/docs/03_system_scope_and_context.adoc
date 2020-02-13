@@ -10,16 +10,36 @@ However we have to focus on permissions. A user cannot see the routes of another
 
 The most important point of our system is decentralization. We want only the users who create the routes to have access to them, so that no external user can access.
 
-To archive this goal we will use SOLID. SOLID is a project that consist of a descentralized website. With this we intend that users can store their routes in PODs. A POD is a unique profile of each user, which allows to store information on the web about it.
-
-We will use POD to store the route of each user.
+To archive this goal we will use SOLID. SOLID is a project that consist of a descentralized website. With this we intend that users can store their routes in PODs. A POD is a unique profile of each user, which allows to store information on the web about it. We will use POD to store the route of each user.
 
 
-.What  we work with /TODO
+.What  we work with
 Here we describe the programs that we had decide to use.
-* JavaScript
-* React
-* Solid
+[%header, cols=3*]
+|====
+|Name
+|Type of software
+|Reason
+
+| JavaScript
+|Programming language
+|For applications with Solid software
+
+| React
+|JavaScript framework
+|Implementation of our project
+
+| Solid
+|Data management software
+|Use required by the project manager
+
+| Asciidoctor
+|Text processor
+|Text processor to generate asciidoc documents
+
+
+//TODO
+
 ****
 
 
@@ -28,37 +48,51 @@ Here we describe the programs that we had decide to use.
 [role="arc42help"]
 ****
 
+.Behaviour
 The communicated parties are the stakeholders that can be anyone who wants to have a conversation with this app. There are also the PODs of each of the users that will be used to save the data.
 
 The interface will receive the path of the user using the application and save it to the user’s PODS. Communication with Solid and the POD will be received in the application using the Javascript React framework.
 
 
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
-/TODO
+.How it works
+In this system the information exchanged will be only the one that the user in question wants to share. information of the routeas well as personal data would be kept in the user’s POD  Apart from this, users will also be able to share images, data routes, videos, and other type of files like points on the route.
+
 ****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
-
 === Technical Context
 
 [role="arc42help"]
 ****
-The implementation of the application has been carried out with react. It has a user interface in which the user will be able to save his routes and in addition to that will be able to share images with other users that he decides
+The implementation of the application has been carried out with react. It has a user interface in which the user will be able to save his routes and in addition to that will be able to share images, routes... with other users that he decides.
 
-After start a conversation, the messages of the app are stored in a private folder within the POD of each person, stored in order and using the necessary turtle system to store the information of each message
+As we have said before, we will use the so-called PODs provided by SOLID to connect to the server of the same, and through it, save routes of each users
 
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
-/TODO
+//Añadir aqui un diseño
+[ditaa,asciidoctor-diagram-process]
 
+                   +-------------+
+                   |     User    |-------+
+                   |             |       |
+                   +-------------+       | 
+                                         |
+                                         |
+                                         v
+                                    /---------------\
+                                    |               |
+                                    |   APP         |
+                                    |               |
+                                    |               |
+                                    \---------------/
+                                          |
+                   +-------------+        |
+                   |   POD       |<-------+
+                   |             |       
+                   +-------------+                      
+                                
+
+
+
+//**<Diagram or Table>**
+//**<optionally: Explanation of technical interfaces>**
+//**<Mapping Input/Output to Channels>**
 ****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
+                  
