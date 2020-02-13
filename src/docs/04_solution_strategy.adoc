@@ -14,6 +14,9 @@ In this part you will find the summary of fundamental decisions and strategies
 |JavaScript
 |JS is the best choice for the application.
 
+|Node, React js
+|Node js is the back-end of the project and React is the front-end.
+
 |Solid
 |It would be easier if we use it to have a decentralized application, using pod's.
 
