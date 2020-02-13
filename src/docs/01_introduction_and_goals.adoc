@@ -22,7 +22,7 @@ This project is based on a decentralized route management system based on the SO
 * Users may have groups of friends with whom they may want to share a route.
 * It should be possible to see the routes loaded by users who are using a different app, so that interoperability with other route management systems should be taken into account.
 
-***
+****
 === Quality Goals
 
 [role="arc42help"]
