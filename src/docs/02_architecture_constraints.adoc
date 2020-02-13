@@ -1,19 +1,60 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+= Architecture Constraints
 
 
 [role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
+== Organizational constraints
+[%header,cols=2*] 
+|===
+|Constraints
+|Explanation
 
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
+|Version control
+|Our team was not used to use this kind of tecnology, so we had to learn everything almost from zero.
+
+|New Team
+|The team is made up by 6 people that didn't know each others before starting this proyect.
+
+|Time
+|The project must be developped in a too short period of time, taking on account that it is being built up at the same time we are having other projects.This makes it difficult to carry out some good ideas.
+
+|Documentation
+|Arc42 model and asciidoc
+|===
+
+== Technical Constraints
+[%header,cols=2*] 
+|===
+|Constraints
+|Explanation
+
+|SOLID
+|The descentralized routes must be decentralized, based on the solid specifications.
+
+|Browser
+|The application must be compatible with most browsers (Chrome, Firefox, etc.) 
+
+|Arc42
+|The documentation must use arc42, that is written with the .adoc extension.
+
+|React
+|The system must be developed using the React framework.
+
+|Open Source
+|The application must be developed with open source.
+|===
+
+== Conventions
+[%header,cols=2*] 
+|===
+|Constraints
+|Explanation
+
+|Language
+|The team will make an effort to make everything in English. As the project is openned to international audience, this will help to its understanding.
+
+|Cost
+|As this project is developed by Uniovi students, free software must be used.
+
+|===
