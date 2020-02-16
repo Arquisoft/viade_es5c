@@ -12,6 +12,15 @@ The user interface is written with React, it might be in English, and is the des
 ==== Patterns
 The decentralized routes management system follows de MVC (ModelViewController) architecture pattern.
 
+==== "Under-the-hood" Concepts
+* Persistency: data is always persistent in every user's pod
+* 
+
+==== Development concepts
+* Build: to build our app we will use NodeJS webpack
+* Test: we will use some frameworks to try our app. Some of them could be mocha or cucumber.js
+* Deploy: Our app will be deployed using Docker.
+
 [role="arc42help"]
 ****
 .Content
@@ -50,13 +59,13 @@ A potential (but not mandatory) structure for this section could be:
 * Safety and security concepts
 * Architecture and design patterns
 * "Under-the-hood"
-* development concepts
-* operational concepts
+* Development concepts
+* Operational concepts
 
 Note: it might be difficult to assign individual concepts to one specific topic
 on this list.
 
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
+image:images/08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 ****
 
 
