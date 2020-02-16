@@ -15,7 +15,7 @@ A small list of the techical risks, in priority order.
 |===
 |Problem
 |Reason
-|Solution
+|Solutions
 
 |Poor JavaScript
 |More comfort with other environments.
