@@ -1,31 +1,17 @@
 [[section-glossary]]
 == Glossary
-
-
-
-[role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
 ****
 
 [options="header"]
 |===
 | Term         | Definition
-| <Term-1>     | <definition-1>
-| <Term-2>     | <definition-2>
+| SOLID     | Solid is a web data decentralization project led by Tim Berners-Lee developed at the Massachusetts Institute of Technology.
+| RDF     | It is a family of specifications of the World Wide Web Consortium (W3C) originally designed as a data model for metadata. It has come to be used as a general method for the conceptual description or modeling of the information that is implemented in web resources.
+| POD     |PODs are like secure USB sticks for the Web, that you can access from anywhere. When you give others access to parts of your POD, they can react to your photos and share their memories with you. You decide which things apps and people can see.
+| Turtle     | Turtle is a format to serialize RDF, similar to SPARQL. RDF, in turn, represents the use information of 'triplets', each of which consists of a subject, a predicate, and an object. Each of these elements can be expressed as a URI.
+| URL     | A uniform resource locator (better known by the acronym URL) of the English Uniform Resource Locator 1 is a Uniform Resource Identifier (URI) whose referred resources may change, that is, the address can point to variable resources in the time.
+| JavaScript     | It is an interpreted programming language, dialect of the ECMAScript standard.It is mainly used in its client side form.
+| React     | React is an open source Javascript library designed to create user interfaces in order to facilitate the development of applications on a single page.
+| StakeHolder | Involved, interested party or interested parties refers to a person, organization or company that has an interest in a given company or organization.
+| Google Maps Api |   Google Maps is a web map application server that belongs to Alphabet Inc. It offers scrollable map images, as well as satellite photographs of the world and even the route between different locations.
 |===
