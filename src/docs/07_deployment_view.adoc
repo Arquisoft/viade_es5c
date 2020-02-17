@@ -29,16 +29,17 @@ image::images/routeCreation.png[Route Creation]
 In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
 
 
-image::images/routeVisual.png [Route Visualization]
+image::images/routeVisual.png[Route Visualization]
 
 ****
 [role="arc42help"]
 ****
+
 === File Sharing
 This part of the application makes you able to share all photos, videos or routes that you have in your pod to a selected friend.
 
 
-image::images/fileSharing.png [File Sharing]
+image::images/fileSharing.png[File Sharing]
 ****
 [role="arc42help"]
 ****
