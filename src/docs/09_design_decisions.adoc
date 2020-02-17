@@ -21,6 +21,8 @@ In order to save our users' routes, we were restricted from using SOLID. The win
 Our application follows the MVC pattern (controller view model). This pattern is based on the ideas of code reuse and layer separation, features that facilitate development and maintenance tasks.
 
 .9.2.4 Back End
+//TODO
 .9.2.5 Documentation
+//TODO
 
 ****
