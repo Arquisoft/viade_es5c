@@ -4,25 +4,23 @@
 
 [role="arc42help"]
 ****
-.9.2 Design Decisions Detailed
+9.2 Design Decisions Detailed
+
 In this document we will show the decisions regarding the design that we have found most accurate and which directly influence our project. 
 
 As the project progresses, it is possible that the tools we initially decide to use change, to facilitate the way we develop our application.
 
-.9.2.1 Front End
+9.2.1 Front End
+
 For the design of the user interface and give the most similar aspect possible to the applications with which we handle daily we have decided to use HTML, CSS in addition to JQUERY.
 Our decision is given so that the user can feel more comfortable having an appearance similar to other applications with which he is more familiar.
 Using React was not a team decision, it was a requirement. Even so, some of the advantages that React offers us are increase application performance, easy to integrate with frameworks such as Meteor, Angular, etc.
 
-.9.2.2 Routes storage
+9.2.2 Routes storage
+
 In order to save our users' routes, we were restricted from using SOLID. The window that you have on other databases is that it helps us to save the data without having to have a main database and that helps to improve the privacy of users, storing individual routes in PODS. In addition, SOLID with its basic principles of OO programming and design helps to develop quality and easily testable software.
 
-.9.2.3 MVC
+9.2.3 MVC
+
 Our application follows the MVC pattern (controller view model). This pattern is based on the ideas of code reuse and layer separation, features that facilitate development and maintenance tasks.
-
-.9.2.4 Back End
-//TODO
-.9.2.5 Documentation
-//TODO
-
 ****
