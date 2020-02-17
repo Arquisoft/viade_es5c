@@ -1,18 +1,19 @@
 [[section-deployment-view]]
 
 
-==Deployment View
+== Deployment View
 [role="arc42help"]
 ****
-== Login
+=== Login
 This represents the view where the user will have to login himself to access to his pod.
 
 
 image::images/login.png[Login]
 
+****
 [role="arc42help"]
 ****
-== Route Creation
+=== Route Creation
 This image is the main view of the app here you will be able to save a point to make a route.
 That point will be saved and linked to the previous and next one to make the route
 This will save the route when you click on finished. 
@@ -20,9 +21,10 @@ This will save the route when you click on finished.
 
 image::images/routeCreation.png[Route Creation]
 
+****
 [role="arc42help"]
 ****
-== Route Visualization
+=== Route Visualization
 In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
 
 
@@ -30,11 +32,11 @@ image::images/routeVisual.png [Route Visualization]
 
 [role="arc42help"]
 ****
-== File Sharing
+=== File Sharing
 This part of the application makes you able to share all photos, videos or routes that you have in your pod to a selected friend.
 
 
 image::images/fileSharing.png [File Sharing]
-
+****
 [role="arc42help"]
 ****
