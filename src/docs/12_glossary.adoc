@@ -12,5 +12,5 @@
 | URL     | A uniform resource locator (better known by the acronym URL) of the English Uniform Resource Locator 1 is a Uniform Resource Identifier (URI) whose referred resources may change, that is, the address can point to variable resources in the time.
 | JavaScript     | It is an interpreted programming language, dialect of the ECMAScript standard.It is mainly used in its client side form.
 | React     | React is an open source Javascript library designed to create user interfaces in order to facilitate the development of applications on a single page.
-| StakeHolder | Involved, interested party or interested parties refers to a person, organization or company that has an interest in a given company or organization.
+| StakeHolder | Involved, interested party or interested parties refers to a person, organization or company that has an interest in a given company or organization.  
 |===
