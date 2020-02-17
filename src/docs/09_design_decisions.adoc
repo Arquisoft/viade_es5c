@@ -4,6 +4,7 @@
 
 [role="arc42help"]
 ****
+.Contents
 9.2 Design Decisions Detailed
 
 In this document we will show the decisions regarding the design that we have found most accurate and which directly influence our project. 
