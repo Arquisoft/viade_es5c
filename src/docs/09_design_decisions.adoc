@@ -17,11 +17,25 @@ For the design of the user interface and give the most similar aspect possible t
 Our decision is given so that the user can feel more comfortable having an appearance similar to other applications with which he is more familiar.
 Using React was not a team decision, it was a requirement. Even so, some of the advantages that React offers us are increase application performance, easy to integrate with frameworks such as Meteor, Angular, etc.
 
-9.2.2 Routes storage
+9.2.2 Back End
+
+For the system functionality and data processing part, we will focus on using javascript with nodeJS. Since it is an environment that we know, easy to use and above all because in a project of these characteristics we can take advantage of the advantages it offers, such as scalability and consume data in real time.
+
+The tests will be carried out with Jest, a framework for testing javascript that focuses on simplicity.
+
+9.2.3 Routes storage
 
 In order to save our users' routes, we were restricted from using SOLID. The window that you have on other databases is that it helps us to save the data without having to have a main database and that helps to improve the privacy of users, storing individual routes in PODS. In addition, SOLID with its basic principles of OO programming and design helps to develop quality and easily testable software.
 
-9.2.3 MVC
+9.2.4 MVC
 
 Our application follows the MVC pattern (controller view model). This pattern is based on the ideas of code reuse and layer separation, features that facilitate development and maintenance tasks.
+
+9.2.5 Continuous Integration
+
+We are using Travis CI for running the tests and checking the correct build of our app, Codecov for improve our code review workflow and quality. Also Code Quality to improve our skills when programming a better and more robust code.
+
+9.2.6 Documentation
+
+Regarding the documentation, we will do it in asciidoctor, since it is open source and uses a simple syntax and includes very useful functionalities such as being able to reference a code section of another file.
 ****
