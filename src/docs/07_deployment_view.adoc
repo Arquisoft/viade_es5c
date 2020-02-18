@@ -29,7 +29,7 @@ image::images/routeCreation.png[Route Creation]
 In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
 
 
-image::images/routeVisual.png[Route Visualization]
+image::images/routesVisual.png[Route Visualization]
 
 ****
 [role="arc42help"]
