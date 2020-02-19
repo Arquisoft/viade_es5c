@@ -14,4 +14,8 @@ image:10-quality-tree.png["Quality Tree"]
 
 
 === Quality Scenarios
-1. Performance: 
+In this point, we'll talk about the most important points 
+1. Reliability: this is the most important point in this project. The app must be mostly all the time working.
+2. Performance: users must have the better experience possible.
+3. Security: the app must be secure to  use.
+
