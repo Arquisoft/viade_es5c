@@ -43,3 +43,22 @@ image::images/fileSharing.png[File Sharing]
 ****
 [role="arc42help"]
 ****
+
+=== Routes Sharing
+The deployment view is very easy to describe in a decentralized chat because we are just focusing in the interaction between the users and SOLID providers
+
+
+image::images/routeSharing.PNG[Route Sharing]
+****
+[role="arc42help"]
+****
+
+=== Add Friend
+
+In this part of the application you can add as a friend another user registered in the application indicating his name.
+
+
+image::images/addFriend.PNG[Add Friend]
+****
+[role="arc42help"]
+****
