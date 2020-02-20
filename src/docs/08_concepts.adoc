@@ -38,3 +38,5 @@ The decentralized routes management system follows de MVC (ModelViewController) 
 	
 ==== Operational concepts
 To do
+
+****

@@ -1,8 +1,5 @@
 [[section-deployment-view]]
-
-
 == Deployment View
-****
 ****
 === Login
 This represents the view where the user will have to login himself to access to his pod.
@@ -10,7 +7,6 @@ This represents the view where the user will have to login himself to access to 
 
 image::images/login.png[Login]
 
-****
 ****
 === Route Creation
 This image is the main view of the app here you will be able to save a point to make a route.
@@ -21,14 +17,12 @@ This will save the route when you click on finished.
 image::images/routeCreation.png[Route Creation]
 
 ****
-****
 === Route Visualization
 In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
 
 
 image::images/routesVisual.png[Route Visualization]
 
-****
 ****
 
 === File Sharing
@@ -37,14 +31,12 @@ This part of the application makes you able to share all photos, videos or route
 
 image::images/fileSharing.png[File Sharing]
 ****
-****
 
 === Routes Sharing
 The deployment view is very easy to describe in a decentralized chat because we are just focusing in the interaction between the users and SOLID providers
 
 
 image::images/routeSharing.PNG[Route Sharing]
-****
 ****
 
 === Add Friend
@@ -53,5 +45,4 @@ In this part of the application you can add as a friend another user registered 
 
 
 image::images/addFriend.PNG[Add Friend]
-****
 ****

@@ -59,4 +59,5 @@ In this part you will find the summary of fundamental decisions and strategies
 |Comunication is the base of the project so we meet one a week to solve de problems, and discuss new ideas.
 
 |===
+****
 

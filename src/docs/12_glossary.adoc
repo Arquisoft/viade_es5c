@@ -15,3 +15,5 @@
 | StakeHolder | Involved, interested party or interested parties refers to a person, organization or company that has an interest in a given company or organization.
 | Google Maps Api |   Google Maps is a web map application server that belongs to Alphabet Inc. It offers scrollable map images, as well as satellite photographs of the world and even the route between different locations.
 |===
+
+****
