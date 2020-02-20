@@ -5,22 +5,37 @@
 [role="arc42help"]
 ****
 .Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
+9.2 Design Decisions Detailed
 
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
+In this document we will show the decisions regarding the design that we have found most accurate and which directly influence our project. 
 
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
+As the project progresses, it is possible that the tools we initially decide to use change, to facilitate the way we develop our application.
 
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
+9.2.1 Front End
 
-.Form
-Various options:
+For the design of the user interface and give the most similar aspect possible to the applications with which we handle daily we have decided to use HTML, CSS in addition to JQUERY.
+Our decision is given so that the user can feel more comfortable having an appearance similar to other applications with which he is more familiar.
+Using React was not a team decision, it was a requirement. Even so, some of the advantages that React offers us are increase application performance, easy to integrate with frameworks such as Meteor, Angular, etc.
 
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
+9.2.2 Back End
+
+For the system functionality and data processing part, we will focus on using javascript with nodeJS. Since it is an environment that we know, easy to use and above all because in a project of these characteristics we can take advantage of the advantages it offers, such as scalability and consume data in real time.
+
+The tests will be carried out with Jest, a framework for testing javascript that focuses on simplicity.
+
+9.2.3 Routes storage
+
+In order to save our users' routes, we were restricted from using SOLID. The window that you have on other databases is that it helps us to save the data without having to have a main database and that helps to improve the privacy of users, storing individual routes in PODS. In addition, SOLID with its basic principles of OO programming and design helps to develop quality and easily testable software.
+
+9.2.4 MVC
+
+Our application follows the MVC pattern (controller view model). This pattern is based on the ideas of code reuse and layer separation, features that facilitate development and maintenance tasks.
+
+9.2.5 Continuous Integration
+
+We are using Travis CI for running the tests and checking the correct build of our app, Codecov for improve our code review workflow and quality. Also Code Quality to improve our skills when programming a better and more robust code.
+
+9.2.6 Documentation
+
+Regarding the documentation, we will do it in asciidoctor, since it is open source and uses a simple syntax and includes very useful functionalities such as being able to reference a code section of another file.
 ****
