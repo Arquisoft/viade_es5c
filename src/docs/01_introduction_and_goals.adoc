@@ -1,15 +1,10 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-****
-
 This project is based on a decentralized route management system based on the SOLID specifications.
 
 * Project developed using the React and SOLID framework
 
-****
-
 === Requirements Overview
-****
 * The system will be based on a decentralized architecture in which the data is separated from the application
 * Users can store the routes on their own pods.
 * Users can view the routes on a map.
@@ -18,9 +13,7 @@ This project is based on a decentralized route management system based on the SO
 * Users may have groups of friends with whom they may want to share a route.
 * It should be possible to see the routes loaded by users who are using a different app, so that interoperability with other route management systems should be taken into account.
 
-****
 === Quality Goals
-****
 
 The main goals of the sistem are: 
 
@@ -32,10 +25,9 @@ The main goals of the sistem are:
 |3| _Funcionality_  | _So that a good use of the system can be made respecting the two superior objectives, without any problem._
 |4| _Efficiency_  | _The system should make able to share and upload your routes in the lowest possible time._
 |===
-****
 
 === Stakeholders
-****
+[options="header",cols="1,2,2"]
 |===
 |Role/Name|Contact|Expectations
 | _Users_| _Use the app to record their routes_ | _To safe their data safely, and to be owner of their data, using the app to record their routes_
@@ -44,4 +36,3 @@ The main goals of the sistem are:
 | _Teachers_ | _They will mark our project and the way we have presented the architecture of the project._ | _They will need to be able to understand our project functioning and architecture. They will be expecting a fully functional proyect that will make the university proud of their students._
 | _Maintenance Team_ | _Team that will maintein the app if its successful_ | _A clean, and eficient code for the application_
 |===
-****

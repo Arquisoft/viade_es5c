@@ -3,7 +3,7 @@
 This section describes the approaches relevants in multiple parts of our system. 
 
 === Concepts Mind Map
-image:images/08-mind-map.png["Concepts Mind Map"]
+image:08-mind-map.png["Concepts Mind Map"]
 
 === Concepts Detailed
 
@@ -37,6 +37,5 @@ The decentralized routes management system follows de MVC (ModelViewController) 
 	All will be save in the POD, so the user could be the only one who can get it, and the application will be descentralized.
 	
 ==== Operational concepts
-To do
+// To do
 
-****

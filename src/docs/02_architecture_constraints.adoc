@@ -55,4 +55,3 @@
 |As this project is developed by Uniovi students, free software must be used.
 
 |===
-****

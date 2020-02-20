@@ -1,6 +1,5 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
-****
 The project we are going to develop consists of a decentralized route management system.
 
 However we have to focus on permissions. A user cannot see the routes of another user if he has not received permission, that is, if they have not shared the route with him.
@@ -34,58 +33,21 @@ Here we describe the programs that we had decide to use.
 |Text processor
 |Text processor to generate asciidoc documents
 
-
+|====
 //TODO
 
-****
-
-
 === Business Context
-****
-
 .Behaviour
 The communicated parties are the stakeholders that can be anyone who wants to have a conversation with this app. There are also the PODs of each of the users that will be used to save the data.
 
 The interface will receive the path of the user using the application and save it to the user’s PODS. Communication with Solid and the POD will be received in the application using the Javascript React framework.
 
-
 .How it works
 In this system the information exchanged will be only the one that the user in question wants to share. information of the routeas well as personal data would be kept in the user’s POD  Apart from this, users will also be able to share images, data routes, videos, and other type of files like points on the route.
 
-****
 === Technical Context
-****
 The implementation of the application has been carried out with react. It has a user interface in which the user will be able to save his routes and in addition to that will be able to share images, routes... with other users that he decides.
 
 As we have said before, we will use the so-called PODs provided by SOLID to connect to the server of the same, and through it, save routes of each users
 
 //Añadir aqui un diseño
-[ditaa,asciidoctor-diagram-process]
-
-                   +-------------+
-                   |     User    |-------+
-                   |             |       |
-                   +-------------+       | 
-                                         |
-                                         |
-                                         v
-                                    /---------------\
-                                    |               |
-                                    |   APP         |
-                                    |               |
-                                    |               |
-                                    \---------------/
-                                          |
-                   +-------------+        |
-                   |   POD       |<-------+
-                   |             |       
-                   +-------------+                      
-                                
-
-
-
-//**<Diagram or Table>**
-//**<optionally: Explanation of technical interfaces>**
-//**<Mapping Input/Output to Channels>**
-****
-                  
