@@ -1,7 +1,5 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
-
-[role="arc42help"]
 ****
 
 This project is based on a decentralized route management system based on the SOLID specifications.
@@ -11,8 +9,6 @@ This project is based on a decentralized route management system based on the SO
 ****
 
 === Requirements Overview
-
-[role="arc42help"]
 ****
 * The system will be based on a decentralized architecture in which the data is separated from the application
 * Users can store the routes on their own pods.
@@ -24,8 +20,6 @@ This project is based on a decentralized route management system based on the SO
 
 ****
 === Quality Goals
-
-[role="arc42help"]
 ****
 
 The main goals of the sistem are: 
@@ -41,8 +35,6 @@ The main goals of the sistem are:
 ****
 
 === Stakeholders
-
-[role="arc42help"]
 ****
 |===
 |Role/Name|Contact|Expectations

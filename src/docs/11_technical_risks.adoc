@@ -1,8 +1,5 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
-
-
-[role="arc42help"]
 ****
 .Contents
 In this section of the documentation we will show you some of the problems we have faced during the development of the project.

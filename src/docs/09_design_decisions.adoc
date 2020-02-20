@@ -1,8 +1,5 @@
 [[section-design-decisions]]
 == Design Decisions
-
-
-[role="arc42help"]
 ****
 .Contents
 9.2 Design Decisions Detailed

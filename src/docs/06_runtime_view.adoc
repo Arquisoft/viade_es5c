@@ -1,8 +1,5 @@
 [[section-runtime-view]]
 == Runtime View
-
-
-[role="arc42help"]
 ****
 === Log in
 

@@ -1,8 +1,5 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
-
-
-[role="arc42help"]
 ****
 The project we are going to develop consists of a decentralized route management system.
 
@@ -44,8 +41,6 @@ Here we describe the programs that we had decide to use.
 
 
 === Business Context
-
-[role="arc42help"]
 ****
 
 .Behaviour
@@ -59,8 +54,6 @@ In this system the information exchanged will be only the one that the user in q
 
 ****
 === Technical Context
-
-[role="arc42help"]
 ****
 The implementation of the application has been carried out with react. It has a user interface in which the user will be able to save his routes and in addition to that will be able to share images, routes... with other users that he decides.
 

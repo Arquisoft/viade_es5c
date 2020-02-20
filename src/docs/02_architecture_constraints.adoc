@@ -1,9 +1,6 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
-
-[role="arc42help"]
-
 == Organizational constraints
 [%header,cols=2*] 
 |===

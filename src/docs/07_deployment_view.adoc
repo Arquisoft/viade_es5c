@@ -2,7 +2,6 @@
 
 
 == Deployment View
-[role="arc42help"]
 ****
 ****
 === Login
@@ -12,7 +11,6 @@ This represents the view where the user will have to login himself to access to 
 image::images/login.png[Login]
 
 ****
-[role="arc42help"]
 ****
 === Route Creation
 This image is the main view of the app here you will be able to save a point to make a route.
@@ -23,7 +21,6 @@ This will save the route when you click on finished.
 image::images/routeCreation.png[Route Creation]
 
 ****
-[role="arc42help"]
 ****
 === Route Visualization
 In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
@@ -32,7 +29,6 @@ In this part of the aplication you can see your own routes or the routes that yo
 image::images/routesVisual.png[Route Visualization]
 
 ****
-[role="arc42help"]
 ****
 
 === File Sharing
@@ -41,7 +37,6 @@ This part of the application makes you able to share all photos, videos or route
 
 image::images/fileSharing.png[File Sharing]
 ****
-[role="arc42help"]
 ****
 
 === Routes Sharing
@@ -50,7 +45,6 @@ The deployment view is very easy to describe in a decentralized chat because we 
 
 image::images/routeSharing.PNG[Route Sharing]
 ****
-[role="arc42help"]
 ****
 
 === Add Friend
@@ -60,5 +54,4 @@ In this part of the application you can add as a friend another user registered 
 
 image::images/addFriend.PNG[Add Friend]
 ****
-[role="arc42help"]
 ****
