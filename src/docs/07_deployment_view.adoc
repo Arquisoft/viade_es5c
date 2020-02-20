@@ -2,85 +2,63 @@
 
 
 == Deployment View
-
 [role="arc42help"]
 ****
-.Content
-The deployment view describes:
-
- 1. the technical infrastructure used to execute your system, with infrastructure elements like geographical locations, environments, computers, processors, channels and net topologies as well as other infrastructure elements and
-
-2. the mapping of (software) building blocks to that infrastructure elements.
-
-Often systems are executed in different environments, e.g. development environment, test environment, production environment. In such cases you should document all relevant environments.
-
-Especially document the deployment view when your software is executed as distributed system with more then one computer, processor, server or container or when you design and construct your own hardware processors and chips.
-
-From a software perspective it is sufficient to capture those elements of the infrastructure that are needed to show the deployment of your building blocks. Hardware architects can go beyond that and describe the infrastructure to any level of detail they need to capture.
-
-.Motivation
-Software does not run without hardware.
-This underlying infrastructure can and will influence your system and/or some
-cross-cutting concepts. Therefore, you need to know the infrastructure.
-
-.Form
-
-Maybe the highest level deployment diagram is already contained in section 3.2. as
-technical context with your own infrastructure as ONE black box. In this section you will
-zoom into this black box using additional deployment diagrams:
-
-* UML offers deployment diagrams to express that view. Use it, probably with nested diagrams,
-when your infrastructure is more complex.
-* When your (hardware) stakeholders prefer other kinds of diagrams rather than the deployment diagram, let them use any kind that is able to show nodes and channels of the infrastructure.
 ****
+=== Login
+This represents the view where the user will have to login himself to access to his pod.
 
-=== Infrastructure Level 1
 
+image::images/login.png[Login]
+
+****
 [role="arc42help"]
 ****
-Describe (usually in a combination of diagrams, tables, and text):
+=== Route Creation
+This image is the main view of the app here you will be able to save a point to make a route.
+That point will be saved and linked to the previous and next one to make the route
+This will save the route when you click on finished. 
 
-*  the distribution of your system to multiple locations, environments, computers, processors, .. as well as the physical connections between them
-*  important justification or motivation for this deployment structure
-* Quality and/or performance features of the infrastructure
-*  the mapping of software artifacts to elements of the infrastructure
 
-For multiple environments or alternative deployments please copy that section of arc42 for all relevant environments.
+image::images/routeCreation.png[Route Creation]
+
 ****
-
-_**<Overview Diagram>**_
-
-Motivation::
-
-_<explanation in text form>_
-
-Quality and/or Performance Features::
-
-_<explanation in text form>_
-
-Mapping of Building Blocks to Infrastructure::
-_<description of the mapping>_
-
-
-=== Infrastructure Level 2
-
 [role="arc42help"]
 ****
-Here you can include the internal structure of (some) infrastructure elements from level 1.
+=== Route Visualization
+In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
 
-Please copy the structure from level 1 for each selected element.
+
+image::images/routesVisual.png[Route Visualization]
+
+****
+[role="arc42help"]
 ****
 
-==== _<Infrastructure Element 1>_
+=== File Sharing
+This part of the application makes you able to share all photos, videos or routes that you have in your pod to a selected friend.
 
-_<diagram + explanation>_
 
-==== _<Infrastructure Element 2>_
+image::images/fileSharing.png[File Sharing]
+****
+[role="arc42help"]
+****
 
-_<diagram + explanation>_
+=== Routes Sharing
+The deployment view is very easy to describe in a decentralized chat because we are just focusing in the interaction between the users and SOLID providers
 
-...
 
-==== _<Infrastructure Element n>_
+image::images/routeSharing.PNG[Route Sharing]
+****
+[role="arc42help"]
+****
 
-_<diagram + explanation>_
+=== Add Friend
+
+In this part of the application you can add as a friend another user registered in the application indicating his name.
+
+
+image::images/addFriend.PNG[Add Friend]
+****
+[role="arc42help"]
+****
