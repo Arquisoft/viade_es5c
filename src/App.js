@@ -6,6 +6,7 @@ import LoggedIn from './componentes/LoggedIn';
 import Value from './componentes/Value';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -31,7 +32,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
