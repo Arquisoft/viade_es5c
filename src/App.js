@@ -4,7 +4,7 @@ import './App.css';
 import AuthButton from './componentes/AuthButton';
 import LoggedIn from './componentes/LoggedIn';
 import Value from './componentes/Value';
-
+import LoggedOut from './componentes/LoggedOut';
 
 
 function App() {
@@ -16,6 +16,10 @@ function App() {
         <LoggedIn>
           <p>Welcome back, <Value src="user.name"/>.</p>
         </LoggedIn>
+        <LoggedOut>
+        <a className="solid-link"target="_blank"  
+         href="https://solid.inrupt.com/get-a-solid-pod" rel="noopener noreferrer">Sign up</a>
+        </LoggedOut>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
