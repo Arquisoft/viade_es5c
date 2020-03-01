@@ -1,10 +1,7 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
-
-[role="arc42help"]
-
-== Organizational constraints
+=== Organizational constraints
 [%header,cols=2*] 
 |===
 |Constraints
@@ -23,7 +20,7 @@
 |Arc42 model and asciidoc
 |===
 
-== Technical Constraints
+=== Technical Constraints
 [%header,cols=2*] 
 |===
 |Constraints
@@ -45,7 +42,7 @@
 |The application must be developed with open source.
 |===
 
-== Conventions
+=== Conventions
 [%header,cols=2*] 
 |===
 |Constraints

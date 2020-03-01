@@ -1,17 +1,36 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
-
-
-[role="arc42help"]
-****
 .Contents
-A list of identified technical risks or technical debts, ordered by priority
-
-.Motivation
-“Risk management is project management for grown-ups” (Tim Lister, Atlantic Systems Guild.) 
-
-This should be your motto for systematic detection and evaluation of risks and technical debts in the architecture, which will be needed by management stakeholders (e.g. project managers, product owners) as part of the overall risk analysis and measurement planning.
+In this section of the documentation we will show you some of the problems we have faced during the development of the project.
 
 .Form
-List of risks and/or technical debts, probably including suggested measures to minimize, mitigate or avoid risks or reduce technical debts.
-****
+A small list of the techical risks, in priority order.
+
+
+[cols=3*,options="header"]
+|===
+|Problem
+|Reason
+|Solutions
+
+|Poor JavaScript
+|More comfort with other environments.
+|Developers should refresh their knowledge of JavaScript.
+
+|Never use React
+|The developers have never used React
+|Developers should be informed about the operation of React, as well as the syntax and development methodology it uses.
+
+|Little knowledge of Solid
+|Solid is a totally new issue for us. Zero experience with it.
+|Developers should look for information on how to work with SOLID and how it works.
+
+|Github
+|Fusion of all branches. Conflicts.
+|Developers should exercise caution when making changes to the develop and master branches
+
+|Teamwork
+|The developers have never cordinated to work with such a big group
+|The developers will have to talk and coordinate so that the problems that may arise are as minimal as possible.
+
+|===
