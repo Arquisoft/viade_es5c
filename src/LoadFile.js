@@ -1,34 +1,26 @@
 import React from 'react';
 import axios, { post } from 'axios';
 
-class LoadFile extends React.Component{
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.fileInput = React.createRef();
-      }
-      handleSubmit(event) {
-        event.preventDefault();
-        alert(
-          `Selected file - ${
-            this.fileInput.current.files[0].name
-          }`
+const LoadFile = () => {
+
+    const handleSubmit=(e)=>{
+        console.log(
+            e.target.files[0]
         );
-      }
-    
-      render() {
-        return (
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Upload file:
-              <input type="file" ref={this.fileInput} />
-            </label>
-            <br />
-            <button type="submit">Submit</button>
-          </form>
-        );
-      }
+    }
+
+    return (
+        <div>
+            <h1>Upload route</h1>
+          <label>
+            Upload file:
+            <input type="file" name="files[]" id="file" onChange={handleSubmit} />
+          </label>
+        </div>
+        
+      );
 }
+
 
 export default LoadFile;
 
