@@ -1,26 +1,37 @@
 import React from 'react';
-import axios, { post } from 'axios';
+import auth from "solid-auth-client";
+import FC from 'solid-file-client';
 
-const LoadFile = () => {
+const LoadFile = (props) => {
 
-    const handleSubmit=(e)=>{
-        console.log(
-            e.target.files[0]
-        );
+    const handleSubmit = async (e) => {
+        const fileReader = new FileReader();
+        fileReader.fileName=e.target.files[0].name;
+        const {webId} = props;
+        const x =e;
+        fileReader.onload = async (event) => {
+            const fc   = new FC( auth );
+            const nombre=event.target.fileName;
+            const url=webId.split("profile/card#me")[0]+"public/"+nombre;
+            console.log(url);
+            await fc.createFile(url, event.target.result, "application/geo+json", {});
+            console.log("subido");
+        };
+        fileReader.readAsText(e.target.files[0]);
     }
 
     return (
         <div>
-            <h1>Upload route</h1>
-          <label>
-            Upload file:
+            <h1>Subir ruta</h1>
+            <label>
+                Upload file:
             <input type="file" name="files[]" id="file" onChange={handleSubmit} />
-          </label>
+            </label>
         </div>
-        
-      );
+
+    );
 }
 
-
 export default LoadFile;
+
 
