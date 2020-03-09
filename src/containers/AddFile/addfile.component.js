@@ -11,7 +11,7 @@ const LoadFile = (props) => {
         fileReader.onload = async (event) => {
             const fc   = new FC( auth );
             const nombre=event.target.fileName;
-            const url=webId.split("profile/card#me")[0]+"public/"+nombre;
+            const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
             console.log(url);
             await fc.createFile(url, event.target.result, "application/geo+json", {});
             console.log("subido");
