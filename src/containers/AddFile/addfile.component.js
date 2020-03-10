@@ -1,6 +1,7 @@
 import React from 'react';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
+import Route from 'Route';
 
 const LoadFile = (props) => {
 
@@ -8,6 +9,7 @@ const LoadFile = (props) => {
         const fileReader = new FileReader();
         fileReader.fileName=e.target.files[0].name;
         const {webId} = props;
+        
         fileReader.onload = async (event) => {
             const fc   = new FC( auth );
             const nombre=event.target.fileName;
@@ -17,6 +19,9 @@ const LoadFile = (props) => {
             console.log("subido");
         };
         fileReader.readAsText(e.target.files[0]);
+        
+        var ruta= new Route(e.target.files[0]);
+        ruta.parseRoute(); 
     }
 
     return (
