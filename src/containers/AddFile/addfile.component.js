@@ -3,6 +3,7 @@ import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 import Route from 'Route';
 import RouteVisualizer from 'RouteVisualizer.component'
+import ReactDOM from 'react-dom'
 
 const LoadFile = (props) => {
 
@@ -23,8 +24,9 @@ const LoadFile = (props) => {
         
         
         var ruta= new Route(fileReader.result);
-        ruta.parseRoute(); 
-       
+        const domContainer = document.querySelector('#mapa');
+        ReactDOM.render(<RouteVisualizer ruta= {ruta}></RouteVisualizer>, domContainer);
+        
     }
 
     
@@ -37,7 +39,7 @@ const LoadFile = (props) => {
             <input type="file" name="files[]" id="file" onChange={handleSubmit} />
             </label> 
            
-            
+            <div id="mapa"></div>
         </div>
        
 
