@@ -9,10 +9,10 @@ export const NavigationItems = [
     to: '/welcome'
   },
   {
-    id: 'rutas',
-    icon: '/img/icon/mapa_azul.png',
-    label: 'navBar.map',
-    to: '/rutas'
+    id: 'listRoutes',
+    icon: '/img/bars-nav.svg',
+    label: 'navBar.routes',
+    to: '/listRoutes'
   },
   {
     id: 'addFile',
