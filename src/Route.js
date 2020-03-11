@@ -1,5 +1,5 @@
 
-
+import Point from './Point.js'
 class Route{
   constructor(file){
     this.file = file;
@@ -21,10 +21,15 @@ class Route{
 
   parseRoute() {
     console.log('parseando..');
-    
-    console.log(this.file)
-   
+    this.name= "prueba"
+    this.points.push(new Point(43.354856,-5.851450));
+    this.points.push(new Point(43.354880,-5.851450));
+    this.points.push(new Point(43.354900,-5.851450));
+    console.log(this.points)
+  }
 
+  getPoints(){
+    return this.points;
   }
   
 }

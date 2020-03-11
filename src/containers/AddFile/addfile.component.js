@@ -2,6 +2,7 @@ import React from 'react';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 import Route from 'Route';
+import RouteVisualizer from 'RouteVisualizer.component'
 
 const LoadFile = (props) => {
 
@@ -20,9 +21,13 @@ const LoadFile = (props) => {
         };
         fileReader.readAsText(e.target.files[0]);
         
-        var ruta= new Route(e.target.files[0]);
+        
+        var ruta= new Route(fileReader.result);
         ruta.parseRoute(); 
+       
     }
+
+    
 
     return (
         <div>
@@ -30,11 +35,17 @@ const LoadFile = (props) => {
             <label>
                 Cargar ruta:
             <input type="file" name="files[]" id="file" onChange={handleSubmit} />
-            </label>
+            </label> 
+           
+            
         </div>
+       
 
     );
 }
+
+
+  
 
 export default LoadFile;
 

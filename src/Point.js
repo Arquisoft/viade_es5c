@@ -7,4 +7,4 @@ class Point{
   
 }
 
-export default Route;
+export default Point;
