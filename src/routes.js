@@ -15,7 +15,8 @@ import {
   FormModelRenderer,
   TextEditor,
   Ruta,
-  AddFile
+  AddFile,
+   Friends
 } from './containers';
 
 const privateRoutes = [
@@ -63,6 +64,12 @@ const privateRoutes = [
     id:'addFile',
     path:'',
     component: AddFile
+
+  },
+  {
+    id:'friends',
+    path:'/friends',
+    component: Friends
 
   }
 ];

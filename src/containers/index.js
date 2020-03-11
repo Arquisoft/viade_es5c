@@ -8,7 +8,7 @@ import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
 import Ruta from "./Ruta";
 import AddFile from "./AddFile";
-
+import Friends from "./Friends"
 export {
   Login,
   Register,
@@ -22,5 +22,6 @@ export {
   FormModelRenderer,
   TextEditor,
   Ruta,
-  AddFile
+  AddFile,
+  Friends
 };

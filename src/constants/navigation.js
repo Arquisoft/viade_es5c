@@ -19,6 +19,13 @@ export const NavigationItems = [
     icon: '/img/icon/mapa_azul.png',
     label: 'Add File',
     to: '/addFile'
+  },
+
+  {
+    id: 'addFile',
+    icon: '/img/icon/mapa_azul.png',
+    label: 'navBar.friends',
+    to: '/friends'
   }
 ];
 
