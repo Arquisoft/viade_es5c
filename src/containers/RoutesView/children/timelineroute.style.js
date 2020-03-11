@@ -5,7 +5,7 @@ export const RouteCard = styled.div`
   margin: 30px auto;
 
   //Overriding the style guide card flexbox settings
-  max-width: 80% !important;
+  max-width: 90%;
   flex-direction: row;
   padding: 10px 0;
   align-items: center;
