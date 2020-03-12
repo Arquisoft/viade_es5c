@@ -4,9 +4,8 @@ import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
 import TextEditor from './TextEditor';
-import { GamePage, GameList } from './TicTacToe';
 import { FormModelConverter, FormModelRenderer } from './FormModel';
-import Ruta from "./Ruta";
+import RoutesView from "./RoutesView";
 import AddFile from "./AddFile";
 import Friends from "./Friends"
 export {
@@ -16,12 +15,12 @@ export {
   PageNotFound,
   Welcome,
   Profile,
-  GamePage,
-  GameList,
   FormModelConverter,
   FormModelRenderer,
   TextEditor,
   Ruta,
   AddFile,
   Friends
+  RoutesView,
+  AddFile
 };

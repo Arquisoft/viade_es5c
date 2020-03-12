@@ -54,8 +54,8 @@
     "formModelConvert": "Form Model Convert",
     "text-editor": "Editor de Textos",
     "changeLanguage": "Cambiar Lenguaje",
-    "map": "Mapa",
     "friends": "Amigos",
+    "routes": "Rutas",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"
