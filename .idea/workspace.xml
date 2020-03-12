@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="efc6d095-ce4a-4fb6-ac00-66281c156bba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Friends/friendContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Friends/friendContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Friends/friendStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Friends/friend.style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +19,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectId" id="1YtsWpE277TBLdsW6WBpV2Z4k4s" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,6 +36,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\borja\Documents\BORJA\REPOS\ASW\viade_es5c\node_modules\prettier" />
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -68,7 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1583773258958</updated>
       <workItem from="1583773260106" duration="404000" />
-      <workItem from="1584001457502" duration="2324000" />
+      <workItem from="1584001457502" duration="5679000" />
     </task>
     <servers />
   </component>
@@ -89,21 +87,29 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1259" height="146" key="GridCell.Tab.0.bottom" timestamp="1584002242398">
+    <state width="1259" height="146" key="GridCell.Tab.0.bottom" timestamp="1584008275645">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1259" height="146" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1584002242398" />
-    <state width="1259" height="146" key="GridCell.Tab.0.center" timestamp="1584002242398">
+    <state width="1259" height="146" key="GridCell.Tab.0.bottom/0.0.1280.689/0.-1080.1920.1050@0.0.1280.689" timestamp="1584008275645" />
+    <state width="1259" height="146" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1584006196183" />
+    <state width="1259" height="146" key="GridCell.Tab.0.center" timestamp="1584008275644">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1259" height="146" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1584002242398" />
-    <state width="1259" height="146" key="GridCell.Tab.0.left" timestamp="1584002242398">
+    <state width="1259" height="146" key="GridCell.Tab.0.center/0.0.1280.689/0.-1080.1920.1050@0.0.1280.689" timestamp="1584008275644" />
+    <state width="1259" height="146" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1584006196183" />
+    <state width="1259" height="146" key="GridCell.Tab.0.left" timestamp="1584008275644">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1259" height="146" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1584002242398" />
-    <state width="1259" height="146" key="GridCell.Tab.0.right" timestamp="1584002242398">
+    <state width="1259" height="146" key="GridCell.Tab.0.left/0.0.1280.689/0.-1080.1920.1050@0.0.1280.689" timestamp="1584008275644" />
+    <state width="1259" height="146" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1584006196183" />
+    <state width="1259" height="146" key="GridCell.Tab.0.right" timestamp="1584008275645">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1259" height="146" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1584002242398" />
+    <state width="1259" height="146" key="GridCell.Tab.0.right/0.0.1280.689/0.-1080.1920.1050@0.0.1280.689" timestamp="1584008275645" />
+    <state width="1259" height="146" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1584006196183" />
+    <state x="326" y="61" width="629" height="568" key="find.popup" timestamp="1584006917028">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="326" y="61" width="629" height="568" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1584006917028" />
   </component>
 </project>
