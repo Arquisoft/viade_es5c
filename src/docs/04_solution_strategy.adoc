@@ -4,7 +4,7 @@
 === Introduction
 In this part you will find the summary of fundamental decisions and strategies
 
-=== Introduction
+=== Decisions
 [cols="1,3"]
 .Technology decisions
 |===
@@ -20,7 +20,6 @@ In this part you will find the summary of fundamental decisions and strategies
 
 |HTML, CSS
 |For de view of the application.
-
 
 |Google API
 |Google API Directions is the best idea we have for the routes.
@@ -41,7 +40,11 @@ In this part you will find the summary of fundamental decisions and strategies
 |===
 
 |Usable
+<<<<<<< HEAD
+|The application must be usable. We will achieve this by making people that aren't studying this degree testing the application.
+=======
 |The application must be usable, 
+>>>>>>> develop
 
 |Testing
 |For testing we want to use Cucumber and Jest. Cucumber is a software tool that supports behavior-driven development and Jest is a JavaScript Testing Framework.
