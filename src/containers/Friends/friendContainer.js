@@ -3,6 +3,7 @@ import data from '@solid/query-ldflex';
 import { namedNode } from '@rdfjs/data-model';
 import { successToaster, errorToaster } from '@utils';
 import {FriendPage} from "./friendComponent";
+
 export class FriendsComponent extends Component<Props> {
 
     constructor(props) {

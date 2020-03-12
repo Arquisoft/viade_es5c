@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { media } from '../../utils';
 
-export const  FriendConteiner = styled.section`
+export const  FriendContainer = styled.section`
   width: 100%;
   background-image: url('/img/concentric-hex-pattern_2x.png');
   background-repeat: repeat;

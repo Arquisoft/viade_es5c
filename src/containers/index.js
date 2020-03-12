@@ -18,9 +18,7 @@ export {
   FormModelConverter,
   FormModelRenderer,
   TextEditor,
-  Ruta,
-  AddFile,
-  Friends
+  Friends,
   RoutesView,
   AddFile
 };
