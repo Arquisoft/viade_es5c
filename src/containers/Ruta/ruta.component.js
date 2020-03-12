@@ -26,3 +26,4 @@ export class Ruta extends Component {
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyAvIiRezGEiWzjKcmje9tzq56ePzFC5hVI'
 })(Ruta);
+
