@@ -1,5 +1,5 @@
 import React from 'react';
-import { LiveUpdate } from '@inrupt/solid-react-components';
+import {LiveUpdate} from '@inrupt/solid-react-components';
 import NavBarProfile from './nav-bar-profile.component';
 
 export const NavBarContainer = React.memo(props => {

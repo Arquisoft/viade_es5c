@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
 
-import { render, cleanup } from 'react-testing-library';
+import {cleanup, render} from 'react-testing-library';
 import Toaster from './toaster.component';
 
 afterAll(cleanup);

@@ -1,7 +1,5 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import data from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
-import { successToaster, errorToaster } from '@utils';
 import {FriendPage} from "./friendComponent";
 
 export class FriendsComponent extends Component<Props> {
@@ -26,7 +24,7 @@ export class FriendsComponent extends Component<Props> {
 
     getProfileData = async () => {
         this.setState({ isLoading: true });
-        let hasImage;
+        //let hasImage;
         const { webId } = this.props;
 
         const user = data[webId];
@@ -46,9 +44,9 @@ export class FriendsComponent extends Component<Props> {
             let image;
             if (imageLd && imageLd.value) {
                 image = imageLd.value;
-                hasImage = true;
+                //hasImage = true;
             } else {
-                hasImage = false;
+                //hasImage = false;
                 image = "";
             }
 

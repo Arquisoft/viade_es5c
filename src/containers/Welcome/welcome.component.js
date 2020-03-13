@@ -1,17 +1,17 @@
 import React from 'react';
-import { Uploader } from '@inrupt/solid-react-components';
-import { Trans, useTranslation } from 'react-i18next';
+import {Uploader} from '@inrupt/solid-react-components';
+import {Trans, useTranslation} from 'react-i18next';
 import {
-  WelcomeWrapper,
+  ImageWrapper,
   WelcomeCard,
-  WelcomeLogo,
-  WelcomeProfile,
   WelcomeDetail,
+  WelcomeLogo,
   WelcomeName,
-  ImageWrapper
+  WelcomeProfile,
+  WelcomeWrapper
 } from './welcome.style';
-import { ImageProfile } from '@components';
-import { errorToaster } from '@utils';
+import {ImageProfile} from '@components';
+import {errorToaster} from '@utils';
 
 /**
  * Welcome Page UI component, containing the styled components for the Welcome Page

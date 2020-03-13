@@ -1,7 +1,7 @@
 import data from '@solid/query-ldflex';
-import { AccessControlList } from '@inrupt/solid-react-components';
-import { resourceExists, createDoc, createDocument } from './ldflex-helper';
-import { storageHelper, errorToaster, permissionHelper } from '@utils';
+import {AccessControlList} from '@inrupt/solid-react-components';
+import {createDoc, createDocument, resourceExists} from './ldflex-helper';
+import {errorToaster, permissionHelper, storageHelper} from '@utils';
 
 const appPath = process.env.REACT_APP_TICTAC_PATH;
 

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { CenterContainer } from '@util-components';
+import React, {Component} from 'react';
+import {CenterContainer} from '@util-components';
 // import { NavBar } from "@components";
-import { RegistrationPage } from './registration-success.style';
+import {RegistrationPage} from './registration-success.style';
 
 type Props = {
   history: Object

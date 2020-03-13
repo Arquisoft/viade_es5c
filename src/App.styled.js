@@ -1,4 +1,4 @@
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import styled from 'styled-components';
 
 export const Toaster = styled(ToastContainer)`

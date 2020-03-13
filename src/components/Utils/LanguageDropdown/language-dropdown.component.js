@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Dropdown } from '@util-components';
-import { toast } from 'react-toastify';
+import React, {Component} from 'react';
+import {Dropdown} from '@util-components';
+import {toast} from 'react-toastify';
 
 const languages = {
   en: {
