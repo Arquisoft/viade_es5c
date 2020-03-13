@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@asciidoctor/cli": "^3.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-brands-svg-icons": "^5.8.0",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
@@ -16,7 +15,6 @@
     "@shexjs/core": "^1.0.0-alpha.4",
     "@solid/query-ldflex": "2.10.0",
     "@svgr/webpack": "2.4.1",
-    "asciidoctor": "^2.1.1",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
