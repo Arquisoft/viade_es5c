@@ -29,7 +29,7 @@ function RoutesView() {
         </RouteWrapper>
     );
 }
-
+/*
 function handleLoad(event) {
     const [text, setText] = useState('');
     event.preventDefault();
@@ -49,6 +49,6 @@ function handleLoad(event) {
         .catch(() => {
             errorToaster('notifications.errorFetching');
         });
-}
+}*/
 
 export default RoutesView;
