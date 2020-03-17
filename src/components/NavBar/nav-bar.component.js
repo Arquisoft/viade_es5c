@@ -1,6 +1,6 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Navigation, Toolbar, HamburgerButton, MobileNavigation } from './children';
+import React, {Fragment, useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {HamburgerButton, MobileNavigation, Navigation, Toolbar} from './children';
 
 type Props = {
   t: Function,

@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { RegisterComponent } from './register.component';
+import {cleanup, render} from 'react-testing-library';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {RegisterComponent} from './register.component';
 
 describe.only('Register', () => {
   afterAll(cleanup);

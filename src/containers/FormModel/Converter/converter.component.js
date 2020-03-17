@@ -1,21 +1,21 @@
-import React, { useCallback, useState } from 'react';
-import { successToaster, errorToaster } from '@utils';
-import { Select } from '@util-components';
-import { ShexFormModel, FormModel } from '@inrupt/solid-sdk-forms';
-import { ConverterTypesList, ConverterTypes } from '@constants';
-import { useTranslation } from 'react-i18next';
-import { Util } from '@shexjs/core';
+import React, {useCallback, useState} from 'react';
+import {errorToaster, successToaster} from '@utils';
+import {Select} from '@util-components';
+import {FormModel, ShexFormModel} from '@inrupt/solid-sdk-forms';
+import {ConverterTypes, ConverterTypesList} from '@constants';
+import {useTranslation} from 'react-i18next';
+import {Util} from '@shexjs/core';
 import SHACLValidator from 'shacl-js';
 import * as N3 from 'n3';
 import {
+  Button,
+  ConverterInput,
+  Form,
   FormModelContainer,
   FormWrapper,
-  Form,
   Input,
   Result,
-  ResultHeader,
-  Button,
-  ConverterInput
+  ResultHeader
 } from '../form-model.style';
 
 /**

@@ -1,8 +1,5 @@
 import React from "react";
-import {
-    FriendContainer,
-    FriendList
-} from './friend.style';
+import {FriendContainer, FriendList} from './friend.style';
 import {Friend} from "./components/Entity/friend";
 
 export const FriendPage = propos => {

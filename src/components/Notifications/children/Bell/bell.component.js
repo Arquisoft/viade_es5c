@@ -1,6 +1,6 @@
 import React from 'react';
-import { Badge } from '@util-components';
-import { BellIcon } from './bell.style';
+import {Badge} from '@util-components';
+import {BellIcon} from './bell.style';
 
 type Props = {
   unread: Boolean,

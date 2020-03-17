@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import {cleanup, render} from 'react-testing-library';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons';
 import ProviderItem from './provider.item.component';
 
 import 'jest-dom/extend-expect';

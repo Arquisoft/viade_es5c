@@ -1,11 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  ImageProfileWrapper,
-  ButtonStyled,
-  LoaderText,
-  ImageProfileLoader
-} from './image-profile.style';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {ButtonStyled, ImageProfileLoader, ImageProfileWrapper, LoaderText} from './image-profile.style';
 
 type Props = {
   photo: String,

@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import data from '@solid/query-ldflex';
 import {FriendPage} from "./friendComponent";
 

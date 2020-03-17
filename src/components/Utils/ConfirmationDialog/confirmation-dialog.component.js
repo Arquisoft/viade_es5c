@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactModal from 'react-modal';
-import { Content, Actions, AcceptBtn, DeclineBtn } from './confirmation-dialog.style';
+import {AcceptBtn, Actions, Content, DeclineBtn} from './confirmation-dialog.style';
 
 type Props = {
   onAccept: Function,

@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { WelcomeComponent } from './welcome.container';
+import {cleanup, render} from 'react-testing-library';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {WelcomeComponent} from './welcome.container';
 
 library.add(fas);
 

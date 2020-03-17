@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './i18n';
 import App from './App';
-import { ErrorBoundary, GlobalError } from './components';
+import {ErrorBoundary, GlobalError} from './components';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  GlobalErrorWrapper,
-  ErrorTitle,
-  ErrorInfo,
-  DetailWrapper,
-  ImageWrapper,
-  ErrorDetail
+    DetailWrapper,
+    ErrorDetail,
+    ErrorInfo,
+    ErrorTitle,
+    GlobalErrorWrapper,
+    ImageWrapper
 } from './global-error.style';
 
 type Props = {

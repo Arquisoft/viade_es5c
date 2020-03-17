@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { withTranslation } from 'react-i18next';
-import { GradientBackground, CenterContainer } from '@util-components';
-import { RegisterWrapper, RegisterPanel, PanelHeader, PanelBody, Actions } from './register.style';
-import { ProviderItem } from './children';
+import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
+import {withTranslation} from 'react-i18next';
+import {CenterContainer, GradientBackground} from '@util-components';
+import {Actions, PanelBody, PanelHeader, RegisterPanel, RegisterWrapper} from './register.style';
+import {ProviderItem} from './children';
 
 type Provider = {};
 
