@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
-import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
+import {HashRouter as Router, Redirect, Switch} from 'react-router-dom';
 
 import {
   AddFile,
