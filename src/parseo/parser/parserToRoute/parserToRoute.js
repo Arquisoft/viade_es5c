@@ -54,6 +54,7 @@ class ParserToRoute {
 
         var array=new Array(coordinates.features.length);
         for (var y=0;y<coordinates.features.length;y++){
+      
           array[y]=new Point(coordinates.features[y].geometry.coordinates[0],
             coordinates.features[y].geometry.coordinates[1])
         }
