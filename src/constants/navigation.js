@@ -23,7 +23,7 @@ export const NavigationItems = [
 
   {
     id: 'friends',
-    icon: '/img/icon/mapa_azul.png',
+    icon: '/img/icon/friendsNavBarIcon.png',
     label: 'navBar.friends',
     to: '/friends'
   }
