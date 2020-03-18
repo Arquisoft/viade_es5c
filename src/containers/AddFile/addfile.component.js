@@ -46,6 +46,7 @@ const LoadFile = (props) => {
         const nombre=fichero.name;
         const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
         console.log(url);
+        
         await fc.createFile(url, fichero, "application/geo+json", {});
         console.log("subido");
         
