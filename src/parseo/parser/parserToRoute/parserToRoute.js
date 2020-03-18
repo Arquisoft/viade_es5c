@@ -53,6 +53,9 @@ class ParserToRoute {
         
 
         var array=new Array(coordinates.features.length);
+        //SI ES UNA RUTA SOLO O SEA UNIÓN DE PUNTOS, SOLO TIENE UN FEATURES, QUE TIENE UN ARRAY DE PUNTOS
+        //SI SON PUNTOS, HAY MÁS DE UN FEATURES PERO CON UN PUNTO CADA UNO SOLO
+        //SI SE PUEDE TODO, ES UNA MEZCLA DE LO ANTERIOR.
         for (var y=0;y<coordinates.features.length;y++){
       
           array[y]=new Point(coordinates.features[y].geometry.coordinates[0],
