@@ -1,7 +1,3 @@
-/* eslint-disable constructor-super */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-console */
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { successToaster, errorToaster } from '@utils';
