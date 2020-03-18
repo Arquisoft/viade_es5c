@@ -1,18 +1,19 @@
 import React from "react";
 import {
-    FriendContainer,
-    FriendList
+    FriendWrapper,
+    FriendList, FriendContainer
 } from './friend.style';
 import {Friend} from "./components/Entity/friend";
 
 export const FriendPage = propos => {
     const {friends} = propos;
 
-    return (<FriendContainer>
-        <FriendList>
+    return (<FriendWrapper>
+        <FriendContainer className = "card">
+            <h1></h1>
             <ul>
                 {friends.map(friend => (<Friend friend={friend}/>))}
             </ul>
-        </FriendList>
-    </FriendContainer>);
+        </FriendContainer>
+    </FriendWrapper>);
 };
