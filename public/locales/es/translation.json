@@ -251,5 +251,8 @@
     "load": "Cargar",
     "save": "Guardar",
     "grantAccess": "Dar Acceso"
+  },
+  "friends": {
+    "title": "Estos son tus amigos de SOLID"
   }
 }
