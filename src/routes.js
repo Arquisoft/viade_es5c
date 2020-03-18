@@ -14,7 +14,8 @@ import {
   TextEditor,
   AddFile,
   Friends,
-  RoutesView
+  RoutesView,
+  AddRoute
 } from './containers';
 
 const privateRoutes = [
@@ -58,6 +59,12 @@ const privateRoutes = [
     id:'friends',
     path:'/friends',
     component: Friends
+
+  },
+  {
+    id:'addRoute',
+    path:'/addRoute',
+    component: AddRoute
 
   }
 ];

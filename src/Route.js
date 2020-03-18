@@ -7,6 +7,9 @@ class Route{
     this.points=[];
     this.comments='';
     this.media='';
+    this.distance=0;
+    this.rank=0;
+    this.date='';
   }
   //constructor(name,description,points,comments,media){
     //this.name=name;
@@ -28,6 +31,22 @@ class Route{
     console.log(this.points)
   }
 
+  setName(name){
+    this.name=name;
+  }
+  setDescription(description){
+    this.comments = description;
+
+  }
+  setDistance(distance){
+    this.distance=distance;
+  }
+  setRank(rank){
+    this.rank=rank;
+  }
+  setDate(date){
+    this.date=date;
+  }
   getPoints(){
     return this.points;
   }
