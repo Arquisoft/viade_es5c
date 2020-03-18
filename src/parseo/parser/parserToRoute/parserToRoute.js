@@ -24,13 +24,22 @@ class ParserToRoute {
             
             reader.onload = ()=> {
                 //resolve(parser.execute(reader.result));
-                const geoJSON = JSON.parse(reader.result);
+                var geoJSON;
+                try{
+                  geoJSON = JSON.parse(reader.result);
+                  const points = this.getCoordenadas(geoJSON);
+                  console.log(points)
+                  const  route = new Route(f.name, points);
+                  console.log(route);
+                  resolve(route);
+                }catch(er){
+                  //Mirar por qué no es válido
+                  console.log("error");
+                  //console.error(er);
+                }
+                
                  
-                const points = this.getCoordenadas(geoJSON);
-                console.log(points)
-                const  route = new Route(f.name, points);
-                console.log(route);
-                resolve(route);
+                
               };
               
         }
@@ -41,6 +50,8 @@ class ParserToRoute {
       });
     };
     getCoordenadas = coordinates =>{
+        
+
         var array=new Array(coordinates.features.length);
         for (var y=0;y<coordinates.features.length;y++){
           array[y]=new Point(coordinates.features[y].geometry.coordinates[0],
