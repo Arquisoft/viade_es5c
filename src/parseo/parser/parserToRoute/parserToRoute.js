@@ -1,7 +1,7 @@
 import Point from "../../entities/Point";
-
+import Route from "../../entities/Route";
 class ParserToRoute {
-    constructor() {}
+    
     selectParser = file => {
       const type = file.name.split(".")[1];
       switch (type) {
@@ -16,29 +16,42 @@ class ParserToRoute {
     parse =  file => {
       const f = file;
       const parser = this.selectParser(f);
-      const route;
+      
       return new Promise((resolve, reject) => {
         let reader = new FileReader();
-        if (parser==1){//Si es geojson
-
+        if (parser===1){//Si es geojson
+            console.log("Es geojson");
+            
+            reader.onload = ()=> {
+                //resolve(parser.execute(reader.result));
+                const geoJSON = JSON.parse(reader.result);
+                 
+                const points = this.getCoordenadas(geoJSON);
+                console.log(points)
+                const  route = new Route(f.name, points);
+                console.log(route);
+                resolve(route);
+              };
+              
         }
-        reader.onload = ()=> {
-          //resolve(parser.execute(reader.result));
-          const geoJSON = JSON.parse(reader.result);
-            const points = this.getCoordenadas(geoJSON.coordinates);
-            route = new RouteViade(f.name, points);
-            resolve(route);
-        };
+        
         reader.onerror=reject;
         reader.readAsText(f);
+        
       });
     };
+    getCoordenadas = coordinates =>{
+        var array=new Array(coordinates.features.length);
+        for (var y=0;y<coordinates.features.length;y++){
+          array[y]=new Point(coordinates.features[y].geometry.coordinates[0],
+            coordinates.features[y].geometry.coordinates[1])
+        }
+        return array;
+    }
   }
-  getCoordenadas = coordinates =>{
-      return coordinates.map(cord=>{
-        return new Point(cord[0], cord[1])
-      });
-  }
+  
+
+
   const parser = new ParserToRoute();
   
   
