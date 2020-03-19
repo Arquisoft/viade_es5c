@@ -6,14 +6,14 @@
 
 Viade is a decentralized route management system  based on the SOLID specifications and developed with REACT.
 
-####ABOUT PROYECT
+#### ABOUT PROYECT
 This project is an assignment for the [Software Architecture course](https://arquisoft.github.io/) following [these requirements](https://labra.solid.community/public/SoftwareArchitecture/AssignmentDescription/).
 
 The app is deployed at [https://arquisoft.github.io/viade_es5c/](https://arquisoft.github.io/viade_es5c/) which also contains a [technical documentation](https://arquisoft.github.io/viade_es5c/docs).
 
 More information about how this project has been setup is available in the [wiki](https://github.com/Arquisoft/viade_es5c/wiki).
 
-####ABOUT US
+#### ABOUT US
 We are a group of students from the University of Oviedo who are developing the project in the Software Architecture class. 
 
 The group is formed by:
