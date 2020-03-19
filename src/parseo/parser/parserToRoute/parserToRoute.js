@@ -28,9 +28,9 @@ class ParserToRoute {
                 try{
                   geoJSON = JSON.parse(reader.result);
                   const points = this.getCoordenadas(geoJSON);
-                  console.log(points)
-                  const  route = new Route(f.name, points);
-                  console.log(route);
+                  
+                  const  route = new Route(f.name.split(".")[0], points);
+                  console.log(route)
                   resolve(route);
                 }catch(er){
                   //Mirar por qué no es válido
@@ -51,17 +51,31 @@ class ParserToRoute {
     };
     getCoordenadas = coordinates =>{
         
-
-        var array=new Array(coordinates.features.length);
+        
+        
         //SI ES UNA RUTA SOLO O SEA UNIÓN DE PUNTOS, SOLO TIENE UN FEATURES, QUE TIENE UN ARRAY DE PUNTOS
         //SI SON PUNTOS, HAY MÁS DE UN FEATURES PERO CON UN PUNTO CADA UNO SOLO
         //SI SE PUEDE TODO, ES UNA MEZCLA DE LO ANTERIOR.
-        for (var y=0;y<coordinates.features.length;y++){
-      
-          array[y]=new Point(coordinates.features[y].geometry.coordinates[0],
-            coordinates.features[y].geometry.coordinates[1])
+        
+        if (coordinates.features.length>1){
+          //Error de que hay más de una unión y no se puede
+        }else if(coordinates.features[0].geometry.type!=="LineString"){
+          //
+          
+        }else{
+          
+          var array=new Array(coordinates.features[0].geometry.coordinates.length);
+          for (var y=0;y<coordinates.features[0].geometry.coordinates.length;y++){
+            
+            array[y]=new Point(coordinates.features[0].geometry.coordinates[y][0],
+              coordinates.features[0].geometry.coordinates[y][1]);
+          }
+                      
+          return array;
         }
-        return array;
+        
+        
+        
     }
   }
   
