@@ -1,23 +1,17 @@
 import styled from 'styled-components';
-import { media } from '../../utils';
+import {media} from '../../utils';
 
-export const  FriendContainer = styled.section`
+export const FriendWrapper = styled.section`
   width: 100%;
-  background-image: url('/img/concentric-hex-pattern_2x.png');
-  background-repeat: repeat;
   padding: 50px 0;
-  h3 {
+  h1 {
     color: #666666;
-    span {
       font-weight: bold;
-    }
-    a {
-      font-size: 1.9rem;
-    }
+      font : Verdana;
   }
 `;
 
-export const FriendList= styled.div`
+export const FriendContainer = styled.div`
   background-color: #fff;
   margin: 30px auto;
   //Overriding the style guide card flexbox settings
@@ -30,8 +24,5 @@ export const FriendList= styled.div`
     &:hover {
       text-decoration: underline;
     }
-  }
-  button {
-    margin-left: 8px;
   }
 `;
