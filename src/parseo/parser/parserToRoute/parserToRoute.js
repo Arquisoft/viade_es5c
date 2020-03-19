@@ -27,8 +27,7 @@ class ParserToRoute {
                 var geoJSON;
                 try{
                   geoJSON = JSON.parse(reader.result);
-                  const points = this.getCoordenadas(geoJSON);
-                  
+                  const points = this.getCoordenadasRDF(geoJSON);
                   const  route = new Route(f.name.split(".")[0], points);
                   console.log(route)
                   resolve(route);
@@ -49,7 +48,7 @@ class ParserToRoute {
         
       });
     };
-    getCoordenadas = coordinates =>{
+    getCoordenadasRDF = coordinates =>{
         
         
         
