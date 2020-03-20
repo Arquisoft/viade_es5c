@@ -10,7 +10,7 @@ export const NavigationItems = [
   },
   {
     id: 'listRoutes',
-    icon: 'img/bars-nav.svg',
+    icon: 'img/icon/map.png',
     label: 'navBar.routes',
     to: '/listRoutes'
   },

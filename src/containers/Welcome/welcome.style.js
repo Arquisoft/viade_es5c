@@ -46,7 +46,7 @@ export const WelcomeLogo = styled.div`
   height: 100%;
 
   img {
-    width: 60%;
+    width: 40%;
     display: block;
     margin: 0 auto;
   }
