@@ -1,12 +1,12 @@
 import React from 'react';
-//import auth from "solid-auth-client";
-//import FC from 'solid-file-client';
+import auth from "solid-auth-client";
+import FC from 'solid-file-client';
 import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
-/*
+
 import Route from 'Route';
 import RouteVisualizer from 'RouteVisualizer.component'
 import ReactDOM from 'react-dom';
-*/
+
 
 const LoadFile = (props) => {
     let files;
@@ -49,11 +49,22 @@ const LoadFile = (props) => {
         console.log(url);
         let parseadoRuta=ParserToRoute.parse(fichero);
         console.log(parseadoRuta);
-        let ruta=await parseadoRuta.then((ruta)=>{return ruta});
-        let parseadoRDF=ParserRouteToRDF.parse(ruta);
+        let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
+        let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
         console.log(parseadoRDF);
-        //await fc.createFile(url, fichero, "application/geo+json", {});
-        console.log("subido");
+    
+        const fc   = new FC( auth );
+            const nombre=event.target.fileName;
+            const url=webId.split("profile/card#me")[0]+"rutas/"+rutaClass.name;
+            console.log(url);
+            await fc.createFile(url, parseadoRDF, "text/turtle", {});
+            console.log("subido");
+
+
+
+        var ruta= new Route(fileReader.result);
+        const domContainer = document.querySelector('#mapa');
+        ReactDOM.render(<RouteVisualizer ruta= {ruta}></RouteVisualizer>, domContainer);
         
     }
     
@@ -65,7 +76,7 @@ const LoadFile = (props) => {
                 Cargar ruta:
             <input type="file" name="files[]" id="file" onChange={selectFile} />
             </label> 
-            <button onClick={handlerUpload}>Upload</button>
+            <button onClick={handlerUpload}>Cargar POD</button>
             <div id="mapa"></div>
         </div>
        

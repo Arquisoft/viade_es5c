@@ -1,5 +1,5 @@
-import Point from "../../entities/Point";
-import Route from "../../entities/Route";
+import Point from "../../../entities/Point";
+import Route from "../../../entities/Route";
 class ParserToRouteClass {
     
     selectParser = file => {
@@ -34,7 +34,6 @@ class ParserToRouteClass {
                 }catch(er){
                   //Mirar por qué no es válido
                   console.log("error");
-                  //console.error(er);
                 }
                 
                  
