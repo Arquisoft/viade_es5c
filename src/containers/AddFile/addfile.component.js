@@ -49,7 +49,8 @@ const LoadFile = (props) => {
         console.log(url);
         let parseadoRuta=ParserToRoute.parse(fichero);
         console.log(parseadoRuta);
-        let parseadoRDF=ParserRouteToRDF.parse(parseadoRuta);
+        let ruta=await parseadoRuta.then((ruta)=>{return ruta});
+        let parseadoRDF=ParserRouteToRDF.parse(ruta);
         console.log(parseadoRDF);
         //await fc.createFile(url, fichero, "application/geo+json", {});
         console.log("subido");

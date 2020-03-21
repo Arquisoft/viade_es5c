@@ -1,5 +1,4 @@
-import Point from "../../entities/Point";
-import Route from "../../entities/Route";
+
 class ParserRouteToRDFClass {
     
     parse =  route => {
@@ -47,7 +46,7 @@ class ParserRouteToRDFClass {
             this.rdf+="viade:point [";
             this.rdf+='schema:latitude '+route.points[i].latitud+' ;';
             this.rdf+='schema:longitude '+route.points[i].longitud+' ;';
-            if (route.points[i].elevacion==""){
+            if (route.points[i].elevacion===""){
                 this.rdf+='viade:order '+i;
             }else{
                 this.rdf+='viade:order '+i+' ;';
