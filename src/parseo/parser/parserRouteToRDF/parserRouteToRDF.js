@@ -43,6 +43,20 @@ prefix xsd:    <http://www.w3.org/2001/XMLSchema#>
        this.rdf+='schema:name "'+route.name+'" ;';
        this.rdf+= 'schema:description "'+route.description+'" ;';
 
+       for (var i=0;i<route.points.length;i++){
+            this.rdf+="viade:point [";
+            this.rdf+='schema:latitude '+route.points[i].latitud+' ;';
+            this.rdf+='schema:longitude '+route.points[i].longitud+' ;';
+            if (route.points[i].elevacion==""){
+                this.rdf+='viade:order '+i;
+            }else{
+                this.rdf+='viade:order '+i+' ;';
+                this.rdf+='schema:elevation '+route.points[i].elevacion;
+            }
+            this.rdf+="] ;";
+            
+       }
+
     };
     
   }
