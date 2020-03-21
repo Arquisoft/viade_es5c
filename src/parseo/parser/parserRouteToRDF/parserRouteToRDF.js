@@ -5,10 +5,10 @@ class ParserRouteToRDFClass {
     parse =  route => {
         this.rdf="";
       /*prefix viade:  <http://arquisoft.github.io/viadeSpec/>
-prefix :       <http://example.org/>
-prefix schema: <http://schema.org/>
-prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
-prefix xsd:    <http://www.w3.org/2001/XMLSchema#>
+        prefix :       <http://example.org/>
+        prefix schema: <http://schema.org/>
+        prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+        prefix xsd:    <http://www.w3.org/2001/XMLSchema#>
         */ 
        this.rdf="prefix viade: <http://arquisoft.github.io/viadeSpec/>" ;
        this.rdf+="prefix :       <http://example.org/>";
@@ -56,7 +56,9 @@ prefix xsd:    <http://www.w3.org/2001/XMLSchema#>
             this.rdf+="] ;";
             
        }
-
+       this.rdf+='viade:hasComments "'+route.comments+'" ;';
+       //Lo de media no sé como es
+       return this.rdf;
     };
     
   }

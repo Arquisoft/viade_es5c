@@ -1,7 +1,7 @@
 import React from 'react';
 //import auth from "solid-auth-client";
 //import FC from 'solid-file-client';
-import {ParserToRoute} from "../../parseo";
+import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
 /*
 import Route from 'Route';
 import RouteVisualizer from 'RouteVisualizer.component'
@@ -47,8 +47,10 @@ const LoadFile = (props) => {
         const nombre=fichero.name;
         const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
         console.log(url);
-        let parseado=ParserToRoute.parse(fichero);
-        console.log(parseado);
+        let parseadoRuta=ParserToRoute.parse(fichero);
+        console.log(parseadoRuta);
+        let parseadoRDF=ParserRouteToRDF.parse(parseadoRuta);
+        console.log(parseadoRDF);
         //await fc.createFile(url, fichero, "application/geo+json", {});
         console.log("subido");
         

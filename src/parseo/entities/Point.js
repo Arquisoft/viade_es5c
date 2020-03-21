@@ -1,5 +1,5 @@
 class Point{
-  constructor(latitud,longitud){
+  constructor(latitud,longitud,elevacion=""){
     this.latitud=latitud;
     this.longitud=longitud;
     this.elevacion="";
