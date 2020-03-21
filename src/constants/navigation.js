@@ -4,13 +4,13 @@
 export const NavigationItems = [
   {
     id: 'welcome',
-    icon: 'img/icon/home.png',
+    icon: 'img/icon/home.svg',
     label: 'navBar.welcome',
     to: '/welcome'
   },
   {
     id: 'listRoutes',
-    icon: 'img/icon/map.png',
+    icon: 'img/icon/location.svg',
     label: 'navBar.routes',
     to: '/listRoutes'
   },

@@ -42,7 +42,7 @@ export const WelcomeCard = styled.div`
 `;
 
 export const WelcomeLogo = styled.div`
-  width: 50%;
+  width: 40%;
   height: 100%;
 
   img {
