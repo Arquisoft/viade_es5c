@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
-import { UpdateContext } from '@inrupt/solid-react-components';
-import { Dropdown } from '@util-components';
+import {UpdateContext} from '@inrupt/solid-react-components';
+import {Dropdown} from '@util-components';
 
 import auth from 'solid-auth-client';
 import data from '@solid/query-ldflex';
-import { errorToaster } from '@utils';
-import { ProfileOptions } from '@constants/navigation';
+import {errorToaster} from '@utils';
+import {ProfileOptions} from '@constants/navigation';
 
 export const ImageContainer = styled.div`
   width: 42px;
@@ -47,7 +47,7 @@ let beforeContext;
 class NavBarProfile extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = { image: '/img/icon/empty-profile.svg' };
+    this.state = { image: 'img/icon/empty-profile.svg' };
   }
 
   state = {

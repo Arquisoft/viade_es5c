@@ -1,5 +1,5 @@
-
 import Point from './Point.js'
+
 class Route{
   constructor(file){
     this.file = file;

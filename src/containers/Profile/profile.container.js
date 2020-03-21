@@ -1,21 +1,21 @@
-import React, { Fragment, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FormModel } from '@inrupt/solid-react-components';
-import { successToaster, errorToaster } from '@utils';
-import { Loader } from '@util-components';
+import React, {Fragment, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {FormModel} from '@inrupt/solid-react-components';
+import {errorToaster, successToaster} from '@utils';
+import {Loader} from '@util-components';
 import {
+  AutoSaveNotification,
+  FormRenderContainer,
   Header,
   ProfileContainer,
   ProfileWrapper,
-  FormRenderContainer,
-  AutoSaveNotification,
   WebId
 } from './profile.style';
-import { Image } from './components';
-import { AutoSaveSpinner } from '@components';
+import {Image} from './components';
+import {AutoSaveSpinner} from '@components';
 
-const defaultProfilePhoto = '/img/icon/empty-profile.svg';
+const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
 /**
  * We are using ldflex to fetch profile data from a solid pod.

@@ -1,20 +1,20 @@
-import React, { Fragment } from 'react';
-import { PrivateLayout, PublicLayout, NotLoggedInLayout } from '@layouts';
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {NotLoggedInLayout, PrivateLayout, PublicLayout} from "@layouts";
+import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
-  Login,
-  Register,
-  PageNotFound,
-  Welcome,
-  RegistrationSuccess,
-  Profile,
+  AddFile,
   FormModelConverter,
   FormModelRenderer,
-  TextEditor,
-  AddFile,
   Friends,
-  RoutesView
+  Login,
+  PageNotFound,
+  Profile,
+  Register,
+  RegistrationSuccess,
+  RoutesView,
+  TextEditor,
+  Welcome
 } from './containers';
 
 const privateRoutes = [

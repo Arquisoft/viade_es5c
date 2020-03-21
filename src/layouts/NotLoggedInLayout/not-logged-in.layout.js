@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { withTranslation, useTranslation } from 'react-i18next';
-import { NavBar, Footer } from '@components';
-import { withWebId } from '@inrupt/solid-react-components';
-import { LanguageDropdown } from '@util-components';
+import {Redirect, Route} from 'react-router-dom';
+import {useTranslation, withTranslation} from 'react-i18next';
+import {Footer, NavBar} from '@components';
+import {withWebId} from '@inrupt/solid-react-components';
+import {LanguageDropdown} from '@util-components';
 import styled from 'styled-components';
 
 const Container = styled.div`

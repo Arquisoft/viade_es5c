@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import data from '@solid/query-ldflex';
-import { namedNode } from '@rdfjs/data-model';
-import { WelcomePageContent } from './welcome.component';
-import { successToaster, errorToaster } from '@utils';
+import {namedNode} from '@rdfjs/data-model';
+import {WelcomePageContent} from './welcome.component';
+import {errorToaster, successToaster} from '@utils';
 
-const defaultProfilePhoto = '/img/icon/empty-profile.svg';
+const defaultProfilePhoto = 'img/icon/empty-profile.svg';
 
 /**
  * Container component for the Welcome Page, containing example of how to fetch data from a POD

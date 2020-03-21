@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import data from '@solid/query-ldflex';
-import { Uploader, useLiveUpdate } from '@inrupt/solid-react-components';
-import { useTranslation } from 'react-i18next';
-import { namedNode } from '@rdfjs/data-model';
-import { ImageProfile } from '@components';
-import { successToaster, errorToaster } from '@utils';
+import {Uploader, useLiveUpdate} from '@inrupt/solid-react-components';
+import {useTranslation} from 'react-i18next';
+import {namedNode} from '@rdfjs/data-model';
+import {ImageProfile} from '@components';
+import {errorToaster, successToaster} from '@utils';
 
 type Props = {
   webId: String

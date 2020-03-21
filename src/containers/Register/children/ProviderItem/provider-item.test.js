@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import {cleanup, render} from 'react-testing-library';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons';
 import ProviderItem from './provider.item.component';
 
 import 'jest-dom/extend-expect';
@@ -13,7 +13,7 @@ describe('ProviderItem', () => {
 
   const data = {
     label: 'Inrupt',
-    image: '/img/inrupt.svg',
+    image: 'img/inrupt.svg',
     value: 'https://inrupt.net/auth',
     registerLink: 'https://inrupt.net/register',
     description: 'Lorem ipsum dolor sit amet non ipsom dolor'

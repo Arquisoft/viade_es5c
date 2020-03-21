@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import NotificationItem from '../NotificationItem';
-import { List, NoNotifications } from './notification-list.style';
+import {List, NoNotifications} from './notification-list.style';
 
 type Props = {
   notifications: Array,

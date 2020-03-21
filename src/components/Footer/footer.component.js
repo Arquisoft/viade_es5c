@@ -1,7 +1,7 @@
 import React from 'react';
-import { IconLookup, IconDefinition, findIconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { withTranslation } from 'react-i18next';
+import {findIconDefinition, IconDefinition, IconLookup} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {withTranslation} from 'react-i18next';
 
 type Props = {
   t: Function
