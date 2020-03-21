@@ -3,7 +3,7 @@ import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
 
-import Route from 'Route';
+
 import RouteVisualizer from 'RouteVisualizer.component'
 import ReactDOM from 'react-dom';
 
@@ -43,7 +43,7 @@ const LoadFile = (props) => {
         console.log(files[0].name);
         const fichero=files[0];
         const {webId} = props;
-        //const fc   = new FC( auth );
+        const fc   = new FC( auth );
         const nombre=fichero.name;
         const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
         console.log(url);
@@ -53,18 +53,14 @@ const LoadFile = (props) => {
         let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
         console.log(parseadoRDF);
     
-        const fc   = new FC( auth );
-            const nombre=event.target.fileName;
-            const url=webId.split("profile/card#me")[0]+"rutas/"+rutaClass.name;
-            console.log(url);
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
 
 
 
-        var ruta= new Route(fileReader.result);
+        
         const domContainer = document.querySelector('#mapa');
-        ReactDOM.render(<RouteVisualizer ruta= {ruta}></RouteVisualizer>, domContainer);
+        ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
         
     }
     
