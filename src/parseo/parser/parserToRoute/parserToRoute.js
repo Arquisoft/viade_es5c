@@ -1,6 +1,6 @@
 import Point from "../../entities/Point";
 import Route from "../../entities/Route";
-class ParserToRoute {
+class ParserToRouteClass {
     
     selectParser = file => {
       const type = file.name.split(".")[1];
@@ -80,7 +80,7 @@ class ParserToRoute {
   
 
 
-  const parser = new ParserToRoute();
+  const ParserToRoute = new ParserToRouteClass();
   
   
-  export default parser;
+  export {ParserToRoute};
