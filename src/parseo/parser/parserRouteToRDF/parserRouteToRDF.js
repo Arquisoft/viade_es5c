@@ -57,7 +57,7 @@ class ParserRouteToRDFClass {
        }
        this.rdf+='viade:hasComments "'+route.comments+'" ;';
        //Lo de media no sé como es
-       return this.rdf;
+       return this.rdf.toString();
     };
     
   }

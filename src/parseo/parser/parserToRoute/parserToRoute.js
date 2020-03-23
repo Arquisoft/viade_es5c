@@ -1,5 +1,7 @@
 import Point from "../../../entities/Point";
 import Route from "../../../entities/Route";
+import GPX from 'gpx-parser-builder';
+
 class ParserToRouteClass {
     
     selectParser = file => {
@@ -29,7 +31,7 @@ class ParserToRouteClass {
                 var geoJSON;
                 try{
                   geoJSON = JSON.parse(reader.result);
-                  const points = this.getCoordenadasRDF(geoJSON);
+                  const points = this.getCoordenadasGeoJSON(geoJSON);
                   const  route = new Route(f.name.split(".")[0], points);
                   console.log(route)
                   resolve(route);
@@ -42,6 +44,17 @@ class ParserToRouteClass {
         }
         if (parser===2){
           //gpx
+          reader.onload = ()=> {
+            var gpx;
+            try{
+              gpx=GPX.parse(reader.result);
+            
+              const points= this.getCoordenadasGPX(gpx);
+            }catch(er){
+
+            }
+          };
+          
         }
         
         reader.onerror=reject;
@@ -49,26 +62,34 @@ class ParserToRouteClass {
         
       });
     };
-    getCoordenadasRDF = coordinates =>{
-        
-        
-        
+
+    getCoordenadasGPX = gpx =>{
+      var array= new Array(gpx.wpt.length);
+      
+      for(var i=0;i<gpx.wpt.length;i++){
+        array[i]=new Point(gpx.wpt[i].$.lat,gpx.wpt[i].$.lon,gpx.wpt[i].elen);
+      }
+      console.log(array);
+      
+    }
+
+    getCoordenadasGeoJSON = geoJson =>{
         //SI ES UNA RUTA SOLO O SEA UNIÓN DE PUNTOS, SOLO TIENE UN FEATURES, QUE TIENE UN ARRAY DE PUNTOS
         //SI SON PUNTOS, HAY MÁS DE UN FEATURES PERO CON UN PUNTO CADA UNO SOLO
         //SI SE PUEDE TODO, ES UNA MEZCLA DE LO ANTERIOR.
         
-        if (coordinates.features.length>1){
+        if (geoJson.features.length>1){
           //Error de que hay más de una unión y no se puede
-        }else if(coordinates.features[0].geometry.type!=="LineString"){
+        }else if(geoJson.features[0].geometry.type!=="LineString"){
           //
           
         }else{
           
-          var array=new Array(coordinates.features[0].geometry.coordinates.length);
-          for (var y=0;y<coordinates.features[0].geometry.coordinates.length;y++){
+          var array=new Array(geoJson.features[0].geometry.coordinates.length);
+          for (var y=0;y<geoJson.features[0].geometry.coordinates.length;y++){
             
-            array[y]=new Point(coordinates.features[0].geometry.coordinates[y][0],
-              coordinates.features[0].geometry.coordinates[y][1]);
+            array[y]=new Point(geoJson.features[0].geometry.coordinates[y][0],
+              geoJson.features[0].geometry.coordinates[y][1]);
           }
                       
           return array;
