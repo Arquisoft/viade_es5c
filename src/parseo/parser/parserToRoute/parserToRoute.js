@@ -7,6 +7,8 @@ class ParserToRouteClass {
       switch (type) {
         case "geojson":
             return 1;
+        case "gpx":
+            return 2;
         default:
           console.log("formato no soportado");
           break;
@@ -35,11 +37,11 @@ class ParserToRouteClass {
                   //Mirar por qué no es válido
                   console.log("error");
                 }
-                
-                 
-                
               };
               
+        }
+        if (parser===2){
+          //gpx
         }
         
         reader.onerror=reject;
