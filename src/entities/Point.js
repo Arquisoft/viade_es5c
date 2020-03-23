@@ -1,8 +1,9 @@
 class Point{
-  constructor(latitud,longitud,elevacion=""){
+  constructor(latitud,longitud,order,elevacion=""){
     this.latitud=latitud;
     this.longitud=longitud;
-    this.elevacion="";
+    this.order=order;
+    this.elevacion=elevacion;
   }
   
   

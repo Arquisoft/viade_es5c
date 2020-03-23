@@ -33,7 +33,6 @@ class ParserToRouteClass {
                   geoJSON = JSON.parse(reader.result);
                   const points = this.getCoordenadasGeoJSON(geoJSON);
                   const  route = new Route(f.name.split(".")[0], points);
-                  console.log(route)
                   resolve(route);
                 }catch(er){
                   //Mirar por qué no es válido
@@ -50,13 +49,13 @@ class ParserToRouteClass {
               gpx=GPX.parse(reader.result);
             
               const points= this.getCoordenadasGPX(gpx);
+              const  route = new Route(f.name.split(".")[0], points);
+              resolve(route);
             }catch(er){
 
             }
           };
-          
         }
-        
         reader.onerror=reject;
         reader.readAsText(f);
         
@@ -67,9 +66,9 @@ class ParserToRouteClass {
       var array= new Array(gpx.wpt.length);
       
       for(var i=0;i<gpx.wpt.length;i++){
-        array[i]=new Point(gpx.wpt[i].$.lat,gpx.wpt[i].$.lon,gpx.wpt[i].elen);
+        array[i]=new Point(gpx.wpt[i].$.lat,gpx.wpt[i].$.lon,i+1,gpx.wpt[i].ele);
       }
-      console.log(array);
+      return array;
       
     }
 
@@ -89,7 +88,7 @@ class ParserToRouteClass {
           for (var y=0;y<geoJson.features[0].geometry.coordinates.length;y++){
             
             array[y]=new Point(geoJson.features[0].geometry.coordinates[y][0],
-              geoJson.features[0].geometry.coordinates[y][1]);
+              geoJson.features[0].geometry.coordinates[y][1],y+1);
           }
                       
           return array;

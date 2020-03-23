@@ -48,8 +48,9 @@ const LoadFile = (props) => {
         const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
        
         let parseadoRuta=ParserToRoute.parse(fichero);
-        /*
+        
         console.log(parseadoRuta);
+        /*
         let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
         let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
         console.log(parseadoRDF);
