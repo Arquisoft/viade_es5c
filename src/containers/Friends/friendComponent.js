@@ -14,9 +14,9 @@ export const FriendPage = propos => {
         <FriendWrapper>
             <FriendContainer className="card">
                 <h1>{t('navBar.friends')}</h1>
-                <ul>
-                    {friends.map(friend => (<Friend friend={friend}/>))}
-                </ul>
+
+                {friends.map(friend => (<Friend friend={friend}/>))}
+
             </FriendContainer>
         </FriendWrapper>);
 };
