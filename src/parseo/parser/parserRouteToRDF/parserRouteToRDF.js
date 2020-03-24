@@ -38,7 +38,7 @@ class ParserRouteToRDFClass {
               schema:author <https://labra.solid.community/profile/card#me> .
               
         */
-       this.rdf+=":myRoute a viade:Route ;"
+       this.rdf+=":myRoute a viade:Route ;";
        this.rdf+='schema:name "'+route.name+'" ;';
        this.rdf+= 'schema:description "'+route.description+'" ;';
 
@@ -61,10 +61,6 @@ class ParserRouteToRDFClass {
     };
     
   }
-  
-
-
   const ParserRouteToRDF = new ParserRouteToRDFClass();
-  
-  
+
   export {ParserRouteToRDF};
