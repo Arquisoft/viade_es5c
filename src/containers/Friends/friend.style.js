@@ -13,17 +13,19 @@ export const FriendWrapper = styled.section`
 `;
 
 export const FriendContainer = styled.div`
-  background-color: #fff;
-  margin: 30px auto;
-  //Overriding the style guide card flexbox settings
-  max-width: 80% !important;
-  flex-direction: row !important;
-  padding: 50px 0 !important; //temporary fix to a style guide bug
-  align-items: center;
-  a {
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+ box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  max-width: 90%;
+  margin: 0 20px;
+  width: 100%;
+  flex: 1 0 auto;
+  img{
+  width:100%;
+  height:100%;
+  }
+  li{
+      font-weight: bold;
+      font : Verdana;
+      font-size:20px;
   }
 `;
