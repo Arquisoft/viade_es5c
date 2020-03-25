@@ -1,7 +1,8 @@
-class ParserRDFToRouteClass {
 
-}
+//class ParserRDFToRouteClass {
 
-const ParserRDFToRoute = new ParserRDFToRoute();
+//}
 
-export {ParserRDFToRoute};
+//const ParserRDFToRoute = new ParserRDFToRoute();
+
+//export {ParserRDFToRoute};
