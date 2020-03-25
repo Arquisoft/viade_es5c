@@ -32,7 +32,7 @@ The decentralized routes management system follows de MVC (ModelViewController) 
 
 ==== Safety and security concepts
 * Safety:
-	The application won't be open to vulnerabilities.
+	The application won't be open to vulnerabilities as posible. A 100% secure application is always the goal.
 * Security:
 	All will be save in the POD, so the user could be the only one who can get it, and the application will be descentralized.
 	
