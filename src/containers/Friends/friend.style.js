@@ -53,3 +53,23 @@ export const Header = styled.div`
     font-size: 1rem;
   }
 `;
+export const FriendCard = styled.div`
+  background-color: #fff;
+  margin: 30px auto;
+
+  //Overriding the style guide card flexbox settings
+  max-width: 90%;
+  flex-direction: row;
+  padding: 10px 0;
+  align-items: center;
+
+  button {
+    margin-right: 8px;
+  }
+`;
+
+export const FriendDetail = styled.div`
+    border = 1em;
+  padding: 1rem 3.5rem;
+  p;
+`;
