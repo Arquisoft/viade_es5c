@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { NavBar, Notification } from '@components';
-import { useTranslation } from 'react-i18next';
-import { NavBarContainer } from './children';
-import { LanguageDropdown } from '@util-components';
-import { ldflexHelper, errorToaster, storageHelper } from '@utils';
-import { NavigationItems } from '@constants';
+import React, {useCallback, useEffect, useState} from 'react';
+import {NavBar, Notification} from '@components';
+import {useTranslation} from 'react-i18next';
+import {NavBarContainer} from './children';
+import {LanguageDropdown} from '@util-components';
+import {errorToaster, ldflexHelper, storageHelper} from '@utils';
+import {NavigationItems} from '@constants';
 
 type Props = {
   webId: string

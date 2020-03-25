@@ -1,10 +1,10 @@
-import React, { Fragment, Suspense } from 'react';
-import { toast, Slide } from 'react-toastify';
-import { Loader } from '@util-components';
-import { ThemeProvider } from 'styled-components';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import React, {Fragment, Suspense} from 'react';
+import {Slide, toast} from 'react-toastify';
+import {Loader} from '@util-components';
+import {ThemeProvider} from 'styled-components';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import Routes from './routes';
 import theme from './utils/theme';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,7 +12,7 @@ import 'flag-icon-css/css/flag-icon.min.css';
 import 'normalize.css';
 import './index.css';
 import '@inrupt/solid-style-guide';
-import { Toaster } from './App.styled';
+import {Toaster} from './App.styled';
 
 library.add(fas);
 library.add(faGithub);

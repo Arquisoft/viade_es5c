@@ -1,26 +1,26 @@
 /* eslint-disable no-console */
-import React, { useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FormModel } from '@inrupt/solid-react-components';
-import { Select, Loader } from '@util-components';
+import React, {useCallback, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {FormModel} from '@inrupt/solid-react-components';
+import {Loader, Select} from '@util-components';
 import ldflex from '@solid/query-ldflex';
 
-import { RendererTypesList, ConverterTypes } from '@constants';
-import { successToaster, errorToaster } from '@utils';
+import {ConverterTypes, RendererTypesList} from '@constants';
+import {errorToaster, successToaster} from '@utils';
 import {
-  FormModelContainer,
-  FormWrapper,
-  FormRenderContainer,
+  Button,
+  ConverterInput,
   Form,
+  FormModelContainer,
+  FormRenderContainer,
+  FormWrapper,
   Input,
   Result,
-  ResultHeader,
-  Button,
-  ConverterInput
+  ResultHeader
 } from '../form-model.style';
 
 import '@inrupt/solid-react-components/build/static/css/index.css';
-import { AutoSaveSpinner } from '@components';
+import {AutoSaveSpinner} from '@components';
 
 /**
  * Form Model Renderer UI component, containing the styled components for the Form Model Converter

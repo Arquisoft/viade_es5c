@@ -1,10 +1,10 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 .Contents
-In this section of the documentation we will show you some of the problems we have faced during the development of the project.
+In this section of the documentation we will show you some of the problems we have faced during the development of the project. Some of the problems will be encountered as the project progresses, these being new for us and therefore unknown at the moment.
 
 .Form
-A small list of the techical risks, in priority order.
+This is the list with each and every one of the problems that we have encountered with the realization of this project, ordered with priority.
 
 
 [cols=3*,options="header"]
@@ -25,6 +25,10 @@ A small list of the techical risks, in priority order.
 |Solid is a totally new issue for us. Zero experience with it.
 |Developers should look for information on how to work with SOLID and how it works.
 
+|Little knowledge about LDFlex
+|No knowledge
+|Search for detailed information about how to use it and how to work with it. Search for examples to understand their use.
+
 |Github
 |Fusion of all branches. Conflicts.
 |Developers should exercise caution when making changes to the develop and master branches
@@ -32,5 +36,9 @@ A small list of the techical risks, in priority order.
 |Teamwork
 |The developers have never cordinated to work with such a big group
 |The developers will have to talk and coordinate so that the problems that may arise are as minimal as possible.
+
+|Null experience
+|No experience with many libraries and work tools that could be useful to us.
+|Search for information about each and every one of the tools necessary to carry out the project and which could help us, whether they are libraries or frameworks or another type of element that can contribute.
 
 |===

@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { withAuthorization } from '@inrupt/solid-react-components';
-import { AuthNavBar, Footer } from '@components';
-import { permissionHelper } from '@utils';
+import React, {useEffect} from 'react';
+import {Redirect, Route, Switch} from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
+import {withAuthorization} from '@inrupt/solid-react-components';
+import {AuthNavBar, Footer} from '@components';
+import {permissionHelper} from '@utils';
 import styled from 'styled-components';
 
 const Container = styled.div`

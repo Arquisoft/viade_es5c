@@ -31,6 +31,15 @@ Our application follows the MVC pattern (controller view model). This pattern is
 
 We are using Travis CI for running the tests and checking the correct build of our app, Codecov for improve our code review workflow and quality. Also Code Quality to improve our skills when programming a better and more robust code.
 
+==== Google Maps API
+We decided to use the Google Map API due to the many advantages it provided us, such as examples of carrying out tasks similar to those proposed in the subject and the ease of implementation and work with it, apart from many other advantages such as It can be reliability, scalability and flexibility.
+
+==== LDFlex
+I use the LDFlex given the simplicity with which it allows us to make queries about a POD to extract the data we need to use it in our application.
+
+==== JQuery
+Using JQuery, since it is a comfortable and effective way to manage the DOM tree without having to use template engines. Furthermore, the working group has experience in its use.
+
 ==== Documentation
 
 Regarding the documentation, we will do it in asciidoctor, since it is open source and uses a simple syntax and includes very useful functionalities such as being able to reference a code section of another file.

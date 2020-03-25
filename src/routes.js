@@ -1,21 +1,20 @@
-import React, { Fragment } from 'react';
-import { PrivateLayout, PublicLayout, NotLoggedInLayout } from '@layouts';
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {NotLoggedInLayout, PrivateLayout, PublicLayout} from "@layouts";
+import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
-  Login,
-  Register,
-  PageNotFound,
-  Welcome,
-  RegistrationSuccess,
-  Profile,
-  GameList,
-  GamePage,
+  AddFile,
   FormModelConverter,
   FormModelRenderer,
+  Friends,
+  Login,
+  PageNotFound,
+  Profile,
+  Register,
+  RegistrationSuccess,
+  RoutesView,
   TextEditor,
-  Ruta,
-  AddFile
+  Welcome
 } from './containers';
 
 const privateRoutes = [
@@ -28,16 +27,6 @@ const privateRoutes = [
     id: 'profile',
     path: '/profile',
     component: Profile
-  },
-  {
-    id: 'tictactoe',
-    path: '/tictactoe',
-    component: GameList
-  },
-  {
-    id: 'tictactoegame',
-    path: '/tictactoe/:gameId',
-    component: GamePage
   },
   {
     id: 'text-editor',
@@ -55,14 +44,20 @@ const privateRoutes = [
     component: FormModelRenderer
   },
   {
-    id: 'rutas',
-    path: '/rutas',
-    component: Ruta
+    id: 'listRoutes',
+    path: '/listRoutes',
+    component: RoutesView
   },
   {
     id:'addFile',
-    path:'',
+    path:'/addFile',
     component: AddFile
+
+  },
+  {
+    id:'friends',
+    path:'/friends',
+    component: Friends
 
   }
 ];
