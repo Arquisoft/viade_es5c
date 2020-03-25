@@ -1,105 +1,81 @@
 import styled from 'styled-components';
+import {media} from "../../utils";
 
-import { media } from '@utils';
-
-export const TextEditorWrapper = styled.section`
+export const RouteWrapper = styled.section`
   display: flex;
   flex: 1 0 auto;
-  align-items: center;
-  justify-content: center;
-  background-image: url('/img/concentric-hex-pattern_2x.png');
+  flex-direction:row !important;
+  background-image: url('img/concentric-hex-pattern_2x.png');
   background-repeat: repeat;
-  padding: 60px 0;
-`;
-export const TextEditorContainer = styled.div`
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  background-color: white;
-  max-width: 900px;
-  margin: 0 20px;
-  width: 100%;
-  flex: 1 0 auto;
+  height: inherit;
+  width: 100vw !important;
 `;
 
 export const Header = styled.div`
   display: flex;
+  flex-direction: column !important;
   position: relative;
-  align-items: center;
-  justify-content: center;
-  background-image: url('/img/pattern-geo.png'),
-    linear-gradient(135deg, #7c4dff 0%, #18a9e6 50%, #01c9ea 100%);
+   background-image: url('img/pattern-geo.png'),
+    radial-gradient(#ff8000, #ff8000, #ff8000);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
-  font-size: 50px;
-  p {
-    color: white;
-  }
-  .edit-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid white;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 1rem;
-  }
+  max-width: 300px;
 `;
 
 export const Input = styled.input`
   margin: 5px;
+  color: black;
+`;
+
+export const Button = styled.button`
+  max-width: 128px;
+  display: inline-block;
+  margin-left: 5px;
 `;
 
 export const Label = styled.label`
   margin: 5px;
+  color: white;
 `;
 
 export const TextArea = styled.textarea`
   margin: 5px;
 `;
 
-export const Form = styled.form`
-  padding: 20px 40px;
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px 40px;
-  ${media.tablet`
-    grid-template-columns: 1fr 1fr;
-  `}
-`;
-
-export const Button = styled.button`
-  max-width: 128px;
-  display: inline-block;
-  &:first-child {
-    margin-right: 10px;
-  }
-`;
-
-export const FullGridSize = styled.div`
-  grid-column: span 1;
-  text-align: left;
-  ${media.tablet`
-    grid-column: span 2;
-  `}
-`;
-
-export const WebId = styled.div`
-  padding: 20px 40px 0px 40px;
+export const RoutePhoto = styled.div`
+  height: 100%;
+  text-align: center;
   position: relative;
-  &:after {
-    background-color: #d8d8d8;
-    display: block;
-    content: '';
-    height: 1px;
-    width: 100%;
-    margin: 25px 0 0 0;
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
   }
-  a {
+  h1,
+  img {
+    margin: 0 10px;
     display: inline-block;
-    word-break: break-all;
-    margin-left: 10px;
+    vertical-align: middle;
   }
+  ${media.tablet`
+    width: 50%;
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 1px;
+      background-color:#D0D0D0;
+      top:0;
+    }
+  `}
 `;
 
-export const AutoSaveNotification = styled.section`
-  margin-bottom: 0px !important;
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    margin-left: 0px;
+  }
 `;

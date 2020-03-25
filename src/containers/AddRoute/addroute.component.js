@@ -1,109 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { successToaster, errorToaster } from '@utils';
-import Route from 'Route'
-import ldflex from '@solid/query-ldflex';
-import {
-  TextEditorWrapper,
-  TextEditorContainer,
-  Header,
-  Form,
-  FullGridSize,
-  Label,
-  Input,
-  TextArea,
-  WebId
-} from './addroute.style';
+import React from 'react';
+import {Button, Header, RouteWrapper, Input, Label} from "./addroute.style";
+import {CreateMap} from "../../components";
+import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
+import Route from "../../entities/Route"
+//import {Uploader} from '@inrupt/solid-react-components';
 
-export const AddRoute = ({ webId }: Props) => {
-  const errors = [false, false, false, false];
-  const values = ["R01","",100,5];
+type Props = {webId: String};
 
-  function checkName(event) {
-    values[0] = event.target.value.trim();
-    if(event.target.value.trim() === ""){
-      errorToaster("Error");
-      errors[0] = true;
-    } else{
-      errors[0] = false;
+class CreateRoute extends React.Component {
+
+    constructor({webId}: Props) {
+        super();
+        this.webID = webId.replace("profile/card#me", "");
+        console.log(this.webID);
+        this.handleSave = this.handleSave.bind(this);
+        this.title = React.createRef();
+        this.description = React.createRef();
     }
-  }
-  function checkDescription(event){
-    values[1] = event.target.value;
-  }
-  function checkRank(event) {
-    values[3] = event.target.value;
-    if(Number.parseInt(event.target.value) < Number.parseInt(event.target.min) 
-      || Number.parseInt(event.target.value) > Number.parseInt(event.target.max)) {
-      errorToaster("La valoración debe de estar entre 0 y 10");
-      errors[3] = true;
-    } else{
-      errors[3] = false;
+
+    state = {points: {}};
+
+    callbackFunction = (childData) => {
+        this.setState({points: childData})
+    };
+
+    handleSave(event) {
+        if (this.title.current.value.length === 0) {
+            alert("La ruta tiene que tener un titulo.")
+        } else if (this.state.points === 0) {
+            alert("No ha marcado ningún punto en el mapa.")
+        } else {
+            let descripcion ;
+            if(this.description.current.value.length === 0){}
+            else{
+                descripcion= this.description.current.value;
+            }
+                
+            let route = new Route(this.title.current.value,this.state.points,null,descripcion);
+            console.log(route);
+            let parseadoRDF=ParserRouteToRDF.parse(route);
+            console.log(parseadoRDF);
+            //SUBIR AL POD
+            console.log("subido");
+        }
+        event.preventDefault();
     }
-  }
-  async function checkSubmit(event){
-    event.preventDefault();
-    if(errors.includes(true)){
-      errorToaster("El nombre no puede estar vacío");
-    } else {
-      let name = values[0];
-      let description = values[1];
-      let distance = 0;
-      let rank = values[3];
-      let createdAt = new Date();
-      const route = new Route();
-      route.setName(name);
-      route.setDescription(description);
-      route.setDistance(distance);
-      route.setRank(rank);
-      route.setDate(createdAt);
-      console.log(route);
+
+    render() {
+        return (
+            <RouteWrapper>
+                <Header>
+                    <h1 className={"text--white"}>Nueva Ruta</h1>
+                    <Label>Titulo</Label>
+                    <Input type="text" size="20" placeholder="Nueva ruta" ref={this.title}/>
+                    <Label>Descripcion</Label>
+                    <Input type="text" size="100" placeholder="Descripcion" ref={this.description}/>
+                    <Label>Sube una foto</Label>
+                    <Input type="file" accept="image/*, video/*"/>
+                    <br/>
+                    <Button onClick={this.handleSave}> Guardar ruta </Button>
+                </Header>
+                <CreateMap parentCallback={this.callbackFunction}/>
+            </RouteWrapper>
+        );
     }
-  }
+}
 
-  return (
-    <Form onSubmit={checkSubmit}>
-      <FullGridSize>
-        <WebId>
-          <Label>
-            Conectado a:
-          </Label>
-            <b>
-              <a href={webId}>{webId}</a>
-            </b>  
-        </WebId>
-      </FullGridSize>
-      <FullGridSize>
-        <Label>
-          Nombre: 
-          <Input type="text" size="200" defaultValue="R01" onBlur={checkName} />
-        </Label>
-        <Label>
-          Descripción: 
-          <TextArea onChange={checkDescription} cols={40} rows={10} />
-        </Label>
-        <Label>
-          Valoración: 
-          <Input type="number" min="0" max="10" defaultValue={5} onBlur={checkRank} size="200"/>
-        </Label>
-        <Input type="submit" className="ids-link-filled ids-link-filled--primary button" value="Añadir" />   
-      </FullGridSize>
-    </Form>
-  );
-};
-
-const AddRouteComponent = ({ webId }: Props) => {
-  const { t } = useTranslation();
-  return (
-    <TextEditorWrapper>
-      <TextEditorContainer>
-        <Header>
-          <p>Crea una nueva ruta</p>
-        </Header>
-        <AddRoute webId={webId} />
-      </TextEditorContainer>
-    </TextEditorWrapper>
-  );
-};
-
-export default AddRouteComponent;
+export default CreateRoute

@@ -1,8 +1,6 @@
 import {Header, RouteContainer, RouteWrapper} from "./routesView.style";
 import RouteView from "./children/RouteView";
-import SolidAuth from "solid-auth-client";
-import { successToaster, errorToaster } from '@utils';
-import React, { useState } from 'react';
+import React from 'react';
 
 function RoutesView() {
     return (
@@ -28,27 +26,6 @@ function RoutesView() {
             </RouteContainer>
         </RouteWrapper>
     );
-}
-
-function handleLoad(event) {
-    const [text, setText] = useState('');
-    event.preventDefault();
-    const doc = SolidAuth.fetch('');
-    doc
-        .then(async response => {
-            const text = await response.text();
-            if (response.ok) {
-                setText(text);
-            } else if (response.status === 404) {
-                successToaster('notifications.404');
-            } else {
-                errorToaster('notifications.errorLoading');
-            }
-
-        })
-        .catch(() => {
-            errorToaster('notifications.errorFetching');
-        });
 }
 
 export default RoutesView;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import {cleanup, render} from 'react-testing-library';
 import NavBarProfile from './nav-bar-profile.component';
 
 afterAll(cleanup);

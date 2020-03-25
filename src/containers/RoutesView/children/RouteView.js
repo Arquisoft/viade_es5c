@@ -2,7 +2,7 @@ import React from 'react';
 import {RouteCard, RouteDetail} from "./timelineroute.style";
 
 const RouteView = props =>{
-    const {title, date, author, description} = props;
+    const {title, date, description} = props;
     return(
         <RouteCard className="card">
             <RouteDetail data-testid="welcome-detail">

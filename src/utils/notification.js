@@ -1,4 +1,4 @@
-import { ldflexHelper } from './index';
+import {ldflexHelper} from './index';
 
 export const sendNotification = async (opponent, content, createNotification, to) => {
   try {

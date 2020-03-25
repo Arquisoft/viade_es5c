@@ -1,5 +1,5 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { TabsContainer, Tab } from './tabs.styles';
+import React, {useCallback, useEffect, useState} from 'react';
+import {Tab, TabsContainer} from './tabs.styles';
 
 type Props = {
   activeName: string,
