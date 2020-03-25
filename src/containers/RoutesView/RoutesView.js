@@ -1,8 +1,10 @@
 import {Header, RouteContainer, RouteWrapper} from "./routesView.style";
-import RouteView from "./children/RouteView";
+import {RouteView} from "./children/RouteView";
 import React from 'react';
 
-function RoutesView() {
+export const RoutesView = props => {
+    const {rutas} = props;
+
     return (
         <RouteWrapper>
             <RouteContainer>
@@ -10,22 +12,11 @@ function RoutesView() {
                     <h1 className = "text--white">Rutas</h1>
                 </Header>
 
-                <RouteView
-                title = "Prueba"
-                date = "18/08/2018"
-                author = "Elmer"
-                description = "Ruta de montaña"
-                />
+                <ul>
+                    {rutas.map(route => (<RouteView route={route}/>))}
+                </ul>
 
-                <RouteView
-                    title = "Prueba"
-                    date = "18/08/2018"
-                    author = "Elmer"
-                    description = "Ruta de montaña"
-                />
             </RouteContainer>
         </RouteWrapper>
     );
-}
-
-export default RoutesView;
+};

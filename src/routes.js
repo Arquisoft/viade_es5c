@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
 import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
+import {Rutas} from 'parseo';
 
 import {
   AddFile,
@@ -12,7 +13,6 @@ import {
   Profile,
   Register,
   RegistrationSuccess,
-  RoutesView,
   TextEditor,
   Welcome
 } from './containers';
@@ -46,7 +46,7 @@ const privateRoutes = [
   {
     id: 'listRoutes',
     path: '/listRoutes',
-    component: RoutesView
+    component: Rutas
   },
   {
     id:'addFile',

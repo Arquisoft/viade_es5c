@@ -1,4 +1,3 @@
+import {ParserToRoute,ParserRouteToRDF, Rutas} from './parser';
 
-import {ParserToRoute,ParserRouteToRDF} from './parser';
-
-export {ParserToRoute,ParserRouteToRDF};
+export {ParserToRoute,ParserRouteToRDF, Rutas};

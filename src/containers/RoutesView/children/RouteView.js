@@ -1,17 +1,14 @@
 import React from 'react';
 import {RouteCard, RouteDetail} from "./timelineroute.style";
 
-const RouteView = props =>{
-    const {title, date, description} = props;
+export const RouteView = props =>{
+    const {ruta} = props;
+
     return(
         <RouteCard className="card">
             <RouteDetail data-testid="welcome-detail">
-                <h3>{title}</h3>
-                <h4>{date} </h4>
-                <p>{description}</p>
+                <p>{ruta.name}</p>
             </RouteDetail>
         </RouteCard>
     );
-}
-
-export default RouteView;
+};
