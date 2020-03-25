@@ -73,3 +73,11 @@ export const FriendDetail = styled.div`
       font-size:20px;
   }
 `;
+
+export const Image = styled.div`
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width:20%;
+`;
