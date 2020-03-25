@@ -7,17 +7,17 @@ import {
 } from './friend.style';
 import {Friend} from "./components/Entity/friend";
 import {useTranslation} from "react-i18next";
-
+import {Header} from "./friend.style"
 export const FriendPage = propos => {
     const {t} = useTranslation();
     const {friends} = propos;
 
     return (
         <FriendWrapper>
-            <FriendContainer className="card">
-                <header>
-                    <h>{t('navBar.friends')}</h>
-                </header>
+            <FriendContainer>
+                <Header>
+                    <h1>{t('navBar.friends')}</h1>
+                </Header>
                 {friends.map(friend => (
                     <FriendCard className="card">
                         <FriendDetail data-testid="welcome-detail">

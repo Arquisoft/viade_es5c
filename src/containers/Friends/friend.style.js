@@ -16,21 +16,12 @@ export const FriendWrapper = styled.section`
 `;
 
 export const FriendContainer = styled.div`
- box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   background-color: white;
   max-width: 90%;
   margin: 0 20px;
   width: 100%;
   flex: 1 0 auto;
-  img{
-  width:100%;
-  height:100%;
-  }
-  li{
-      font-weight: bold;
-      font : Verdana;
-      font-size:20px;
-  }
 `;
 export const Header = styled.div`
   display: flex;
@@ -72,4 +63,13 @@ export const FriendDetail = styled.div`
     border = 1em;
   padding: 1rem 3.5rem;
   p;
+    img{
+  width:100%;
+  height:100%;
+  }
+    li{
+      font-weight: bold;
+      font : Verdana;
+      font-size:20px;
+  }
 `;
