@@ -52,8 +52,9 @@ const LoadFile = (props) => {
         console.log(parseadoRuta);
         
         let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
-        //let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
-        //console.log(parseadoRDF);
+        console.log(rutaClass);
+        let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
+        console.log(parseadoRDF);
     /*
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");

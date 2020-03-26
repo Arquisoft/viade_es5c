@@ -47,9 +47,9 @@ class ParserRouteToRDFClass {
             this.rdf+='schema:latitude '+route.points[i].latitud+' ;';
             this.rdf+='schema:longitude '+route.points[i].longitud+' ;';
             if (route.points[i].elevacion===""){
-                this.rdf+='viade:order '+i;
+                this.rdf+='viade:order '+route.points[i].order;
             }else{
-                this.rdf+='viade:order '+i+' ;';
+                this.rdf+='viade:order '+route.points[i].order+' ;';
                 this.rdf+='schema:elevation '+route.points[i].elevacion;
             }
             this.rdf+="] ;";

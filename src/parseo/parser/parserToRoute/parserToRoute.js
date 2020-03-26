@@ -35,7 +35,20 @@ class ParserToRouteClass {
                 try{
                   geoJSON = JSON.parse(reader.result);
                   const points = this.getCoordenadasGeoJSON(geoJSON);
-                  const  route = new Route(f.name.split(".")[0], points);
+                  var nombre=f.name.split(".")[0];
+                    var descripcion="";
+                    if (geoJSON.features[0].properties!==undefined){
+                      if (geoJSON.features[0].properties.name!==undefined){
+                        nombre=geoJSON.features[0].properties.name;
+                      }
+                      if (geoJSON.features[0].properties.description!==undefined){
+                        descripcion=geoJSON.features[0].properties.description;
+                      }
+
+                    }
+                    
+                    
+                    const  route = new Route(nombre, points,descripcion);
                   resolve(route);
                 }catch(er){
                   //Mirar por qué no es válido
@@ -72,23 +85,23 @@ class ParserToRouteClass {
                     geojson=(togeojson.kml(kml));
                     console.log(geojson);
                     const points= this.getCoordenadasKml(geojson);
-                    var nombre,descripcion;
-                    console.log(geojson.features[0].properties.description);
-                    /*
-                    if (geojson.features[0].properties.name!==null){
-                      nombre=geojson.features[0].properties.name;
-                    }else{
-                      nombre=f.name.split(".")[0];
+                    var nombre=f.name.split(".")[0];
+                    var descripcion="";
+                    if (geojson.features[0].properties!==undefined){
+                      if (geojson.features[0].properties.name!==undefined){
+                        nombre=geojson.features[0].properties.name;
+                      }
+                      if (geojson.features[0].properties.description!==undefined){
+                        descripcion=geojson.features[0].properties.description;
+                      }
+
                     }
-                    if (geojson.features[0].properties.description!==null){
-                      descripcion=geojson.features[0].properties.description;
-                    }else{
-                      descripcion="";
-                    }
-                    */
-                    //const  route = new Route(nombre, points,descripcion);
                     
-                    //resolve(route);
+                    
+                    const  route = new Route(nombre, points,descripcion);
+
+                    
+                    resolve(route);
                   }catch(err){
 
                   }
@@ -114,8 +127,8 @@ class ParserToRouteClass {
           //Error de que hay más de una unión y no se puede
         }
         else if(geoJson.features[0].geometry.type!=="LineString"){
-          //
           
+          //
         }else{
           
           var array=new Array(geoJson.features[0].geometry.coordinates.length);
