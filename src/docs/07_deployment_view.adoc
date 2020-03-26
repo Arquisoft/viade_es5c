@@ -6,11 +6,11 @@ To run Viade_es5c routes you just need your computer and a navigator.
 
 This is a easy demonstration of how viade works in a deeper level when you creates a route, a breef visualization of the infraestructure under the application. 
 
-image:images/creatingARouteInfreastructure.png["Infraestructure Creating a route"]
+image:images/creatingARouteInfreastructure.PNG["Infraestructure Creating a route"]
 
 Now we include a secuence diagram to have a deeper knowledge about how viade manage the creation of a route.
 
-image:images/secuenceDiagramCreatingARoute.png["Secuence Diagram Creating a route"]
+image:secuenceDiagramCreatingARoute.PNG["Secuence Diagram Creating a route"]
 
 ===Sharing a route
 
@@ -18,9 +18,9 @@ As another example of the infraestructure of viade, we include another demostrat
 
 This time we will show how it works sharing a file or route with a friend. As before the first image shows more in a more visual way how is the inside infraestructure.
 
-image:images/sharingARouteInfreastructure.png["Infraestructure Creating a route"]
+image:sharingARouteInfreastructure.PNG["Infraestructure Creating a route"]
 
 Now we shows a secuence, of which steps the infraestructure follows to share the file from one pod to the other one.
 
-image:images/secuenceDiagramSharingARoute.png["Secuence Diagram Creating a route"]
+image:secuenceDiagramSharingARoute.PNG["Secuence Diagram Creating a route"]
 
