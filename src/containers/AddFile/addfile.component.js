@@ -52,8 +52,8 @@ const LoadFile = (props) => {
         console.log(parseadoRuta);
         
         let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
-        let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
-        console.log(parseadoRDF);
+        //let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
+        //console.log(parseadoRDF);
     /*
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
@@ -61,8 +61,8 @@ const LoadFile = (props) => {
 
 
         
-        const domContainer = document.querySelector('#mapa');
-        ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
+        //const domContainer = document.querySelector('#mapa');
+        //ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
         
     }
     
