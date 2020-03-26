@@ -1,6 +1,6 @@
 import React from 'react';
 import {cleanup, render} from 'react-testing-library';
-import {GlobalError} from './global-error.component';
+import {GlobalError} from '../components/GlobalError/global-error.component';
 
 afterAll(cleanup);
 
