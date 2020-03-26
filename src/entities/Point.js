@@ -5,6 +5,15 @@ class Point{
     this.elevacion="";
   }
   
+  getPoint(){
+    return {lat: this.latitud, long :this.long};
+  }
+  getLat(){
+    return this.latitud;
+  }
+  getLng(){
+    return this.longitud;
+  }
   
 }
 

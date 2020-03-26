@@ -4,7 +4,7 @@ import FC from 'solid-file-client';
 import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
 
 
-import RouteVisualizer from 'RouteVisualizer.component'
+import RouteVisualizer from '../../components/RouteVisualizer/RouteVisualizer.component'
 import ReactDOM from 'react-dom';
 
 
