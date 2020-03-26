@@ -1,6 +1,6 @@
 import React from 'react';
 import {cleanup, render} from 'react-testing-library';
-import {ImageProfile} from '../components/ImageProfile/image-profile.component';
+import {ImageProfile} from '../ImageProfile/image-profile.component';
 
 describe('Image Profile', () => {
   afterAll(cleanup);
