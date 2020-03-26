@@ -8,6 +8,7 @@ import {FormModelConverter, FormModelRenderer} from './FormModel';
 import RoutesView from "./RoutesView";
 import AddFile from "./AddFile";
 import Friends from "./Friends"
+import AddRoute from "./AddRoute"
 
 export {
   Login,
@@ -21,5 +22,6 @@ export {
   TextEditor,
   Friends,
   RoutesView,
-  AddFile
+  AddFile,
+  AddRoute
 };
