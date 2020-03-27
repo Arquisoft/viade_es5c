@@ -32,6 +32,7 @@ const LoadFile = (props) => {
             console.log("COGE EL ERROR");
         }
                 
+        
         let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
         
         let parseadoRDF=ParserRouteToRDF.parse(rutaClass);

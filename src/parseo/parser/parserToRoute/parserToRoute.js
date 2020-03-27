@@ -63,9 +63,13 @@ class ParserToRouteClass {
             var gpx;
             try{
               gpx=GPX.parse(reader.result);
-            
               const points= this.getCoordenadasGPX(gpx);
-              const  route = new Route(f.name.split(".")[0], points);
+              var name=f.name.split(".")[0];
+              if (gpx.trk[0].name!==undefined){
+                //name=gpx.trk[0].name;
+              }
+              
+              const  route = new Route(name, points);
               resolve(route);
             }catch(er){
 
@@ -152,12 +156,25 @@ class ParserToRouteClass {
 
 
     getCoordenadasGPX = gpx =>{
-      var array= new Array(gpx.wpt.length);
       
-      for(var i=0;i<gpx.wpt.length;i++){
-        array[i]=new Point(gpx.wpt[i].$.lat,gpx.wpt[i].$.lon,i+1,gpx.wpt[i].ele);
+      if (gpx.trk!==undefined){
+        if (gpx.trk.length===1){
+          if (gpx.trk[0].trkseg!==undefined &&
+            gpx.trk[0].trkseg.length===1){
+              var array= new Array(gpx.trk[0].trkseg[0].trkpt.length);
+      
+              
+                for(var i=0;i<gpx.trk[0].trkseg[0].trkpt.length;i++){
+                  array[i]=new Point(gpx.trk[0].trkseg[0].trkpt[i].$.lat,gpx.trk[0].trkseg[0].trkpt[i].$.lon,i+1,gpx.trk[0].trkseg[0].trkpt.ele);
+                }
+                return array;
+                
+            }
+          
+        }
       }
-      return array;
+      
+      
       
     }
 
