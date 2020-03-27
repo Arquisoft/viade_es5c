@@ -8,7 +8,7 @@ const auth = require('solid-auth-client');
 const FC = require('solid-file-client');
 const fc = new FC(auth);
 
-export class Rutas extends Component<Props>{
+export class Rutas extends Component<Props> {
 
     constructor(props) {
         super(props);
@@ -18,14 +18,22 @@ export class Rutas extends Component<Props>{
         };
     }
 
-    async listRoutes() {
-        let session = auth.currentSession();
+    componentDidMount() {
+        const {webId} = this.props;
+        if (webId) this.listRoutes();
+    }
 
-        if (!session)
-            window.location.href = "/login";
+    componentDidUpdate(prevProps) {
+        const {webId} = this.props;
+        if (webId && webId !== prevProps.webId) this.listRoutes();
+    }
 
-        const profileDocument = await fetchDocument(session.webId);
-        const profile = profileDocument.getSubject(session.webId);
+    listRoutes = async () => {
+        const {webId} = this.props;
+        console.log(webId);
+
+        const profileDocument = await fetchDocument(webId);
+        const profile = profileDocument.getSubject(webId);
 
         // Get the root URL of the user's Pod:
         const storage = profile.getRef(space.storage);
@@ -40,25 +48,17 @@ export class Rutas extends Component<Props>{
 
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
-                console.log(folder.files[i].url);
                 let routeDocument;
+
                 await fetchDocument(folder.files[i].url).then((content) => {
                     routeDocument = content;
-                })
-                    .catch(err => routeDocument = null);
+                }).catch(err => routeDocument = null);
 
                 if (routeDocument != null) {
-                    const route = routeDocument.getSubject('#ruta');
+                    const route = routeDocument.getSubject('#myRoute');
                     let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
 
                     let ruta = new Route(route.getString(schema.name), [puntos[0].getDecimal(schema.latitude), puntos[0].getDecimal(schema.longitude)], route.getString(schema.description));
-
-                    //for(var e in puntos) {
-                    // if (e !== 0) {
-                    // ruta.addHito(new Hito(puntos[e].getString(schema.name), puntos[e].getDecimal(schema.latitude), puntos[e].getDecimal(schema.longitude)));
-                    //}
-                    //}
-
                     result = [...result, ruta];
                 }
             }
@@ -67,10 +67,10 @@ export class Rutas extends Component<Props>{
     }
 
     render() {
-        const { rutas } = this.state;
-        console.log(rutas);
+        const {rutas} = this.state;
+        //console.log(rutas);
         return (
-            <RoutesView {...{ rutas}} />
+            <RoutesView {...{rutas}} />
         );
     }
 }
