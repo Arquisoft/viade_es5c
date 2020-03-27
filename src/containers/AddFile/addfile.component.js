@@ -9,52 +9,33 @@ import ReactDOM from 'react-dom';
 
 
 const LoadFile = (props) => {
-    let files;
+    let files='';
+
 
     const selectFile =(event)=>{
         files=event.target.files;
     }
 
-    /*
-    const handleSubmit = async (e) => {
-        const fileReader = new FileReader();
-        fileReader.fileName=e.target.files[0].name;
-        const {webId} = props;
-        
-        fileReader.onload = async (event) => {
-            const fc   = new FC( auth );
-            const nombre=event.target.fileName;
-            const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
-            console.log(url);
-            await fc.createFile(url, event.target.result, "application/geo+json", {});
-            console.log("subido");
-        };
-        fileReader.readAsText(e.target.files[0]);
-        
-        
-        var ruta= new Route(fileReader.result);
-        const domContainer = document.querySelector('#mapa');
-        ReactDOM.render(<RouteVisualizer ruta= {ruta}></RouteVisualizer>, domContainer);
-        
-    }
-    */
+    
     const handlerUpload = async (e) => {
-        e.preventDefault(); //Cancelar el evento
-        console.log(files[0].name);
+        if (files!==''){
+            e.preventDefault(); //Cancelar el evento
         const fichero=files[0];
         //const {webId} = props;
         //const fc   = new FC( auth );
         //const nombre=fichero.name;
         //const url=webId.split("profile/card#me")[0]+"rutas/"+nombre;
-       
-        let parseadoRuta=ParserToRoute.parse(fichero);
-        
-        console.log(parseadoRuta);
-        
+        let parseadoRuta;
+        try{
+            parseadoRuta=ParserToRoute.parse(fichero);
+        }catch(err){
+            console.log("COGE EL ERROR");
+        }
+                
         let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
         console.log(rutaClass);
-        let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
-        console.log(parseadoRDF);
+        //let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
+        
     /*
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
@@ -64,6 +45,8 @@ const LoadFile = (props) => {
         
         //const domContainer = document.querySelector('#mapa');
         //ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
+        
+        }
         
     }
     
@@ -76,6 +59,7 @@ const LoadFile = (props) => {
             <input type="file" name="files[]" id="file" onChange={selectFile} />
             </label> 
             <button onClick={handlerUpload}>Cargar POD</button>
+            
             <div id="mapa"></div>
         </div>
        

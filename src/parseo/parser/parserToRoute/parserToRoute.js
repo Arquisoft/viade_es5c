@@ -52,7 +52,7 @@ class ParserToRouteClass {
                   resolve(route);
                 }catch(er){
                   //Mirar por qué no es válido
-                  console.log("error");
+                  console.log(er);
                 }
               };
               
@@ -124,7 +124,7 @@ class ParserToRouteClass {
 
     getCoordenadasKml = geoJson =>{
         if (geoJson.features.length>1){
-          //Error de que hay más de una unión y no se puede
+          throw new Error("No es una ruta");
         }
         else if(geoJson.features[0].geometry.type!=="LineString"){
           
@@ -165,9 +165,10 @@ class ParserToRouteClass {
         //SI ES UNA RUTA SOLO O SEA UNIÓN DE PUNTOS, SOLO TIENE UN FEATURES, QUE TIENE UN ARRAY DE PUNTOS
         //SI SON PUNTOS, HAY MÁS DE UN FEATURES PERO CON UN PUNTO CADA UNO SOLO
         //SI SE PUEDE TODO, ES UNA MEZCLA DE LO ANTERIOR.
-        console.log(geoJson);
+        
         if (geoJson.features.length>1){
           //Error de que hay más de una unión y no se puede
+          throw new Error("No es una ruta");
         }else if(geoJson.features[0].geometry.type!=="LineString"){
           //
           
