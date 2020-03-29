@@ -1,8 +1,8 @@
 {
   "name": "viade_es5c",
-  "homepage": "https://arquisoft.github.io/viade_es5c/",
   "version": "0.1.0",
-  "private": true,
+  "homepage": ".",
+  "private": false,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-brands-svg-icons": "^5.8.0",
@@ -38,6 +38,7 @@
     "pnp-webpack-plugin": "1.1.0",
     "rdf-namespaces": "^1.8.0",
     "react": "16.8.4",
+    "react-addons-update": "^15.6.2",
     "react-app-polyfill": "^0.2.2",
     "react-click-outside": "^3.0.1",
     "react-dev-utils": "^7.0.1",

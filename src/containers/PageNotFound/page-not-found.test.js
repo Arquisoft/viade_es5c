@@ -1,6 +1,6 @@
 import React from 'react';
-import {cleanup, render} from 'react-testing-library';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { render, cleanup } from 'react-testing-library';
+import { HashRouter as Router } from 'react-router-dom';
 import PageNotFound from './page-not-found.component';
 
 describe('Page Not Found', () => {

@@ -7,6 +7,7 @@ import TextEditor from './TextEditor';
 import {FormModelConverter, FormModelRenderer} from './FormModel';
 import AddFile from "./AddFile";
 import Friends from "./Friends"
+import AddRoute from "./AddRoute"
 
 export {
   Login,
@@ -19,5 +20,7 @@ export {
   FormModelRenderer,
   TextEditor,
   Friends,
-  AddFile
+  RoutesView,
+  AddFile,
+  AddRoute
 };

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
-import {BrowserRouter as Router, Redirect, Switch} from 'react-router-dom';
 import {Rutas} from 'parseo';
+import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
   AddFile,
@@ -14,7 +14,9 @@ import {
   Register,
   RegistrationSuccess,
   TextEditor,
+  AddRoute,
   Welcome
+
 } from './containers';
 
 const privateRoutes = [
@@ -58,6 +60,12 @@ const privateRoutes = [
     id:'friends',
     path:'/friends',
     component: Friends
+
+  },
+  {
+    id:'addRoute',
+    path:'/addRoute',
+    component: AddRoute
 
   }
 ];
