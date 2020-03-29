@@ -37,15 +37,15 @@ const LoadFile = (props) => {
         
         let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
         console.log(parseadoRDF);
-        const url=webId.split("profile/card#me")[0]+"rutas/"+rutaClass.name;
+        const url=webId.split("profile/card#me")[0]+"public/viade/routes/"+rutaClass.name;
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
 
 
 
         
-        //const domContainer = document.querySelector('#mapa');
-        //ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
+        const domContainer = document.querySelector('#mapa');
+        ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
         
         }
         
