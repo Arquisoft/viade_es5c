@@ -6,8 +6,9 @@ import Profile from './Profile';
 import TextEditor from './TextEditor';
 import {FormModelConverter, FormModelRenderer} from './FormModel';
 import AddFile from "./AddFile";
-import Friends from "./Friends"
-import AddRoute from "./AddRoute"
+import Friends from "./Friends";
+import AddRoute from "./AddRoute";
+import RoutesView from "./RoutesView";
 
 export {
   Login,

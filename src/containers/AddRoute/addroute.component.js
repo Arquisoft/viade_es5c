@@ -1,8 +1,11 @@
 import React from 'react';
 import {Button, Header, RouteWrapper, Input, Label} from "./addroute.style";
 import {CreateMap} from "../../components";
-import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
+import {ParserRouteToRDF} from "../../parseo";
 import Route from "../../entities/Route"
+//import FC from 'solid-file-client';
+//import auth from "solid-auth-client";
+
 //import {Uploader} from '@inrupt/solid-react-components';
 
 type Props = {webId: String};
@@ -40,7 +43,14 @@ class CreateRoute extends React.Component {
             console.log(route);
             let parseadoRDF=ParserRouteToRDF.parse(route);
             console.log(parseadoRDF);
+            
             //SUBIR AL POD
+            
+            const url=this.webId.split("profile/card#me")[0]+"public/viade/routes/"+route.name;
+            console.log(url);
+            //const fc   = new FC( auth );
+            //await fc.createFile(url, parseadoRDF, "text/turtle", {});
+            
             console.log("subido");
         }
         event.preventDefault();
