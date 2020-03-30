@@ -7,7 +7,7 @@ export const RouteView = props =>{
     return(
         <RouteCard className="card">
             <RouteDetail data-testid="welcome-detail">
-                <p>{ruta.name}</p>
+                <p>Ruta</p>
             </RouteDetail>
         </RouteCard>
     );

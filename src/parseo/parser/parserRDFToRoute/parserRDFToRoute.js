@@ -1,76 +1,56 @@
-import Route from '../../../entities/Route.js';
-import React, {Component} from "react";
-import {space, schema} from 'rdf-namespaces';
-import {fetchDocument} from 'tripledoc';
-import {RoutesView} from "../../../containers/RoutesView/RoutesView";
+import {Route, Point} from '../../../entities/';
+import * as comunica from "@comunica/actor-init-sparql";
 
-const auth = require('solid-auth-client');
-const FC = require('solid-file-client');
-const fc = new FC(auth);
+export class ParserRDF {
 
-export class Rutas extends Component<Props> {
+    parse = async url => {
+        const engine = comunica.newEngine();
+        const sparql =
+            `PREFIX schema: <http://schema.org/>
+            PREFIX viade:<http://arquisoft.github.io/viadeSpec/>
+            PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      
+            SELECT ?latitude ?longitude ?order ?name ?description ?name ?elevation WHERE {
+            ?route a viade:Route.
+            ?route viade:point ?point .
+            ?point schema:latitude ?lat ;
+                schema:longitude ?long ;
+                viade:order ?order.
+            OPTIONAL {?route schema:description ?description.}
+            OPTIONAL {?route schema:name ?name.}
+            OPTIONAL {?point schema:elevation ?elevation.}
+        }`;
 
-    constructor(props) {
-        super(props);
+        const result = await engine.query(sparql, {sources: [url]});
+        const {data} = await engine.resultToString(result, "application/json");
 
-        this.state = {
-            rutas: []
-        };
+        return new Promise((resolve, reject) => {
+            let text = "";
+            data.on("data", (chunk) => {
+                text += chunk;
+            });
+
+            data.on("end", () => {
+                resolve(this.getRoute(JSON.parse(text)));
+            });
+        });
+    };
+
+    getRoute=(results) => {
+        if(!results||!results.length) {return;}
+        let items=results.map((i) => new Point(this.parseToFloat(i["?long"]),this.parseToFloat(i["?lat"]),this.parseToFloat(i["?order"]),this.parseToFloat(i["?elevation"])));
+        return new Route(this.cleanValue(results[0]["?name"]),items,this.cleanValue(results[0]["?description"]));
+    };
+
+    cleanValue=(value) => {
+        if(!value)return;
+        return value.split("^^")[0].replace(/['"]+/g,"");
+    };
+
+    parseToFloat=(value) => {
+        if(!value){return;}
+        let clean=this.cleanValue(value);
+        return parseFloat(clean);
     }
 
-    componentDidMount() {
-        const {webId} = this.props;
-        if (webId) this.listRoutes();
-    }
-
-    componentDidUpdate(prevProps) {
-        const {webId} = this.props;
-        if (webId && webId !== prevProps.webId) this.listRoutes();
-    }
-
-    listRoutes = async () => {
-        const {webId} = this.props;
-        console.log(webId);
-
-        const profileDocument = await fetchDocument(webId);
-        const profile = profileDocument.getSubject(webId);
-
-        // Get the root URL of the user's Pod:
-        const storage = profile.getRef(space.storage);
-
-        let folder;
-
-        await fc.readFolder(storage + 'rutas/').then((content) => {
-            folder = content;
-        }).catch(err => folder = null);
-
-        var result = [];
-
-        if (folder) {
-            for (let i = 0; i < folder.files.length; i++) {
-                let routeDocument;
-
-                await fetchDocument(folder.files[i].url).then((content) => {
-                    routeDocument = content;
-                }).catch(err => routeDocument = null);
-
-                if (routeDocument != null) {
-                    const route = routeDocument.getSubject('#myRoute');
-                    let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
-
-                    let ruta = new Route(route.getString(schema.name), [puntos[0].getDecimal(schema.latitude), puntos[0].getDecimal(schema.longitude)], route.getString(schema.description));
-                    result = [...result, ruta];
-                }
-            }
-            this.state.rutas = result;
-        }
-    }
-
-    render() {
-        const {rutas} = this.state;
-        //console.log(rutas);
-        return (
-            <RoutesView {...{rutas}} />
-        );
-    }
 }
