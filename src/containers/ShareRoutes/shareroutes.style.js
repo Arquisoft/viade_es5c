@@ -39,7 +39,6 @@ export const Button = styled.button`
 
 export const Label = styled.label`
   margin: 5px;
-  color: white;
 `;
 
 export const TextArea = styled.textarea`
