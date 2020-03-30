@@ -3,66 +3,44 @@ import {ShareWrapper, Input, Label} from "./shareroutes.style";
 import { NotificationTypes } from "@inrupt/solid-react-components";
 import { notification} from "../../utils";
 import {useNotification} from '@inrupt/solid-react-components';
-
 import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
-
 const auth = require('solid-auth-client');
-const FC = require('solid-file-client');
-const fc = new FC(auth);
 
-const CreateShareRoute =(props)=> {
+class CreateShareRoute extends React.Component {
+     constructor(props) {
+        super(props);
+        this.friendWebID = {value: ''};
+        this.routeWebID = {value: ''};
 
+        this.handleChange = this.handleChange.bind(this);
+     }
 
-    let listRoutes = async () => {
-        const {webId} = this.props;
-        const profileDocument = await fetchDocument(webId);
-        const profile = profileDocument.getSubject(webId);
-        // Get the root URL of the user's Pod:
-        const storage = profile.getRef(space.storage);
-        let folder;
-        await fc.readFolder(storage + 'inbox/').then((content) => {
-            folder = content;
-        }).catch(err => folder = null);
-        var result = [];
-        console.log("Folder: " + folder);
-        if (folder) {
-            for (let i = 0; i < folder.files.length; i++) {
-                let routeDocument;
-                await fetchDocument(folder.files[i].url).then((content) => {
-                    routeDocument = content;
-                }).catch(err => routeDocument = null);
-                console.log("Route document: " + folder.files[i].url);
-            }
-            this.state.rutas = result;
-        }
-    };
-    
+     handleChange(event) {
+        this.friendWebID({value: event.target.value});
+        this.routeWebID({value: event.target.value});
+     }
 
+     render (){
         return (
-            <ShareWrapper>
-                <form >
-                    <p>List Routes</p>
-                    <Label>
-                        Route's webID:
-                        <Input
-                            type="text"
-                            name="route"
-                        />
-                    </Label>
+         <ShareWrapper>
+            <form >
+                <p>Insert the following webID's to share the route</p>
+                <Label>
+                    Route's webID:
+                    <Input type="text" value={this.routeWebID.value} onChange={this.handleChangeRoute}/>
+                </Label>
 
-                    <Label>
-                        Insert your friend's webID:
-                        <Input
-                            type="text"
-                            name="friend"
-                        />
-                    </Label>
-                    <Input type="submit" value="Submit"/>
-                </form>
-            </ShareWrapper>
-        );
-    
+                <Label>
+                    Insert your friend's webID:
+                    <Input type="text" value={this.friendWebID.value} onChange={this.handleChangeRoute}/>
+                </Label>
+                <Input type="submit" value="Submit"/>
+            </form>
+        </ShareWrapper>
+        )
+    }
+
 }
 
 export default CreateShareRoute
