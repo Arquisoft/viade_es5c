@@ -9,19 +9,21 @@ import AddFile from "./AddFile";
 import Friends from "./Friends";
 import AddRoute from "./AddRoute";
 import RoutesView from "./RoutesView";
+import ShareRoute from "./ShareRoutes";
 
 export {
-  Login,
-  Register,
-  RegistrationSuccess,
-  PageNotFound,
-  Welcome,
-  Profile,
-  FormModelConverter,
-  FormModelRenderer,
-  TextEditor,
-  Friends,
-  RoutesView,
-  AddFile,
-  AddRoute
+    Login,
+    Register,
+    RegistrationSuccess,
+    PageNotFound,
+    Welcome,
+    Profile,
+    FormModelConverter,
+    FormModelRenderer,
+    TextEditor,
+    Friends,
+    RoutesView,
+    AddFile,
+    AddRoute,
+    ShareRoute
 };
