@@ -25,7 +25,6 @@ export const FriendPage = propos => {
                             <table>
                                 <Friend friend={friend}/>
                             </table>
-                            table>
                         </FriendDetail>
                     </FriendCard>))}
 
