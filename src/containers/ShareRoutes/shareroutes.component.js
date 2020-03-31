@@ -28,29 +28,21 @@ class CreateShareRoute extends React.Component {
             var targetUrl = this.state.friendWebID + "inbox/"; //mirar si tenemos acceso
             const {createNotification} =useNotification(webId);
             const licenseUrl = "";
-            const inboxes = "" //lo sacado con lo de lucia
+            const inboxes = targetUrl //lo sacado con lo de lucia
 
-            const target = friendWebId;
-            await sendNotification(createNotification,{
-            {
+            let content={
                 title: "Route share",
                     summary: "has shared you a route.",
                 actor: webId,
                 object: route,
                 target: friendWebId
-            },
-            inboxes.path,
-                NotificationTypes.OFFER,
-                licenseUrl
-        });
-            await this.sendMessage(this, session, targetUrl);
-            document.getElementById("btn"+friend.webId).innerHTML = t("routes.shared");
-            document.getElementById("btn"+friend.webId).disabled = true;
+            };
+            await sendNotification(createNotification,content,inboxes.path,NotificationTypes.OFFER,
+                licenseUrl);
         }catch(error) {
             console.log(error);
             alert("Could not share the route");
         }
-
     }
     async sendNotification(createNotification,content,to,type,license){
         try{
