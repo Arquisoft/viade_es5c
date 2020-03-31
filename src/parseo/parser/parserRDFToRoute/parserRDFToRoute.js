@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
 import {RoutesView} from "../../../containers/RoutesView/RoutesView";
-
+import Point from "../../../entities/Point.js"
 const auth = require('solid-auth-client');
 const FC = require('solid-file-client');
 const fc = new FC(auth);
@@ -39,12 +39,12 @@ export  class Rutas extends Component<Props> {
         const storage = profile.getRef(space.storage);
 
         let folder;
-        fc.readFolder(storage + 'public/viade/routes/otro').then((content) => {
+        await fc.readFolder(storage + 'public/viade/routes').then((content) => {
             folder = content;
         }).catch(err => folder = null);
 
         var result = [];
-
+        console.log("Folder"+ folder);
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
                 let routeDocument;
@@ -52,13 +52,21 @@ export  class Rutas extends Component<Props> {
                 await fetchDocument(folder.files[i].url).then((content) => {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
-
+                console.log("RD"+ routeDocument);
                 if (routeDocument != null) {
                     const route = routeDocument.getSubject('#myRoute');
                     let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
                     console.log("RUTISA:" + route);
-                    let ruta = new Route(route.getString(schema.name), [puntos[0].getDecimal(schema.latitude), puntos[0].getDecimal(schema.longitude)], route.getString(schema.description));
-                    console.log("RUTISA2er43345453:" + ruta);
+
+
+
+                   //Provisional cause we dont really know how to obtain the points from the schema
+                    let points = [];
+                    for(i=0;i<puntos;i++)
+                        points.push(new Point(puntos.latitude,puntos.longitude));
+
+                    let ruta = new Route(route.getString(schema.name), route.getString(schema.description));
+                    console.log("RUTISA FORMED:" + ruta);
                     result = [...result, ruta];
                 }
             }
