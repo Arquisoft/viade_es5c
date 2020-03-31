@@ -4,11 +4,12 @@ import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
 import {RoutesView} from "../../../containers/RoutesView/RoutesView";
 import Point from "../../../entities/Point.js"
+
 const auth = require('solid-auth-client');
 const FC = require('solid-file-client');
 const fc = new FC(auth);
 
-export  class Rutas extends Component<Props> {
+export class Rutas extends Component<Props> {
 
     constructor(props) {
         super(props);
@@ -30,7 +31,7 @@ export  class Rutas extends Component<Props> {
 
     listRoutes = async () => {
         const {webId} = this.props;
-        console.log(webId);
+
 
         const profileDocument = await fetchDocument(webId);
         const profile = profileDocument.getSubject(webId);
@@ -43,8 +44,8 @@ export  class Rutas extends Component<Props> {
             folder = content;
         }).catch(err => folder = null);
 
-        var result = [];
-        console.log("Folder"+ folder);
+        var rutas = [];
+
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
                 let routeDocument;
@@ -52,35 +53,31 @@ export  class Rutas extends Component<Props> {
                 await fetchDocument(folder.files[i].url).then((content) => {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
-                console.log("RD"+ routeDocument);
 
 
                 if (routeDocument != null) {
-                    const route = routeDocument.getSubject('#myRoute');
-                    let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/point');
-                    console.log("RUTISA:");
-                    console.log(route);
-                    console.log("RUTISA _NAME:");
-                    console.log(route.getString('http://xmlns.com/foaf/0.1/name'));
+                    const route = routeDocument.getSubject("http://example.org/myRoute");
+                    const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
 
+                    //Provisional cause we dont really know how to obtain the points from the schema
+                    let pointsArray = [];
+                    for (i = 0; i < points.length; i++)
+                        pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[i].getDecimal(schema.longitude)));
 
-                   //Provisional cause we dont really know how to obtain the points from the schema
-                    let points = [];
-                    for(i=0;i<puntos;i++)
-                        points.push(new Point(puntos.getDecimal(schema.latitude),puntos.getDecimal(schema.longitude)));
+                    let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
 
-                    let ruta = new Route(route.getString('http://xmlns.com/foaf/0.1/name'), route.getString(schema.description));
-                    console.log("RUTISA FORMED:");
-                    console.log(ruta);
-                    result = [...result, ruta];
+                    rutas.push(ruta);
                 }
             }
-            this.state.rutas = result;
         }
+
+        this.setState({rutas});
+
     };
 
     render() {
         const {rutas} = this.state;
+
         return (
             <RoutesView {...{rutas}} />
         );
