@@ -1,13 +1,21 @@
 import React,{useState,useCallback} from "react";
 import {ShareWrapper, Input, Label} from "./shareroutes.style";
+import {useNotification} from '@inrupt/solid-react-components';
+
+type Props = {webId: String};
+
 class CreateShareRoute extends React.Component {
-    constructor (props) {
-        super(props)
+    constructor ({webId}: Props) {
+        super();
+        this.webID = webId.replace("profile/card#me", "");
+        console.log(this.webID);
+        this.createNotification = useNotification(webId);
         this.state = {
             routeWebID: '',
             friendWebID: ''
         }
     }
+
 
     handleChange = (e) => {
         const { name, value } = e.target
