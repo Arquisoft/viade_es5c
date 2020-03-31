@@ -5,7 +5,6 @@ import { ShareRoutesPageContent } from './shareroutes.component';
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 import { namedNode } from '@rdfjs/data-model';
-import { withTranslation } from "react-i18next";
 
 type Props = {webId: String};
 
@@ -23,9 +22,7 @@ class CreateShareRoute extends React.Component {
     async shareRoute(){
         try{
             var session = await auth.currentSession();
-            console.log("session " + session);
             var targetUrl = this.state.friendWebID + "inbox/"; //mirar si tenemos acceso
-            console.log(targetUrl);
             await this.sendMessage(this, session,targetUrl);
 
         }catch(error) {
@@ -37,46 +34,24 @@ class CreateShareRoute extends React.Component {
     async sendMessage(app, session,targetUrl){
         var message = {};
         message.date = new Date(Date.now());
-
         message.id = message.date.getTime();
-
         message.sender = session.webId;
-        console.log("sender was " + message.sender);
-
         message.recipient = targetUrl;
-        console.log("recipient was " + message.recipient);
-
         var baseSource = session.webId.split("profile/card#me")[0];
-        console.log("baseSourse " + baseSource);
         var source = baseSource + "public/routes/";
-        console.log("sourse " + source);
-        message.content =this.state.routeWebID;
-        console.log("message.content " + message.content);
-
+        message.content = this.state.routeWebID; //El contenido del mensaje puede ser mucho más bonito
         message.title = "Shared route by " + await app.getSessionName();
-        console.log("message.title " +  message.title);
-
         message.url = message.recipient + message.id + ".ttl";
-        console.log("message.url " + message.url);
 
-        console.log("sessionWEID " + session.webId);
-        await app.buildMessage(session, message);
-    }
-
-    async buildMessage(session, message){
         var mess = message.url;
-        console.log("mess " + mess);
         await data[mess].schema$text.add(message.content);
-        console.log("hice el 1");
         await data[mess].rdfs$label.add(message.title);
-        console.log("hice el 2");
         await data[mess].schema$dateSent.add(message.date.toISOString());
-        console.log("hice el 3");
         await data[mess].rdf$type.add(namedNode('https://schema.org/Message'));
-        console.log("hice el 4");
         await data[mess].schema$sender.add(namedNode(session.webId));
-        console.log("hice el 5");
     }
+
+
 
     handleChange = (e) => {
         const { name, value } = e.target
@@ -102,7 +77,6 @@ class CreateShareRoute extends React.Component {
     }
 
     getRouteName(){
-        console.log("message.contente " + this.state.routeWebID.split("/")[6]);
         return this.state.routeWebID.split("/")[6];
     }
 
@@ -110,7 +84,6 @@ class CreateShareRoute extends React.Component {
         var name = this.getRouteName();
         var session = await auth.currentSession();
         var url = session.webId.split("profile/card#me")[0] + "routes/";
-        console.log(url);
         var file = await this.fc.readFile(url + name);
         if (file != null){
             this.setState({route: file});
@@ -147,11 +120,6 @@ class CreateShareRoute extends React.Component {
                         </div>
                         <button type="submit">Send</button>
                     </form>
-
-                    <div>
-                        <h2>Values of the form</h2>
-                        <p>{JSON.stringify(this.state)}</p>
-                    </div>
                 </div>
             </ShareWrapper>
         )
