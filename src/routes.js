@@ -17,7 +17,7 @@ import {
   Welcome
 
 } from './containers';
-
+import {Rutas} from "./parseo"
 const privateRoutes = [
   {
     id: 'welcome',

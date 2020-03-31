@@ -1,7 +1,6 @@
 import {Header, RouteContainer, RouteWrapper} from "./routesView.style";
 import {RouteView} from "./children/RouteView";
 import React from 'react';
-
 export const RoutesView = props => {
     const {rutas} = props;
 
@@ -13,6 +12,7 @@ export const RoutesView = props => {
                 </Header>
 
                 <ul>
+
                     {rutas.map(route => (<RouteView route={route}/>))}
                 </ul>
 
