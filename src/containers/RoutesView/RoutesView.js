@@ -12,7 +12,6 @@ export const RoutesView = props => {
                 </Header>
 
                 <ul>
-
                     {rutas.map(route => (<RouteView route={route}/>))}
                 </ul>
 
