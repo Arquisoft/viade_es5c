@@ -53,30 +53,34 @@ export  class Rutas extends Component<Props> {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
                 console.log("RD"+ routeDocument);
+
+
                 if (routeDocument != null) {
                     const route = routeDocument.getSubject('#myRoute');
-                    let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
-                    console.log("RUTISA:" + route);
-
+                    let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/point');
+                    console.log("RUTISA:");
+                    console.log(route);
+                    console.log("RUTISA _NAME:");
+                    console.log(route.getString('http://xmlns.com/foaf/0.1/name'));
 
 
                    //Provisional cause we dont really know how to obtain the points from the schema
                     let points = [];
                     for(i=0;i<puntos;i++)
-                        points.push(new Point(puntos.latitude,puntos.longitude));
+                        points.push(new Point(puntos.getDecimal(schema.latitude),puntos.getDecimal(schema.longitude)));
 
-                    let ruta = new Route(route.getString(schema.name), route.getString(schema.description));
-                    console.log("RUTISA FORMED:" + ruta);
+                    let ruta = new Route(route.getString('http://xmlns.com/foaf/0.1/name'), route.getString(schema.description));
+                    console.log("RUTISA FORMED:");
+                    console.log(ruta);
                     result = [...result, ruta];
                 }
             }
             this.state.rutas = result;
         }
-    }
+    };
 
     render() {
         const {rutas} = this.state;
-        //console.log(rutas);
         return (
             <RoutesView {...{rutas}} />
         );
