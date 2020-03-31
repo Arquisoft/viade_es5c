@@ -58,15 +58,13 @@ export class Rutas extends Component<Props> {
                 if (routeDocument != null) {
                     const route = routeDocument.getSubject("http://example.org/myRoute");
                     const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
-                    const longitude = points[0].getDecimal(schema.longitude);
-
 
                     //Provisional cause we dont really know how to obtain the points from the schema
                     let pointsArray = [];
                     for (i = 0; i < points.length; i++)
                         pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[i].getDecimal(schema.longitude)));
 
-                    let ruta = new Route("PRUEBA", pointsArray, route.getString(schema.description));
+                    let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
 
                     rutas.push(ruta);
                 }
