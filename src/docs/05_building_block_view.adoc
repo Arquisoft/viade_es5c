@@ -3,7 +3,7 @@
 
 === Whitebox Overall System
 
-image:05_building_bloc_view.png["WhiteBox Diagram"]
+image:images/05_building_bloc_view.png["WhiteBox Diagram"]
 
 
 *Level 1* It contains the general structure of the arquitecture: user, application, pod server and solid.
