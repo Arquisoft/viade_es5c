@@ -24,7 +24,7 @@ export const publish = async (createNotification, content, webId, type) => {
         title: content.title,
         summary: content.summary,
         actor: content.actor,
-        object: content.url,
+        object: content.object,
         target: content.target
       }, to.path, type, license);
     }
