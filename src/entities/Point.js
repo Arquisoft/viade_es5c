@@ -7,7 +7,7 @@ class Point{
   }
   
   getPoint(){
-    return {lat: this.latitud, long :this.long};
+    return {lat: this.latitud, long :this.longitud};
   }
   getLat(){
     return this.latitud;
