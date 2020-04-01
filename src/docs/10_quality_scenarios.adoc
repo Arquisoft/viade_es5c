@@ -11,7 +11,12 @@ As quality requirements will have a lot of influence on architectural decisions,
 image:10-quality-tree.png["Quality Tree"]
 
 === Quality Scenarios
-In this point, we'll talk about the most important points 
-1. Reliability: this is the most important point in this project. The app must be mostly all the time working.
-2. Performance: users must have the better experience possible.
-3. Security: the app must be secure to  use.
+In this point, we'll talk about the most important points:
+
+1. Reliability (HIGH): this is the most important point in this project. The app must be mostly all the time working. Even if a Pod provider fails to work (solid for example) the user is able to login with other provider, so the app will continue running.
+2. Performance (HIGH): users must have the better experience possible. Loading time is improved how much we could in the short period of time we had to develop this project.
+3. Security (MEDIUM): the app must be secure to use. One of the reasons Solid is chosen is because your data is always secure
+4. Modificability (MEDIUM): this quality scenario is very important for us, just because you don't know who will continue with this project in the future, so it has to be easy to modify. 
+5. Testability (HIGH): We are using Codecov for code coverage, ensuring it at least reaches 60% of code coverage.
+6. Usability (HIGH): If possible we want to add images to the routes, giving the users a better experience with our app.
+7. Availability (HIGH): This route system will be available to anyone who has a Solid account and a Solid Pod to store user information. Also, the user could have an Inrupt Pod
