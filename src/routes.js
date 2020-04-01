@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
-import {Rutas} from 'parseo';
 import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
@@ -18,7 +17,7 @@ import {
     Welcome, ShareRoute
 
 } from './containers';
-
+import {Rutas} from "./parseo"
 const privateRoutes = [
     {
         id: 'welcome',

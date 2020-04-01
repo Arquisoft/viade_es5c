@@ -8,6 +8,7 @@ import {
 import {Friend} from "./components/Entity/friend";
 import {useTranslation} from "react-i18next";
 import {Header} from "./friend.style"
+
 export const FriendPage = propos => {
     const {t} = useTranslation();
     const {friends} = propos;
@@ -21,7 +22,9 @@ export const FriendPage = propos => {
                 {friends.map(friend => (
                     <FriendCard className="card">
                         <FriendDetail data-testid="welcome-detail">
-                            <Friend friend={friend}/>
+                            <table>
+                                <Friend friend={friend}/>
+                            </table>
                         </FriendDetail>
                     </FriendCard>))}
 

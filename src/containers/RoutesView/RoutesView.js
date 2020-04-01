@@ -1,7 +1,6 @@
 import {Header, RouteContainer, RouteWrapper} from "./routesView.style";
 import {RouteView} from "./children/RouteView";
 import React from 'react';
-
 export const RoutesView = props => {
     const {rutas} = props;
 

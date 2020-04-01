@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
 import {RoutesView} from "../../../containers/RoutesView/RoutesView";
+import Point from "../../../entities/Point.js"
 
 const auth = require('solid-auth-client');
 const FC = require('solid-file-client');
@@ -30,7 +31,7 @@ export class Rutas extends Component<Props> {
 
     listRoutes = async () => {
         const {webId} = this.props;
-        console.log(webId);
+
 
         const profileDocument = await fetchDocument(webId);
         const profile = profileDocument.getSubject(webId);
@@ -39,12 +40,11 @@ export class Rutas extends Component<Props> {
         const storage = profile.getRef(space.storage);
 
         let folder;
-
-        await fc.readFolder(storage + 'rutas/').then((content) => {
+        await fc.readFolder(storage + 'public/viade/routes').then((content) => {
             folder = content;
         }).catch(err => folder = null);
 
-        var result = [];
+        var rutas = [];
 
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
@@ -54,21 +54,30 @@ export class Rutas extends Component<Props> {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
 
-                if (routeDocument != null) {
-                    const route = routeDocument.getSubject('#myRoute');
-                    let puntos = routeDocument.getSubjectsOfType('http://arquisoft.github.io/viadeSpec/points');
 
-                    let ruta = new Route(route.getString(schema.name), [puntos[0].getDecimal(schema.latitude), puntos[0].getDecimal(schema.longitude)], route.getString(schema.description));
-                    result = [...result, ruta];
+                if (routeDocument != null) {
+                    const route = routeDocument.getSubject("http://example.org/myRoute");
+                    const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
+
+                    //Provisional cause we dont really know how to obtain the points from the schema
+                    let pointsArray = [];
+                    for (i = 0; i < points.length; i++)
+                        pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[i].getDecimal(schema.longitude)));
+
+                    let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+
+                    rutas.push(ruta);
                 }
             }
-            this.state.rutas = result;
         }
-    }
+
+        this.setState({rutas});
+
+    };
 
     render() {
         const {rutas} = this.state;
-        //console.log(rutas);
+
         return (
             <RoutesView {...{rutas}} />
         );

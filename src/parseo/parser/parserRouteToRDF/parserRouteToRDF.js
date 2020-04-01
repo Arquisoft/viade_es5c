@@ -1,7 +1,7 @@
 
 class ParserRouteToRDFClass {
     
-    parse =  route => {
+    parse = route => {
         this.rdf="";
       /*prefix viade:  <http://arquisoft.github.io/viadeSpec/>
         prefix :       <http://example.org/>
