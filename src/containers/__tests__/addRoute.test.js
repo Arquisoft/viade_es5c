@@ -2,15 +2,14 @@ import React from 'react';
 import {cleanup} from 'react-testing-library';
 import {configure, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-//import AddFile from '../AddFile/index';
-//import RouteVisualizer from "../../components/RouteVisualizer/RouteVisualizer.component";
+//import AddRoute from '../AddRoute/index';
 
 configure({adapter: new Adapter()});
 
     afterAll(cleanup);
     test('render', () => {
-        //const wrapper = render(<AddFile/>);
-        //expect(wrapper.find(AddFile)).toBeDefined();
+        //const wrapper = render(<AddRoute/>);
+        //expect(wrapper.find(AddRoute)).toBeDefined();
         expect(true).toBeTruthy();
     });
 
@@ -22,32 +21,32 @@ function setUp() {
 }
 
 test('render correctamente', () => {
-    const wrapper = render(<AddFile rutas={[]}/>);
-    expect(wrapper.find(AddFile)).toBeDefined();
+    const wrapper = render(<AddRoute rutas={[]}/>);
+    expect(wrapper.find(AddRoute)).toBeDefined();
     //expect(true).toBeTruthy();
 });
 
 test('render correctamente con rutas vacio', () => {
-    const wrapper = render(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(AddFile)).toBeDefined();
+    const wrapper = render(<AddRoute rutas={rutas}/>);
+    expect(wrapper.find(AddRoute)).toBeDefined();
     //expect(true).toBeTruthy();
 });
 
 test('render correctamente con rutas lleno', () => {
     setUp();
-    const wrapper = render(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(AddFile)).toBeDefined();
+    const wrapper = render(<AddRoute rutas={rutas}/>);
+    expect(wrapper.find(AddRoute)).toBeDefined();
     //expect(true).toBeTruthy();
 });
 
 test('Con rutas vacio, num de rutas = 0', () => {
-    const wrapper = render(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(RouteVisualizer).length).toBe(0);
+    const wrapper = render(<AddRoute rutas={rutas}/>);
+    expect(wrapper.find(CreateMap).length).toBe(0);
 });
 
 /*test('Con rutas lleno, num de rutas igual a rutas.length', () => {
     setUp();
-    const wrapper = mount(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(RouteVisualizer).length).toBe(3);
+    const wrapper = mount(<AddRoute rutas={rutas}/>);
+    expect(wrapper.find(CreateMap).length).toBe(3);
     //expect(true).toBeTruthy();
 });*/

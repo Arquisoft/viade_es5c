@@ -1,9 +1,9 @@
 import React from 'react';
 import {cleanup} from 'react-testing-library';
-import {configure, render} from 'enzyme';
+import {configure, mount, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import FriendsComponent from '../Friends/index';
-import {FriendCard} from '../Friends/friend.style';
+import {FriendPage} from '../Friends/friendComponent';
+import {Friend} from '../Friends/components/Entity/friend';
 
 configure({adapter: new Adapter()});
 
@@ -33,32 +33,32 @@ function setUp() {
 }
 
 test('render correctamente', () => {
-    const wrapper = render(<FriendsComponent friends={[]}/>);
-    expect(wrapper.find(FriendsComponent)).toBeDefined();
+    const wrapper = render(<FriendPage friends={[]}/>);
+    expect(wrapper.find(FriendPage)).toBeDefined();
     //expect(true).toBeTruthy();
 });
 
 test('render correctamente con friends vacio', () => {
-    const wrapper = render(<FriendsComponent friends={friends}/>);
-    expect(wrapper.find(FriendsComponent)).toBeDefined();
+    const wrapper = render(<FriendPage friends={friends}/>);
+    expect(wrapper.find(FriendPage)).toBeDefined();
     //expect(true).toBeTruthy();
 });
 
 test('render correctamente con friends lleno', () => {
     setUp();
-    const wrapper = render(<FriendsComponent friends={friends}/>);
-    expect(wrapper.find(FriendsComponent)).toBeDefined();
+    const wrapper = render(<FriendPage friends={friends}/>);
+    expect(wrapper.find(FriendPage)).toBeDefined();
     //expect(true).toBeTruthy();
 });
 
 test('Con friends vacio, num de friends = 0', () => {
-    const wrapper = render(<FriendsComponent friends={friends}/>);
-    expect(wrapper.find(FriendCard).length).toBe(0);
+    const wrapper = render(<FriendPage friends={friends}/>);
+    expect(wrapper.find(Friend).length).toBe(0);
 });
 
-/*test('Con friends lleno, num de friends igual a rutas.length', () => {
+/*test('Con friends lleno, num de friends = friends.length', () => {
     setUp();
-    const wrapper = mount(<FriendsComponent friends={friends}/>);
-    expect(wrapper.find(FriendCard).length).toBe(3);
+    const wrapper = mount(<FriendPage friends={friends}/>);
+    expect(wrapper.find(Friend).length).toBe(3);
     //expect(true).toBeTruthy();
 });*/
