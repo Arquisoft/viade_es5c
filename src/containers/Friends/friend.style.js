@@ -62,7 +62,7 @@ export const FriendCard = styled.div`
 export const FriendDetail = styled.div`
     border = 1em;
   padding: 1rem 3.5rem;
-  p;
+
     img{
   width:100%;
   height:100%;
