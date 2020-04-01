@@ -40,7 +40,21 @@ I use the LDFlex given the simplicity with which it allows us to make queries ab
 ==== JQuery
 Using JQuery, since it is a comfortable and effective way to manage the DOM tree without having to use template engines. Furthermore, the working group has experience in its use.
 
-==== Documentation
+==== solid-file-client
+We are using solid-file-client that is a library for managing Solid files and folders.
 
+==== solid-auth-client
+We are using solid-auth-client that is a browser library for performing authenticated requests to Solid pods.
+
+==== enzyme
+We are using enzyme that is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components output.
+
+==== tripledoc
+We are using tripledoc that is a library for easy manipulation on RDF. It has two primary data structures that are TripleDocument, representing an RDF Document and TripleSubject. a node in the RDF graph that can be queried for Triples in which it occurs as the Subject. Their functions are createDocument, createDocumentInContaint, fetchDocument. We use tripledoc 4.3.0.
+
+==== rdf-namespace
+We are using rdf-namespace because it generate automatically TypeScript files containing short aliases to common RDF namespaces.
+
+==== Documentation
 Regarding the documentation, we will do it in asciidoctor, since it is open source and uses a simple syntax and includes very useful functionalities such as being able to reference a code section of another file.
 

@@ -4,7 +4,7 @@ import {GlobalError} from '../GlobalError/global-error.component';
 
 afterAll(cleanup);
 
-describe('ErrorBoundary Component', () => {
+describe('ErrorBoundary component', () => {
   test('renders without crashing and render messages', () => {
     const { container, getByTestId } = render(
       <GlobalError error="Error Message" info={{ componentStack: 'Detail Error' }} />

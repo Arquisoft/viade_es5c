@@ -34,7 +34,6 @@ Here we describe the programs that we had decide to use.
 |Text processor to generate asciidoc documents
 
 |====
-//TODO
 
 === Business Context
 .Behaviour
@@ -45,9 +44,11 @@ The interface will receive the path of the user using the application and save i
 .How it works
 In this system the information exchanged will be only the one that the user in question wants to share. information of the routeas well as personal data would be kept in the user’s POD  Apart from this, users will also be able to share images, data routes, videos, and other type of files like points on the route.
 
+image:images/03_business.png["Business Context"]
+
 === Technical Context
 The implementation of the application has been carried out with react. It has a user interface in which the user will be able to save his routes and in addition to that will be able to share images, routes... with other users that he decides.
 
 As we have said before, we will use the so-called PODs provided by SOLID to connect to the server of the same, and through it, save routes of each users
 
-//Añadir aqui un diseño
+image:images/03_technical.png["Technical Context"]

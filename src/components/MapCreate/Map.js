@@ -18,7 +18,7 @@ const style = {
 
 export class CreateMap extends Component {
     sendData = () => {
-        this.props.parentCallback(this.state.markers,this.state.points);
+        this.props.parentCallback(this.state.points);
     };
 
     state = {
@@ -59,11 +59,13 @@ export class CreateMap extends Component {
         });
         this.setState({markers});
         var {points} = this.state;
-        points = update(markers, {
+        points = update(points, {
             $push: [
-               new Point( clickEvent.latLng.lat(),clickEvent.latLng.lng()) 
+               new Point( clickEvent.latLng.lat()+0, clickEvent.latLng.lng()+0 ,points.length)
+
             ],
         });
+        console.log(points)
         this.setState({points});
         this.sendData();
     };
