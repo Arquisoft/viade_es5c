@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import {media} from "../../utils";
 
-export const RouteWrapper = styled.section`
+export const ShareWrapper = styled.section`
+  padding: 150px
+  position: relative
   display: flex;
   flex: 1 0 auto;
+  display: block;
+  text-align: center;
   flex-direction:row !important;
   background-image: url('img/concentric-hex-pattern_2x.png');
   background-repeat: repeat;
@@ -23,7 +27,6 @@ export const Header = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 50px;
   margin: 5px;
   color: black;
 `;
@@ -36,7 +39,6 @@ export const Button = styled.button`
 
 export const Label = styled.label`
   margin: 5px;
-  color: white;
 `;
 
 export const TextArea = styled.textarea`

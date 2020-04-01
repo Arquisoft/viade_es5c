@@ -70,7 +70,15 @@ export const MarkAsRead = styled.button`
     outline: none;
   }
 `;
-
+export const Accept = styled.button`
+  position: absolute;
+  top: 3px;
+  right: 0;
+  border: 0;
+  padding: 0;
+  margin: 5px 7px;
+  color: #ffa600;
+`;
 export const Delete = styled.button`
   position: absolute;
   top: 3px;

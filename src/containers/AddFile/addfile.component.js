@@ -6,7 +6,7 @@ import {ParserToRoute,ParserRouteToRDF} from "../../parseo";
 
 import RouteVisualizer from '../../components/RouteVisualizer/RouteVisualizer.component'
 import ReactDOM from 'react-dom';
-
+import {Button, Header,Input, Label} from "./addfile.style";
 
 const LoadFile = (props) => {
     let files='';
@@ -54,12 +54,12 @@ const LoadFile = (props) => {
 
     return (
         <div>
-            <h1>Subir ruta</h1>
-            <label>
+            <Header>Subir ruta</Header>
+            <Label>
                 Cargar ruta:
-            <input type="file" name="files[]" id="file" onChange={selectFile} />
-            </label> 
-            <button onClick={handlerUpload}>Cargar POD</button>
+            <Input type="file" name="files[]" id="file" onChange={selectFile} />
+            </Label> 
+            <Button onClick={handlerUpload}>Cargar POD</Button>
             
             <div id="mapa"></div>
         </div>

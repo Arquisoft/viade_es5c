@@ -22,7 +22,7 @@ const shallowErrors = codeRun => {
 
 afterAll(cleanup);
 
-describe('ErrorBoundary Component', () => {
+describe('ErrorBoundary component', () => {
   test('caches error and display messages', () => {
     shallowErrors(() => {
       const { container } = render(
