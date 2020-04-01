@@ -1,6 +1,5 @@
 import Point from "../../../entities/Point";
 import Route from "../../../entities/Route";
-import GPX from 'gpx-parser-builder';
 import togeojson from "@mapbox/togeojson";
 
 class ParserToRouteClass {
@@ -62,13 +61,17 @@ class ParserToRouteClass {
           reader.onload = ()=> {
             var gpx;
             try{
-              gpx=GPX.parse(reader.result);
+              var xmlParser = new DOMParser();
+              gpx = xmlParser.parseFromString(reader.result, "text/xml");
+        
               const points= this.getCoordenadasGPX(gpx);
               var name=f.name.split(".")[0];
-              if (gpx.trk[0].name!==undefined){
-                //name=gpx.trk[0].name;
-              }
+              //var trk=gpx.getElementsByTagName("trk");
               
+              if (gpx.trk[0].name!==undefined){
+                //console.log(trk[0].getElementsByTagName("name")[0].textContent);
+                //name=gpx.trk[0].name;
+              }              
               const  route = new Route(name, points);
               resolve(route);
             }catch(er){
@@ -157,21 +160,27 @@ class ParserToRouteClass {
 
     getCoordenadasGPX = gpx =>{
       
-      if (gpx.trk!==undefined){
-        if (gpx.trk.length===1){
-          if (gpx.trk[0].trkseg!==undefined &&
-            gpx.trk[0].trkseg.length===1){
-              var array= new Array(gpx.trk[0].trkseg[0].trkpt.length);
-      
+      if (gpx.getElementsByTagName("trk")!==undefined){
+        var trk=gpx.getElementsByTagName("trk");
+        
+        
+        if (trk.length===1){
+          var trkseg=trk[0].getElementsByTagName("trkseg");
+          
+          if (trkseg!==undefined &&
+           trkseg.length===1){
+             var point=trkseg[0].getElementsByTagName("trkpt");
+              var array= new Array(point.length);
               
-                for(var i=0;i<gpx.trk[0].trkseg[0].trkpt.length;i++){
-                  array[i]=new Point(gpx.trk[0].trkseg[0].trkpt[i].$.lat,gpx.trk[0].trkseg[0].trkpt[i].$.lon,i+1,gpx.trk[0].trkseg[0].trkpt.ele);
+                for(var i=0;i<point.length;i++){
+                  array[i]=new Point(point[i].getAttribute("lat"),point[i].getAttribute("lon"),i+1,point[i].getElementsByTagName("ele"));
                 }
                 return array;
                 
             }
           
         }
+        
       }
       
       
