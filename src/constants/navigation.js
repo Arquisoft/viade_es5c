@@ -16,7 +16,7 @@ export const NavigationItems = [
     },
     {
         id: 'addFile',
-        icon: 'img/icon/mapa_azul.png',
+        icon: 'img/icon/plus.svg',
         label: 'Add File',
         to: '/addFile'
     },
@@ -29,13 +29,13 @@ export const NavigationItems = [
   },
   {
     id: 'addRoute',
-    icon: '/img/icon/mapa_azul.png',
+    icon: '/img/icon/addRoute.svg',
     label: 'Add Route',
     to: '/addRoute'
   },
     {
         id: 'shareRoute',
-        icon: '/img/icon/mapa_azul.png',
+        icon: '/img/icon/share.svg',
         label: 'Share Route',
         to: '/shareRoute'
     }
