@@ -9,9 +9,13 @@ export const FriendWrapper = styled.section`
   background-repeat: repeat;
   padding: 60px 0;
   h1 {
-    color: #666666;
+    color: white;
       font-weight: bold;
       font : Verdana;
+  }
+  
+  img { 
+    position: relative;
   }
 `;
 
@@ -32,40 +36,24 @@ export const Header = styled.div`
   linear-gradient(135deg, #B05103 0%, #FD7200 50%, #F48E3C 100%);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
-  p {
-    color: white;
-  }
-  .edit-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid white;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 1rem;
-  }
 `;
 export const FriendCard = styled.div`
   background-color: #fff;
   margin: 30px auto;
-
-  //Overriding the style guide card flexbox settings
   max-width: 90%;
+  display: flex;
   flex-direction: row;
   padding: 10px 0;
   align-items: center;
-
-  button {
-    margin-right: 8px;
-  }
 `;
 
 export const FriendDetail = styled.div`
     border = 1em;
   padding: 1rem 3.5rem;
-
     img{
   width:100%;
   height:100%;
+  flex-basis: 2;
   }
     li{
       font-weight: bold;
@@ -75,7 +63,7 @@ export const FriendDetail = styled.div`
 `;
 
 export const Image = styled.div`
-  display: flex;
+align-self: felx-start
   position: relative;
   align-items: center;
   justify-content: center;
