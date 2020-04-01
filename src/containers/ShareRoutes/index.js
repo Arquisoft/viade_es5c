@@ -1,3 +1,3 @@
-import ShareRoute from './shareroutes.component';
+import ShareRoute from './shareroute.const';
 
 export default ShareRoute;
