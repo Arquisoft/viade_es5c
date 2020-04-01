@@ -25,8 +25,8 @@ export class CreateMap extends Component {
         points: [],
         markers: [],
         center: {
-            lat: 40.4165000,
-            lng: -3.7025600
+            lat: 43.354988,
+            lng: -5.851161
         }
     };
 

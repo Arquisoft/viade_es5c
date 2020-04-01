@@ -55,8 +55,11 @@
     "text-editor": "Text Editor",
     "changeLanguage": "Change Language",
     "friends": "Friends",
+    "addFile": "Add file",
+    "addRoute": "Add route",
+    "shareRoute": "Share route",
     "routes": "Routes",
-    "lenguage": "Lenguage",
+    "lenguage": "Language",
     "languages": {
       "en": "English (English)",
       "es": "Español (Spanish)"

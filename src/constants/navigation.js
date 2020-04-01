@@ -16,27 +16,26 @@ export const NavigationItems = [
     },
     {
         id: 'addFile',
-        icon: 'img/icon/mapa_azul.png',
-        label: 'Add File',
+        icon: 'img/icon/plus.svg',
+        label: 'navBar.addFile',
         to: '/addFile'
     },
-
-  {
-    id: 'friends',
-    icon: 'img/icon/amigo.svg',
-    label: 'navBar.friends',
-    to: '/friends'
-  },
-  {
-    id: 'addRoute',
-    icon: '/img/icon/mapa_azul.png',
-    label: 'Add Route',
-    to: '/addRoute'
-  },
+    {
+        id: 'friends',
+        icon: 'img/icon/amigo.svg',
+        label: 'navBar.friends',
+        to: '/friends'
+    },
+    {
+        id: 'addRoute',
+        icon: '/img/icon/addRoute.svg',
+        label: 'navBar.addRoute',
+        to: '/addRoute'
+    },
     {
         id: 'shareRoute',
-        icon: '/img/icon/mapa_azul.png',
-        label: 'Share Route',
+        icon: '/img/icon/share.svg',
+        label: 'navBar.shareRoute',
         to: '/shareRoute'
     }
 
