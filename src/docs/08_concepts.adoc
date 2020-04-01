@@ -17,25 +17,23 @@ In the application we wil have this domain concepts:
 ==== UI/UX
 The user interface is written with React, it might be in English, and is the design of the app. For user experience is very important. We want the user to use it easily, and comfortably, without any problem.
 
+As we said before, we want the user to be comfortable, so we internationalized everything in it, making it a plurilingual project. 
+
 ==== Patterns
-The decentralized routes management system follows de MVC (ModelViewController) architecture pattern.
+The decentralized routes management system follows de MVC (ModelViewController) architecture pattern. Also, we use some design patterns inside it.
 
 ==== "Under-the-hood" Concepts
-* Persistency: data is always persistent in every user's pod.
+* Persistency: data is always persistent in every user's pod. We'll storage everything in it using liked data.
 * Exception and error handling: The main error not controlled by the app is having a not stable internet connection as it could damage the app’s correct functioning.
 * Reporting: we will use a system to compute changes and code coverall (maybe Travis).
 
 ==== Development concepts
 * Build: to build our app we will use NodeJS webpack
 * Test: we will use some frameworks to try our app. Some of them could be mocha or cucumber.js
-* Deploy: Our app will be deployed using Docker.
+* Deploy: Our app will be deployed using gitHub pages. For 
 
 ==== Safety and security concepts
 * Safety:
-	The application won't be open to vulnerabilities as posible. A 100% secure application is always the goal.
+	The application won't be open to vulnerabilities. Out intention was to make our app as safety as we can in the short period of time we had.
 * Security:
-	All will be save in the POD, so the user could be the only one who can get it, and the application will be descentralized.
-	
-==== Operational concepts
-// To do
-
+	All will be save in the POD, so the user could be the only one who can get it, and the application will be descentralized. To ensure the user to have multiple POD service, we alow him/her to login in our app using solid or inrupt pods provider
