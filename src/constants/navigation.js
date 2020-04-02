@@ -28,13 +28,13 @@ export const NavigationItems = [
     },
     {
         id: 'addRoute',
-        icon: '/img/icon/addRoute.svg',
+        icon: 'img/icon/addRoute.svg',
         label: 'navBar.addRoute',
         to: '/addRoute'
     },
     {
         id: 'shareRoute',
-        icon: '/img/icon/share.svg',
+        icon: 'img/icon/share.svg',
         label: 'navBar.shareRoute',
         to: '/shareRoute'
     }
