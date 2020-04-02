@@ -10,7 +10,7 @@
 
 ** The second option is that the login is invalid, which shows you the error message.
 
-image:images/6.1.PNG["Login"]
+image:6.1.PNG["Login"]
 
 === Create a new route
 
@@ -22,7 +22,7 @@ image:images/6.1.PNG["Login"]
 
 ** Or that the path could not be saved and you received an error message.
 
-image:images/6.2.PNG["Create a new route"]
+image:6.2.PNG["Create a new route"]
 
 === Share a route
 
@@ -34,4 +34,4 @@ image:images/6.2.PNG["Create a new route"]
 
 ** Or that you don't want to accept the shared route.
 
-image:images/6.3.PNG["Share route"]
+image:6.3.PNG["Share route"]
