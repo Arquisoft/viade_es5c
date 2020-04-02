@@ -1,9 +1,13 @@
 import React from 'react';
+import {Image} from '../../friend.style'
 
-export const Friend = propos =>{
+export const Friend = propos => {
     const {friend} = propos;
 
-    return(
-        <li key = {friend.webId}> {friend.name} <img src={friend.image} alt={friend.name}/></li>
+    return (
+        <tr key={friend.webId}>
+            <td><Image> <img src={friend.image} alt={"imagen"}/></Image></td>
+            <td>{friend.name} </td>
+        </tr>
     );
 };

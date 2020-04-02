@@ -12,7 +12,7 @@ const defaultContent = 'Something happened';
 
 const { container, getByText } = render(<Toaster title={defaultTitle} content={defaultContent} />);
 
-describe('Toaster Notification Component', () => {
+describe('Toaster Notification component', () => {
   it('Toaster Notification renders without crashing', () => {
     expect(container).toBeTruthy();
   });

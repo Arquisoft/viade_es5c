@@ -55,7 +55,11 @@
     "text-editor": "Editor de Textos",
     "changeLanguage": "Cambiar Lenguaje",
     "friends": "Amigos",
+    "addFile": "Añadir fichero",
+    "addRoute": "Añadir ruta",
+    "shareRoute": "Compartir ruta",
     "routes": "Rutas",
+    "lenguage": "Idioma",
     "languages": {
       "en": "English (Inglés)",
       "es": "Español (Español)"
@@ -251,5 +255,8 @@
     "load": "Cargar",
     "save": "Guardar",
     "grantAccess": "Dar Acceso"
+  },
+  "friends": {
+    "title": "Estos son tus amigos de SOLID"
   }
 }

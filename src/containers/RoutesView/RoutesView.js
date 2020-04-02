@@ -1,31 +1,19 @@
 import {Header, RouteContainer, RouteWrapper} from "./routesView.style";
-import RouteView from "./children/RouteView";
+import {RouteView} from "./children/RouteView";
 import React from 'react';
+import {useTranslation} from "react-i18next";
 
-function RoutesView() {
+export const RoutesView = props => {
+    const {t} = useTranslation();
+    const {rutas} = props;
     return (
         <RouteWrapper>
             <RouteContainer>
                 <Header>
-                    <h1 className = "text--white">Rutas</h1>
+                    <h1>{t('navBar.routes')}</h1>
                 </Header>
-
-                <RouteView
-                title = "Prueba"
-                date = "18/08/2018"
-                author = "Elmer"
-                description = "Ruta de montaña"
-                />
-
-                <RouteView
-                    title = "Prueba"
-                    date = "18/08/2018"
-                    author = "Elmer"
-                    description = "Ruta de montaña"
-                />
+                    {rutas.map(ruta => <RouteView ruta={ruta}/>)}
             </RouteContainer>
         </RouteWrapper>
     );
-}
-
-export default RoutesView;
+};

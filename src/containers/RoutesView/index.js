@@ -1,3 +1,3 @@
-import RoutesView from './RoutesView';
+import {RoutesView} from './RoutesView';
 
 export default RoutesView;

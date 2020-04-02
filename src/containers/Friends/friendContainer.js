@@ -24,7 +24,6 @@ export class FriendsComponent extends Component<Props> {
 
     getProfileData = async () => {
         this.setState({ isLoading: true });
-        //let hasImage;
         const { webId } = this.props;
 
         const user = data[webId];
@@ -44,9 +43,7 @@ export class FriendsComponent extends Component<Props> {
             let image;
             if (imageLd && imageLd.value) {
                 image = imageLd.value;
-                //hasImage = true;
             } else {
-                //hasImage = false;
                 image = "";
             }
 

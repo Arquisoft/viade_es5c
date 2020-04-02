@@ -1,37 +1,26 @@
 [[section-deployment-view]]
 == Deployment View
-=== Login
-This represents the view where the user will have to login himself to access to his pod.
+To run Viade_es5c routes you just need your computer and a navigator.
 
+=== Creating a route
 
-image:login.png["Login"]
+This is a easy demonstration of how viade works in a deeper level when you creates a route, a breef visualization of the infraestructure under the application. 
 
-=== Route Creation
-This image is the main view of the app here you will be able to save a point to make a route.
-That point will be saved and linked to the previous and next one to make the route
-This will save the route when you click on finished. 
+image:images/creatingARouteInfreastructure.PNG["Infraestructure Creating a route"]
 
-image:routeCreation.png["Route Creation"]
+Now we include a secuence diagram to have a deeper knowledge about how viade manage the creation of a route.
 
-=== Route Visualization
-In this part of the aplication you can see your own routes or the routes that your friend share to you, to follow it.
+image:images/secuenceDiagramCreatingARoute.PNG["Secuence Diagram Creating a route"]
 
-image:routesVisual.png["Route Visualization"]
+=== Sharing a route
 
-=== File Sharing
-This part of the application makes you able to share all photos, videos or routes that you have in your pod to a selected friend.
+As another example of the infraestructure of viade, we include another demostration of how it works.
 
-image:fileSharing.png["File Sharing"]
+This time we will show how it works sharing a file or route with a friend. As before the first image shows more in a more visual way how is the inside infraestructure.
 
-=== Routes Sharing
-The deployment view is very easy to describe in a decentralized chat because we are just focusing in the interaction between the users and SOLID providers
+image:images/sharingARouteInfreastructure.PNG["Infraestructure Creating a route"]
 
+Now we shows a secuence, of which steps the infraestructure follows to share the file from one pod to the other one.
 
-image:routeSharing.PNG["Route Sharing"]
-
-=== Add Friend
-
-In this part of the application you can add as a friend another user registered in the application indicating his name.
-
-image:addFriend.PNG["Add Friend"]
+image:images/secuenceDiagramSharingARoute.PNG["Secuence Diagram Creating a route"]
 

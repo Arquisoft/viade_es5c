@@ -2,24 +2,36 @@
 == Runtime View
 === Log in
 
-* The user runs the application:
+* Shows the login of the application and how the whole process works.
 
-** Subscenario 1: The user doesnt have a POD, they have to sign up to either Inrupt or Solid Community. 
+* A user enters their credentials in the login interface. That interface then sends the request to the authenticator, which in turn validates the data on the SOLID server. From here, two situations can occur:
 
-** Subscenario 2: The user does already have a POD, but they are not logged in, then they select their provider and enter the credentials.
+** The first is that the session is correct, which redirects you to the main page of the application.
 
-** Subscenario 3: The user has a POD and is logged in, in this case the user can use the application from the get-go.
+** The second option is that the login is invalid, which shows you the error message.
 
-=== Share routes
+image:images/6.1.PNG["Login"]
 
-1. First User_1 share a route to User_2
+=== Create a new route
 
-2. The application of the User_1 posts its route on the pod of the User_2
+* Shows how a route is created in the application.
 
-3. The application of the User_2 requests the shared routes that contains its pod, so the pod makes the routes available for the application
+* The user wants to create a route. In the navigation bar there is an option to create a route. The user must indicate the name and mark on a map the points that will make up the route apart from optional data such as the description. Once the necessary data has been added, the create button will be pressed to verify that it has valid data and the route will be uploaded to the POD. From here, two situations can occur:
 
-4. The application of the User_2 requests the received routes that contains its pod, so the pod makes the routes available for the application
+** That the route has been saved successfully and you receive a message that it was saved successfully.
 
-5. Finally User_2 view the received routes from the application
+** Or that the path could not be saved and you received an error message.
 
+image:images/6.2.PNG["Create a new route"]
 
+=== Share a route
+
+* Shows how a route is shared in the app.
+
+* The user wants to share an existing route on their POD. For this you must select the route which you want to share and with whom you want to share it. Once everything is selected, a notification will be sent to the user with whom you want to share it. From here, two situations can occur:
+
+** The user accepts the notification, which will cause the shared route to be uploaded to their POD.
+
+** Or that you don't want to accept the shared route.
+
+image:images/6.3.PNG["Share route"]

@@ -1,15 +1,33 @@
 import React from "react";
-import {FriendContainer, FriendList} from './friend.style';
+import {
+    FriendWrapper,
+    FriendContainer,
+    FriendCard,
+    FriendDetail
+} from './friend.style';
 import {Friend} from "./components/Entity/friend";
+import {useTranslation} from "react-i18next";
+import {Header} from "./friend.style"
 
 export const FriendPage = propos => {
+    const {t} = useTranslation();
     const {friends} = propos;
 
-    return (<FriendContainer>
-        <FriendList>
-            <ul>
-                {friends.map(friend => (<Friend friend={friend}/>))}
-            </ul>
-        </FriendList>
-    </FriendContainer>);
+    return (
+        <FriendWrapper>
+            <FriendContainer>
+                <Header>
+                    <h1 className="text--white"> {t('navBar.friends')} </h1>
+                </Header>
+                {friends.map(friend => (
+                    <FriendCard className="card">
+                        <FriendDetail data-testid="welcome-detail">
+                            <table>
+                                <Friend friend={friend}/>
+                            </table>
+                        </FriendDetail>
+                    </FriendCard>))}
+
+            </FriendContainer>
+        </FriendWrapper>);
 };

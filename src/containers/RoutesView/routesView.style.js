@@ -9,6 +9,12 @@ export const RouteWrapper = styled.section`
   background-image: url('img/concentric-hex-pattern_2x.png');
   background-repeat: repeat;
   padding: 60px 0;
+  
+  h1 {
+    color: white;
+      font-weight: bold;
+      font : Verdana;
+  }
 `;
 export const RouteContainer = styled.div`
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
@@ -25,20 +31,9 @@ export const Header = styled.div`
   align-items: center;
   justify-content: center;
   background-image: url('img/pattern-geo.png'),
-    linear-gradient(135deg, #7c4dff 0%, #18a9e6 50%, #01c9ea 100%);
+  linear-gradient(135deg, #B05103 0%, #FD7200 50%, #F48E3C 100%);
   background-repeat: repeat, no-repeat;
   padding: 30px 20px;
-  p {
-    color: white;
-  }
-  .edit-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid white;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 1rem;
-  }
 `;
 
 export const Input = styled.input`
