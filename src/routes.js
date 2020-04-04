@@ -18,6 +18,7 @@ import {
 
 } from './containers';
 import {Rutas} from "./parseo"
+
 const privateRoutes = [
     {
         id: 'welcome',
@@ -46,30 +47,27 @@ const privateRoutes = [
     },
     {
         id: 'listRoutes',
-        path: '/listRoutes',
+        path: '/routes/listRoutes',
         component: Rutas
     },
     {
         id: 'addFile',
-        path: '/addFile',
+        path: '/routes/addFile',
         component: AddFile
-
     },
     {
         id: 'friends',
-        path: '/friends',
+        path: '/friends/listFriends',
         component: Friends
-
     },
     {
         id: 'addRoute',
-        path: '/addRoute',
+        path: '/routes/addRoute',
         component: AddRoute
-
     },
     {
         id: 'shareRoute',
-        path: '/shareRoute',
+        path: '/routes/shareRoute',
         component: ShareRoute
     }
 
