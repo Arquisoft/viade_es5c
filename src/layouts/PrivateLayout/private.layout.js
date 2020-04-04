@@ -24,12 +24,14 @@ const Content = styled.div`
 
 const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
     const {t} = useTranslation();
+
     const errorMessages = {
         message: t('appPermission.message'),
         title: t('notifications.error'),
         label: t('appPermission.link.label'),
         href: t('appPermission.link.href')
     };
+
     useEffect(() => {
         if (webId) {
             permissionHelper.checkPermissions(webId, errorMessages);

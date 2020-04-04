@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {NotLoggedInLayout, PrivateLayout, PublicLayout, RoutesLayout} from '@layouts';
+import {NotLoggedInLayout, PrivateLayout, PublicLayout} from '@layouts';
 import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
@@ -50,9 +50,6 @@ const privateRoutes = [
         path: '/friends/listFriends',
         component: Friends
     },
-];
-
-const routesRoutes = [
     {
         id: 'addRoute',
         path: '/routes/addRoute',
@@ -85,7 +82,6 @@ const Routes = () => (
                 <PublicLayout path="/404" component={PageNotFound} exact/>
                 <Redirect from="/" to="/welcome" exact/>
                 <PrivateLayout path="/" routes={privateRoutes}/>
-                <RoutesLayout path='/routes' routes={routesRoutes}/>
                 <Redirect to="/404"/>
             </Switch>
         </Fragment>
