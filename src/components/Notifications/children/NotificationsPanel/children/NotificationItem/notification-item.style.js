@@ -7,7 +7,7 @@ export const Item = styled.li`
   display: flex;
   padding: 12px;
   align-items: center;
-  background: ${({ read }) => (read ? '#FFF' : 'rgb(245, 249, 254)')};
+  background: ${({read}) => (read ? '#FFF' : 'rgb(245, 249, 254)')};
   position: relative;
   min-height: 60px;
 

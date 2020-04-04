@@ -12,7 +12,7 @@ export const RoutesView = props => {
                 <Header>
                     <h1>{t('navBar.routes')}</h1>
                 </Header>
-                    {rutas.map(ruta => <RouteView ruta={ruta}/>)}
+                {rutas.map(ruta => <RouteView ruta={ruta}/>)}
             </RouteContainer>
         </RouteWrapper>
     );

@@ -28,7 +28,7 @@ export class Rutas extends Component<Props> {
     }
 
     listRoutes = async () => {
-        const fc   = new FC( auth );
+        const fc = new FC(auth);
         const {webId} = this.props;
 
 

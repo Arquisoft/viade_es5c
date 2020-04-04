@@ -9,13 +9,13 @@ import AutoSaveSpinner from './AutoSaveSpinner';
 import CreateMap from "./MapCreate";
 
 export {
-  ErrorBoundary,
-  GlobalError,
-  NavBar,
-  AuthNavBar,
-  ImageProfile,
-  Footer,
-  Notification,
-  AutoSaveSpinner,
-  CreateMap
+    ErrorBoundary,
+    GlobalError,
+    NavBar,
+    AuthNavBar,
+    ImageProfile,
+    Footer,
+    Notification,
+    AutoSaveSpinner,
+    CreateMap
 };

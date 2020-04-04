@@ -22,50 +22,50 @@ const Content = styled.div`
   overflow-x: hidden;
 `;
 
-const PrivateLayout = ({ routes, webId, location, history, ...rest }) => {
-  const { t } = useTranslation();
-  const errorMessages = {
-    message: t('appPermission.message'),
-    title: t('notifications.error'),
-    label: t('appPermission.link.label'),
-    href: t('appPermission.link.href')
-  };
-  useEffect(() => {
-    if (webId) {
-      permissionHelper.checkPermissions(webId, errorMessages);
-    }
-  }, [webId]);
+const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
+    const {t} = useTranslation();
+    const errorMessages = {
+        message: t('appPermission.message'),
+        title: t('notifications.error'),
+        label: t('appPermission.link.label'),
+        href: t('appPermission.link.href')
+    };
+    useEffect(() => {
+        if (webId) {
+            permissionHelper.checkPermissions(webId, errorMessages);
+        }
+    }, [webId]);
 
-  return (
-    <React.Fragment>
-      <Container>
-        <Route
-          {...rest}
-          component={({ history }) => (
-            <Content className="contentApp">
-              <AuthNavBar {...{ location, webId, history }} />
-              <Switch>
-                {routes.map(route => {
-                  const { component: RouteComponent } = route;
-                  return (
-                    <Route
-                      key={route.id}
-                      path={route.path}
-                      render={routerProps => <RouteComponent {...routerProps} webId={webId} />}
-                      webId={webId}
-                      exact
-                    />
-                  );
-                })}
-                <Redirect to="/404" />
-              </Switch>
-            </Content>
-          )}
-        />
-        <Footer />
-      </Container>
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <Container>
+                <Route
+                    {...rest}
+                    component={({history}) => (
+                        <Content className="contentApp">
+                            <AuthNavBar {...{location, webId, history}} />
+                            <Switch>
+                                {routes.map(route => {
+                                    const {component: RouteComponent} = route;
+                                    return (
+                                        <Route
+                                            key={route.id}
+                                            path={route.path}
+                                            render={routerProps => <RouteComponent {...routerProps} webId={webId}/>}
+                                            webId={webId}
+                                            exact
+                                        />
+                                    );
+                                })}
+                                <Redirect to="/404"/>
+                            </Switch>
+                        </Content>
+                    )}
+                />
+                <Footer/>
+            </Container>
+        </React.Fragment>
+    );
 };
 
 export default withAuthorization(PrivateLayout);
