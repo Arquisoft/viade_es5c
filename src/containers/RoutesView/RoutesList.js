@@ -1,13 +1,13 @@
-import Route from '../../../entities/Route.js';
 import React, {Component} from "react";
 import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
-import {RoutesView} from "../../../containers/RoutesView/RoutesView";
-import Point from "../../../entities/Point.js"
+import {RoutesView} from './RoutesView';
+import Point from '../../entities/Point';
+import Route from '../../entities/Route';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 
-export class Rutas extends Component<Props> {
+export class RoutesList extends Component<Props> {
 
     constructor(props) {
         super(props);
@@ -57,7 +57,8 @@ export class Rutas extends Component<Props> {
                     points.forEach(point =>
                         pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
 
-                    rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
+                    if (route.getString(schema.name) !== null)
+                        rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
                 }
             }
         }

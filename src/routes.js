@@ -7,6 +7,7 @@ import {
     FormModelConverter,
     FormModelRenderer,
     Friends,
+    RoutesList,
     Login,
     PageNotFound,
     Profile,
@@ -17,7 +18,6 @@ import {
     Welcome, ShareRoute
 
 } from './containers';
-import {Rutas} from "./parseo"
 
 const privateRoutes = [
     {
@@ -58,7 +58,7 @@ const privateRoutes = [
     {
         id: 'listRoutes',
         path: '/routes/listRoutes',
-        component: Rutas
+        component: RoutesList
     },
     {
         id: 'addFile',
