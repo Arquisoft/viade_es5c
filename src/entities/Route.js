@@ -1,5 +1,5 @@
 import Point from './Point.js'
-import { uuid } from 'uuidv4';
+import {uuid} from 'uuidv4';
 
 class Route {
     constructor(name, points, description = "", comments = "") {
@@ -13,7 +13,6 @@ class Route {
         this.rank = 0;
         this.date = '';
     }
-
 
     parseRoute() {
         console.log('parseando..');
@@ -30,7 +29,6 @@ class Route {
 
     setDescription(description) {
         this.comments = description;
-
     }
 
     setDistance(distance) {
@@ -47,6 +45,10 @@ class Route {
 
     getPoints() {
         return this.points;
+    }
+
+    getUUID(){
+        return this.uuid;
     }
 
 }

@@ -30,12 +30,8 @@ export class Rutas extends Component<Props> {
     listRoutes = async () => {
         const fc = new FC(auth);
         const {webId} = this.props;
-
-
         const profileDocument = await fetchDocument(webId);
         const profile = profileDocument.getSubject(webId);
-
-        // Get the root URL of the user's Pod:
         const storage = profile.getRef(space.storage);
 
         let folder;
@@ -43,37 +39,25 @@ export class Rutas extends Component<Props> {
             folder = content;
         }).catch(err => folder = null);
 
-        var rutas = [];
+        let rutas = [];
 
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
-                console.log("FICHERO ACTUAL: " + folder.files[i].url);
                 let routeDocument;
 
                 await fetchDocument(folder.files[i].url).then((content) => {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
 
-                console.log(routeDocument);
-
                 if (routeDocument != null) {
                     const route = routeDocument.getSubject("http://example.org/myRoute");
                     const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
 
-                    console.log(route.getString(schema.name));
-                    //Provisional cause we dont really know how to obtain the points from the schema
-
                     let pointsArray = [];
-                    //points.forEach(point => pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[point-get].getDecimal(schema.longitude))));
-                    for (let j = 0; j < points.length; j++){
-                        pointsArray.push(new Point(points[j].getDecimal(schema.latitude), points[j].getDecimal(schema.longitude)));
-                    }
+                    points.forEach(point =>
+                        pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
 
-                    let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
-
-                    console.log("UUID RUTA: " + ruta.uuid);
-                    if(ruta.getUUID())
-                    rutas.push(ruta);
+                    rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
                 }
             }
         }
