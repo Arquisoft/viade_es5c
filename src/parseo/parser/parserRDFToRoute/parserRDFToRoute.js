@@ -70,8 +70,9 @@ export class Rutas extends Component<Props> {
                     }
 
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
-                    console.log("UUID RUTA: " + ruta.uuid);
 
+                    console.log("UUID RUTA: " + ruta.uuid);
+                    if(ruta.getUUID())
                     rutas.push(ruta);
                 }
             }
