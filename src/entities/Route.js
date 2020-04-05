@@ -1,7 +1,9 @@
 import Point from './Point.js'
+import { uuid } from 'uuidv4';
 
 class Route {
     constructor(name, points, description = "", comments = "") {
+        this.uuid = uuid;
         this.name = name;
         this.points = points;
         this.description = description;

@@ -47,31 +47,36 @@ export class Rutas extends Component<Props> {
 
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
+                console.log("FICHERO ACTUAL: " + folder.files[i].url);
                 let routeDocument;
 
                 await fetchDocument(folder.files[i].url).then((content) => {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
 
+                console.log(routeDocument);
 
                 if (routeDocument != null) {
                     const route = routeDocument.getSubject("http://example.org/myRoute");
                     const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
 
+                    console.log(route.getString(schema.name));
                     //Provisional cause we dont really know how to obtain the points from the schema
+
                     let pointsArray = [];
-                    for (i = 0; i < points.length; i++)
-                        pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[i].getDecimal(schema.longitude)));
+                    //points.forEach(point => pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[point-get].getDecimal(schema.longitude))));
+                    for (let j = 0; j < points.length; j++){
+                        pointsArray.push(new Point(points[j].getDecimal(schema.latitude), points[j].getDecimal(schema.longitude)));
+                    }
 
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+                    console.log("UUID RUTA: " + ruta.uuid);
 
                     rutas.push(ruta);
                 }
             }
         }
-
         this.setState({rutas});
-
     };
 
     render() {

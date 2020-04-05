@@ -27,7 +27,6 @@ export const FriendPage = propos => {
                             </table>
                         </FriendDetail>
                     </FriendCard>))}
-
             </FriendContainer>
         </FriendWrapper>);
 };
