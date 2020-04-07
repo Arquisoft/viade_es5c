@@ -18,6 +18,8 @@ import {
 
 } from './containers';
 import {Rutas} from "./parseo"
+import FriendRoute from "./containers/FriendRoutes/friendroute.component";
+
 const privateRoutes = [
     {
         id: 'welcome',
@@ -71,7 +73,13 @@ const privateRoutes = [
         id: 'shareRoute',
         path: '/shareRoute',
         component: ShareRoute
+    },
+    {
+        id: 'friendRoute',
+        path: '/friendRoute',
+        component: FriendRoute
     }
+
 
 ];
 
