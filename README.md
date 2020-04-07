@@ -17,9 +17,9 @@ More information about how this project has been setup is available in the [wiki
 We are a group of students from the University of Oviedo who are developing the project in the Software Architecture class. 
 
 The group is formed by:
-* Marcos Matilla González
-* Inés Andrés Santos
-* Borja Rodriguez Lorenzo
-* Aitor Llanos Irazola
-* Iñaki Salgado Uralde
-* Bernardo Begega Calleja
+* [Marcos Matilla González](https://github.com/UO258935)
+* [Inés Andrés Santos](https://github.com/uo258865)
+* [Borja Rodriguez Lorenzo](https://github.com/Borjarguez)
+* [Aitor Llanos Irazola](https://github.com/aitorllanos99)
+* [Iñaki Salgado Uralde](https://github.com/uo237133)
+* [Bernardo Begega Calleja](https://github.com/BernardoBegega)
