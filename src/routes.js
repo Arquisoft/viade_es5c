@@ -14,11 +14,12 @@ import {
     RegistrationSuccess,
     TextEditor,
     AddRoute,
-    Welcome, ShareRoute
+    Welcome,
+    ShareRoute,
+    FriendRoute
 
 } from './containers';
 import {Rutas} from "./parseo"
-import FriendRoute from "./containers/FriendRoutes/friendroute.component";
 
 const privateRoutes = [
     {

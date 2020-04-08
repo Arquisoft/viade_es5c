@@ -38,8 +38,6 @@ class CreateShareRoute extends React.Component {
        
     }
     
-
-
     handleChange = (e) => {
         const { name, value } = e.target;
         this.setState({ [name]: value })
@@ -52,11 +50,7 @@ class CreateShareRoute extends React.Component {
         this.shareRoute();
     }
 
-    
-
-    
     render(){
-    
         const { routeWebID, friendWebID } = this.state
         return (
             <ShareWrapper>
@@ -85,9 +79,10 @@ class CreateShareRoute extends React.Component {
                         </div>
                         <button type="submit">Send</button>
                     </form>
+                    <p></p>
                 </div>
             </ShareWrapper>
-        )
+        );
     }
 }
 export default CreateShareRoute;

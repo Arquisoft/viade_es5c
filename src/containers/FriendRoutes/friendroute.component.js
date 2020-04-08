@@ -5,6 +5,7 @@ import data from "@solid/query-ldflex";
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
+import isLoading from "../../hocs/isLoading";
 
 class ListFriendRoutes extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ class ListFriendRoutes extends React.Component {
             name: '',
             friendsRoutes: []
         };
+        this.routes_of_friends = []
 
     }
 
@@ -30,7 +32,6 @@ class ListFriendRoutes extends React.Component {
         }
     }
 */
-
 
 
     getProfileData = async (nombre) => {
@@ -53,6 +54,8 @@ class ListFriendRoutes extends React.Component {
                 folder.files.forEach((element) => {
                     routes.push(element.name);
                 });
+
+
             } catch (e) {
                 console.log(e);
             }
@@ -63,12 +66,14 @@ class ListFriendRoutes extends React.Component {
                 "rutas": routes
             }
 
-            }
-            if(nombre==friend_obj.name)
-                friendsRoutes.push(routes)
+        }
+        if (nombre == friend_obj.name){
+            this.routes_of_friends = routes;
+            friendsRoutes.push(routes)
+        }
 
         this.setState({friendsRoutes});
-        //console.log(this.state)
+
     };
 
     handleChange = (e) => {
@@ -82,13 +87,19 @@ class ListFriendRoutes extends React.Component {
         this.getProfileData(this.state.name);
         this.state = []
         this.value = ''
+        this.routes_of_friends = []
     }
 
     listRoutes = () => {
         let aux = [];
-        for(let i = 0; i < this.state.friendsRoutes.length; i++){
-            aux.push(<li key={i}>{ this.state.friendsRoutes[i] + '\n' }</li>)
+
+
+        for (let i = 0; i < this.routes_of_friends.length; i++) {
+            aux.push(<li key={i}>{this.routes_of_friends[i] + '\n'}</li>)
         }
+
+        this.routes_of_friends = [];
+
         return aux;
     }
 
@@ -108,11 +119,11 @@ class ListFriendRoutes extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             </Label>
-
                         </div>
                         <button type="submit">Send</button>
+
+                        <p>{this.listRoutes()}</p>
                     </form>
-                    <p>{this.listRoutes()}</p>
                 </div>
 
             </ShareWrapper>
