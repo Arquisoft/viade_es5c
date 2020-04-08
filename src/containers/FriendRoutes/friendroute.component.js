@@ -1,11 +1,10 @@
 import React from "react";
-import {Button, Header, Input, Label, RouteWrapper} from "../AddRoute/addroute.style";
-import {CreateMap} from "../../components";
+import {Input, Label} from "../AddRoute/addroute.style";
 import data from "@solid/query-ldflex";
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
-import isLoading from "../../hocs/isLoading";
+
 
 class ListFriendRoutes extends React.Component {
     constructor(props) {
@@ -19,26 +18,10 @@ class ListFriendRoutes extends React.Component {
 
     }
 
-    /*
-    componentDidMount() {
-        const { webId } = this.props;
-        if (webId) this.getProfileData();
-    }
-
-    componentDidUpdate(prevProps) {
-        const { webId } = this.props;
-        if (webId && webId !== prevProps.webId) {
-            this.getProfileData();
-        }
-    }
-*/
-
-
     getProfileData = async (nombre) => {
         this.setState({isLoading: true});
         const {webId} = this.props;
         const user = data[webId];
-        let name;
         let friendsRoutes = [];
         let routes = [];
 
@@ -46,32 +29,31 @@ class ListFriendRoutes extends React.Component {
             const friendWebId = await friend.value;
             const friend_data = data[friendWebId];
             const nameLd = await friend_data.name;
-
+            //console.log("nameLD " + nameLd)
 
             try {
-                var url = friendWebId.split("profile/card#me")[0] + "public/viade/routes/";
-                let folder = await this.fc.readFolder(url);
-                folder.files.forEach((element) => {
-                    routes.push(element.name);
-                });
 
-
+                // eslint-disable-next-line eqeqeq
+                if (nombre == nameLd) {
+                    var url = friendWebId.split("profile/card#me")[0] + "public/viade/routes/";
+                    console.log("url " + url)
+                    let folder = await this.fc.readFolder(url);
+                    //console.log("nombre===nameLd" + nombre==nameLd)
+                    folder.files.forEach((element) => {
+                        routes.push(element.name);
+                    });
+                    //console.log(routes)
+                }
             } catch (e) {
                 console.log(e);
             }
-            name = nameLd && nameLd.value.trim().length > 0 ? nameLd.value : friendWebId.toString();
-            var friend_obj = {
-                "webId": friendWebId,
-                "name": name,
-                "rutas": routes
-            }
+
 
         }
-        if (nombre == friend_obj.name){
-            this.routes_of_friends = routes;
-            friendsRoutes.push(routes)
-        }
+        this.routes_of_friends = routes;
+        friendsRoutes.push(routes)
 
+        //console.log(this.routes_of_friends)
         this.setState({friendsRoutes});
 
     };
@@ -85,7 +67,7 @@ class ListFriendRoutes extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.getProfileData(this.state.name);
-        this.state = []
+        this.setState([])
         this.value = ''
         this.routes_of_friends = []
     }
@@ -93,13 +75,11 @@ class ListFriendRoutes extends React.Component {
     listRoutes = () => {
         let aux = [];
 
-
         for (let i = 0; i < this.routes_of_friends.length; i++) {
             aux.push(<li key={i}>{this.routes_of_friends[i] + '\n'}</li>)
         }
 
         this.routes_of_friends = [];
-
         return aux;
     }
 
@@ -120,7 +100,7 @@ class ListFriendRoutes extends React.Component {
                                 />
                             </Label>
                         </div>
-                        <button type="submit">Send</button>
+                        <button type="submit">See</button>
 
                         <p>{this.listRoutes()}</p>
                     </form>
