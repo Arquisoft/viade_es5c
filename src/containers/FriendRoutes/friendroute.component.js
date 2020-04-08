@@ -1,15 +1,19 @@
-import React, {Component} from "react";
-import {Input, Label} from "../AddRoute/addroute.style";
+import React from "react";
+import {Label} from "../AddRoute/addroute.style";
 import data from "@solid/query-ldflex";
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
 import { Dropdown } from "react-bootstrap";
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import {Button, H1, Header, Input, RouteList} from "./friendroute.style";
+import i18n from '../../i18n'
+class ListFriendRoutes extends React.Component {
 
 class ListFriendRoutes extends Component<Props> {
     constructor(props) {
         super(props);
+
         this.fc = new FC(auth);
         this.state = {
             name: '',
@@ -17,6 +21,7 @@ class ListFriendRoutes extends Component<Props> {
             friendsWebId:[]
         };
         this.routes_of_friends = [];
+
 
     }
 
@@ -124,26 +129,9 @@ class ListFriendRoutes extends Component<Props> {
         console.log(friendsWebId);
         return (
             <ShareWrapper>
-                <div>
-                    <h1>Insert your friend name</h1>
-                    
-                            <div>
-                                <Dropdown key="Dropdown" style={{margin:'20px'}}>
-                                    
-                                    <div>
-                                        Amigos
-                                        <DropdownButton title="Amigos">
-                                            {friendsWebId.map((friend)=>(
-                                                <Dropdown.Item key={friend}>{friend}</Dropdown.Item>
-                                        
-                                            ))}
-                                        </DropdownButton>
-                                    </div>
-                                    
-                                </Dropdown>
-                            </div>
-                        
-                    
+                <Header>
+                    <H1>{ i18n.t('friendRoutes.title')}</H1>
+                </Header>
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <Label>
@@ -151,15 +139,16 @@ class ListFriendRoutes extends Component<Props> {
                                     type="text"
                                     name="name"
                                     value={name}
+                                    placeholder={i18n.t('friendRoutes.namePlaceHolder')}
                                     onChange={this.handleChange}
                                 />
                             </Label>
                         </div>
-                        <button type="submit">See</button>
+                        <Button type="submit">{i18n.t('friendRoutes.buttonSee')}</Button>
 
-                        <p>{this.listRoutes()}</p>
+                        <RouteList>{this.listRoutes()}</RouteList>
                     </form>
-                </div>
+
 
             </ShareWrapper>
         );

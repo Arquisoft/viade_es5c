@@ -259,5 +259,10 @@
   },
   "friends": {
     "title": "Estos son tus amigos de SOLID"
+  },
+  "friendRoutes": {
+    "title": "Indica el nombre de tu amigo",
+    "namePlaceHolder": "Nombre de amigo",
+    "buttonSee": "Ver rutas"
   }
 }
