@@ -36,3 +36,12 @@ export const RouteList = styled.p`
 export const H1 = styled.h1`
     color:white;
 `;
+
+export const H2 = styled.h2`
+    color: black;
+    font-size: medium;
+`;
+
+export const LABEL = styled.label`
+    padding: 15px;
+`;

@@ -1,9 +1,10 @@
 import React from "react";
-import {ShareWrapper, Input, Label} from "../shareroutes.style";
+import {ShareWrapper} from "../shareroutes.style";
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 import {ShareRouteService} from "../Service";
 import { NotificationTypes } from '@inrupt/solid-react-components';
+import {Button, H1, H2, Header, Input, LABEL} from "../../FriendRoutes/friendroute.style";
 
 class CreateShareRoute extends React.Component {
     constructor (props) {
@@ -50,37 +51,41 @@ class CreateShareRoute extends React.Component {
         this.shareRoute();
     }
 
+
+
     render(){
         const { routeWebID, friendWebID } = this.state
         return (
             <ShareWrapper>
-                <div>
-                    <h1>Insert the following webID's to share the route</h1>
+                <Header>
+                    <H1>Insert the following webID's to share the route</H1>
+                </Header>
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                            <Label>Route's webID:
+                            <LABEL>
+                                <H2>Route's webID:</H2>
                                 <Input
                                     type="text"
                                     name="routeWebID"
                                     value={routeWebID}
                                     onChange={this.handleChange}
                                 />
-                            </Label>
+                            </LABEL>
                         </div>
                         <div>
-                            <Label>Insert your friend's webID:
+                            <LABEL>
+                                <H2>Insert your friend's webID:</H2>
                                 <Input
                                     type="text"
                                     name="friendWebID"
                                     value={friendWebID}
                                     onChange={this.handleChange}
                                 />
-                            </Label>
+                            </LABEL>
                         </div>
-                        <button type="submit">Send</button>
+                        <Button type="submit">Send</Button>
                     </form>
-                    <p></p>
-                </div>
+
             </ShareWrapper>
         );
     }
