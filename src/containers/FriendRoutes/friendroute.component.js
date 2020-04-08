@@ -1,9 +1,11 @@
 import React from "react";
-import {Input, Label} from "../AddRoute/addroute.style";
+import {Label} from "../AddRoute/addroute.style";
 import data from "@solid/query-ldflex";
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
+import {Button, H1, Header, Input, RouteList} from "./friendroute.style";
+
 
 
 class ListFriendRoutes extends React.Component {
@@ -87,8 +89,9 @@ class ListFriendRoutes extends React.Component {
         const {name} = this.state
         return (
             <ShareWrapper>
-                <div>
-                    <h1>Insert your friend name</h1>
+                <Header>
+                    <H1>Insert your friend name</H1>
+                </Header>
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <Label>
@@ -100,11 +103,11 @@ class ListFriendRoutes extends React.Component {
                                 />
                             </Label>
                         </div>
-                        <button type="submit">See</button>
+                        <Button type="submit">See</Button>
 
-                        <p>{this.listRoutes()}</p>
+                        <RouteList>{this.listRoutes()}</RouteList>
                     </form>
-                </div>
+
 
             </ShareWrapper>
         );
