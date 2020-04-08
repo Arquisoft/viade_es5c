@@ -1,21 +1,52 @@
-import React from "react";
+import React, {Component} from "react";
 import {Input, Label} from "../AddRoute/addroute.style";
 import data from "@solid/query-ldflex";
 import FC from "solid-file-client";
 import auth from "solid-auth-client";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
+import { Dropdown } from "react-bootstrap";
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
-
-class ListFriendRoutes extends React.Component {
+class ListFriendRoutes extends Component<Props> {
     constructor(props) {
         super(props);
         this.fc = new FC(auth);
         this.state = {
             name: '',
-            friendsRoutes: []
+            friendsRoutes: [],
+            friendsWebId:[]
         };
-        this.routes_of_friends = []
+        this.routes_of_friends = [];
 
+    }
+
+    componentDidMount() {
+        const { webId } = this.props;
+        if (webId) this.getFriends();
+    }
+
+    componentDidUpdate(prevProps) {
+        const { webId } = this.props;
+        if (webId && webId !== prevProps.webId) {
+            this.getFriends();
+        }
+    }
+
+    getFriends =async()=>{
+        this.setState({isLoading: true});
+        const {webId} = this.props;
+        const user = data[webId];
+        let friends=[];
+
+        for await (const friend of user.friends) {
+            const friendWebId = await friend.value;
+            const friend_data = data[friendWebId];
+            //const nameLd = await friend_data.name;
+            //console.log("nameLD " + nameLd)
+            friends.push(friendWebId);
+        }
+        this.setState({friendsWebId:friends})
+        console.log(this.state.friendsWebId);
     }
 
     getProfileData = async (nombre) => {
@@ -83,12 +114,36 @@ class ListFriendRoutes extends React.Component {
         return aux;
     }
 
+    seleccionarAmigo=async(e)=>{
+
+    }
+
     render() {
-        const {name} = this.state
+        const {name} = this.state;
+        const {friendsWebId}=this.state;
+        console.log(friendsWebId);
         return (
             <ShareWrapper>
                 <div>
                     <h1>Insert your friend name</h1>
+                    
+                            <div>
+                                <Dropdown key="Dropdown" style={{margin:'20px'}}>
+                                    
+                                    <div>
+                                        Amigos
+                                        <DropdownButton title="Amigos">
+                                            {friendsWebId.map((friend)=>(
+                                                <Dropdown.Item key={friend}>{friend}</Dropdown.Item>
+                                        
+                                            ))}
+                                        </DropdownButton>
+                                    </div>
+                                    
+                                </Dropdown>
+                            </div>
+                        
+                    
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <Label>
