@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {Label} from "../AddRoute/addroute.style";
 import data from "@solid/query-ldflex";
 import FC from "solid-file-client";
@@ -7,8 +7,7 @@ import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
 import { Dropdown } from "react-bootstrap";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import {Button, H1, Header, Input, RouteList} from "./friendroute.style";
-import i18n from '../../i18n'
-class ListFriendRoutes extends React.Component {
+import i18n from '../../i18n';
 
 class ListFriendRoutes extends Component<Props> {
     constructor(props) {
@@ -45,7 +44,7 @@ class ListFriendRoutes extends Component<Props> {
 
         for await (const friend of user.friends) {
             const friendWebId = await friend.value;
-            const friend_data = data[friendWebId];
+            //const friend_data = data[friendWebId];
             //const nameLd = await friend_data.name;
             //console.log("nameLD " + nameLd)
             friends.push(friendWebId);
@@ -132,6 +131,19 @@ class ListFriendRoutes extends Component<Props> {
                 <Header>
                     <H1>{ i18n.t('friendRoutes.title')}</H1>
                 </Header>
+                <Dropdown key="Dropdown" style={{margin:'20px'}}>
+
+                                    <div>
+                                        Amigos
+                                        <DropdownButton title="Amigos">
+                                            {friendsWebId.map((friend)=>(
+                                                <Dropdown.Item key={friend}>{friend}</Dropdown.Item>
+
+                                            ))}
+                                        </DropdownButton>
+                                    </div>
+
+                                </Dropdown>
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <Label>
