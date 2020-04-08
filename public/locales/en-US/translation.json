@@ -259,5 +259,10 @@
   },
   "friends": {
     "title": "This are your solid Friends"
+  },
+  "friendRoutes": {
+    "title": "Insert your friend name",
+    "namePlaceHolder": "Friend name",
+    "buttonSee": "Show routes"
   }
 }

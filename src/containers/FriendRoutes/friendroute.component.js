@@ -5,18 +5,19 @@ import FC from "solid-file-client";
 import auth from "solid-auth-client";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
 import {Button, H1, Header, Input, RouteList} from "./friendroute.style";
-
-
-
+import i18n from '../../i18n'
 class ListFriendRoutes extends React.Component {
+
     constructor(props) {
         super(props);
+
         this.fc = new FC(auth);
         this.state = {
             name: '',
             friendsRoutes: []
         };
         this.routes_of_friends = []
+
 
     }
 
@@ -87,10 +88,11 @@ class ListFriendRoutes extends React.Component {
 
     render() {
         const {name} = this.state
+
         return (
             <ShareWrapper>
                 <Header>
-                    <H1>Insert your friend name</H1>
+                    <H1>{ i18n.t('friendRoutes.title')}</H1>
                 </Header>
                     <form onSubmit={this.handleSubmit}>
                         <div>
@@ -99,11 +101,12 @@ class ListFriendRoutes extends React.Component {
                                     type="text"
                                     name="name"
                                     value={name}
+                                    placeholder={i18n.t('friendRoutes.namePlaceHolder')}
                                     onChange={this.handleChange}
                                 />
                             </Label>
                         </div>
-                        <Button type="submit">See</Button>
+                        <Button type="submit">{i18n.t('friendRoutes.buttonSee')}</Button>
 
                         <RouteList>{this.listRoutes()}</RouteList>
                     </form>
