@@ -49,7 +49,7 @@ class CreateRoute extends React.Component {
             
             //SUBIR AL POD
             
-            const url=this.webID+"public/viade/routes/"+route.name;
+            const url=this.webID+"viade/routes/"+route.name;
             console.log(url)
             const fc   = new FC( auth );
             fc.createFile(url, parseadoRDF, "text/turtle", {});

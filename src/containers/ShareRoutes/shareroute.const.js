@@ -4,6 +4,20 @@ import {useNotification} from '@inrupt/solid-react-components';
 const ShareRoute = (props)=> {
     const {webId}=props;
       const { createNotification} = useNotification(webId);
+      const {createInbox}=useNotification(webId);
+
+      const createTheInbox=useCallback(
+        async (inboxPath, appPath, settingFileName) => {
+          try {
+            await createInbox(inboxPath, appPath, settingFileName);
+          } catch (error) {
+            console.log(error);
+            throw error;
+
+          }
+        },
+         [createInbox ]
+      )
   
       const sendNotification=useCallback(
         async (content, to, type, license) => {
@@ -19,7 +33,7 @@ const ShareRoute = (props)=> {
       
      return (
       <div>
-        <CreateShareRoute sendNot={sendNotification}></CreateShareRoute>
+        <CreateShareRoute sendNot={sendNotification} creaIn={createTheInbox}></CreateShareRoute>
       </div>
     );
     
