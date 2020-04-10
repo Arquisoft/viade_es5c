@@ -10,6 +10,7 @@ export const documentExists = async documentUri =>
   });
 
 export const createDoc = async (documentUri, options) => {
+  console.log(options);
   try {
     return await auth.fetch(documentUri, options);
   } catch (e) {
@@ -103,6 +104,7 @@ export const discoverInbox = async document => {
  * @returns {Promise<string|*>}
  */
 export const getLinkedInbox = async resourcePath => {
+  
   try {
     const inboxLinkedPath = await ldflex[resourcePath].inbox;
     if (inboxLinkedPath) {

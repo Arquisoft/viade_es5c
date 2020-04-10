@@ -48,13 +48,15 @@ export const checkPermissions = async (webId, errorMessage) => {
 export const checkOrSetInboxAppendPermissions = async (inboxPath, webId) => {
   // Fetch app permissions for the inbox and see if Append is there
   const inboxAcls = new AccessControlList(webId, inboxPath);
+  
+  
   const permissions = await inboxAcls.getPermissions();
+  
   const inboxPublicPermissions = permissions.filter(perm => perm.agents === null);
-
+  
   const appendPermission = inboxPublicPermissions.filter(perm =>
     perm.modes.includes(AccessControlList.MODES.APPEND)
   );
-
   if (appendPermission.length <= 0) {
     // What do we do when the permission is missing? Add it!
     try {

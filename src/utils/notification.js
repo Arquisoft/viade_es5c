@@ -1,4 +1,5 @@
 import {ldflexHelper} from './index';
+import solid from 'solid-auth-client';
 
 export const sendNotification = async (opponent, content, createNotification, to) => {
   try {
@@ -26,7 +27,7 @@ export const findUserInboxes = async paths => {
         inboxes = [...inboxes, { ...path, path: inbox }];
       }
     }
-
+    console.log(inboxes);
     return inboxes;
   } catch (error) {
     throw new Error(error);
@@ -35,3 +36,8 @@ export const findUserInboxes = async paths => {
 
 export const getDefaultInbox = (inboxes, inbox1, inbox2) =>
   inboxes.find(inbox => inbox.name === inbox1) || inboxes.find(inbox => inbox.name === inbox2);
+
+export const hasInbox=async path=>{
+  const result = await solid.fetch(path, { method: 'GET' });
+    return result.status === 403 || result.status === 200;
+};
