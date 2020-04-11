@@ -86,11 +86,19 @@ export const WelcomePageContent = props => {
     const media=`${path}resources/`;
     
     if (permisosEscritura) {
-      console.log(ldflexHelper.resourceExists(rutas));
       if (!ldflexHelper.resourceExists(rutas)){
         await fc.createFolder(rutas,{createPath:true});
       }
+      /*
+      if (!ldflexHelper.resourceExists(comentarios)){
+        
+        await fc.createFolder(comentarios,{createPath:true});
+      }
       
+      if (!ldflexHelper.resourceExists(media)){
+        await fc.createFolder(media,{createPath:true});
+      }
+      */
       if(ldflexHelper.resourceExists(inboxPath)){
         
         await fc.createFolder(inboxPath, {createPath:true});

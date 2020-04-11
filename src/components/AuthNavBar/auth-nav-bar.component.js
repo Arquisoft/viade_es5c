@@ -25,6 +25,7 @@ const AuthNavBar = React.memo((props: Props) => {
       /**
        * Get user's global inbox path from pod.
        */
+      /*
       const globalInbox = await ldflexHelper.discoverInbox(webId);
 
       if (globalInbox) {
@@ -33,6 +34,7 @@ const AuthNavBar = React.memo((props: Props) => {
           { path: globalInbox, inboxName: t('navBar.notifications.global'), shape: 'default' }
         ];
       }
+      */
       /**
        * Get user's game inbox path from pod.
        */

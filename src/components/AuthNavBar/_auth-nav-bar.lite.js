@@ -29,7 +29,6 @@ const AuthNavBar = React.memo((props: Props) => {
       let appPath=await storageHelper.getAppStorage(webId);
       const setting=`${appPath}settings.ttl`;
       inboxes=await  notification.findUserInboxes([
-        {path:webId, inboxName:'Global'},
         {path:setting,inboxName:'Viade'}
       ])
       if (globalInbox) {
