@@ -6,7 +6,7 @@ import {errorToaster, permissionHelper, storageHelper} from '@utils';
 import { namedNode } from "@rdfjs/data-model";
 import * as N3 from 'n3';
 
-const appPath = "viadePrueba/";
+const appPath = "viade2/";
 
 const PREFIXES = {
   terms: 'https://www.w3.org/ns/solid/terms#',
@@ -68,17 +68,16 @@ export const createInitialFiles = async webId => {
       webId,
       AccessControlList.MODES.WRITE
     );
-
     // If we do not have Write permission, there's nothing we can do here
-    if (!hasWritePermission) return;
+    if (!hasWritePermission) return false;
 
     // Get the default app storage location from the user's pod and append our path to it
     const gameUrl = await storageHelper.getAppStorage(webId);
     
+    
     // Set up various paths relative to the game URL
     const dataFilePath = `${gameUrl}data.ttl`;
     const settingsFilePath = `${gameUrl}settings.ttl`;
-    const rutas=`${gameUrl}rutass/`;
     
     // Check if the tictactoe folder exists, if not then create it. This is where game files, the game inbox, and settings files are created by default
     const gameFolderExists = await resourceExists(gameUrl);
@@ -90,17 +89,9 @@ export const createInitialFiles = async webId => {
         }
       });
     }
-
-    const rutasFolderExist=await resourceExists(rutas);
+    const permisoWrit=await permissionHelper.checkWrittenPermissions(gameUrl,webId);
+    if (!permisoWrit) return false;
     
-    if (!rutasFolderExist){
-      await createDoc(data, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'text/turtle'
-        }
-      });
-    }
     // Check if data file exists, if not then create it. This file holds links to other people's games
     const dataFileExists = await resourceExists(dataFilePath);
     if (!dataFileExists) {

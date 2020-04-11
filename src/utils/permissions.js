@@ -77,3 +77,72 @@ export const checkOrSetInboxAppendPermissions = async (inboxPath, webId) => {
 
   return true;
 };
+
+/**
+ * Helper function to fetch permissions for the game routes, and if permissions are not set
+ * correctly, then add them. This repairs a broken route/path.
+ * @param routePath
+ * @returns {Promise<void>}
+ */
+export const checkOrSetNoPermissions = async (inboxPath, webId) => {
+  // Fetch app permissions for the inbox and see if Append is there
+  const inboxAcls = new AccessControlList(webId, inboxPath);
+  
+  
+  const permissions = await inboxAcls.getPermissions();
+  
+  const inboxPublicPermissions = permissions.filter(perm => perm.agents === null);
+  
+  //Mira si hay alguno que no de permisos a ninguno
+  const appendPermission = inboxPublicPermissions.filter(perm =>
+    perm.modes.length===0
+  );
+  
+  if (appendPermission.length <= 0) {
+    // Si tiene permisos que no debería
+    try {
+      // Se le quita permisos a todo el mundo. A null agent means Everyone
+      const permissions = [
+        {
+          agents: null,
+          modes: []
+        }
+      ];
+      const ACLFile = new AccessControlList(webId, inboxPath);
+      await ACLFile.createACL(permissions);
+    } catch (error) {
+      // TODO: Better error handling here
+      throw error;
+    }
+  }
+
+  return true;
+};
+
+export const checkWrittenPermissions = async (inboxPath, webId) => {
+  // Fetch app permissions for the inbox and see if Append is there
+  const inboxAcls = new AccessControlList(webId, inboxPath);
+  
+  
+  const permissions = await inboxAcls.getPermissions();
+  
+  const pathNotnull = permissions.filter(perm => perm.agents!==null);
+  
+  //Mira si hay alguno que no de permisos a ninguno
+  if (pathNotnull.length>0){
+    const webIdPermission=pathNotnull.filter(perm=>perm.agents.includes(webId));
+    if (webIdPermission.length>0){
+      const writtenPermission = webIdPermission.filter(perm =>
+        perm.modes.includes(AccessControlList.MODES.WRITE)
+      );
+      if (writtenPermission.length<=0){
+        return false;
+      }else{
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+

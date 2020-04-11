@@ -35,12 +35,16 @@ export const WelcomePageContent = props => {
       const path = await storageHelper.getAppStorage(webId);
       // Fetch the game's path in the pod, based on user's storage settings
       
-      await storageHelper.createInitialFiles(webId);
+      if (!await storageHelper.createInitialFiles(webId)){
+        console.log("No se puede hacer nada")
+      }else{
+
+        if (path) {
+          await permissionFilesInit(path);
+        }
       
-      
-      if (path) {
-        await permissionFilesInit(path);
       }
+      
       
     } catch (e) {
       /**
@@ -77,12 +81,17 @@ export const WelcomePageContent = props => {
       AccessControlList.MODES.WRITE
     );
     
-    const rutas=`${path}rutass/`;
+    const rutas=`${path}routes/`;
+    const comentarios=`${path}comments/`;
+    const media=`${path}resources/`;
+    
     if (permisosEscritura) {
+      console.log(ldflexHelper.resourceExists(rutas));
       if (!ldflexHelper.resourceExists(rutas)){
         await fc.createFolder(rutas,{createPath:true});
       }
-      if(!ldflexHelper.resourceExists(inboxPath)){
+      
+      if(ldflexHelper.resourceExists(inboxPath)){
         
         await fc.createFolder(inboxPath, {createPath:true});
 
@@ -106,6 +115,10 @@ export const WelcomePageContent = props => {
           const path = await storageHelper.getAppStorage(webId);
           await storageHelper.inboxLinkSetting(path,inboxPath);
         }
+
+        //Mirar con la carpeta rutas, media, etc... NO PUEDEN SER PÚBLICAS
+        await permissionHelper.checkOrSetNoPermissions(rutas,webId);
+        await permissionHelper.checkOrSetNoPermissions(path,webId);
       }
     }
   }

@@ -21,13 +21,13 @@ export const findUserInboxes = async paths => {
 
     for await (const path of paths) {
       const { path: currentPath } = path;
+      
       const inbox = await ldflexHelper.discoverInbox(currentPath);
 
       if (inbox) {
         inboxes = [...inboxes, { ...path, path: inbox }];
       }
     }
-    console.log(inboxes);
     return inboxes;
   } catch (error) {
     throw new Error(error);

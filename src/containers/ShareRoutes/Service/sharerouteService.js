@@ -1,44 +1,35 @@
   
-import { notification } from '@utils';
+import { notification ,storageHelper,ldflexHelper} from '@utils';
 import { NotificationTypes } from '@inrupt/solid-react-components';
 
 export const publish = async (createInbox,createNotification, content, webId, type) => {
   try {
     
     type = type || NotificationTypes.ANNOUNCE;
-    
+    const appPath = await storageHelper.getAppStorage(content.actor);
     const license = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
-    const inboxes = await notification.findUserInboxes([
-      { path: content.actor, name: 'Global' }
-    ]);
-    if (inboxes.length === 0)
-      return false;
+    
+    const viadeSettings = `${appPath}settings.ttl`;
 
-    const to = notification.getDefaultInbox(inboxes, 'Global');
-    //Si tienes permiso de escritura en el inbox de la persona
-    
-    const inbox_url=(content.actor).split("profile/card#me")[0]+"viade/inbox";
-    const path_app=(content.actor).split("profile/card#me")[0]+"viade";
-    console.log(inbox_url);
-    const t_fa=await notification.hasInbox(path_app);
-    console.log(t_fa);
-    
-    await createInbox(inbox_url,path_app);
-    /*  
-    if (inbox_url) {
-      
+      const inboxes = await notification.findUserInboxes([
+        { path: content.actor, name: "Global" },
+        { path: viadeSettings, name: "Viade" }
+      ]);
+      const to = notification.getDefaultInbox(inboxes, "Viade", "Global");
+    /*
+    if (to){
       await createNotification({
         title: content.title,
         summary: content.summary,
         actor: content.actor,
         object: content.object,
         target: content.target
-      }, inbox_url  , type, license);
+      }, to.path  , type, license);
       console.log("bueno parece que si");
     }
-    
     */
+    
     return true;
   } catch (e) {
     console.error(e);

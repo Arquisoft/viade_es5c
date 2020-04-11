@@ -3,8 +3,9 @@ import {NavBar, Notification} from '@components';
 import {useTranslation} from 'react-i18next';
 import {NavBarContainer} from './children';
 import {LanguageDropdown} from '@util-components';
-import {errorToaster, ldflexHelper} from '@utils';
+import {errorToaster, ldflexHelper,storageHelper,notification} from '@utils';
 import {NavigationItems} from '@constants';
+import { storage } from 'rdf-namespaces/dist/space';
 
 type Props = {
   webId: string
@@ -25,7 +26,12 @@ const AuthNavBar = React.memo((props: Props) => {
        * Get user's global inbox path from pod.
        */
       const globalInbox = await ldflexHelper.discoverInbox(webId);
-
+      let appPath=await storageHelper.getAppStorage(webId);
+      const setting=`${appPath}settings.ttl`;
+      inboxes=await  notification.findUserInboxes([
+        {path:webId, inboxName:'Global'},
+        {path:setting,inboxName:'Viade'}
+      ])
       if (globalInbox) {
         inboxes = [
           ...inboxes,
