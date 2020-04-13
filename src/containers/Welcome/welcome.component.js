@@ -12,7 +12,6 @@ import {
 } from './welcome.style';
 import {ImageProfile} from '@components';
 import {errorToaster,ldflexHelper,permissionHelper,storageHelper} from '@utils';
-import data from "@solid/query-ldflex";
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 const fc = new FC(auth);
@@ -84,25 +83,28 @@ export const WelcomePageContent = props => {
     const rutas=`${path}routes/`;
     const comentarios=`${path}comments/`;
     const media=`${path}resources/`;
-    
+    const compartir = `${path}shared/`;
     if (permisosEscritura) {
-      if (!ldflexHelper.resourceExists(rutas)){
+      if (!await ldflexHelper.resourceExists(rutas)){
         await fc.createFolder(rutas,{createPath:true});
       }
-      /*
-      if (!ldflexHelper.resourceExists(comentarios)){
+      
+      if (!await ldflexHelper.resourceExists(comentarios)){
         
         await fc.createFolder(comentarios,{createPath:true});
       }
       
-      if (!ldflexHelper.resourceExists(media)){
+      if (!await ldflexHelper.resourceExists(media)){
         await fc.createFolder(media,{createPath:true});
       }
-      */
-      if(ldflexHelper.resourceExists(inboxPath)){
+      if (!await ldflexHelper.resourceExists(compartir)){
+        await fc.createFolder(compartir,{createPath:true});
+      }
+      
+      if(!await ldflexHelper.resourceExists(inboxPath)){
         
         await fc.createFolder(inboxPath, {createPath:true});
-
+      }
         // Check for CONTROL permissions to see if we can set permissions or not
         const hasControlPermissions = await permissionHelper.checkSpecificAppPermission(
           webId,
@@ -112,6 +114,15 @@ export const WelcomePageContent = props => {
         // If the user has Write and Control permissions, check the inbox settings
         if (hasControlPermissions) {
           // Check if the inbox permissions are set to APPEND for public, and if not fix the issue
+          
+
+          //Mirar con la carpeta rutas, media, etc... NO PUEDEN SER PÚBLICAS
+          await permissionHelper.checkOrSetNoPermissions(rutas,webId);
+          await permissionHelper.checkOrSetNoPermissions(comentarios,webId);
+          await permissionHelper.checkOrSetNoPermissions(media,webId);
+          await permissionHelper.checkOrSetNoPermissions(compartir,webId);
+          await permissionHelper.checkOrSetNoPermissions(path,webId);
+
           await permissionHelper.checkOrSetInboxAppendPermissions(
             inboxPath,
             webId
@@ -124,10 +135,8 @@ export const WelcomePageContent = props => {
           await storageHelper.inboxLinkSetting(path,inboxPath);
         }
 
-        //Mirar con la carpeta rutas, media, etc... NO PUEDEN SER PÚBLICAS
-        await permissionHelper.checkOrSetNoPermissions(rutas,webId);
-        await permissionHelper.checkOrSetNoPermissions(path,webId);
-      }
+        
+      
     }
   }
   return (

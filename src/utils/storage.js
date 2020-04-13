@@ -3,10 +3,9 @@ import solid from 'solid-auth-client';
 import {AccessControlList} from '@inrupt/solid-react-components';
 import {createDoc, createDocument, resourceExists} from './ldflex-helper';
 import {errorToaster, permissionHelper, storageHelper} from '@utils';
-import { namedNode } from "@rdfjs/data-model";
 import * as N3 from 'n3';
 
-const appPath = "viade2/";
+const appPath = "viade2Prueba1/";
 
 const PREFIXES = {
   terms: 'https://www.w3.org/ns/solid/terms#',
