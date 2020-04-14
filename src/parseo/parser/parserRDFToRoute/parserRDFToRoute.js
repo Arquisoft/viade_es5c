@@ -4,10 +4,8 @@ import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
 import {RoutesView} from "../../../containers/RoutesView/RoutesView";
 import Point from "../../../entities/Point.js"
-
-const auth = require('solid-auth-client');
-const FC = require('solid-file-client');
-const fc = new FC(auth);
+import auth from "solid-auth-client";
+import FC from 'solid-file-client';
 
 export class Rutas extends Component<Props> {
 
@@ -30,6 +28,7 @@ export class Rutas extends Component<Props> {
     }
 
     listRoutes = async () => {
+        const fc   = new FC( auth );
         const {webId} = this.props;
 
 

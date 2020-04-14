@@ -23,6 +23,7 @@ export const Header = styled.div`
 `;
 
 export const Input = styled.input`
+  padding: 50px;
   margin: 5px;
   color: black;
 `;

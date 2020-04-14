@@ -12,7 +12,7 @@ type Props = {
   info: Object
 };
 /**
- * Global Component to show error on app
+ * Global component to show error on app
  * has basic markup and will render into ErrorBoundary component
  */
 export const GlobalError = ({ info }: Props) => (

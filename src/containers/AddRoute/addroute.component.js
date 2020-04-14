@@ -3,8 +3,8 @@ import {Button, Header, RouteWrapper, Input, Label} from "./addroute.style";
 import {CreateMap} from "../../components";
 import {ParserRouteToRDF} from "../../parseo";
 import Route from "../../entities/Route"
-//import FC from 'solid-file-client';
-//import auth from "solid-auth-client";
+import FC from 'solid-file-client';
+import auth from "solid-auth-client";
 
 //import {Uploader} from '@inrupt/solid-react-components';
 
@@ -21,7 +21,7 @@ class CreateRoute extends React.Component {
         this.description = React.createRef();
     }
 
-    state = {points: {}};
+    state = {points: []};
 
     callbackFunction = (childData) => {
         this.setState({points: childData})
@@ -38,20 +38,24 @@ class CreateRoute extends React.Component {
             else{
                 descripcion= this.description.current.value;
             }
-                
-            let route = new Route(this.title.current.value,this.state.points,null,descripcion);
+            console.log(this.state.points)
+            let route = new Route(this.title.current.value,this.state.points,descripcion);
             console.log(route);
+            
+        
             let parseadoRDF=ParserRouteToRDF.parse(route);
+           
             console.log(parseadoRDF);
             
             //SUBIR AL POD
             
-            const url=this.webId.split("profile/card#me")[0]+"public/viade/routes/"+route.name;
-            console.log(url);
-            //const fc   = new FC( auth );
-            //await fc.createFile(url, parseadoRDF, "text/turtle", {});
-            
+            const url=this.webID+"public/viade/routes/"+route.name;
+            console.log(url)
+            const fc   = new FC( auth );
+            fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
+            
+            
         }
         event.preventDefault();
     }

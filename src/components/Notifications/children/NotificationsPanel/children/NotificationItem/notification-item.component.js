@@ -72,8 +72,10 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
         className="delete"
         onClick={() => deleteNotification(notification.path)}
       >
+      
         <FontAwesomeIcon icon="times-circle" />
       </Delete>
+      
     </Item>
   );
 };
