@@ -38,19 +38,14 @@ class CreateRoute extends React.Component {
             else{
                 descripcion= this.description.current.value;
             }
-            console.log(this.state.points)
             let route = new Route(this.title.current.value,this.state.points,descripcion);
-            console.log(route);
-            
+     
         
             let parseadoRDF=ParserRouteToRDF.parse(route);
-           
-            console.log(parseadoRDF);
             
             //SUBIR AL POD
             
             const url=this.webID+"viade/routes/"+route.name;
-            console.log(url)
             const fc   = new FC( auth );
             fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");

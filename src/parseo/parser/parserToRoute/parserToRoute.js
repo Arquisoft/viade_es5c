@@ -58,20 +58,26 @@ class ParserToRouteClass {
         }
         if (parser===2){
           //gpx
+          
           reader.onload = ()=> {
             var gpx;
+           
             try{
               var xmlParser = new DOMParser();
               gpx = xmlParser.parseFromString(reader.result, "text/xml");
         
               const points= this.getCoordenadasGPX(gpx);
-              var name=f.name.split(".")[0];
-              //var trk=gpx.getElementsByTagName("trk");
               
-              if (gpx.trk[0].name!==undefined){
-                //console.log(trk[0].getElementsByTagName("name")[0].textContent);
-                //name=gpx.trk[0].name;
-              }              
+              var name=f.name.split(".")[0];
+              /*
+              var trk=gpx.getElementsByTagName("trk");
+              if (trk.length>0){
+                if (trk[0].getElementsByTagName("name").length>0){
+                  //Tiene nombre
+                }
+              }
+             */
+                      
               const  route = new Route(name, points);
               resolve(route);
             }catch(er){
