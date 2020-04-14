@@ -10,6 +10,7 @@ export const RoutesView = props => {
                     <h1 className = "text--white">Rutas</h1>
                 </Header>
                     {rutas.map(ruta => <RouteView ruta={ruta}/>)}
+
             </RouteContainer>
         </RouteWrapper>
     );
