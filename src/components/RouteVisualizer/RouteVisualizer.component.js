@@ -3,7 +3,7 @@ import {Map, Marker, Polyline, GoogleApiWrapper} from 'google-maps-react';
 
 
 const mapStyles = {
-    width: '947px',
+    width: '99%',
     height: '75%',
 };
 
