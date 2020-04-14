@@ -22,19 +22,7 @@ const AuthNavBar = React.memo((props: Props) => {
   const discoverInbox = useCallback(async () => {
     try {
       let inboxes = [];
-      /**
-       * Get user's global inbox path from pod.
-       */
-      
-      const globalInbox = await ldflexHelper.discoverInbox(webId);
 
-      if (globalInbox) {
-        inboxes = [
-          ...inboxes,
-          { path: globalInbox, inboxName: t('navBar.notifications.global'), shape: 'default' }
-        ];
-      }
-      
       /**
        * Get user's game inbox path from pod.
        */
@@ -50,6 +38,23 @@ const AuthNavBar = React.memo((props: Props) => {
           { path: appInbox, inboxName: t('navBar.notifications.tictactoe'), shape: 'default' }
         ];
       }
+      if (inboxes.length===0){
+        /**
+        * Get user's global inbox path from pod.
+        */
+        
+        const globalInbox = await ldflexHelper.discoverInbox(webId);
+
+        if (globalInbox) {
+          inboxes = [
+            ...inboxes,
+            { path: globalInbox, inboxName: t('navBar.notifications.global'), shape: 'default' }
+          ];
+        }
+      }
+
+            
+      
       /**
        * If user doesn't has inbox in his pod will show an error and link to
        * know how fix it.

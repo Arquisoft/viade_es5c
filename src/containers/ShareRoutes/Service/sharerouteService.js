@@ -35,6 +35,7 @@ export const publish = async (createNotification, content, friendWebId, type) =>
     */
    const routePath=content.object;
    updatePermission(content.actor,friendWebId,routePath)
+   
     
     return true;
   } catch (e) {
