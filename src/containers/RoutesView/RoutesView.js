@@ -4,6 +4,7 @@ import React from 'react';
 
 export const RoutesView = props => {
     const {rutas} = props;
+
     return (
         <RouteWrapper>
             <RouteContainer>
