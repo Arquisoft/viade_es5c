@@ -3,8 +3,8 @@ import {Map, Marker, Polyline, GoogleApiWrapper} from 'google-maps-react';
 
 
 const mapStyles = {
-    width: '100%',
-    height: '75%'
+    width: '947px',
+    height: '75%',
 };
 
 export class RouteVisualizer extends Component {
