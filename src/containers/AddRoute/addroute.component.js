@@ -33,17 +33,18 @@ class CreateRoute extends React.Component {
     };
 
     async handleSave(event) {
-        this.ImgFile=this.img.current.value[0];
-        if(this.img.current.value[0] !== undefined){
-            this.PhotoURL= this.webID + "viade/resources/" + this.img.current.value[0].name;
+        this.ImgFile=this.img.current.files[0];
+        console.log(this.ImgFile)
+        if(this.img.current.files[0] !== undefined){
+            this.PhotoURL= this.webID + "viade/resources/" + this.img.current.files[0].name ;
             console.log( this.PhotoURL);
             let loader = new MediaLoader();
-            loader.saveImage(this.PhotoURL, this.imgFile);
+            loader.saveImage(this.PhotoURL, this.ImgFile);
         
         }
         if (this.title.current.value.length === 0) {
             alert("La ruta tiene que tener un titulo.")
-        } else if (this.state.points === 0) {
+        } else if (this.state.points.length === 0) {
             alert("No ha marcado ningún punto en el mapa.")
         } else {
             let descripcion ;
@@ -54,7 +55,7 @@ class CreateRoute extends React.Component {
             console.log(this.state.points)
             
             let route = new Route(this.title.current.value,this.state.points,descripcion);
-            route.setImg(this.photoURL === "" ? null : this.photoURL)
+            route.setImg(this.PhotoURL === "" ? null : this.PhotoURL)
             console.log(route);
         
             let parseadoRDF= await ParserRouteToRDF.parse(route);
