@@ -5,7 +5,6 @@ import FC from "solid-file-client";
 class MediaLoader {
 
     saveImage(url, file) {
-        console.log(url + "- Comenzando subida -" + file)
         
         SolidAuth.fetch(url, {
             method: 'PUT',
@@ -14,7 +13,6 @@ class MediaLoader {
                 'Content-Type': 'image/png'
             }
         });
-        console.log("img subida")
     }
 
     loadMedia(url, callback) { // explicacion debajo !!

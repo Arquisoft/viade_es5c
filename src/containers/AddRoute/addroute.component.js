@@ -34,10 +34,8 @@ class CreateRoute extends React.Component {
 
     async handleSave(event) {
         this.ImgFile=this.img.current.files[0];
-        console.log(this.ImgFile)
         if(this.img.current.files[0] !== undefined){
             this.PhotoURL= this.webID + "viade/resources/" + this.img.current.files[0].name ;
-            console.log( this.PhotoURL);
             let loader = new MediaLoader();
             loader.saveImage(this.PhotoURL, this.ImgFile);
         
@@ -52,11 +50,11 @@ class CreateRoute extends React.Component {
             else{
                 descripcion= this.description.current.value;
             }
-            console.log(this.state.points)
+            
             
             let route = new Route(this.title.current.value,this.state.points,descripcion);
             route.setImg(this.PhotoURL === "" ? null : this.PhotoURL)
-            console.log(route);
+            
         
             let parseadoRDF= await ParserRouteToRDF.parse(route);
            
@@ -65,10 +63,9 @@ class CreateRoute extends React.Component {
             //SUBIR AL POD
             
             const url=this.webID+"public/viade/routes/"+route.name;
-            console.log(url)
             const fc   = new FC( auth );
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
-            console.log("subido");
+            alert("Ruta subida con éxito")
             
             
         }
