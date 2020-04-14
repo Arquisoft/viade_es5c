@@ -145,4 +145,62 @@ export const checkWrittenPermissions = async (inboxPath, webId) => {
   return false;
 };
 
+export const setPermissionInRouteToFriend =async (webId,friendWebId,routePath)=>{
+  //Primero coge los amigos que ya existe
+  const routeAcls = new AccessControlList(webId, routePath);
+  
+  
+  const permissions = await routeAcls.getPermissions();
+  const array_read=[AccessControlList.MODES.READ];
+  const pathNotnull = permissions.filter(perm=>perm.modes.toString()===array_read.toString())
+  
+  if (pathNotnull.length>0){
+    //Miramos si el está 
+    const amigos_tood=pathNotnull[0];
+    if (amigos_tood.agents.includes(friendWebId)){
+      //Ya está, AVISAR
+    }else{
+      const amigos=amigos_tood.agents;
+      amigos.push(friendWebId); //Se añade al amigo
+      try {
+        // Se le quita permisos a todo el mundo. A null agent means Everyone
+        const permissions = [
+          {
+            agents: amigos,
+            modes: [AccessControlList.MODES.READ]
+          }
+        ];
+        const ACLFile = new AccessControlList(webId, routePath);
+        await ACLFile.createACL(permissions);
+      } catch (error) {
+        // TODO: Better error handling here
+        throw error;
+      }
+    }
+  
+      
+  }else{
+      
+    //Quiere decir que no hay ningun amigo entonces se añade
+    try {
+      // Se le quita permisos a todo el mundo. A null agent means Everyone
+      const permissions = [
+        {
+          agents: friendWebId,
+          modes: [AccessControlList.MODES.WRITE]
+        }
+      ];
+      const ACLFile = new AccessControlList(webId, routePath);
+      await ACLFile.createACL(permissions);
+    } catch (error) {
+      // TODO: Better error handling here
+      throw error;
+    }
+    
+    
+  
+  
+  
+  }
 
+}

@@ -34,10 +34,9 @@ const LoadFile = (props) => {
                 
         
         let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
-        
         let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
         console.log(parseadoRDF);
-        const url=webId.split("profile/card#me")[0]+"viade2/routes/"+rutaClass.name+".ttl";
+        const url=webId.split("profile/card#me")[0]+"viade2Prueba1/routes/"+rutaClass.name+".ttl";
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
 
