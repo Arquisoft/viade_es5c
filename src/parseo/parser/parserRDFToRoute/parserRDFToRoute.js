@@ -60,8 +60,8 @@ export class Rutas extends Component<Props> {
 
                     //Provisional cause we dont really know how to obtain the points from the schema
                     let pointsArray = [];
-                    for (i = 0; i < points.length; i++)
-                        pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[i].getDecimal(schema.longitude)));
+                    for (let j = 0; j < points.length; j++)
+                        pointsArray.push(new Point(points[j].getDecimal(schema.latitude), points[j].getDecimal(schema.longitude)));
 
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
 
