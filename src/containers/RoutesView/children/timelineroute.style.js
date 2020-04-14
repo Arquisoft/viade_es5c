@@ -26,7 +26,6 @@ export const RouteDetail = styled.div`
       font-size:24px;
   }
 .modal {
-  width: 100%;
   text-align: center;
 }
 .map{
