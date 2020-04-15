@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Body, Delete, Img, Item, MarkAsRead, Message, Meta} from './notification-item.style';
+import {Body, Delete, Img, Item, MarkAsRead, Message, Meta, Accept} from './notification-item.style';
 
 type Props = {
   notification: Object,
@@ -58,6 +58,28 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
           {children}
         </Meta>
       </Body>
+      
+      <MarkAsRead
+        type="button"
+        className="delete"
+        
+      >
+        <FontAwesomeIcon icon="check-circle" />
+      </MarkAsRead>
+      <Delete
+        type="button"
+        className="delete"
+      >
+      
+        <FontAwesomeIcon icon="times-circle" />
+
+      </Delete>
+      
+    </Item>
+  );
+};
+/*
+
       <MarkAsRead
         type="button"
         className="delete"
@@ -67,17 +89,5 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
       >
         <FontAwesomeIcon icon={currentRead ? 'eye-slash' : 'eye'} />
       </MarkAsRead>
-      <Delete
-        type="button"
-        className="delete"
-        onClick={() => deleteNotification(notification.path)}
-      >
-      
-        <FontAwesomeIcon icon="times-circle" />
-      </Delete>
-      
-    </Item>
-  );
-};
-
+ */
 export default NotificationItem;

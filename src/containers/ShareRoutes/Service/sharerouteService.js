@@ -9,7 +9,7 @@ export const publish = async (createNotification, content, friendWebId, type) =>
     const appPath = await storageHelper.getAppStorage(content.actor);
     const license = 'https://creativecommons.org/licenses/by-sa/4.0/';
 
-    /*
+    
     const viadeSettings = `${appPath}settings.ttl`;
 
       const inboxes = await notification.findUserInboxes([
@@ -31,10 +31,11 @@ export const publish = async (createNotification, content, friendWebId, type) =>
       //Sacar los amigos que tienen permiso 
       //Se le añade como amigo
       //Se cambia el fichero .acl con los nuevos amigos
+      //const routePath=content.object;
+      //updatePermission(content.actor,friendWebId,routePath)
     }
-    */
-   const routePath=content.object;
-   updatePermission(content.actor,friendWebId,routePath)
+    
+   
    
     
     return true;
