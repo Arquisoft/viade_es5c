@@ -19,4 +19,17 @@ export const RouteDetail = styled.div`
     border = 1em;
   padding: 1rem 3.5rem;
   p;
+  .button{
+  background-color: transparent;
+  font-weight: bold;
+      font : Verdana;
+      font-size:24px;
+  }
+.modal {
+  text-align: center;
+}
+.map{
+  width: 10%;
+}
+
 `;
