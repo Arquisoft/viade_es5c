@@ -15,7 +15,7 @@ type Props = {
  * @returns {*}
  * @constructor
  */
-const NotificationList = ({ notifications, markAsRead, deleteNotification }: Props) => (
+const NotificationList = ({ notifications, markAsRead, deleteNotification,accept }: Props) => (
   <Fragment>
     {notifications && notifications.length > 0 ? (
       <List>
@@ -25,6 +25,7 @@ const NotificationList = ({ notifications, markAsRead, deleteNotification }: Pro
             notification={notification}
             markAsRead={markAsRead}
             deleteNotification={deleteNotification}
+            accept={accept}
           />
         ))}
       </List>

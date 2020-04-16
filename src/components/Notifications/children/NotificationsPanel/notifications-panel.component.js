@@ -17,6 +17,7 @@ const NotificationsPanel = ({
   notifications,
   markAsRead,
   deleteNotification,
+  accept,
   filterNotification,
   tabs,
   isLoading
@@ -28,7 +29,7 @@ const NotificationsPanel = ({
     ) : (
       <React.Fragment>
         <Tabs {...{ list: tabs, click: filterNotification }} />
-        <NotificationList {...{ notifications, markAsRead, deleteNotification }} />
+        <NotificationList {...{ notifications, markAsRead, deleteNotification,accept}} />
       </React.Fragment>
     )}
   </Panel>

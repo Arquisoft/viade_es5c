@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import moment from 'moment';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Body, Delete, Img, Item, MarkAsRead, Message, Meta, Accept} from './notification-item.style';
+import {Body, Delete, Img, Item, MarkAsRead, Message, Meta} from './notification-item.style';
 
 type Props = {
   notification: Object,
@@ -13,7 +13,7 @@ type Props = {
 /**
  * Notification item to be shown for each notification in the notification list
  */
-const NotificationItem = ({ notification, markAsRead, children, deleteNotification }: Props) => {
+const NotificationItem = ({ notification, markAsRead, children, deleteNotification ,accept}: Props) => {
   const { read } = notification;
   const currentRead = read ? JSON.parse(read) : false;
   const { actor } = notification;
@@ -37,7 +37,9 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
     notification && notification.actor && notification.actor.image
       ? notification.actor.image
       : defaultImage;
+  console.log(notification);
   return (
+    
     <Item read={currentRead}>
       <a href={notification.actor && notification.actor.webId}>
         <Img
@@ -62,13 +64,14 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
       <MarkAsRead
         type="button"
         className="delete"
-        
+        onClick={() => accept(notification.object,notification.actor)}
       >
         <FontAwesomeIcon icon="check-circle" />
       </MarkAsRead>
       <Delete
         type="button"
         className="delete"
+        onClick={() => deleteNotification(notification.path)}
       >
       
         <FontAwesomeIcon icon="times-circle" />

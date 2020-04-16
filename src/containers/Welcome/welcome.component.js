@@ -83,7 +83,7 @@ export const WelcomePageContent = props => {
     const rutas=`${path}routes/`;
     const comentarios=`${path}comments/`;
     const media=`${path}resources/`;
-    const compartir = `${path}shared/`;
+    //const compartir = `${path}shared/`;
     if (permisosEscritura) {
       if (!await ldflexHelper.resourceExists(rutas)){
         await fc.createFolder(rutas,{createPath:true});
@@ -97,10 +97,11 @@ export const WelcomePageContent = props => {
       if (!await ldflexHelper.resourceExists(media)){
         await fc.createFolder(media,{createPath:true});
       }
+      /*
       if (!await ldflexHelper.resourceExists(compartir)){
         await fc.createFolder(compartir,{createPath:true});
       }
-      
+      */
       if(!await ldflexHelper.resourceExists(inboxPath)){
         
         await fc.createFolder(inboxPath, {createPath:true});
@@ -120,7 +121,7 @@ export const WelcomePageContent = props => {
           await permissionHelper.checkOrSetNoPermissions(rutas,webId);
           await permissionHelper.checkOrSetNoPermissions(comentarios,webId);
           await permissionHelper.checkOrSetNoPermissions(media,webId);
-          await permissionHelper.checkOrSetNoPermissions(compartir,webId);
+          //await permissionHelper.checkOrSetNoPermissions(compartir,webId);
           await permissionHelper.checkOrSetNoPermissions(path,webId);
 
           await permissionHelper.checkOrSetInboxAppendPermissions(
