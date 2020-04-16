@@ -6,7 +6,7 @@ class Route{
     this.points=points;
     this.description=description;
     this.comments=comments;
-    this.media='';
+    this.img='';
     this.distance=0;
     this.rank=0;
     this.date='';
@@ -21,7 +21,9 @@ class Route{
     this.points.push(new Point(43.384900,-5.851450));
     console.log(this.points)
   }
-
+  setImg(img){
+    this.img=img;
+  }
   setName(name){
     this.name=name;
   }
@@ -40,6 +42,9 @@ class Route{
   }
   getPoints(){
     return this.points;
+  }
+  getImg(){
+    return this.img;
   }
   
 }
