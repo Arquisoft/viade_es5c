@@ -7,19 +7,19 @@ import * as storageHelper from './storage';
 import * as permissionHelper from './permissions';
 
 function* entries(obj) {
-  for (const key of Object.keys(obj)) {
-    yield [key, obj[key]];
-  }
+    for (const key of Object.keys(obj)) {
+        yield [key, obj[key]];
+    }
 }
 
 export {
-  media,
-  expandedProperty,
-  entries,
-  ldflexHelper,
-  storageHelper,
-  successToaster,
-  errorToaster,
-  notification,
-  permissionHelper
+    media,
+    expandedProperty,
+    entries,
+    ldflexHelper,
+    storageHelper,
+    successToaster,
+    errorToaster,
+    notification,
+    permissionHelper
 };

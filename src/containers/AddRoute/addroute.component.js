@@ -9,7 +9,7 @@ import MediaLoader from "../../utils/MediaLoader";
 
 //import {Uploader} from '@inrupt/solid-react-components';
 
-type Props = {webId: String};
+type Props = { webId: String };
 
 class CreateRoute extends React.Component {
 
@@ -45,10 +45,10 @@ class CreateRoute extends React.Component {
         } else if (this.state.points.length === 0) {
             alert("No ha marcado ningún punto en el mapa.")
         } else {
-            let descripcion ;
-            if(this.description.current.value.length === 0){}
-            else{
-                descripcion= this.description.current.value;
+            let descripcion;
+            if (this.description.current.value.length === 0) {
+            } else {
+                descripcion = this.description.current.value;
             }
             
             
@@ -59,7 +59,7 @@ class CreateRoute extends React.Component {
             let parseadoRDF= await ParserRouteToRDF.parse(route);
            
             console.log(parseadoRDF);
-            
+
             //SUBIR AL POD
             
             const url=this.webID+"public/viade/routes/"+route.name;

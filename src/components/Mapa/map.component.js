@@ -13,9 +13,9 @@ class Mapa extends Component {
 
     render() {
         return (
-            <div style={{ height: '100vh', width: '100%' }}>
+            <div style={{height: '100vh', width: '100%'}}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'AIzaSyAvIiRezGEiWzjKcmje9tzq56ePzFC5hVI' }}
+                    bootstrapURLKeys={{key: 'AIzaSyAvIiRezGEiWzjKcmje9tzq56ePzFC5hVI'}}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >

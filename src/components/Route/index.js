@@ -1,7 +1,9 @@
 import React from 'react';
 
-funtion Route(){
-    return(
+funtion
+Route()
+{
+    return (
 
     );
 }

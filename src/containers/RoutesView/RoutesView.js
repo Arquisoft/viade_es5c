@@ -3,6 +3,7 @@ import {RouteView} from "./children/RouteView";
 import React from 'react';
 import {useTranslation} from "react-i18next";
 
+
 export const RoutesView = props => {
     const {t} = useTranslation();
     const {rutas} = props;

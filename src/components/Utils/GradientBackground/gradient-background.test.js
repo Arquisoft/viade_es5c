@@ -4,10 +4,10 @@ import GradientBackground from './gradient-background.component';
 
 afterAll(cleanup);
 
-const { container } = render(<GradientBackground />);
+const {container} = render(<GradientBackground/>);
 
 describe('GradientBackground', () => {
-  it('renders without crashing', () => {
-    expect(container).toBeTruthy();
-  });
+    it('renders without crashing', () => {
+        expect(container).toBeTruthy();
+    });
 });
