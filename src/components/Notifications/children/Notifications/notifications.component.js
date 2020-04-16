@@ -41,30 +41,32 @@ const Notifications = ({ webId, inbox }: Props) => {
     fetchNotification,
     filterNotification
   } = useNotification(webId);
-  const accept= async(ruta,friendwebid)=>{
+  const accept= async(ruta,friendwebid,notificationPath)=>{
     const path = await storageHelper.getAppStorage(webId);
     const fc   = new FC( auth );
     //Copiar la ruta, en el fichero del frienwebid
-    const friend_file_name1=friendwebid.name.split("//");
-    const friend_file_name2=friend_file_name1[1].split("/");
-    const friend_file_name=friend_file_name2[0];//VALOR YA PARA EL NOMBRE DEL FICHERO
+    const friend_file_name=friendwebid.name.split("//")[1].split("/")[0];
     //1-Se mira si existe el fichero
     const path_friend=`${path}shared/${friend_file_name}.jsonld`;
-    console.log(path_friend);
+    
     if (await ldflexHelper.resourceExists(path_friend)){//Si existe, se añade
       //Sacas el fichero, lo pasas a JSON, miras si se encuentra, y sino le añades al amigo
       var jsonFriend={};
       await getJSONFriend(path_friend).then(function(result) {
         jsonFriend = JSON.parse(result);
      }) 
+      const lista_rutas=jsonFriend.routes.filter(em=>em["@id"]===ruta);
+      if (lista_rutas>0){
+        //Ya se encuentra dentro
+      }else{
+        
+        jsonFriend.routes.push({"@id":ruta});
+        try{
+          await fc.createFile(path_friend, JSON.stringify(jsonFriend), "text/plain", {});
+        }catch(err){
+          console.log(err);
+        }
       
-      jsonFriend.routes.push({"@id":ruta});
-      console.log(jsonFriend.routes);
-      try{
-        const url=webId.split("profile/card#me")[0]+"viade2Prueba1/shared/"+path_friend;
-         await fc.createFile(path_friend, JSON.stringify(jsonFriend), "text/plain", {});
-      }catch(err){
-        console.log(err);
       }
       
     }else{//Si no existe, se crea
@@ -87,7 +89,6 @@ const Notifications = ({ webId, inbox }: Props) => {
         
       };
       try{
-        const url=webId.split("profile/card#me")[0]+"viade2Prueba1/shared/"+path_friend;
          await fc.createFile(path_friend, JSON.stringify(compartir), "text/plain", {});
       }catch(err){
         console.log(err);
@@ -97,6 +98,9 @@ const Notifications = ({ webId, inbox }: Props) => {
 
       //Subirlo al sitio
     }
+    //En cualquier caso, desaparece la notificación!!!!!!!!
+    deleteNotification(notificationPath);
+    
     
   }
   const { timestamp } = useLiveUpdate();

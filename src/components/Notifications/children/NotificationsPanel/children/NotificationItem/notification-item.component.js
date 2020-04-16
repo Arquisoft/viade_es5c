@@ -31,13 +31,12 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
    * @TODO: send boolean to pod like boolean and not string
    */
 
-  const opCurrentRead = !currentRead;
+  //const opCurrentRead = !currentRead;
   const defaultImage = 'img/icon/empty-profile.svg';
   const actorImage =
     notification && notification.actor && notification.actor.image
       ? notification.actor.image
       : defaultImage;
-  console.log(notification);
   return (
     
     <Item read={currentRead}>
@@ -64,7 +63,9 @@ const NotificationItem = ({ notification, markAsRead, children, deleteNotificati
       <MarkAsRead
         type="button"
         className="delete"
-        onClick={() => accept(notification.object,notification.actor)}
+        onClick={() => accept(notification.object,notification.actor,notification.path)
+  
+                }
       >
         <FontAwesomeIcon icon="check-circle" />
       </MarkAsRead>
