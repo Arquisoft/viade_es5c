@@ -24,6 +24,13 @@ const Notifications = ({ webId, inbox }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const ref = useRef();
   const toggleNotifications = () => setIsOpen(!isOpen);
+  const getJSONFriend = async (jsonUrl) => {
+    
+    const fc   = new FC( auth );
+    if(await fc.itemExists(jsonUrl)) {
+        return await fc.readFile(jsonUrl);
+    }
+}
   /**
    * Notification hook from solid-react-components
    */
@@ -36,7 +43,6 @@ const Notifications = ({ webId, inbox }: Props) => {
   } = useNotification(webId);
   const accept= async(ruta,friendwebid)=>{
     const path = await storageHelper.getAppStorage(webId);
-    
     const fc   = new FC( auth );
     //Copiar la ruta, en el fichero del frienwebid
     const friend_file_name1=friendwebid.name.split("//");
@@ -46,17 +52,24 @@ const Notifications = ({ webId, inbox }: Props) => {
     const path_friend=`${path}shared/${friend_file_name}.jsonld`;
     console.log(path_friend);
     if (await ldflexHelper.resourceExists(path_friend)){//Si existe, se añade
-
-      /*
-      json.routes.push({"@id":ruta});
-      console.log(json.routes);
-      */
+      //Sacas el fichero, lo pasas a JSON, miras si se encuentra, y sino le añades al amigo
+      var jsonFriend={};
+      await getJSONFriend(path_friend).then(function(result) {
+        jsonFriend = JSON.parse(result);
+     }) 
+      
+      jsonFriend.routes.push({"@id":ruta});
+      console.log(jsonFriend.routes);
+      try{
+        const url=webId.split("profile/card#me")[0]+"viade2Prueba1/shared/"+path_friend;
+         await fc.createFile(path_friend, JSON.stringify(jsonFriend), "text/plain", {});
+      }catch(err){
+        console.log(err);
+      }
+      
     }else{//Si no existe, se crea
-      var text='{ "@context": { "@version": 1.1,"routes": {"@container": "@list","@id": "viade:routes"},"viade": "http://arquisoft.github.io/viadeSpec/" },';
-      text+='"routes":[';
-      text+='{'+'"@id": "'+ruta+'" } ] }';
-      var json=JSON.parse(text);
-      const routeJsonLD = {
+      
+      const compartir = {
         "@context": {
             "@version": 1.1,
             "routes": 
@@ -73,16 +86,15 @@ const Notifications = ({ webId, inbox }: Props) => {
         ] 
         
       };
-      console.log(routeJsonLD.routes)
-      /*
       try{
         const url=webId.split("profile/card#me")[0]+"viade2Prueba1/shared/"+path_friend;
-         await fc.createFile(url, parseadoRDF, "text/turtle", {});
+         await fc.createFile(path_friend, JSON.stringify(compartir), "text/plain", {});
       }catch(err){
         console.log(err);
       }
       
-*/
+      
+
       //Subirlo al sitio
     }
     
