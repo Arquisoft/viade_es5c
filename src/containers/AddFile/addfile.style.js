@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {media} from "../../utils";
 
-export const ShareWrapper = styled.section`
+export const Wrapper = styled.section`
   padding: 150px
   position: relative
   display: flex;
@@ -15,31 +15,43 @@ export const ShareWrapper = styled.section`
   width: 100vw !important;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  flex-direction: column !important;
-  position: relative;
-   background-image: url('img/pattern-geo.png'),
-    radial-gradient(#ff8000, #ff8000, #ff8000);
-  background-repeat: repeat, no-repeat;
-  padding: 30px 20px;
-  max-width: 300px;
-`;
 
-export const Input = styled.input`
-  margin: 5px;
-  color: black;
+export const Header = styled.div`
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-image: url('img/pattern-geo.png'),
+    linear-gradient(135deg, #B05103 0%, #FD7200 50%, #F48E3C 100%);
+    background-repeat: repeat, no-repeat;
+    padding: 30px 20px;
 `;
 
 export const Button = styled.button`
-  max-width: 128px;
-  display: inline-block;
-  margin-left: 5px;
+    margin: 25px;
+    max-width: 128px;
+    display: inline-block;
+    
+    &:first-child {
+    margin-right: 10px;
+    }
 `;
 
-export const Label = styled.label`
-  margin: 5px;
-  color: white;
+
+export const INPUT = styled.input`
+  margin-left: 650px;
+  padding: 50px;
+  color: black;
+`;
+
+
+export const LABEL = styled.label`
+    vertical-align: middle
+    padding: 15px;
+`;
+
+export const H1 = styled.h1`
+    color:white;
 `;
 
 export const TextArea = styled.textarea`
