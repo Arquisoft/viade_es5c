@@ -39,14 +39,15 @@ export const Button = styled.button`
 
 
 export const INPUT = styled.input`
-  margin-left: 650px;
-  padding: 50px;
+  align: middle;
+  display: block; 
+  padding: 20px;
   color: black;
 `;
 
 
 export const LABEL = styled.label`
-    vertical-align: middle
+    vertical-align: middle;
     padding: 15px;
 `;
 

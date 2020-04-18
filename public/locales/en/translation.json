@@ -263,5 +263,9 @@
     "title": "Insert your friend name",
     "namePlaceHolder": "Friend name",
     "buttonSee": "Show routes"
+  },
+  "addFile": {
+    "title": "Upload file",
+    "loadPod": "Load Pod"
   }
 }

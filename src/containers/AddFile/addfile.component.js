@@ -2,11 +2,10 @@ import React from 'react';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 import {ParserToRoute, ParserRouteToRDF} from "../../parseo";
-
-
 import RouteVisualizer from '../../components/RouteVisualizer/RouteVisualizer.component'
 import ReactDOM from 'react-dom';
 import {Button, H1, Header, INPUT, LABEL, Wrapper} from "./addfile.style";
+import i18n from '../../i18n';
 
 const LoadFile = (props) => {
     let files = '';
@@ -56,12 +55,12 @@ const LoadFile = (props) => {
         <Wrapper>
             <div>
                 <Header>
-                    <H1>Subir ruta</H1>
+                    <H1>{i18n.t('addFile.title')}</H1>
                 </Header>
                 <LABEL>
                     <INPUT type="file" name="files[]" id="file" onChange={selectFile}/>
                 </LABEL>
-                <Button onClick={handlerUpload}>Cargar POD</Button>
+                <Button onClick={handlerUpload}>{i18n.t('addFile.loadPod')}</Button>
 
                 <div id="mapa"></div>
             </div>
