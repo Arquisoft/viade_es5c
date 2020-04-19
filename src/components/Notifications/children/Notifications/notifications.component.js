@@ -42,19 +42,21 @@ const Notifications = ({ webId, inbox }: Props) => {
     filterNotification
   } = useNotification(webId);
   const accept= async(ruta,friendwebid,notificationPath)=>{
+    //Saca el path de la aplicacion, o sea viade/
     const path = await storageHelper.getAppStorage(webId);
     const fc   = new FC( auth );
-    //Copiar la ruta, en el fichero del frienwebid
+
+    //Sacamos el nombre que debería tener el fichero de compartir
     const friend_file_name=friendwebid.name.split("//")[1].split("/")[0];
-    //1-Se mira si existe el fichero
-    const path_friend=`${path}shared/${friend_file_name}.jsonld`;
     
+    const path_friend=`${path}shared/${friend_file_name}.jsonld`;
+    //1-Se mira si existe el fichero
     if (await ldflexHelper.resourceExists(path_friend)){//Si existe, se añade
       //Sacas el fichero, lo pasas a JSON, miras si se encuentra, y sino le añades al amigo
       var jsonFriend={};
       await getJSONFriend(path_friend).then(function(result) {
         jsonFriend = JSON.parse(result);
-     }) 
+      }); 
       const lista_rutas=jsonFriend.routes.filter(em=>em["@id"]===ruta);
       if (lista_rutas>0){
         //Ya se encuentra dentro
