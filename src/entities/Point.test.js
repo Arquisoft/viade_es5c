@@ -20,6 +20,8 @@ describe.only('Create a new Point', () => {
         expect(point1.getLat()).toBe('nuevalat');
         expect(point1.getLng()).toBe('nuevalng');
         expect(point1.order).toBe('nuevoord');
+        expect(point1.getPoint().lat).toBe(point1.getLat());
+        expect(point1.getPoint().long).toBe(point1.getLng());
     });
 });
 
