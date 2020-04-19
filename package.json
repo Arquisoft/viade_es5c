@@ -87,8 +87,9 @@
       "react-app-polyfill/jsdom"
     ],
     "testPathIgnorePatterns": [
-      "\\node_modules\\",
-      "\\scripts\\"
+      "\\\\node_modules\\\\",
+      "\\\\scripts\\\\",
+      "/scripts/"
     ],
     "testEnvironment": "jsdom",
     "testURL": "http://localhost",

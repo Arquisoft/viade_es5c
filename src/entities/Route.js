@@ -28,7 +28,7 @@ class Route{
     this.name=name;
   }
   setDescription(description){
-    this.comments = description;
+    this.description = description;
 
   }
   setDistance(distance){
