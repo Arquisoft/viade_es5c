@@ -2,7 +2,7 @@ import React from 'react';
 import {cleanup, fireEvent, render} from 'react-testing-library';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import CreateShareRoute from "../ShareRoutes/children/shareroutes.component";
+import CreateShareRoute from "./children/shareroutes.component";
 
 configure({adapter: new Adapter()});
 

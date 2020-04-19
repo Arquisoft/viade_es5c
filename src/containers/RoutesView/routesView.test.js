@@ -2,8 +2,8 @@ import React from 'react';
 import {cleanup} from 'react-testing-library';
 import {configure, mount, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {RoutesView} from '../RoutesView/RoutesView';
-import {RouteView} from '../RoutesView/children/RouteView';
+import {RoutesView} from './RoutesView';
+import {RouteView} from './children/RouteView';
 import Route from "../../entities/Route";
 import Point from "../../entities/Point";
 

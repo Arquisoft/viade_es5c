@@ -1,18 +1,24 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 import { HashRouter as Router } from 'react-router-dom';
-import TextEditor from '../TextEditor/text-editor.component';
+import PageNotFound from './page-not-found.component';
 
-describe('Text Editor', () => {
+describe('Page Not Found', () => {
   afterAll(cleanup);
 
   const { container } = render(
     <Router>
-      <TextEditor />
+      <PageNotFound />
     </Router>
   );
 
   test('App renders without crashing', () => {
     expect(container).toBeTruthy();
+  });
+
+  test('includes link to homepage', () => {
+    const idsLink = document.querySelector('.ids-link');
+
+    expect(idsLink).toBeTruthy();
   });
 });
