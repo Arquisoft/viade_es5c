@@ -30,7 +30,7 @@ const Notifications = ({ webId, inbox }: Props) => {
     if(await fc.itemExists(jsonUrl)) {
         return await fc.readFile(jsonUrl);
     }
-}
+  }
   /**
    * Notification hook from solid-react-components
    */
