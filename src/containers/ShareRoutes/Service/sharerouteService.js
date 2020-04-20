@@ -1,14 +1,13 @@
   
-import { notification ,storageHelper,permissionHelper} from '@utils';
-import { NotificationTypes,AccessControlList ,useNotification} from '@inrupt/solid-react-components';
+import { storageHelper,permissionHelper} from '@utils';
+import { NotificationTypes,AccessControlList} from '@inrupt/solid-react-components';
 
 export const publish = async (createNotification,discoverInbox, content, friendWebId, type) => {
   try {
     
     
     type = type || NotificationTypes.ANNOUNCE;
-    const appPath = await storageHelper.getAppStorage(content.actor);
-    console.log(await discoverInbox(appPath));
+    const appPath = await storageHelper.getAppStorage(friendWebId);
     const license = 'https://creativecommons.org/licenses/by-sa/4.0/';
     
     /*
@@ -20,13 +19,14 @@ export const publish = async (createNotification,discoverInbox, content, friendW
       ]);
       console.log(inboxes);
       */
-    const inboxes={path:appPath+"inbox/",
+    const to={path:appPath+"inbox/",
                 name:"Viade"};
                 
       /*
       const to = notification.getDefaultInbox(inboxes, "Viade", "Global");
                 console.log(to);
       console.log(to);
+      */
     
     if (to){
       try{
@@ -42,17 +42,13 @@ export const publish = async (createNotification,discoverInbox, content, friendW
         //Sacar los amigos que tienen permiso 
         //Se le añade como amigo
         //Se cambia el fichero .acl con los nuevos amigos
-        //const routePath=content.object;
-        //updatePermission(content.actor,friendWebId,routePath)
+        const routePath=content.object;
+        updatePermission(content.actor,friendWebId,routePath)
       }catch(err){
         console.log(err);
       }
       
     }
-    
-   */
-   
-    
     return true;
   } catch (e) {
     console.error(e);
