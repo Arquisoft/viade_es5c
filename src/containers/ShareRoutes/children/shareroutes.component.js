@@ -29,7 +29,7 @@ class CreateShareRoute extends React.Component {
                 object: this.state.routeWebID,
                 target: this.state.friendWebID
             };
-            console.log(await ShareRouteService.publish(this.props.sendNot, contentNotif, this.state.friendWebID,NotificationTypes.OFFER));
+            console.log(await ShareRouteService.publish(this.props.sendNot,this.props.discoverIn, contentNotif, this.state.friendWebID,NotificationTypes.OFFER));
             console.log("se supone que subido");
         }catch(error) {
             console.log(error);

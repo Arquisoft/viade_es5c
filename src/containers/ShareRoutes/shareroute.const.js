@@ -3,8 +3,7 @@ import {CreateShareRoute} from "./children";
 import {useNotification} from '@inrupt/solid-react-components';
 const ShareRoute = (props)=> {
     const {webId}=props;
-      const { createNotification} = useNotification(webId);
-      
+      const { createNotification,discoverInbox} = useNotification(webId);
   
       const sendNotification=useCallback(
         async (content, to, type, license) => {
@@ -20,7 +19,7 @@ const ShareRoute = (props)=> {
       
      return (
       <div>
-        <CreateShareRoute sendNot={sendNotification} ></CreateShareRoute>
+        <CreateShareRoute sendNot={sendNotification} discoverIn={discoverInbox} ></CreateShareRoute>
       </div>
     );
     
