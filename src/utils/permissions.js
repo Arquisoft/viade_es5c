@@ -19,7 +19,7 @@ export const checkPermissions = async (webId, errorMessage) => {
    * Get permissions from trustedApp.
    */
   const userApp = await AppPermission.checkPermissions(webId);
-
+  
   /**
    * Get modes permissions from solid-react-components
    */
@@ -27,16 +27,19 @@ export const checkPermissions = async (webId, errorMessage) => {
   const { APPEND, READ, WRITE, CONTROL } = permissions;
 
   // If we are missing permissions that the app requires, display an error message with a Learn More link
-  if (
+  if ((
     userApp === null ||
     userApp.permissions === null ||
     !checkAppPermissions(userApp.permissions, [APPEND, READ, WRITE, CONTROL])
-  ) {
+  )) {
+    
     errorToaster(errorMessage.message, errorMessage.title, {
       label: errorMessage.label,
       href: errorMessage.href
     });
+    return false;
   }
+  return true;
 };
 
 /**
@@ -187,7 +190,7 @@ export const setPermissionInRouteToFriend =async (webId,friendWebId,routePath)=>
       const permissions = [
         {
           agents: friendWebId,
-          modes: [AccessControlList.MODES.WRITE]
+          modes: [AccessControlList.MODES.READ]
         }
       ];
       const ACLFile = new AccessControlList(webId, routePath);
