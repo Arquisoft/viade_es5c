@@ -6,8 +6,8 @@ import FC from 'solid-file-client';
 export const getRouteShareByFriend = async (webId,friendWebId) => {
   //Mirar si tiene un archivo
   const path = await storageHelper.getAppStorage(webId);
-  const friend_file_name=friendWebId.name.split("//")[1].split("/")[0];
-    
+  const friend_file_name=friendWebId.split("//")[1].split("/")[0];
+
     const path_friend=`${path}shared/${friend_file_name}.jsonld`;
     const lista=[];
     //1-Se mira si existe el fichero

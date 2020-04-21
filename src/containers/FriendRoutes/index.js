@@ -1,3 +1,3 @@
-import FriendRoute from './friendroute.component';
+import {FriendrouteContainer} from './friendroute.container';
 
-export default FriendRoute;
+export default FriendrouteContainer;
