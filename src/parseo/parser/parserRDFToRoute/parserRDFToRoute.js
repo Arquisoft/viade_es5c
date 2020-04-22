@@ -64,7 +64,8 @@ export class Rutas extends Component<Props> {
                         pointsArray.push(new Point(points[j].getDecimal(schema.latitude), points[j].getDecimal(schema.longitude)));
 
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
-
+                    ruta.setImg(webId.split("profile/card#me")[0]+"viade/resources/"+route.getString(schema.name));
+                    console.log("IMG:   ----" + ruta.getImg())
                     rutas.push(ruta);
                 }
             }

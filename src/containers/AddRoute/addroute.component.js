@@ -7,7 +7,8 @@ import FC from 'solid-file-client';
 import auth from "solid-auth-client";
 import MediaLoader from "../../utils/MediaLoader";
 
-//import {Uploader} from '@inrupt/solid-react-components';
+
+
 
 type Props = {webId: String};
 
