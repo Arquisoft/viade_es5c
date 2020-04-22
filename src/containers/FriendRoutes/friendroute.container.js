@@ -73,20 +73,15 @@ export class FriendrouteContainer extends Component<Props> {
             }
         }
 
-
         var rutas = [];
 
-        for (let i = 0; i < routes.length; i++) {
+        for await(const route of routes) {
             var routeDocument;
-
             console.log("Cuantas rutas hay segun donde pincho: "+ routes.length)
-            var objeto = new Object();
-            objeto.url = routes[i];
-            console.log(objeto.url)
 
-            await fetchDocument(Object(routes[i])).then((content) => {
+            await fetchDocument(Object(route)).then((content) => {
                 routeDocument = content;
-                console.log("routeDocument "+ routeDocument)
+                console.log("routeDocument "+ routeDocument);
                 console.log("content "+ content)
             }).catch(err => routeDocument = null);
 
@@ -108,11 +103,8 @@ export class FriendrouteContainer extends Component<Props> {
                  }
             }
         }
-
         this.setState({routes: rutas});
-
-    }
-
+    };
 
     render() {
         const {friends, routes} = this.state;
