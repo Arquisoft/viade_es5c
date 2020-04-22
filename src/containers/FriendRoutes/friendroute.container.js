@@ -2,12 +2,11 @@ import React, {Component} from "react";
 import data from "@solid/query-ldflex";
 import FriendRoute from "./friendroute.component";
 import {getRouteShareByFriend} from "./Service/friendrouteService";
-import FC from "solid-file-client";
-import auth from "solid-auth-client";
 import {fetchDocument} from "tripledoc";
 import {schema, space} from "rdf-namespaces";
 import Point from "../../entities/Point";
 import Route from "../../entities/Route";
+
 
 export class FriendrouteContainer extends Component<Props> {
 
@@ -15,71 +14,73 @@ export class FriendrouteContainer extends Component<Props> {
         super(props);
         this.state = {
             friends: [],
-            rutas: []
+            routes: []
         }
     }
 
     componentDidMount() {
         const {webId} = this.props;
-        if (webId){
-            this.getRoutesSharedWithMe();
-            console.log("PASE POR AQUI")
+        if (webId) {
+            this.getFriends();
         }
     }
 
     componentDidUpdate(prevProps) {
         const {webId} = this.props;
-        if (webId && webId !== prevProps.webId){
-            this.getRoutesSharedWithMe();
+        if (webId && webId !== prevProps.webId) {
+            this.getFriends();
         }
     }
 
-    getRoutesSharedWithMe = async () => {
+    getFriends = async () =>{
         this.setState({isLoading: true});
         const {webId} = this.props;
         const user = data[webId];
         let friends = [];
-        let friendWebId = "";
 
         for await (const friend of user.friends) {
-            friendWebId = await friend.value;
-            let routes = await getRouteShareByFriend(webId, friendWebId)
-            /*if (!routes.length == 0) {
-                friends.push(routes + '\n');
-            }*/
-            if (routes.length !== 0) {
-                let rutas = []
-                for(let x = 0; x < routes.length; x++){
-                    //rutas.push(routes[x].split(",")[x]);
-                    console.log("PRUEBA BORJA: " + rutas);
-                    console.log("ROUTES " + routes[x]);
-                    rutas.push(routes[x]);
-                }
-                console.log("RUTAAAAAAAS " + rutas.length)
-                friendsRouteIDS.push(rutas);
-                console.log("final " + friendsRouteIDS)
-               /* if(true){ //nop
-                    friendsRouteIDS.push(routes + '\n');
-                    console.log("FRIENDS ROUTES IDS " + friendsRouteIDS);
-                }*/
+            const friendWebId = await friend.value;
+            const friend_data = data[friendWebId];
+            const name = await friend_data.name;
+            var information = {
+                "webId": friendWebId,
+                "name": name.toString()
             }
+            friends.push(information);
+        }
+        console.log("He sacao tus amigos")
+        this.setState({friends:friends});
+    }
+
+    getRoutesSharedWithMe = async (friendWebId) => {
+        console.log("Voy a intentar sacar la ruta del amigo al que pinches")
+        console.log("Has pinchao a tu amigo " + friendWebId)
+        this.setState({isLoading: true});
+        const {webId} = this.props;
+        const user = data[webId];
+
+        let routes = []
+        for await (const friend of user.friends) {
+            routes = await getRouteShareByFriend(webId, friendWebId)
         }
 
-        //this.setState({friends});
-        console.log("Lista " + friends);
-        console.log("POR AQUI TB");
-        const fc = new FC(auth);
-        const {webId} = this.props;
+        if (routes.length !== 0) {
+            var ruta = []
+            for (let x = 0; x < routes.length; x++) {
+                ruta.push(routes[x]);
+            }
+        }
+        this.setState({route:ruta});
+
         var rutas = [];
-        console.log("state friends " + this.state.friends)
-        console.log("state friends length" + this.state.friends.length)
-        for (let i = 0; i < this.state.friends.length; i++) {
-            let routeDocument = null;
-            console.log("PRUEBA: " +routeDocument);
-            console.log("this.state.friends[i].url "+ this.state.friends[i])
-            fetchDocument(this.state.friends[i]).then((content) => {
+
+        for (let i = 0; i < this.state.route.length; i++) {
+            let routeDocument;
+            console.log("prueba url "+ this.state.route[i])
+            /*fetchDocument(this.state.route[i]).then((content) => {
                 routeDocument = content;
-            }).catch(err => routeDocument = null);
+            }).catch(err => routeDocument = null);*/
+            routeDocument = this.state.route[i];
             console.log("routeDocument " + routeDocument);
 
             if (routeDocument != null) {
@@ -98,12 +99,18 @@ export class FriendrouteContainer extends Component<Props> {
         }
 
         this.setState({rutas: rutas});
+
+
     }
 
+
     render() {
-        const {friends, rutas} = this.state;
+        const {friends} = this.state;
+        const see = {
+            getRoutesSharedWithMe: this.getRoutesSharedWithMe.bind(this)
+        };
         return (
-            <FriendRoute {...{friends, rutas}} />
+            <FriendRoute {...{friends, see}} />
         );
     }
 }
