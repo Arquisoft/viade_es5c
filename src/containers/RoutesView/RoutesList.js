@@ -1,13 +1,13 @@
-import React, {Component} from "react";
-import {schema, space} from 'rdf-namespaces';
-import {fetchDocument} from 'tripledoc';
-import {RoutesView} from './RoutesView';
+import React, { Component } from "react";
+import { schema, space } from 'rdf-namespaces';
+import { fetchDocument } from 'tripledoc';
+import { RoutesView } from './RoutesView';
 import Point from '../../entities/Point';
 import Route from '../../entities/Route';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 
-export class RoutesList extends Component<Props> {
+export class RoutesList extends Component < Props > {
 
     constructor(props) {
         super(props);
@@ -18,18 +18,18 @@ export class RoutesList extends Component<Props> {
     }
 
     componentDidMount() {
-        const {webId} = this.props;
+        const { webId } = this.props;
         if (webId) this.listRoutes();
     }
 
     componentDidUpdate(prevProps) {
-        const {webId} = this.props;
+        const { webId } = this.props;
         if (webId && webId !== prevProps.webId) this.listRoutes();
     }
 
-    listRoutes = async () => {
+    listRoutes = async() => {
         const fc = new FC(auth);
-        const {webId} = this.props;
+        const { webId } = this.props;
         const profileDocument = await fetchDocument(webId);
         const profile = profileDocument.getSubject(webId);
         const storage = profile.getRef(space.storage);
@@ -57,31 +57,23 @@ export class RoutesList extends Component<Props> {
                     points.forEach(point =>
                         pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
 
-                    <
-                    < << <
-                    < < HEAD
-                :
-                    src / parseo / parser / parserRDFToRoute / parserRDFToRoute.js
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
                     ruta.setImg(webId.split("profile/card#me")[0] + "viade/resources/" + route.getString(schema.name));
                     rutas.push(ruta);
-                ======
-                    =
                     if (route.getString(schema.name) !== null)
                         rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
-                >>>>>>>
-                    develop:src / containers / RoutesView / RoutesList.js
                 }
             }
         }
-        this.setState({rutas});
+        this.setState({ rutas });
     };
 
     render() {
-        const {rutas} = this.state;
+        const { rutas } = this.state;
 
-        return (
-            <RoutesView {...{rutas}} />
+        return ( <
+            RoutesView {... { rutas } }
+            />
         );
     }
 }

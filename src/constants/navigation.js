@@ -1,8 +1,7 @@
 /**
  * Object mapping of known possible inboxes for the user
  */
-export const NavigationItems = [
-    {
+export const NavigationItems = [{
         id: 'welcome',
         icon: 'img/icon/home.svg',
         label: 'navBar.welcome',
@@ -36,7 +35,7 @@ export const NavigationItems = [
         id: 'shareRoute',
         icon: 'img/icon/share.svg',
         label: 'navBar.shareRoute',
-        to: '/shareRoute'
+        to: '/routes/shareRoute'
     },
     {
         id: 'friendRoute',
@@ -47,8 +46,7 @@ export const NavigationItems = [
 
 ];
 
-export const ProfileOptions = [
-    {
+export const ProfileOptions = [{
         label: 'navBar.profile',
         onClick: 'profileRedirect',
         icon: 'cog'
@@ -59,5 +57,3 @@ export const ProfileOptions = [
         icon: 'lock'
     }
 ];
-
-
