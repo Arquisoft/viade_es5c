@@ -59,7 +59,7 @@ const LoadFile = (props) => {
                 Cargar ruta:
             <Input type="file" name="files[]" id="file" onChange={selectFile} />
             </Label> 
-            <Button onClick={handlerUpload}>Cargar POD</Button>
+            <Button id="submitId" onClick={handlerUpload}>Cargar POD</Button>
             
             <div id="mapa"></div>
         </div>

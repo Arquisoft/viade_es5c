@@ -1,53 +1,47 @@
 import React from 'react';
-import {cleanup} from 'react-testing-library';
-import {configure, render} from 'enzyme';
+import {cleanup, queryByAttribute, fireEvent, render} from 'react-testing-library';
+import { BrowserRouter as Router } from 'react-router-dom';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-//import AddFile from '../AddFile/index';
-//import RouteVisualizer from "../../components/RouteVisualizer/RouteVisualizer.component";
+import LoadFile from './addfile.component';
+import RouteVisualizer from "../../components/RouteVisualizer/RouteVisualizer.component";
 
 configure({adapter: new Adapter()});
 
-    afterAll(cleanup);
-    test('render', () => {
-        //const wrapper = render(<AddFile/>);
-        //expect(wrapper.find(AddFile)).toBeDefined();
-        expect(true).toBeTruthy();
-    });
+const getById = queryByAttribute.bind(null, 'id');
+const { container } = render(
+    <Router>
+        <LoadFile />
+    </Router>
+);
 
-/*
-const rutas = [];
+afterAll(cleanup);
 
-function setUp() {
-
-}
-
-test('render correctamente', () => {
-    const wrapper = render(<AddFile rutas={[]}/>);
-    expect(wrapper.find(AddFile)).toBeDefined();
-    //expect(true).toBeTruthy();
+test('App renders without crashing', () => {
+    expect(container).toBeTruthy();
 });
 
-test('render correctamente con rutas vacio', () => {
-    const wrapper = render(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(AddFile)).toBeDefined();
-    //expect(true).toBeTruthy();
+test('render', () => {
+    const wrapper = mount(<LoadFile/>);
+    expect(wrapper.find(LoadFile)).toBeDefined();
 });
 
-test('render correctamente con rutas lleno', () => {
-    setUp();
-    const wrapper = render(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(AddFile)).toBeDefined();
-    //expect(true).toBeTruthy();
+test('render correctamente con enzyme', () => {
+    const wrapper = mount(<LoadFile files={[]}/>);
+    expect(wrapper.find(LoadFile)).toBeDefined();
 });
 
-test('Con rutas vacio, num de rutas = 0', () => {
-    const wrapper = render(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(RouteVisualizer).length).toBe(0);
-});
+it('Submit simulation', function(){
+    // Cojo el input de file y le meto un mock
+    const fileInput = getById(container, 'file');
+    const mockChange = jest.fn();
+    fileInput.onChange = mockChange;
 
-/*test('Con rutas lleno, num de rutas igual a rutas.length', () => {
-    setUp();
-    const wrapper = mount(<AddFile rutas={rutas}/>);
-    expect(wrapper.find(RouteVisualizer).length).toBe(3);
-    //expect(true).toBeTruthy();
-});*/
+    // Click en boton y compruebo que existe el routerVisualizer
+    const submitButton = getById(container, 'submitId');
+    fireEvent.click(submitButton);
+    expect(RouteVisualizer).toBeTruthy();
+
+    const wrapper = mount(<LoadFile/>);
+    expect(wrapper.find(RouteVisualizer)).toBeDefined();
+});
