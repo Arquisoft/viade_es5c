@@ -2,8 +2,12 @@ import Point from './Point.js'
 import {uuid} from 'uuidv4';
 
 class Route{
+<<<<<<< HEAD
+  constructor(name,points,description="",comments=[]){
+=======
     constructor(name, points, description = "", comments = "") {
         this.uuid = uuid;
+>>>>>>> develop
     this.name=name;
     this.points=points;
     this.comments=comments;
@@ -11,6 +15,7 @@ class Route{
     this.distance=0;
     this.rank=0;
     this.date='';
+    
   }
 
   parseRoute() {

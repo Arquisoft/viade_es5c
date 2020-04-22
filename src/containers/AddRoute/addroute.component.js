@@ -7,7 +7,8 @@ import FC from 'solid-file-client';
 import auth from "solid-auth-client";
 import MediaLoader from "../../utils/MediaLoader";
 
-//import {Uploader} from '@inrupt/solid-react-components';
+
+
 
 type Props = { webId: String };
 
@@ -33,13 +34,7 @@ class CreateRoute extends React.Component {
     };
 
     async handleSave(event) {
-        this.ImgFile=this.img.current.files[0];
-        if(this.img.current.files[0] !== undefined){
-            this.PhotoURL= this.webID + "viade/resources/" + this.img.current.files[0].name ;
-            let loader = new MediaLoader();
-            loader.saveImage(this.PhotoURL, this.ImgFile);
-        
-        }
+       
         if (this.title.current.value.length === 0) {
             alert("La ruta tiene que tener un titulo.")
         } else if (this.state.points.length === 0) {
@@ -50,7 +45,13 @@ class CreateRoute extends React.Component {
             } else {
                 descripcion = this.description.current.value;
             }
+            this.ImgFile=this.img.current.files[0];
+            if(this.img.current.files[0] !== undefined){
+                this.PhotoURL= this.webID + "viade/resources/" + this.title.current.value ;
+                let loader = new MediaLoader();
+                loader.saveImage(this.PhotoURL, this.ImgFile);
             
+            }
             
             let route = new Route(this.title.current.value,this.state.points,descripcion);
             route.setImg(this.PhotoURL === "" ? null : this.PhotoURL)
