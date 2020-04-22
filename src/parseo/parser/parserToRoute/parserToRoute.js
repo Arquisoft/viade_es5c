@@ -179,7 +179,8 @@ class ParserToRouteClass {
               var array= new Array(point.length);
               
                 for(var i=0;i<point.length;i++){
-                  array[i]=new Point(point[i].getAttribute("lat"),point[i].getAttribute("lon"),i+1,point[i].getElementsByTagName("ele"));
+                  array[i]=new Point(point[i].getAttribute("lat"),point[i].getAttribute("lon"),i+1,point[i].getElementsByTagName("ele")[0].innerHTML);
+                  
                 }
                 return array;
                 
