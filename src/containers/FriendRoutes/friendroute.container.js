@@ -40,27 +40,37 @@ export class FriendrouteContainer extends Component<Props> {
         this.setState({isLoading: true});
         const {webId} = this.props;
         const user = data[webId];
-        let friends = [];
+        let friendsRouteIDS = [];
+        var rutas = [];
         let friendWebId = "";
 
         for await (const friend of user.friends) {
             friendWebId = await friend.value;
-            let routes = await getRouteShareByFriend(webId, friendWebId)
-            if (!routes.length == 0) {
-                friends.push(routes + '\n');
-            }
+            let routes = await getRouteShareByFriend(webId, friendWebId);
 
+            if (!routes.length == 0) {
+                if(routes.length > 1){
+                    for(let x = 0; x < routes.length; x++){
+                        let rutas = []
+                        rutas.push(routes[x].split(",")[x]);
+                        console.log("RUTAS " + rutas);
+                        friendsRouteIDS.push(routes[x].split(","));
+                    }
+                }else{
+                    friendsRouteIDS.push(routes + '\n');
+                    console.log("FRIENDS ROUTES IDS " + friendsRouteIDS);
+                }
+            }
         }
 
-        this.setState({friends});
+        //this.setState({friends});
         console.log("Lista " + friends);
     }
 
     listRoutes = async () => {
         console.log("POR AQUI TB");
-        const fc = new FC(auth);
-        const {webId} = this.props;
-        var rutas = [];
+
+
         console.log("state friends " + this.state.friends)
         console.log("state friends length" + this.state.friends.length)
         for (let i = 0; i < this.state.friends.length; i++) {
