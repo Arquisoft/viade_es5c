@@ -57,8 +57,14 @@ export class RoutesList extends Component<Props> {
                     points.forEach(point =>
                         pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
 
+<<<<<<< HEAD:src/parseo/parser/parserRDFToRoute/parserRDFToRoute.js
+                    let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+                    ruta.setImg(webId.split("profile/card#me")[0]+"viade/resources/"+route.getString(schema.name));
+                    rutas.push(ruta);
+=======
                     if (route.getString(schema.name) !== null)
                         rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
+>>>>>>> develop:src/containers/RoutesView/RoutesList.js
                 }
             }
         }

@@ -15,9 +15,9 @@ class MediaLoader {
         });
     }
 
-    loadMedia(url, callback) { // explicacion debajo !!
+    loadMedia(url, callback) { 
         const fc = new FC(auth);
-        let content = fc.readFile( url );
+        let content = fc.readFile( url );    
         content.then(value => callback(value));
     }
 
