@@ -88,14 +88,14 @@ class CreateRoute extends React.Component {
                 <Header>
                     <h1 className={"text--white"}>Nueva Ruta</h1>
                     <Label>Titulo</Label>
-                    <Input type="text" size="20" placeholder="Nueva ruta" ref={this.title}/>
+                    <Input id="titulo" type="text" size="20" placeholder="Nueva ruta" ref={this.title}/>
                     <Label>Descripcion</Label>
-                    <Input type="text" size="100" placeholder="Descripcion" ref={this.description}/>
+                    <Input id="descripcion" type="text" size="100" placeholder="Descripcion" ref={this.description}/>
                     <Label>Sube una foto</Label>
                     <Input type="file" ref={this.img} onClick={this.handle} data-testid="input-img" id="input-img"
                                accept={".png"}/>
                     <br/>
-                    <Button onClick={this.handleSave}> Guardar ruta </Button>
+                    <Button id="submitId" onClick={this.handleSave}> Guardar ruta </Button>
                 </Header>
                 <CreateMap parentCallback={this.callbackFunction}/>
             </RouteWrapper>
