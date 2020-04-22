@@ -255,6 +255,7 @@
     "grantAccess": "Grant Access"
   },
   "friends": {
-    "title": "This are your solid Friends"
+    "title": "This are your solid Friends",
+    "profile": "Profile of"
   }
 }

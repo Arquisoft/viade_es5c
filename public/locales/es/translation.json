@@ -255,6 +255,7 @@
     "grantAccess": "Dar Acceso"
   },
   "friends": {
-    "title": "Estos son tus amigos de SOLID"
+    "title": "Estos son tus amigos de SOLID",
+    "profile": "Perfil de"
   }
 }
