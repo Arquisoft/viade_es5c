@@ -101,8 +101,22 @@ export const RouteView = props => {
                         closeOnDocumentClick
                     >
                         <h4>Comentarios</h4>
-                           
-                            <Button
+                        <p>Introduce el texto de tu comentario:</p>
+                        <InputGroup className="mb-3">
+                            <FormControl aria-describedby="basic-addon1" onChange={handleCommentChange} id={"input-comentario"}/>
+                            <InputGroup.Prepend>
+                                <Button
+                                    variant="success"
+                                    data-testid="button-add-comment"
+                                    id="button-add-comment"
+                                    size="sm"
+                                    onClick={() => addComment()}
+                                >
+                                     Añadir comentario
+                                </Button>
+                            </InputGroup.Prepend>
+                        </InputGroup>
+                        <Button
                                 variant="success"
                                 data-testid="button-show-comment"
                                 id="button-show-comment"
@@ -110,24 +124,9 @@ export const RouteView = props => {
                                 onClick={() => comments()}
                             >
                                 Ver Comentarios
-                            </Button>
+                        </Button>
                             
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <Button
-                                            variant="success"
-                                            data-testid="button-add-comment"
-                                            id="button-add-comment"
-                                            size="sm"
-                                            onClick={() => addComment()}
-                                        >
-                                            Añadir comentario
-                                        </Button>
-                                    </InputGroup.Prepend>
-                                    <FormControl aria-describedby="basic-addon1" onChange={handleCommentChange} id={"input-comentario"}/>
-                                </InputGroup>
-                            
-                                <div id={"comentarios"}></div>
+                        <div id={"comentarios"}></div>
                             
                     </Popup>
 
