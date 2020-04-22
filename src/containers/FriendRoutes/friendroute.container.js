@@ -77,47 +77,50 @@ export class FriendrouteContainer extends Component<Props> {
         var rutas = [];
 
         for (let i = 0; i < routes.length; i++) {
-            let routeDocument;
+            var routeDocument;
 
-            console.log(routes[i].split(".ttl")[0])
-
+            console.log("Cuantas rutas hay segun donde pincho: "+ routes.length)
             var objeto = new Object();
-            objeto.url = routes[i].split(".ttl")[0]
+            objeto.url = routes[i];
+            console.log(objeto.url)
 
-            fetchDocument(objeto.url).then((content) => {
+            await fetchDocument(Object(routes[i])).then((content) => {
                 routeDocument = content;
+                console.log("routeDocument "+ routeDocument)
+                console.log("content "+ content)
             }).catch(err => routeDocument = null);
 
-            console.log("routeDocument " + routeDocument);
+            console.log("routeDocument2 " + routeDocument);
 
-            if (routeDocument != null) {
+             if (routeDocument != null) {
                 const route = routeDocument.getSubject("http://example.org/myRoute");
                 const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
 
                 console.log("He pasao el if del routeDocument != null");
 
-                //Provisional cause we dont really know how to obtain the points from the schema
-                let pointsArray = [];
-                for (i = 0; i < points.length; i++)
-                    pointsArray.push(new Point(points[i].getDecimal(schema.latitude), points[i].getDecimal(schema.longitude)));
-
-                let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
-                console.log(ruta);
-                rutas.push(ruta);
+                 let pointsArray = [];
+                 points.forEach(point =>
+                     pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
+                 console.log("por el medio a ver si pasa")
+                 if (route.getString(schema.name) !== null) {
+                     rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
+                    console.log(rutas.length)
+                 }
             }
         }
 
-        /*this.setState({route: ruta});*/
+        this.setState({routes: rutas});
+
     }
 
 
     render() {
-        const {friends} = this.state;
+        const {friends, routes} = this.state;
         const see = {
             getRoutesSharedWithMe: this.getRoutesSharedWithMe.bind(this)
         };
         return (
-            <FriendRoute {...{friends, see}} />
+            <FriendRoute {...{friends, routes, see}} />
         );
     }
 }
