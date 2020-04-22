@@ -1,7 +1,7 @@
 import Point from './Point.js'
 
 class Route{
-  constructor(name,points,description="",comments=""){
+  constructor(name,points,description="",comments=[]){
     this.name=name;
     this.points=points;
     this.description=description;
@@ -10,6 +10,7 @@ class Route{
     this.distance=0;
     this.rank=0;
     this.date='';
+    
   }
   
 
