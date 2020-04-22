@@ -3,9 +3,8 @@ import {NavBar, Notification} from '@components';
 import {useTranslation} from 'react-i18next';
 import {NavBarContainer} from './children';
 import {LanguageDropdown} from '@util-components';
-import {errorToaster, ldflexHelper,storageHelper,notification} from '@utils';
+import {errorToaster, ldflexHelper} from '@utils';
 import {NavigationItems} from '@constants';
-import { storage } from 'rdf-namespaces/dist/space';
 
 type Props = {
     webId: string

@@ -4,23 +4,21 @@ import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
     AddFile,
+    AddRoute,
     FormModelConverter,
     FormModelRenderer,
+    FriendRoute,
     Friends,
-    RoutesList,
     Login,
     PageNotFound,
     Profile,
     Register,
     RegistrationSuccess,
-    TextEditor,
-    AddRoute,
-    Welcome,
+    RoutesList,
     ShareRoute,
-    FriendRoute
-
+    TextEditor,
+    Welcome
 } from './containers';
-import {Rutas} from "./parseo"
 
 const privateRoutes = [
     {

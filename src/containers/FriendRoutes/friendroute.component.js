@@ -1,10 +1,8 @@
-import React, {Component} from "react";
+import React from "react";
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
 import {H1, Header} from "./friendroute.style";
 import i18n from '../../i18n';
 import Button from "react-bootstrap/Button";
-import RouteVisualizer from "../../components/RouteVisualizer/RouteVisualizer.component";
-import Popup from "reactjs-popup";
 import {RouteView} from "../RoutesView/children/RouteView";
 
 const FriendRoute = (props) => {

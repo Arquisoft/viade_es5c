@@ -76,29 +76,29 @@ export const fetchLdflexDocument = async documentUri => {
 };
 
 export const resourceExists = async resourcePath => {
-  try {
-    
-    const result = await auth.fetch(resourcePath);
-    return result.status === 403 || result.status === 200;
-  } catch (e) {
-    errorToaster(e.message, 'Error');
-  }
+    try {
+
+        const result = await auth.fetch(resourcePath);
+        return result.status === 403 || result.status === 200;
+    } catch (e) {
+        errorToaster(e.message, 'Error');
+    }
 };
 
-export const userAnauthorized=async resourcePath=>{
-  try{
-    const result=await auth.fetch(resourcePath);
-    return result.ok===true && result.statusText==='User Unauthorized';
-  }catch(e){
-    errorToaster(e.message,'Error');
-  }
+export const userAnauthorized = async resourcePath => {
+    try {
+        const result = await auth.fetch(resourcePath);
+        return result.ok === true && result.statusText === 'User Unauthorized';
+    } catch (e) {
+        errorToaster(e.message, 'Error');
+    }
 }
 
 export const discoverInbox = async document => {
-  try {
-    const documentExists = await resourceExists(document);
-    
-    if (!documentExists) return false;
+    try {
+        const documentExists = await resourceExists(document);
+
+        if (!documentExists) return false;
 
         const inboxDocument = await ldflex[document]['ldp:inbox'];
         const inbox = inboxDocument ? await inboxDocument.value : false;
@@ -114,10 +114,11 @@ export const discoverInbox = async document => {
  * @returns {Promise<string|*>}
  */
 export const getLinkedInbox = async resourcePath => {
-  
-  try {
-    const inboxLinkedPath = await ldflex[resourcePath].inbox;
-    if (inboxLinkedPath) {
-      return inboxLinkedPath.value;
+
+    try {
+        const inboxLinkedPath = await ldflex[resourcePath].inbox;
+        if (inboxLinkedPath) {
+            return inboxLinkedPath.value;
+        }
     }
-};
+    ;

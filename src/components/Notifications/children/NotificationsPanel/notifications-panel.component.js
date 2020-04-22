@@ -14,25 +14,25 @@ type Props = {
 };
 
 const NotificationsPanel = ({
-  notifications,
-  markAsRead,
-  deleteNotification,
-  accept,
-  filterNotification,
-  tabs,
-  isLoading
-}: Props) => (
-  <Panel>
-    <Title>Notifications</Title>
-    {isLoading ? (
-      <Loader absolute />
-    ) : (
-      <React.Fragment>
-        <Tabs {...{ list: tabs, click: filterNotification }} />
-        <NotificationList {...{ notifications, markAsRead, deleteNotification,accept}} />
-      </React.Fragment>
-    )}
-  </Panel>
+                                notifications,
+                                markAsRead,
+                                deleteNotification,
+                                accept,
+                                filterNotification,
+                                tabs,
+                                isLoading
+                            }: Props) => (
+    <Panel>
+        <Title>Notifications</Title>
+        {isLoading ? (
+            <Loader absolute/>
+        ) : (
+            <React.Fragment>
+                <Tabs {...{list: tabs, click: filterNotification}} />
+                <NotificationList {...{notifications, markAsRead, deleteNotification, accept}} />
+            </React.Fragment>
+        )}
+    </Panel>
 );
 
 export default NotificationsPanel;

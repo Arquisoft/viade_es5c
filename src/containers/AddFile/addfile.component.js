@@ -1,7 +1,7 @@
 import React from 'react';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
-import {ParserToRoute, ParserRouteToRDF} from "../../parseo";
+import {ParserRouteToRDF, ParserToRoute} from "../../parseo";
 import RouteVisualizer from '../../components/RouteVisualizer/RouteVisualizer.component'
 import ReactDOM from 'react-dom';
 import {Button, H1, Header, INPUT, LABEL, Wrapper} from "./addfile.style";
@@ -19,30 +19,32 @@ const LoadFile = (props) => {
     const handlerUpload = async (e) => {
         if (files !== '') {
             e.preventDefault(); //Cancelar el evento
-        const fichero=files[0];
-        const {webId} = props;
-        const fc   = new FC( auth );
-        //const nombre=fichero.name;
-        
-        let parseadoRuta;
-        try{
-            parseadoRuta=ParserToRoute.parse(fichero);
-        }catch(err){
-            console.log("COGE EL ERROR");
-        }
-                
-        
-        let rutaClass=await parseadoRuta.then((rutaClass)=>{return rutaClass});
-        let parseadoRDF=ParserRouteToRDF.parse(rutaClass);
-        console.log(parseadoRDF);
-        const url=webId.split("profile/card#me")[0]+"viade2Prueba1/routes/"+rutaClass.name+".ttl";
+            const fichero = files[0];
+            const {webId} = props;
+            const fc = new FC(auth);
+            //const nombre=fichero.name;
+
+            let parseadoRuta;
+            try {
+                parseadoRuta = ParserToRoute.parse(fichero);
+            } catch (err) {
+                console.log("COGE EL ERROR");
+            }
+
+
+            let rutaClass = await parseadoRuta.then((rutaClass) => {
+                return rutaClass
+            });
+            let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
+            console.log(parseadoRDF);
+            const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.name + ".ttl";
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             console.log("subido");
 
-        
-        const domContainer = document.querySelector('#mapa');
-        ReactDOM.render(<RouteVisualizer ruta= {rutaClass}></RouteVisualizer>, domContainer);
-        
+
+            const domContainer = document.querySelector('#mapa');
+            ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
+
         }
 
     }

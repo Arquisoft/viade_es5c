@@ -1,6 +1,6 @@
 import React from 'react';
 import {cleanup} from 'react-testing-library';
-import {configure, render} from 'enzyme';
+import {configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 //import AddFile from '../AddFile/index';
 //import RouteVisualizer from "../../components/RouteVisualizer/RouteVisualizer.component";

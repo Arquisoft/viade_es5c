@@ -3,7 +3,7 @@ import data from "@solid/query-ldflex";
 import FriendRoute from "./friendroute.component";
 import {getRouteShareByFriend} from "./Service/friendrouteService";
 import {fetchDocument} from "tripledoc";
-import {schema, space} from "rdf-namespaces";
+import {schema} from "rdf-namespaces";
 import Point from "../../entities/Point";
 import Route from "../../entities/Route";
 
@@ -32,7 +32,7 @@ export class FriendrouteContainer extends Component<Props> {
         }
     }
 
-    getFriends = async () =>{
+    getFriends = async () => {
         this.setState({isLoading: true});
         const {webId} = this.props;
         const user = data[webId];
@@ -49,7 +49,7 @@ export class FriendrouteContainer extends Component<Props> {
             friends.push(information);
         }
         console.log("He sacao tus amigos")
-        this.setState({friends:friends});
+        this.setState({friends: friends});
     }
 
     getRoutesSharedWithMe = async (friendWebId) => {
@@ -77,30 +77,30 @@ export class FriendrouteContainer extends Component<Props> {
 
         for (const route of routes) {
             var routeDocument;
-            console.log("Cuantas rutas hay segun donde pincho: "+ routes.length)
+            console.log("Cuantas rutas hay segun donde pincho: " + routes.length)
             console.log(route)
             await fetchDocument(Object(route)).then((content) => {
                 routeDocument = content;
-                console.log("routeDocument "+ routeDocument);
-                console.log("content "+ content)
+                console.log("routeDocument " + routeDocument);
+                console.log("content " + content)
             }).catch(err => routeDocument = null);
 
             console.log("routeDocument2 " + routeDocument);
 
-             if (routeDocument != null) {
+            if (routeDocument != null) {
                 const route = routeDocument.getSubject("http://example.org/myRoute");
                 const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
 
                 console.log("He pasao el if del routeDocument != null");
 
-                 let pointsArray = [];
-                 points.forEach(point =>
-                     pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
-                 console.log("por el medio a ver si pasa")
-                 if (route.getString(schema.name) !== null) {
-                     rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
+                let pointsArray = [];
+                points.forEach(point =>
+                    pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
+                console.log("por el medio a ver si pasa")
+                if (route.getString(schema.name) !== null) {
+                    rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
                     console.log(rutas.length)
-                 }
+                }
             }
         }
         this.setState({routes: rutas});

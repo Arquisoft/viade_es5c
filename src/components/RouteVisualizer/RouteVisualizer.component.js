@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Map, Marker, Polyline, GoogleApiWrapper} from 'google-maps-react';
+import {GoogleApiWrapper, Map, Marker, Polyline} from 'google-maps-react';
 
 
 const mapStyles = {
@@ -20,23 +20,23 @@ export class RouteVisualizer extends Component {
 
     render() {
         return (
-        <div>
-            <h1> {this.ruta.name}</h1>
-            <p> {this.ruta.description}</p>
-            <Map
-                google={this.props.google}
-                zoom={14}
-                style={mapStyles}
-                initialCenter={{
-                    lat: this.ruta.points[0].latitud,
-                    lng: this.ruta.points[0].longitud
-                }}
-            >
-                {this.drawRoute()}
-                {this.addPolyline()}
+            <div>
+                <h1> {this.ruta.name}</h1>
+                <p> {this.ruta.description}</p>
+                <Map
+                    google={this.props.google}
+                    zoom={14}
+                    style={mapStyles}
+                    initialCenter={{
+                        lat: this.ruta.points[0].latitud,
+                        lng: this.ruta.points[0].longitud
+                    }}
+                >
+                    {this.drawRoute()}
+                    {this.addPolyline()}
 
-            </Map>
-        </div>);
+                </Map>
+            </div>);
     }
 
 
@@ -62,7 +62,7 @@ export class RouteVisualizer extends Component {
                          strokeOpacity={0.8}
                          strokeWeight={4}
                          path={this.pathCoordinates}>
-                </Polyline>
+        </Polyline>
     }
 }
 

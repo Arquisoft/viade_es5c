@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, cleanup} from 'react-testing-library';
+import {cleanup, render} from 'react-testing-library';
 import {HashRouter as Router} from 'react-router-dom';
 import PageNotFound from '../PageNotFound/page-not-found.component';
 

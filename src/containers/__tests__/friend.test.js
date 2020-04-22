@@ -1,6 +1,6 @@
 import React from 'react';
 import {cleanup} from 'react-testing-library';
-import {configure, mount, render} from 'enzyme';
+import {configure, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {FriendPage} from '../Friends/friendComponent';
 import {Friend} from '../Friends/components/Entity/friend';
