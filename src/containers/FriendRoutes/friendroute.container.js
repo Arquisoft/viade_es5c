@@ -75,10 +75,10 @@ export class FriendrouteContainer extends Component<Props> {
 
         var rutas = [];
 
-        for await(const route of routes) {
+        for (const route of routes) {
             var routeDocument;
             console.log("Cuantas rutas hay segun donde pincho: "+ routes.length)
-
+            console.log(route)
             await fetchDocument(Object(route)).then((content) => {
                 routeDocument = content;
                 console.log("routeDocument "+ routeDocument);

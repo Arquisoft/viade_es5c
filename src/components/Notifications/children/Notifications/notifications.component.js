@@ -47,7 +47,8 @@ const Notifications = ({ webId, inbox }: Props) => {
     const fc   = new FC( auth );
 
     //Sacamos el nombre que debería tener el fichero de compartir
-    const friend_file_name=friendwebid.name.split("//")[1].split("/")[0];
+    console.log(friendwebid)
+    const friend_file_name=friendwebid.webId.split("//")[1].split("/")[0];
     
     const path_friend=`${path}shared/${friend_file_name}.jsonld`;
     //1-Se mira si existe el fichero
