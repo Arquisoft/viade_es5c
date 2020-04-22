@@ -24,17 +24,21 @@ export const RouteView = props => {
     }
 
     function addComment() {
-        let date = new Date();
-        ruta.comments.push({
-            comment: {
-                text: comentario,
-                createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
-            }
-        });
-        comentario = "";
-        comments();
-        const domContainer = document.querySelector('#input-comentario');
-        domContainer.value = "";
+        if(comentario !== "" ){
+            let date = new Date();
+            ruta.comments.push({
+             comment: {
+                    text: comentario,
+                    createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
+                }
+            });
+            comentario = "";
+            comments();
+            const domContainer = document.querySelector('#input-comentario');
+            domContainer.value = "";
+        }else{
+            alert("El comentario esta vacío")
+        }
     }
 
     function handleCommentChange(event) {
@@ -44,7 +48,7 @@ export const RouteView = props => {
 
 
     function comments() {
-        try {
+        if(ruta.comments.length !== 0){
             let commentarios = [];
             for (let i = 0; i < ruta.comments.length; i++) {
                 commentarios.push(<Card><Card.Body> <Card.Title>{ruta.comments[i].comment.text}</Card.Title>
@@ -54,8 +58,7 @@ export const RouteView = props => {
             }
             const domContainer = document.querySelector('#comentarios');
             ReactDOM.render(commentarios, domContainer);
-        }
-        catch (e) {
+        }else{
             const domContainer = document.querySelector('#comentarios');
             ReactDOM.render(<Card><Card.Body><Card.Title>No hay comentarios en esta
                 ruta</Card.Title></Card.Body></Card>, domContainer);
