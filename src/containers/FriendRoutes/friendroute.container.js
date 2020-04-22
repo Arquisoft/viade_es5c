@@ -55,8 +55,10 @@ export class FriendrouteContainer extends Component<Props> {
     getRoutesSharedWithMe = async (friendWebId) => {
         console.log("Voy a intentar sacar la ruta del amigo al que pinches")
         console.log("Has pinchao a tu amigo " + friendWebId)
+
         this.setState({isLoading: true});
         const {webId} = this.props;
+        console.log("Mi webId " + webId)
         const user = data[webId];
 
         let routes = []
@@ -70,23 +72,30 @@ export class FriendrouteContainer extends Component<Props> {
                 ruta.push(routes[x]);
             }
         }
-        this.setState({route:ruta});
+
 
         var rutas = [];
 
-        for (let i = 0; i < this.state.route.length; i++) {
+        for (let i = 0; i < routes.length; i++) {
             let routeDocument;
-            console.log("prueba url "+ this.state.route[i])
-            /*fetchDocument(this.state.route[i]).then((content) => {
+
+            console.log(routes[i].split(".ttl")[0])
+
+            var objeto = new Object();
+            objeto.url = routes[i].split(".ttl")[0]
+
+            fetchDocument(objeto.url).then((content) => {
                 routeDocument = content;
-            }).catch(err => routeDocument = null);*/
-            routeDocument = this.state.route[i];
+            }).catch(err => routeDocument = null);
+
             console.log("routeDocument " + routeDocument);
 
             if (routeDocument != null) {
                 const route = routeDocument.getSubject("http://example.org/myRoute");
                 const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
+
                 console.log("He pasao el if del routeDocument != null");
+
                 //Provisional cause we dont really know how to obtain the points from the schema
                 let pointsArray = [];
                 for (i = 0; i < points.length; i++)
@@ -98,9 +107,7 @@ export class FriendrouteContainer extends Component<Props> {
             }
         }
 
-        this.setState({rutas: rutas});
-
-
+        /*this.setState({route: ruta});*/
     }
 
 
