@@ -39,7 +39,6 @@ export class FriendrouteContainer extends Component<Props> {
         const {webId} = this.props;
         const user = data[webId];
         let friends = [];
-        let friendsRouteIDS = [];
         let friendWebId = "";
 
         for await (const friend of user.friends) {
@@ -64,12 +63,13 @@ export class FriendrouteContainer extends Component<Props> {
                     console.log("FRIENDS ROUTES IDS " + friendsRouteIDS);
                 }*/
             }
-
         }
 
-        this.setState({friends});
+        //this.setState({friends});
         console.log("Lista " + friends);
         console.log("POR AQUI TB");
+        const fc = new FC(auth);
+        const {webId} = this.props;
         var rutas = [];
         console.log("state friends " + this.state.friends)
         console.log("state friends length" + this.state.friends.length)
