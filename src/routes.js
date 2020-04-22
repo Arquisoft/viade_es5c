@@ -15,9 +15,12 @@ import {
     RegistrationSuccess,
     TextEditor,
     AddRoute,
-    Welcome, ShareRoute
+    Welcome,
+    ShareRoute,
+    FriendRoute
 
 } from './containers';
+import {Rutas} from "./parseo"
 
 const privateRoutes = [
     {
@@ -69,7 +72,14 @@ const privateRoutes = [
         id: 'shareRoute',
         path: '/routes/shareRoute',
         component: ShareRoute
+    },
+    {
+        id: 'friendRoute',
+        path: '/friendRoute',
+        component: FriendRoute
     }
+
+
 ];
 
 const Routes = () => (

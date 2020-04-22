@@ -58,6 +58,7 @@
     "addFile": "Añadir fichero",
     "addRoute": "Añadir ruta",
     "shareRoute": "Compartir ruta",
+    "friendRoute": "Rutas amigos",
     "routes": "Rutas",
     "lenguage": "Idioma",
     "languages": {
@@ -255,7 +256,15 @@
     "grantAccess": "Dar Acceso"
   },
   "friends": {
-    "title": "Estos son tus amigos de SOLID",
-    "profile": "Perfil de"
+    "title": "Estos son tus amigos de SOLID"
+  },
+  "friendRoutes": {
+    "title": "Rutas compartidas contigo",
+    "namePlaceHolder": "Nombre de amigo",
+    "buttonSee": "Ver rutas"
+  },
+  "addFile": {
+    "title": "Subir fichero",
+    "loadPod": "Cargar Pod"
   }
 }

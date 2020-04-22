@@ -1,9 +1,10 @@
 import React from "react";
-import {ShareWrapper, Input, Label} from "../shareroutes.style";
+import {ShareWrapper} from "../shareroutes.style";
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 import {ShareRouteService} from "../Service";
-import {NotificationTypes} from '@inrupt/solid-react-components';
+import { NotificationTypes } from '@inrupt/solid-react-components';
+import {Button, H1, H2, Header, Input, LABEL} from "../../FriendRoutes/friendroute.style";
 
 class CreateShareRoute extends React.Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class CreateShareRoute extends React.Component {
                 object: this.state.routeWebID,
                 target: this.state.friendWebID
             };
-            await ShareRouteService.publish(this.props.sendNot, contentNotif, this.state.friendWebID, NotificationTypes.OFFER);
+            console.log(await ShareRouteService.publish(this.props.sendNot,this.props.discoverIn, contentNotif, this.state.friendWebID,NotificationTypes.OFFER));
             console.log("se supone que subido");
         } catch (error) {
             console.log(error);
@@ -37,8 +38,7 @@ class CreateShareRoute extends React.Component {
 
 
     }
-
-
+    
     handleChange = (e) => {
         const {name, value} = e.target;
         this.setState({[name]: value})
@@ -52,39 +52,31 @@ class CreateShareRoute extends React.Component {
     }
 
 
-    render() {
 
-        const {routeWebID, friendWebID} = this.state
+    render(){
+        const { routeWebID, friendWebID } = this.state
         return (
             <ShareWrapper>
-                <div>
-                    <h1>Insert the following webID's to share the route</h1>
+                <Header> <H1>Insert the following webID's to share the route</H1> </Header>
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                            <Label>Route's webID:
-                                <Input
-                                    type="text"
-                                    name="routeWebID"
-                                    value={routeWebID}
-                                    onChange={this.handleChange}
-                                />
-                            </Label>
+
+                            <LABEL>
+                                <H2>Route's webID:</H2>
+                                <Input type="text" name="routeWebID" value={routeWebID} onChange={this.handleChange}/>
+                            </LABEL>
                         </div>
                         <div>
-                            <Label>Insert your friend's webID:
-                                <Input
-                                    type="text"
-                                    name="friendWebID"
-                                    value={friendWebID}
-                                    onChange={this.handleChange}
-                                />
-                            </Label>
+                            <LABEL>
+                                <H2>Insert your friend's webID:</H2>
+                                <Input type="text" name="friendWebID" value={friendWebID} onChange={this.handleChange}/>
+                            </LABEL>
                         </div>
-                        <button type="submit">Send</button>
+                        <Button type="submit">Send</Button>
                     </form>
-                </div>
+
             </ShareWrapper>
-        )
+        );
     }
 }
 

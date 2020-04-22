@@ -53,7 +53,42 @@ class ParserToRouteClass {
                         //Mirar por qué no es válido
                         console.log(er);
                     }
-                };
+                    
+                    
+                    const  route = new Route(nombre, points,descripcion);
+                  resolve(route);
+                }catch(er){
+                  //Mirar por qué no es válido
+                  console.log(er);
+                }
+              };
+              
+        }
+        if (parser===2){
+          //gpx
+          
+          reader.onload = ()=> {
+            var gpx;
+           
+            try{
+              var xmlParser = new DOMParser();
+              gpx = xmlParser.parseFromString(reader.result, "text/xml");
+        
+              const points= this.getCoordenadasGPX(gpx);
+              
+              var name=f.name.split(".")[0];
+              /*
+              var trk=gpx.getElementsByTagName("trk");
+              if (trk.length>0){
+                if (trk[0].getElementsByTagName("name").length>0){
+                  //Tiene nombre
+                }
+              }
+             */
+                      
+              const  route = new Route(name, points);
+              resolve(route);
+            }catch(er){
 
             }
             if (parser === 2) {
@@ -154,25 +189,23 @@ class ParserToRouteClass {
     }
 
 
-    getCoordenadasGPX = gpx => {
-
-        if (gpx.getElementsByTagName("trk") !== undefined) {
-            var trk = gpx.getElementsByTagName("trk");
-
-
-            if (trk.length === 1) {
-                var trkseg = trk[0].getElementsByTagName("trkseg");
-
-                if (trkseg !== undefined &&
-                    trkseg.length === 1) {
-                    var point = trkseg[0].getElementsByTagName("trkpt");
-                    var array = new Array(point.length);
-
-                    for (var i = 0; i < point.length; i++) {
-                        array[i] = new Point(point[i].getAttribute("lat"), point[i].getAttribute("lon"), i + 1, point[i].getElementsByTagName("ele"));
-                    }
-                    return array;
-
+    getCoordenadasGPX = gpx =>{
+      
+      if (gpx.getElementsByTagName("trk")!==undefined){
+        var trk=gpx.getElementsByTagName("trk");
+        
+        
+        if (trk.length===1){
+          var trkseg=trk[0].getElementsByTagName("trkseg");
+          
+          if (trkseg!==undefined &&
+           trkseg.length===1){
+             var point=trkseg[0].getElementsByTagName("trkpt");
+              var array= new Array(point.length);
+              
+                for(var i=0;i<point.length;i++){
+                  array[i]=new Point(point[i].getAttribute("lat"),point[i].getAttribute("lon"),i+1,point[i].getElementsByTagName("ele")[0].innerHTML);
+                  
                 }
 
             }
