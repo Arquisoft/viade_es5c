@@ -4,10 +4,10 @@ import Panel from './panel.component';
 
 afterAll(cleanup);
 
-const { container } = render(<Panel />);
+const {container} = render(<Panel/>);
 
 describe('Panel', () => {
-  it('renders without crashing', () => {
-    expect(container).toBeTruthy();
-  });
+    it('renders without crashing', () => {
+        expect(container).toBeTruthy();
+    });
 });

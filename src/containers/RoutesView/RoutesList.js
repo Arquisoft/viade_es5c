@@ -1,13 +1,13 @@
-import Route from '../../../entities/Route.js';
 import React, {Component} from "react";
 import {space, schema} from 'rdf-namespaces';
 import {fetchDocument} from 'tripledoc';
-import {RoutesView} from "../../../containers/RoutesView/RoutesView";
-import Point from "../../../entities/Point.js"
+import {RoutesView} from './RoutesView';
+import Point from '../../entities/Point';
+import Route from '../../entities/Route';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 
-export class Rutas extends Component<Props> {
+export class RoutesList extends Component<Props> {
 
     constructor(props) {
         super(props);
@@ -28,14 +28,10 @@ export class Rutas extends Component<Props> {
     }
 
     listRoutes = async () => {
-        const fc   = new FC( auth );
+        const fc = new FC(auth);
         const {webId} = this.props;
-
-
         const profileDocument = await fetchDocument(webId);
         const profile = profileDocument.getSubject(webId);
-
-        // Get the root URL of the user's Pod:
         const storage = profile.getRef(space.storage);
 
         let folder;
@@ -43,7 +39,7 @@ export class Rutas extends Component<Props> {
             folder = content;
         }).catch(err => folder = null);
 
-        var rutas = [];
+        let rutas = [];
 
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
@@ -53,25 +49,26 @@ export class Rutas extends Component<Props> {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
 
-
                 if (routeDocument != null) {
                     const route = routeDocument.getSubject("http://example.org/myRoute");
                     const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
 
-                    //Provisional cause we dont really know how to obtain the points from the schema
                     let pointsArray = [];
-                    for (let j = 0; j < points.length; j++)
-                        pointsArray.push(new Point(points[j].getDecimal(schema.latitude), points[j].getDecimal(schema.longitude)));
+                    points.forEach(point =>
+                        pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
 
+<<<<<<< HEAD:src/parseo/parser/parserRDFToRoute/parserRDFToRoute.js
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
                     ruta.setImg(webId.split("profile/card#me")[0]+"viade/resources/"+route.getString(schema.name));
                     rutas.push(ruta);
+=======
+                    if (route.getString(schema.name) !== null)
+                        rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
+>>>>>>> develop:src/containers/RoutesView/RoutesList.js
                 }
             }
         }
-
         this.setState({rutas});
-
     };
 
     render() {

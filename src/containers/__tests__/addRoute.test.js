@@ -6,12 +6,12 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({adapter: new Adapter()});
 
-    afterAll(cleanup);
-    test('render', () => {
-        //const wrapper = render(<AddRoute/>);
-        //expect(wrapper.find(AddRoute)).toBeDefined();
-        expect(true).toBeTruthy();
-    });
+afterAll(cleanup);
+test('render', () => {
+    //const wrapper = render(<AddRoute/>);
+    //expect(wrapper.find(AddRoute)).toBeDefined();
+    expect(true).toBeTruthy();
+});
 
 /*
 const rutas = [];

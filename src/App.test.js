@@ -7,9 +7,9 @@ import App from './App';
 configure({adapter: new Adapter()});
 
 describe('<App/>', () => {
-  afterAll(cleanup);
-  test('render', () => {
-    const wrapper = shallow(<App/>);
-    expect(wrapper.find(App)).toBeDefined();
-  });
+    afterAll(cleanup);
+    test('render', () => {
+        const wrapper = shallow(<App/>);
+        expect(wrapper.find(App)).toBeDefined();
+    });
 });

@@ -61,7 +61,7 @@ export class CreateMap extends Component {
         var {points} = this.state;
         points = update(points, {
             $push: [
-               new Point( clickEvent.latLng.lat()+0, clickEvent.latLng.lng()+0 ,points.length)
+                new Point(clickEvent.latLng.lat() + 0, clickEvent.latLng.lng() + 0, points.length)
 
             ],
         });
@@ -79,7 +79,7 @@ export class CreateMap extends Component {
         return markers;
     };
 
-    handleMarkerRightclick (index, event) {
+    handleMarkerRightclick(index, event) {
         /*
          * All you modify is data, and the view is driven by data.
          * This is so called data-driven-development. (And yes, it's now in
@@ -91,8 +91,8 @@ export class CreateMap extends Component {
                 [index, 1]
             ],
         });
-        this.setState({ markers });
-        
+        this.setState({markers});
+
     };
 
     render() {
@@ -103,7 +103,7 @@ export class CreateMap extends Component {
 
                 {this.state.markers.map((marker, index) => {
                     return (
-                        <Marker position={{lat: marker.position.lat, lng: marker.position.lng}} />
+                        <Marker position={{lat: marker.position.lat, lng: marker.position.lng}}/>
                     );
                 })}
                 <Polyline

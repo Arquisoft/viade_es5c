@@ -83,7 +83,6 @@
   "welcome": {
     "welcome": "Welcome",
     "doneMessage": "All done ?",
-
     "title": "<0>Viade_es5c</0>",
     "description": "<0>Viade_es5c is a decentralized route management system based on Solid specifications.</0>",
     "integrantesEquipo": "Project members:\n",
@@ -94,7 +93,6 @@
     "integrante5": "Borja Rodriguez Lorenzo",
     "integrante6": "Bernardo Begega Calleja",
     "informacionEquipo": "Lab group L05. Oviedo University. Computer Engineering School.",
-
     "fairUsageText": "The Solid and inrupt logos included in the Generator are for the purposes of example and attribution. We expect application developers will fork the design system and customize to include your own brand in your Solid application projects, or override the example theme in your application code.",
     "contactUsTitle": "Contact Us",
     "contactUsText": "<0>If you have additional questions about the use of the Solid React SDK by inrupt, the Application Generator, or inrupt’s brand, please contact <1>support@inrupt.com<1>.</0>",

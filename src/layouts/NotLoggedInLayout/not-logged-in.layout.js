@@ -18,37 +18,37 @@ const FooterContainer = styled.div`
 `;
 
 const NotLoggedInLayout = props => {
-  const { component: Component, webId, ...rest } = props;
-  const { t } = useTranslation();
-  const ComponentWrapper = styled(Component)`
+    const {component: Component, webId, ...rest} = props;
+    const {t} = useTranslation();
+    const ComponentWrapper = styled(Component)`
     padding-bottom: 60px;
     height: 100%;
     padding-top: 60px;
   `;
-  return !webId ? (
-    <Route
-      {...rest}
-      component={matchProps => (
-        <Container>
-          <NavBar
-            {...matchProps}
-            toolbar={[
-              {
-                component: () => <LanguageDropdown {...{ t, ...props }} />,
-                id: 'language'
-              }
-            ]}
-          />
-          <ComponentWrapper {...matchProps} />
-          <FooterContainer>
-            <Footer />
-          </FooterContainer>
-        </Container>
-      )}
-    />
-  ) : (
-    <Redirect to="/welcome" />
-  );
+    return !webId ? (
+        <Route
+            {...rest}
+            component={matchProps => (
+                <Container>
+                    <NavBar
+                        {...matchProps}
+                        toolbar={[
+                            {
+                                component: () => <LanguageDropdown {...{t, ...props}} />,
+                                id: 'language'
+                            }
+                        ]}
+                    />
+                    <ComponentWrapper {...matchProps} />
+                    <FooterContainer>
+                        <Footer/>
+                    </FooterContainer>
+                </Container>
+            )}
+        />
+    ) : (
+        <Redirect to="/welcome"/>
+    );
 };
 
 export default withTranslation()(withWebId(NotLoggedInLayout));
