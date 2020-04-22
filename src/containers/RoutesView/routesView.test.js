@@ -30,30 +30,20 @@ function setUp() {
 test('render correctamente', () => {
     const wrapper = render(<RoutesView rutas={[]}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('render correctamente con rutas vacio', () => {
     const wrapper = render(<RoutesView rutas={rutas}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('render correctamente con rutas lleno', () => {
     setUp();
     const wrapper = render(<RoutesView rutas={rutas}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('Con rutas vacio, num de rutas = 0', () => {
     const wrapper = render(<RoutesView rutas={rutas}/>);
     expect(wrapper.find(RouteView).length).toBe(0);
 });
-
-/*test('Con rutas lleno, num de rutas igual a rutas.length', () => {
-    setUp();
-    const wrapper = mount(<RoutesView rutas={rutas}/>);
-    expect(wrapper.find(RouteView).length).toBe(3);
-    //expect(true).toBeTruthy();
-});*/
