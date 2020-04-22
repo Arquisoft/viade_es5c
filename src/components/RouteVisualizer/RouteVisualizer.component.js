@@ -19,7 +19,10 @@ export class RouteVisualizer extends Component {
 
 
     render() {
-        return (<div><h1> {this.ruta.name}</h1>
+        return (
+        <div>
+            <h1> {this.ruta.name}</h1>
+            <p> {this.ruta.description}</p>
             <Map
                 google={this.props.google}
                 zoom={14}
@@ -55,7 +58,11 @@ export class RouteVisualizer extends Component {
 
         }
 
-        return <Polyline path={this.pathCoordinates}></Polyline>
+        return <Polyline strokeColor="#ff8000"
+                         strokeOpacity={0.8}
+                         strokeWeight={4}
+                         path={this.pathCoordinates}>
+                </Polyline>
     }
 }
 
