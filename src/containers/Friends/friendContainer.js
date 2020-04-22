@@ -1,18 +1,15 @@
 import React, {Component} from "react";
 import data from '@solid/query-ldflex';
-import FC from "solid-file-client";
-import auth from "solid-auth-client";
 import {FriendPage} from "./friendComponent";
 
 export class FriendsComponent extends Component<Props> {
 
     constructor(props) {
         super(props);
-        this.fc = new FC(auth);
+
         this.state = {
             friends: []
         };
-
     }
 
     componentDidMount() {
@@ -22,9 +19,7 @@ export class FriendsComponent extends Component<Props> {
 
     componentDidUpdate(prevProps) {
         const { webId } = this.props;
-        if (webId && webId !== prevProps.webId) {
-            this.getProfileData();
-        }
+        if (webId && webId !== prevProps.webId) this.getProfileData();
     }
 
     getProfileData = async () => {
@@ -35,9 +30,7 @@ export class FriendsComponent extends Component<Props> {
 
         let friends = [];
 
-
         for await (const friend of user.friends) {
-
             const friendWebId = await friend.value;
 
             const friend_data = data[friendWebId];
@@ -60,14 +53,11 @@ export class FriendsComponent extends Component<Props> {
                 "image": image
             }
 
-
             friends.push(friend_obj);
-
         }
 
         this.setState({ friends });
     };
-
 
     render() {
         const { friends } = this.state;

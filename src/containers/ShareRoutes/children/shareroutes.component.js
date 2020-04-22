@@ -57,30 +57,19 @@ class CreateShareRoute extends React.Component {
         const { routeWebID, friendWebID } = this.state
         return (
             <ShareWrapper>
-                <Header>
-                    <H1>Insert the following webID's to share the route</H1>
-                </Header>
+                <Header> <H1>Insert the following webID's to share the route</H1> </Header>
                     <form onSubmit={this.handleSubmit}>
                         <div>
+
                             <LABEL>
                                 <H2>Route's webID:</H2>
-                                <Input
-                                    type="text"
-                                    name="routeWebID"
-                                    value={routeWebID}
-                                    onChange={this.handleChange}
-                                />
+                                <Input type="text" name="routeWebID" value={routeWebID} onChange={this.handleChange}/>
                             </LABEL>
                         </div>
                         <div>
                             <LABEL>
                                 <H2>Insert your friend's webID:</H2>
-                                <Input
-                                    type="text"
-                                    name="friendWebID"
-                                    value={friendWebID}
-                                    onChange={this.handleChange}
-                                />
+                                <Input type="text" name="friendWebID" value={friendWebID} onChange={this.handleChange}/>
                             </LABEL>
                         </div>
                         <Button type="submit">Send</Button>

@@ -39,6 +39,7 @@
     "normalize.css": "^8.0.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
+    "rc-menu": "^8.0.3",
     "rdf-namespaces": "^1.8.0",
     "react": "16.8.4",
     "react-addons-update": "^15.6.2",
@@ -162,6 +163,7 @@
   "devDependencies": {
     "@babel/core": "7.1.6",
     "@babel/runtime": "^7.8.4",
+    "@material-ui/core": "^4.9.11",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "^24.5.0",
@@ -202,6 +204,7 @@
     "prettier": "^1.18.2",
     "puppeteer": "^2.1.1",
     "react-testing-library": "^6.0.0",
+    "reactjs-popup": "^1.5.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "shx": "^0.3.2",

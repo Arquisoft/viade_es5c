@@ -14,7 +14,7 @@ export const Header = styled.div`
 export const Button = styled.button`
     max-width: 128px;
     display: inline-block;
-    
+    size: 100px;
     &:first-child {
     margin-right: 10px;
     }
