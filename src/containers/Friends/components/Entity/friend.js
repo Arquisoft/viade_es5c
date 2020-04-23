@@ -7,7 +7,6 @@ export const Friend = propos => {
     const {t} = useTranslation();
     return (<tr key={friend.webId}>
         <td><Image> <img src={friend.image} alt={"imagen"}/></Image></td>
-        <td>{friend.name} </td>
-        <td><a href={friend.webId}>{t('friends.profile')} {friend.name}</a></td>
+        <td><a href={friend.webId}>{friend.name}</a></td>
     </tr>);
 };
