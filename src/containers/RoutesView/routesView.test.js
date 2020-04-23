@@ -2,8 +2,8 @@ import React from 'react';
 import {cleanup} from 'react-testing-library';
 import {configure, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {RoutesView} from '../RoutesView/RoutesView';
-import {RouteView} from '../RoutesView/children/RouteView';
+import {RoutesView} from './RoutesView';
+import {RouteView} from './children/RouteView';
 import Route from "../../entities/Route";
 import Point from "../../entities/Point";
 
@@ -30,30 +30,20 @@ function setUp() {
 test('render correctamente', () => {
     const wrapper = render(<RoutesView rutas={[]}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('render correctamente con rutas vacio', () => {
     const wrapper = render(<RoutesView rutas={rutas}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('render correctamente con rutas lleno', () => {
     setUp();
     const wrapper = render(<RoutesView rutas={rutas}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('Con rutas vacio, num de rutas = 0', () => {
     const wrapper = render(<RoutesView rutas={rutas}/>);
     expect(wrapper.find(RouteView).length).toBe(0);
 });
-
-/*test('Con rutas lleno, num de rutas igual a rutas.length', () => {
-    setUp();
-    const wrapper = mount(<RoutesView rutas={rutas}/>);
-    expect(wrapper.find(RouteView).length).toBe(3);
-    //expect(true).toBeTruthy();
-});*/

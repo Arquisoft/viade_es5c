@@ -14,22 +14,22 @@ class Route {
         this.date = '';
     }
 
-    parseRoute() {
-        console.log('parseando..');
-        this.name = "Nombre Ruta"
-        this.points.push(new Point(43.354856, -5.851450));
-        this.points.push(new Point(43.364880, -5.851450));
-        this.points.push(new Point(43.384900, -5.851450));
-        console.log(this.points)
-    }
-    setImg(img) {
-        this.img = img;
-    }
-    setName(name) {
-        this.name = name;
-    }
-    setDescription(description) {
-        this.comments = description;
+  parseRoute() {
+    console.log('parseando..');
+    this.name= "Nombre Ruta"
+    this.points.push(new Point(43.354856,-5.851450));
+    this.points.push(new Point(43.364880,-5.851450));
+    this.points.push(new Point(43.384900,-5.851450));
+    console.log(this.points)
+  }
+  setImg(img){
+    this.img=img;
+  }
+  setName(name){
+    this.name=name;
+  }
+  setDescription(description){
+    this.description = description;
 
     }
     setDistance(distance) {

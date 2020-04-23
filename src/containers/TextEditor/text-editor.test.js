@@ -1,7 +1,7 @@
 import React from 'react';
-import {cleanup, render} from 'react-testing-library';
-import {HashRouter as Router} from 'react-router-dom';
-import TextEditor from '../TextEditor/text-editor.component';
+import { render, cleanup } from 'react-testing-library';
+import { HashRouter as Router } from 'react-router-dom';
+import TextEditor from './text-editor.component';
 
 describe('Text Editor', () => {
     afterAll(cleanup);

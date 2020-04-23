@@ -1,7 +1,7 @@
 import React from 'react';
-import {cleanup, render} from 'react-testing-library';
-import {HashRouter as Router} from 'react-router-dom';
-import Footer from '../Footer/footer.component';
+import { render, cleanup } from 'react-testing-library';
+import { HashRouter as Router } from 'react-router-dom';
+import Footer from './footer.component';
 
 afterAll(cleanup);
 
