@@ -78,7 +78,7 @@ defineFeature(feature, test => {
                 waitUntil: 'networkidle2'
             });
 
-            expect(page.url()).toBe("http://localhost:3000/viade_es5c/#/welcome")
+            expect(page.url()).toBe("http://localhost:3000/#/welcome")
 
         });
     });
