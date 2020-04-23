@@ -38,7 +38,8 @@ export const Button = styled.button`
 `;
 
 export const Label = styled.label`
-  margin: 5px;
+  margin: 25px;
+  padding: 15px;
 `;
 
 export const TextArea = styled.textarea`

@@ -13,18 +13,18 @@ export class FriendsComponent extends Component<Props> {
     }
 
     componentDidMount() {
-        const { webId } = this.props;
+        const {webId} = this.props;
         if (webId) this.getProfileData();
     }
 
     componentDidUpdate(prevProps) {
-        const { webId } = this.props;
+        const {webId} = this.props;
         if (webId && webId !== prevProps.webId) this.getProfileData();
     }
 
     getProfileData = async () => {
-        this.setState({ isLoading: true });
-        const { webId } = this.props;
+        this.setState({isLoading: true});
+        const {webId} = this.props;
 
         const user = data[webId];
 
@@ -56,15 +56,15 @@ export class FriendsComponent extends Component<Props> {
             friends.push(friend_obj);
         }
 
-        this.setState({ friends });
+        this.setState({friends});
     };
 
     render() {
-        const { friends } = this.state;
-        const { webId } = this.props;
+        const {friends} = this.state;
+        const {webId} = this.props;
 
         return (
-            <FriendPage {...{ friends, webId }} />
+            <FriendPage {...{friends, webId}} />
         );
     }
 }

@@ -18,45 +18,45 @@ const FooterContainer = styled.div`
 `;
 
 const PublicLayout = props => {
-  const webId = useWebId();
-  const { component: Component, ...rest } = props;
-  const { t, i18n } = useTranslation();
-  const ComponentWrapper = styled(Component)`
+    const webId = useWebId();
+    const {component: Component, ...rest} = props;
+    const {t, i18n} = useTranslation();
+    const ComponentWrapper = styled(Component)`
     padding-bottom: 60px;
     height: 100%;
     padding-top: 60px;
   `;
-  return (
-    <Route
-      {...rest}
-      component={({ history, location, match }) => (
-        <Container>
-          {webId ? (
-            <AuthNavBar {...{ history, location, match, webId }} />
-          ) : (
-            <NavBar
-              {...{ history, location, match }}
-              toolbar={[
-                {
-                  component: () => <LanguageDropdown {...{ t, i18n }} />,
-                  id: 'language'
-                },
-                {
-                  component: () => <Link to="/login">Login</Link>,
-                  label: 'authComponent',
-                  id: 'authComponent'
-                }
-              ]}
-            />
-          )}
-          <ComponentWrapper {...{ history, location, match }} />
-          <FooterContainer>
-            <Footer />
-          </FooterContainer>
-        </Container>
-      )}
-    />
-  );
+    return (
+        <Route
+            {...rest}
+            component={({history, location, match}) => (
+                <Container>
+                    {webId ? (
+                        <AuthNavBar {...{history, location, match, webId}} />
+                    ) : (
+                        <NavBar
+                            {...{history, location, match}}
+                            toolbar={[
+                                {
+                                    component: () => <LanguageDropdown {...{t, i18n}} />,
+                                    id: 'language'
+                                },
+                                {
+                                    component: () => <Link to="/login">Login</Link>,
+                                    label: 'authComponent',
+                                    id: 'authComponent'
+                                }
+                            ]}
+                        />
+                    )}
+                    <ComponentWrapper {...{history, location, match}} />
+                    <FooterContainer>
+                        <Footer/>
+                    </FooterContainer>
+                </Container>
+            )}
+        />
+    );
 };
 
 export default PublicLayout;

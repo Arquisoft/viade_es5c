@@ -5,7 +5,7 @@ import FC from "solid-file-client";
 class MediaLoader {
 
     saveImage(url, file) {
-        
+
         SolidAuth.fetch(url, {
             method: 'PUT',
             body: file,
@@ -15,13 +15,12 @@ class MediaLoader {
         });
     }
 
-    loadMedia(url, callback) { // explicacion debajo !!
+    loadMedia(url, callback) {
         const fc = new FC(auth);
-        let content = fc.readFile( url );
+        let content = fc.readFile(url);
         content.then(value => callback(value));
     }
 
-    
 
 }
 

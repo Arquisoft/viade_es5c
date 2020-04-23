@@ -8,29 +8,29 @@ import { WelcomeComponent } from './welcome.container';
 library.add(fas);
 
 const props = {
-  webId: 'https://exmaple.com/#me',
-  image: 'test.png',
-  updatePhoto: 'updated.png',
-  name: 'example'
+    webId: 'https://exmaple.com/#me',
+    image: 'test.png',
+    updatePhoto: 'updated.png',
+    name: 'example'
 };
 
 describe.only('Welcome', () => {
-  afterAll(cleanup);
-  const { container, getByTestId } = render(
-    <Router>
-      <WelcomeComponent {...{ ...props }} />
-    </Router>
-  );
+    afterAll(cleanup);
+    const {container, getByTestId} = render(
+        <Router>
+            <WelcomeComponent {...{...props}} />
+        </Router>
+    );
 
-  test('renders without crashing', () => {
-    expect(container).toBeTruthy();
-  });
+    test('renders without crashing', () => {
+        expect(container).toBeTruthy();
+    });
 
-  test('renders with styled components', () => {
-    expect(getByTestId('welcome-wrapper')).toBeTruthy();
-    expect(getByTestId('welcome-logo')).toBeTruthy();
-    expect(getByTestId('welcome-profile')).toBeTruthy();
-    expect(getByTestId('welcome-detail')).toBeTruthy();
-    expect(document.querySelector('.card')).toBeTruthy();
-  });
+    test('renders with styled components', () => {
+        expect(getByTestId('welcome-wrapper')).toBeTruthy();
+        expect(getByTestId('welcome-logo')).toBeTruthy();
+        expect(getByTestId('welcome-profile')).toBeTruthy();
+        expect(getByTestId('welcome-detail')).toBeTruthy();
+        expect(document.querySelector('.card')).toBeTruthy();
+    });
 });

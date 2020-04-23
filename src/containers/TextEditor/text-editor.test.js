@@ -4,15 +4,15 @@ import { HashRouter as Router } from 'react-router-dom';
 import TextEditor from './text-editor.component';
 
 describe('Text Editor', () => {
-  afterAll(cleanup);
+    afterAll(cleanup);
 
-  const { container } = render(
-    <Router>
-      <TextEditor />
-    </Router>
-  );
+    const {container} = render(
+        <Router>
+            <TextEditor/>
+        </Router>
+    );
 
-  test('App renders without crashing', () => {
-    expect(container).toBeTruthy();
-  });
+    test('App renders without crashing', () => {
+        expect(container).toBeTruthy();
+    });
 });

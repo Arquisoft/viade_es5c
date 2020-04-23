@@ -58,6 +58,7 @@
     "addFile": "Añadir fichero",
     "addRoute": "Añadir ruta",
     "shareRoute": "Compartir ruta",
+    "friendRoute": "Rutas amigos",
     "routes": "Rutas",
     "lenguage": "Idioma",
     "languages": {
@@ -83,7 +84,6 @@
   "welcome": {
     "welcome": "Bienvenido",
     "doneMessage": "¿Terminaste?",
-
     "title": "<0>Viade_es5</0>",
     "description": "<0>Viade_es5c es un sistema de gestión de rutas descentralizado basado en las especificaciones Solid. </0>",
     "integrantesEquipo": "Integrantes del proyecto:\n",
@@ -94,7 +94,6 @@
     "integrante5": "Borja Rodriguez Lorenzo",
     "integrante6": "Bernardo Begega Calleja",
     "informacionEquipo": "Grupo de labotario L05. Universidad de Oviedo. Escuela Ingeniería Informática.",
-
     "fairUsageText": "Los logos de Solid y Inrupt incluidos en este SDK son exclusivamente para ejemplo. Esperamos que los desarrolladores que utilicen nuestro SDK para propósitos comerciales los actualicen con sus propios logos.",
     "contactUsTitle": "Contáctenos",
     "contactUsText": "<0>\nSi tiene preguntas adicionales sobre el uso de nuestro Solid React SDK by inrupt, el Generador de aplicaciones o la marca de Inrupt, contáctese con <1>support@inrupt.com<1>.</0>",
@@ -258,5 +257,14 @@
   },
   "friends": {
     "title": "Estos son tus amigos de SOLID"
+  },
+  "friendRoutes": {
+    "title": "Rutas compartidas contigo",
+    "namePlaceHolder": "Nombre de amigo",
+    "buttonSee": "Ver rutas"
+  },
+  "addFile": {
+    "title": "Subir fichero",
+    "loadPod": "Cargar Pod"
   }
 }
