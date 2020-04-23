@@ -59,7 +59,7 @@ const LoadFile = (props) => {
                 <LABEL>
                     <INPUT type="file" name="files[]" id="file" onChange={selectFile}/>
                 </LABEL>
-                <Button onClick={handlerUpload}>{i18n.t('addFile.loadPod')}</Button>
+                <Button id="submitId" onClick={handlerUpload}>{i18n.t('addFile.loadPod')}</Button>
 
                 <div id="mapa"></div>
             </div>
