@@ -265,6 +265,8 @@
   },
   "addFile": {
     "title": "Subir fichero",
-    "loadPod": "Cargar Pod"
+    "loadPod": "Cargar Pod",
+    "errorNoName":"Debe escribirse un nombre",
+    "errorTipoFichero":"Fichero no válido para la ruta"
   }
 }

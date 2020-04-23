@@ -6,7 +6,7 @@ import Route from "../../entities/Route"
 import FC from 'solid-file-client';
 import auth from "solid-auth-client";
 import MediaLoader from "../../utils/MediaLoader";
-
+import {v1 as uuidv1} from 'uuid';
 
 type Props = { webId: String };
 
@@ -52,6 +52,7 @@ class CreateRoute extends React.Component {
             }
 
             let route = new Route(this.title.current.value, this.state.points, descripcion);
+            route.uuid=uuidv1();
             route.setImg(this.PhotoURL === "" ? null : this.PhotoURL)
 
 
@@ -61,7 +62,7 @@ class CreateRoute extends React.Component {
 
             //SUBIR AL POD
 
-            const url = this.webID + "public/viade/routes/" + route.name;
+            const url = this.webID + "public/viade/routes/" + route.uuid+".ttl";
             const fc = new FC(auth);
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             alert("Ruta subida con éxito")

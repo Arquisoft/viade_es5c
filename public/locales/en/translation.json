@@ -264,6 +264,8 @@
   },
   "addFile": {
     "title": "Upload file",
-    "loadPod": "Load Pod"
+    "loadPod": "Load Pod",
+    "errorNoName":"You must put a name",
+    "errorTipoFichero":"File not valid for the route"
   }
 }

@@ -4,11 +4,19 @@ import FC from 'solid-file-client';
 import {ParserRouteToRDF, ParserToRoute} from "../../parseo";
 import RouteVisualizer from '../../components/RouteVisualizer/RouteVisualizer.component'
 import ReactDOM from 'react-dom';
-import {Button, H1, Header, INPUT, LABEL, Wrapper} from "./addfile.style";
+import {Button, H1, Header, Wrapper,Fo} from "./addfile.style";
 import i18n from '../../i18n';
+import Form from "react-bootstrap/Form";
+import {errorToaster} from '@utils';
+import {v1 as uuidv1} from 'uuid';
 
 const LoadFile = (props) => {
     let files = '';
+    
+    let media = [];
+    let name = React.createRef();
+    let description = React.createRef();
+    let comment = React.createRef();
 
 
     const selectFile = (event) => {
@@ -23,27 +31,44 @@ const LoadFile = (props) => {
             const {webId} = props;
             const fc = new FC(auth);
             //const nombre=fichero.name;
+            let valueName=name.current.value;
+            let valueDescription=description.current.value;
+            let valueComment=comment.current.value;
+            if (valueName===""){
+                errorToaster(i18n.t('addFile.errorNoName'), 'Error', {
+                });
+            }else{
+                const type = fichero.name.split(".")[1];
+                if (type!=="geojson" || type!=="gpx" || type!=="kml"){
+                    errorToaster(i18n.t('addFile.errorTipoFichero'), 'Error', {
+                    });
+                }else{
+                    let parseadoRuta;
+                    try {
+                        parseadoRuta = ParserToRoute.parse(fichero);
+                    } catch (err) {
+                        console.log("COGE EL ERROR");
+                    }
 
-            let parseadoRuta;
-            try {
-                parseadoRuta = ParserToRoute.parse(fichero);
-            } catch (err) {
-                console.log("COGE EL ERROR");
+
+                    let rutaClass = await parseadoRuta.then((rutaClass) => {
+                        return rutaClass
+                    });
+                    rutaClass.name=valueName
+                    rutaClass.description=valueDescription;
+                    rutaClass.comments=valueComment;    
+                    rutaClass.uuid=uuidv1();
+                    let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
+                    console.log(parseadoRDF);
+                    const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.uuid + ".ttl";
+                    await fc.createFile(url, parseadoRDF, "text/turtle", {});
+                    console.log("subido");
+
+
+                    const domContainer = document.querySelector('#mapa');
+                    ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
             }
-
-
-            let rutaClass = await parseadoRuta.then((rutaClass) => {
-                return rutaClass
-            });
-            let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
-            console.log(parseadoRDF);
-            const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.name + ".ttl";
-            await fc.createFile(url, parseadoRDF, "text/turtle", {});
-            console.log("subido");
-
-
-            const domContainer = document.querySelector('#mapa');
-            ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
+            }
 
         }
 
@@ -52,20 +77,59 @@ const LoadFile = (props) => {
 
     return (
         <Wrapper>
-            <div>
-                <Header>
+            
+            <Header>
                     <H1>{i18n.t('addFile.title')}</H1>
                 </Header>
-                <LABEL>
-                    <INPUT type="file" name="files[]" id="file" onChange={selectFile}/>
-                </LABEL>
-                <Button id="submitId" onClick={handlerUpload}>{i18n.t('addFile.loadPod')}</Button>
-
+            
+                <Form>
+                <Fo>
+                    <Form.Group controlId="formBasicName">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter name" 
+                        ref={name}/>
+                    </Form.Group>
+                    <br />
+                    <Form.Group controlId="formBasicDescription">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control type="text" placeholder="Enter description"
+                        ref={description} />
+                    </Form.Group>
+                    <br />
+                    <Form.Group controlId="formBasicFichero">
+                        <Form.Label>Add file</Form.Label>
+                        <Form.File id="formcheck-api-regular">
+                            
+                            <Form.File.Input type="file" name="files[]" id="file" onChange={selectFile}/>
+                        </Form.File >
+                    </Form.Group>
+                    
+                    </Fo>
+                    <br />
+                    <Fo>
+                        <Form.Group controlId="formBasicComment">
+                            <Form.Label>Comment</Form.Label>
+                            <Form.Control type="text" placeholder="Enter comment" 
+                            ref={comment}/>
+                            <Form.Text className="text-muted">
+                            You can add a comment if you want.
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicImage">
+                        <Form.Label>Add media</Form.Label>
+                        <Form.File id="formcheck-api-regular">
+                            
+                            <Form.File.Input type="file" name="images[]" id="image" multiple/>
+                        </Form.File >
+                    </Form.Group>
+                        </Fo>
+                
+                    <Button id="submitId" type="submit" onClick={handlerUpload}>{i18n.t('addFile.loadPod')}</Button>
+                </Form>
                 <div id="mapa"></div>
-            </div>
         </Wrapper>
 
-
+       
     );
 }
 
