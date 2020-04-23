@@ -1,46 +1,78 @@
 import React from 'react';
-import {cleanup, fireEvent, render} from 'react-testing-library';
-import {configure, shallow} from 'enzyme';
+import {cleanup, queryByAttribute, fireEvent, render} from 'react-testing-library';
+import { BrowserRouter as Router } from 'react-router-dom';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CreateShareRoute from "./children/shareroutes.component";
+import ShareRoute from './shareroute.const';
 
 configure({adapter: new Adapter()});
 
+const getById = queryByAttribute.bind(null, 'id');
+const { container } = render(
+    <Router>
+        <CreateShareRoute />
+    </Router>
+);
+
+configure({adapter: new Adapter()});
 afterAll(cleanup);
 
 test('render', () => {
-    const wrapper = shallow(<CreateShareRoute/>);
+    const wrapper = mount(<ShareRoute/>);
+    expect(wrapper.find(ShareRoute)).toBeDefined();
+});
+
+test('render correctamente', () => {
+    const wrapper = mount(<CreateShareRoute/>);
     expect(wrapper.find(CreateShareRoute)).toBeDefined();
 });
 
-test('test compruebo datos', () => {
-    const values = {routeWebID: "routeWebID", friendWebID: "friendWebID"};
+test('Inputs render correctamente', async () => {
+    const routeInput = getById(container, 'routeID');
+    const friendInput = getById(container, 'friendID');
 
-    const {getByLabelText} = render(<CreateShareRoute/>);
-
-    const inputroutewebId = getByLabelText('Route\'s webID:');
-    const inputfriendwebId = getByLabelText('Insert your friend\'s webID:');
-
-    fireEvent.change(inputroutewebId, {target: {value: values.routeWebID}});
-    fireEvent.change(inputfriendwebId, {target: {value: values.friendWebID}});
-
-    expect(inputroutewebId.value).toEqual('routeWebID');
-    expect(inputfriendwebId.value).toEqual('friendWebID');
+    expect(routeInput).not.toBe(null);
+    expect(friendInput).not.toBe(null);
 });
 
-test('test basico relleno formulario', () => {
-    const values = {routeWebID: "routeWebID", friendWebID: "friendWebID"};
+test('Input routeID changes value', async () => {
+    const routeInput = getById(container, 'routeID');
+    const query = 'ruta1';
+    const mockChange = jest.fn();
+    expect(routeInput.value).toEqual('');
+    routeInput.onChange = mockChange;
 
-    const {getByLabelText, wrapper} = render(<CreateShareRoute/>);
+    fireEvent.change(routeInput, { target: { value: query } });
+    expect(routeInput.value).toEqual('ruta1');
+});
 
-    const inputroutewebId = getByLabelText('Route\'s webID:');
-    const inputfriendwebId = getByLabelText('Insert your friend\'s webID:');
+test('Input friendID changes value', async () => {
+    const friendInput = getById(container, 'friendID');
+    const query = 'friend1';
+    const mockChange = jest.fn();
+    expect(friendInput.value).toEqual('');
+    friendInput.onChange = mockChange;
 
-    fireEvent.change(inputroutewebId, {target: {value: values.routeWebID}});
-    fireEvent.change(inputfriendwebId, {target: {value: values.friendWebID}});
+    fireEvent.change(friendInput, { target: { value: query } });
+    expect(friendInput.value).toEqual('friend1');
+});
 
-    //const getByType = queryByAttribute.bind(null, 'type');
-    //const boton = getByType(wrapper, 'submit');
-    //fireEvent.click(boton);
-    expect(true).toBeTruthy();
+test('Submit simulation', function(){
+    const mockChange = jest.fn();
+    // Cojo el input de ruta y le meto un id de ruta
+    const routeInput = getById(container, 'routeID');
+    const queryRuta = 'ruta1';
+    routeInput.onChange = mockChange;
+    fireEvent.change(routeInput, { target: { value: queryRuta } });
+
+    // Cojo el input de friend y le meto un id de friend
+    const friendInput = getById(container, 'friendID');
+    const queryFriend = 'friend1';
+    friendInput.onChange = mockChange;
+    fireEvent.change(friendInput, { target: { value: queryFriend } });
+
+    // Click en boton
+    const submitButton = getById(container, 'submitId');
+    fireEvent.click(submitButton);
 });
