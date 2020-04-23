@@ -1,9 +1,10 @@
 import React from 'react';
 import {cleanup} from 'react-testing-library';
-import {configure, mount, render} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {FriendPage} from './friendComponent';
 import {Friend} from './components/Entity/friend';
+import FriendsComponent from './index';
 
 configure({adapter: new Adapter()});
 
@@ -32,33 +33,23 @@ function setUp() {
     friends.push(friend3);
 }
 
+test('render', () => {
+    const wrapper = mount(<FriendsComponent />);
+    expect(wrapper.find(FriendsComponent)).toBeDefined();
+});
+
 test('render correctamente', () => {
-    const wrapper = render(<FriendPage friends={[]}/>);
+    const wrapper = mount(<FriendPage friends={[]}/>);
     expect(wrapper.find(FriendPage)).toBeDefined();
-    //expect(true).toBeTruthy();
 });
 
 test('render correctamente con friends vacio', () => {
-    const wrapper = render(<FriendPage friends={friends}/>);
-    expect(wrapper.find(FriendPage)).toBeDefined();
-    //expect(true).toBeTruthy();
+    const wrapper = mount(<FriendPage friends={friends}/>);
+    expect(wrapper.find(Friend).length).toBe(0);
 });
 
 test('render correctamente con friends lleno', () => {
     setUp();
-    const wrapper = render(<FriendPage friends={friends}/>);
-    expect(wrapper.find(FriendPage)).toBeDefined();
-    //expect(true).toBeTruthy();
-});
-
-test('Con friends vacio, num de friends = 0', () => {
-    const wrapper = render(<FriendPage friends={friends}/>);
-    expect(wrapper.find(Friend).length).toBe(0);
-});
-
-/*test('Con friends lleno, num de friends = friends.length', () => {
-    setUp();
     const wrapper = mount(<FriendPage friends={friends}/>);
     expect(wrapper.find(Friend).length).toBe(3);
-    //expect(true).toBeTruthy();
-});*/
+});
