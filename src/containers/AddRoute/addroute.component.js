@@ -52,7 +52,7 @@ class CreateRoute extends React.Component {
             }
 
             let route = new Route(this.title.current.value, this.state.points, descripcion);
-            route.uuid=uuidv1();
+            route.uuid=uuidv1().split("-").join("");
             route.setImg(this.PhotoURL === "" ? null : this.PhotoURL)
 
 
@@ -93,8 +93,8 @@ class CreateRoute extends React.Component {
                     <Label>Descripcion</Label>
                     <Input id="descripcion" type="text" size="100" placeholder="Descripcion" ref={this.description}/>
                     <Label>Sube una foto</Label>
-                    <Input type="file" ref={this.img} onClick={this.handle} data-testid="input-img" id="input-img"
-                           accept={".png"}/>
+                    <input type="file" ref={this.img} onClick={this.handle} data-testid="input-img" id="input-img"
+                           accept={"image/*,video/*"} multiple/>
                     <br/>
                     <Button id="submitId" onClick={this.handleSave}> Guardar ruta </Button>
                 </Header>

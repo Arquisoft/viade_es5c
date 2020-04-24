@@ -9,6 +9,8 @@ import i18n from '../../i18n';
 import Form from "react-bootstrap/Form";
 import {errorToaster} from '@utils';
 import {v1 as uuidv1} from 'uuid';
+import Media from '../../entities/Media';
+import MediaLoader from "../../utils/MediaLoader";
 
 const LoadFile = (props) => {
     let files = '';
@@ -22,7 +24,24 @@ const LoadFile = (props) => {
     const selectFile = (event) => {
         files = event.target.files;
     }
+    const selectMedia = (event) => {
+        let z=0;
+        for (var i=0;i<event.target.files.length;i++){
+            if (event.target.files[i].type.split("/")[0]!=="image" && event.target.files[i].type.split("/")[0]!=="video"){
+                z++;
+            }
+            media.push(event.target.files[i]);
+        }
+        if (z===0){
 
+        }else{
+            media=[];
+            event.target.value=null;
+            errorToaster(i18n.t('addFile.errorMedia'), 'Error', {
+            });
+        }
+        console.log(media);
+    }
 
     const handlerUpload = async (e) => {
         if (files !== '') {
@@ -39,7 +58,9 @@ const LoadFile = (props) => {
                 });
             }else{
                 const type = fichero.name.split(".")[1];
-                if (type!=="geojson" || type!=="gpx" || type!=="kml"){
+                
+                if (type!=="geojson" && type!=="gpx" && type!=="kml")
+                {
                     errorToaster(i18n.t('addFile.errorTipoFichero'), 'Error', {
                     });
                 }else{
@@ -57,8 +78,27 @@ const LoadFile = (props) => {
                     rutaClass.name=valueName
                     rutaClass.description=valueDescription;
                     rutaClass.comments=valueComment;    
-                    rutaClass.uuid=uuidv1();
+                    rutaClass.uuid=uuidv1().split("-").join("");
+                    let loader = new MediaLoader();
+                    const path_resources=webId.split("profile/card#me")[0] + "viade2Prueba1/resources/";
+                    for (var i=0;i<media.length;i++){
+                        let extension="."+media[i].name.split(".").slice(-1)[0];
+                        let urlMedia=uuidv1().split("-").join("")+extension;
+                        //Subir la media
+                        
+                        loader.saveImage(path_resources+urlMedia, media[i],media[i].type);
+                        if (media[i].type.split("/")[0]==="image"){
+                            rutaClass.media.push(new Media(urlMedia,webId,new Date(),"image"));
+                        }
+                        if (media[i].type.split("/")[0]==="video"){
+                            rutaClass.media.push(new Media(urlMedia,webId,new Date(),"video"));
+                        }
+                       
+                    }
+                    console.log(rutaClass)
+                    /*
                     let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
+
                     console.log(parseadoRDF);
                     const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.uuid + ".ttl";
                     await fc.createFile(url, parseadoRDF, "text/turtle", {});
@@ -67,9 +107,13 @@ const LoadFile = (props) => {
 
                     const domContainer = document.querySelector('#mapa');
                     ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
-            }
+                    */
+                }
             }
 
+        }else{
+            errorToaster(i18n.t('addFile.errorNoFile'), 'Error', {
+            });
         }
 
     }
@@ -119,7 +163,8 @@ const LoadFile = (props) => {
                         <Form.Label>Add media</Form.Label>
                         <Form.File id="formcheck-api-regular">
                             
-                            <Form.File.Input type="file" name="images[]" id="image" multiple/>
+                            <Form.File.Input type="file" name="media[]" red={media} id="media" accept={"image/*,video/*"}
+                            onChange={selectMedia} multiple/>
                         </Form.File >
                     </Form.Group>
                         </Fo>

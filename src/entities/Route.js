@@ -8,6 +8,7 @@ class Route {
         this.name = name;
         this.points = points;
         this.comments = comments;
+        this.media=[];
         this.img = '';
         this.distance = 0;
         this.rank = 0;

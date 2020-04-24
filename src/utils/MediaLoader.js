@@ -4,13 +4,13 @@ import FC from "solid-file-client";
 
 class MediaLoader {
 
-    saveImage(url, file) {
+    saveImage(url, file,content_type) {
 
         SolidAuth.fetch(url, {
             method: 'PUT',
             body: file,
             headers: {
-                'Content-Type': 'image/png'
+                'Content-Type': content_type
             }
         });
     }

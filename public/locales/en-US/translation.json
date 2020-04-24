@@ -267,6 +267,8 @@
     "title": "Upload file",
     "loadPod": "Load Pod",
     "errorNoName":"You must put a name",
-    "errorTipoFichero":"File not valid for the route"
+    "errorTipoFichero":"File not valid for the route",
+    "errorMedia": "Files of media not valid, must be image or video",
+    "errorNoFile":"You must upload a file for the route (geojson,gpx,kml)"
   }
 }
