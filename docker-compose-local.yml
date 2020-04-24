@@ -1,0 +1,20 @@
+version: '3'
+services:
+  solidserver:
+    container_name: solidserver_local
+    build: ./node-solid-server/
+    volumes:
+      - ./volumes/soliddata:/usr/src/app/data
+      - ./volumes/soliddb:/usr/src/app/.db
+    ports:
+      - "8443:8443"
+  sampleweb:
+    container_name: viade_es5c_local
+    build: ./viade_es5c/
+    ports:
+      - "3000:3000"
+volumes:
+  soliddata:
+    external: false
+  soliddb:
+    external: false

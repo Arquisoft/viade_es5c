@@ -1,0 +1,22 @@
+Opcion 1a: Imagen NodeSolidServer descargada de docker con Dockerfile
+	- docker pull nodesolidserver/node-solid-server
+	- docker run -p 8443:8443 --name <nombrecontainersolid> nodesolidserver/node-solid-server
+	- docker build -t <nombreimagen> . (hay que hacerlo dentro del proyecto)
+	- docker run --name <nombrecontainer> -p 3000:3000 <nombreimagen>
+
+Opcion 1b: Imagen NodeSolidServer descargada de docker con docker-compose
+	- docker-compose up
+
+Opcion 2a (Load Test Gatling): Imagen NodeSolidServer creada en local con Dockerfile
+	- git clone https://github.com/solid/node-solid-server
+	- Cambiar la version de node del Dockerfile (FROM node:12.14.1)
+	- docker build -t <nombreimagensolid> . (hay que hacerlo dentro del proyecto)
+	- docker run --name <nombrecontainersolid> --rm -d -p 8443:8443 <nombreimagensolid>
+	- docker build -t <nombreimagen> . (hay que hacerlo dentro del proyecto)
+	- docker run --name <nombrecontainer> -p 3000:3000 <nombreimagen>
+
+Opcion 2b (Load Test Gatling): Imagen NodeSolidServer creada en local con docker-compose
+	- Clonar el repositorio solid y cambiar versión Node, como antes
+	- docker-compose up -d (en la carpeta donde están los 2 proyectos)
+	- docker-compose down
+	- docker-compose up --force-recreate --build

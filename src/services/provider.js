@@ -11,7 +11,7 @@ export default class Provider {
      *  Function to get providers. This is to mimic the future provider registry
      */
     static getIdentityProviders(): Array<ProviderEntity> {
-        return [
+        const providers = [
             {
                 id: 'inrupt',
                 label: 'Inrupt',
@@ -29,5 +29,17 @@ export default class Provider {
                 description: 'Lorem ipsum dolor sit non consectetur'
             }
         ];
+        if (process.env.NODE_ENV !== 'production') {
+            providers.push({
+                id: 'local-solid-community',
+                label: 'Local Node Solid Server',
+                image: 'img/Solid.png',
+                value: 'https://localhost:8443',
+                registerLink: 'https://localhost:8443/register',
+                description: 'ONLY FOR DEVELOPMENT'
+            });
+        }
+
+        return providers;
     }
 }
