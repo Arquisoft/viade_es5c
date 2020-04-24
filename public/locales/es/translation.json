@@ -269,6 +269,7 @@
     "errorNoName":"Debe escribirse un nombre",
     "errorTipoFichero":"Fichero no válido para la ruta",
     "errorMedia": "Ficheros no válidos para adjuntar a la ruta, debe ser imagen o video",
-    "errorNoFile":"Debe subir un fichero para la ruta (geojson,gpx,kml)"
+    "errorNoFile":"Debe subir un fichero para la ruta (geojson,gpx,kml)",
+    "uploadGood":"¡Se ha subido bien la ruta!"
   }
 }

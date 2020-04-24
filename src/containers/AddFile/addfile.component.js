@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import {Button, H1, Header, Wrapper,Fo} from "./addfile.style";
 import i18n from '../../i18n';
 import Form from "react-bootstrap/Form";
-import {errorToaster} from '@utils';
+import {errorToaster,successToaster} from '@utils';
 import {v1 as uuidv1} from 'uuid';
 import Media from '../../entities/Media';
 import MediaLoader from "../../utils/MediaLoader";
@@ -23,6 +23,14 @@ const LoadFile = (props) => {
 
     const selectFile = (event) => {
         files = event.target.files;
+        let type = files[0].name.split(".")[1];
+                
+        if (type!=="geojson" && type!=="gpx" && type!=="kml")
+            {
+             errorToaster(i18n.t('addFile.errorTipoFichero'), 'Error', {
+                });
+                event.target.value=null;
+            }
     }
     const selectMedia = (event) => {
         let z=0;
@@ -40,7 +48,6 @@ const LoadFile = (props) => {
             errorToaster(i18n.t('addFile.errorMedia'), 'Error', {
             });
         }
-        console.log(media);
     }
 
     const handlerUpload = async (e) => {
@@ -57,13 +64,7 @@ const LoadFile = (props) => {
                 errorToaster(i18n.t('addFile.errorNoName'), 'Error', {
                 });
             }else{
-                const type = fichero.name.split(".")[1];
                 
-                if (type!=="geojson" && type!=="gpx" && type!=="kml")
-                {
-                    errorToaster(i18n.t('addFile.errorTipoFichero'), 'Error', {
-                    });
-                }else{
                     let parseadoRuta;
                     try {
                         parseadoRuta = ParserToRoute.parse(fichero);
@@ -88,28 +89,27 @@ const LoadFile = (props) => {
                         
                         loader.saveImage(path_resources+urlMedia, media[i],media[i].type);
                         if (media[i].type.split("/")[0]==="image"){
-                            rutaClass.media.push(new Media(urlMedia,webId,new Date(),"image"));
+                            rutaClass.media.push(new Media(path_resources+urlMedia,webId,new Date(),"image"));
                         }
                         if (media[i].type.split("/")[0]==="video"){
-                            rutaClass.media.push(new Media(urlMedia,webId,new Date(),"video"));
+                            rutaClass.media.push(new Media(path_resources+urlMedia,webId,new Date(),"video"));
                         }
                        
                     }
-                    console.log(rutaClass)
-                    /*
+                    
                     let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
 
-                    console.log(parseadoRDF);
+                    
                     const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.uuid + ".ttl";
                     await fc.createFile(url, parseadoRDF, "text/turtle", {});
                     console.log("subido");
-
+                    successToaster(i18n.t('addFile.uploadGood','Great'));
 
                     const domContainer = document.querySelector('#mapa');
                     ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
-                    */
+                    
                 }
-            }
+            
 
         }else{
             errorToaster(i18n.t('addFile.errorNoFile'), 'Error', {

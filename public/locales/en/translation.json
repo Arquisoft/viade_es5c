@@ -268,6 +268,7 @@
     "errorNoName":"You must put a name",
     "errorTipoFichero":"File not valid for the route",
     "errorMedia": "Files of media not valid, must be image or video",
-    "errorNoFile":"Debe subir un fichero para la ruta (geojson,gpx,kml)"
+    "errorNoFile":"You must upload a file for the route (geojson,gpx,kml)",
+    "uploadGood":"The route has been uploaded successfully!"
   }
 }

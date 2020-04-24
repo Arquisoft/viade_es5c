@@ -5,7 +5,8 @@ class Media {
 	constructor(iri, author, publicationTime,type) {
 		this.iri = iri;
 		this.author = author;
-        this.publicationTime = publicationTime;
+		
+		this.publicationTime = publicationTime;
         this.type=type;
 	}
 

@@ -9,11 +9,16 @@ class ParserRouteToRDFClass {
         this.rdf += "@prefix xsd:    <http://www.w3.org/2001/XMLSchema#>. ";
 
         this.rdf += ":myRoute a viade:Route ;";
-        this.rdf += 'schema:name "' + route.name + '" ;';
+        this.rdf += 'schema:name "' + route.name + '"';
         if (route.description !== "") {
-            this.rdf += 'schema:description "' + route.description + '" ;';
+            this.rdf+=";";
+            this.rdf += 'schema:description "' + route.description + '"';
         }
-
+        if (route.points.length===0 && route.media.length===0){
+            this.rdf+=".";
+        }else{
+            this.rdf+=";";
+        }
         for (var i = 0; i < route.points.length; i++) {
             this.rdf += "viade:point [";
             this.rdf += 'schema:latitude ' + route.points[i].latitud + ' ;';
@@ -25,9 +30,39 @@ class ParserRouteToRDFClass {
                 this.rdf += 'schema:elevation ' + route.points[i].elevacion;
             }
             if (i === route.points.length - 1) {
-                this.rdf += "] .";
+                if(route.media.length>0){
+                    this.rdf += "] ;";
+                }else{
+                    this.rdf += "] .";
+                }
             } else {
                 this.rdf += "] ;";
+            }
+        }
+
+        if (route.media.length>0){
+            for (var i=0;i<route.media.length;i++){
+                this.rdf+="viade:hasMediaAttached :media"+(i+1);
+                if (i === route.media.length - 1) {
+                    this.rdf+=". ";
+                }else{
+                    this.rdf+="; ";
+                }
+            }
+            for (var i=0;i<route.media.length;i++){
+                
+
+                this.rdf+=":media"+(i+1)+" schema:contentUrl <"+route.media[i].iri+">; ";
+                let año=route.media[i].publicationTime.getFullYear();
+                let mes=route.media[i].publicationTime.getMonth();
+                let dia=route.media[i].publicationTime.getDate();
+                let hora=route.media[i].publicationTime.getHours();
+                let min=route.media[i].publicationTime.getMinutes();
+                let seg=route.media[i].publicationTime.getSeconds();
+                let completo='"'+año+'-'+mes+'-'+dia+"T"+hora+":"+min+":"+seg+'"'
+
+                this.rdf+='schema:publishedDate '+completo+'^^xsd:dateTime ; ';
+                this.rdf+="schema:author <"+route.media[i].author+"> . ";
             }
         }
         return this.rdf.toString();
