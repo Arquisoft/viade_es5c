@@ -21,7 +21,6 @@ class MediaLoader {
         content.then(value => callback(value));
     }
 
-
 }
 
 export default MediaLoader;

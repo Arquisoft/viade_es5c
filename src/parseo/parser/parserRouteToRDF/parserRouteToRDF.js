@@ -50,8 +50,6 @@ class ParserRouteToRDFClass {
                 }
             }
             for (var i=0;i<route.media.length;i++){
-                
-
                 this.rdf+=":media"+(i+1)+" schema:contentUrl <"+route.media[i].iri+">; ";
                 let año=route.media[i].publicationTime.getFullYear();
                 let mes=route.media[i].publicationTime.getMonth();
@@ -59,7 +57,7 @@ class ParserRouteToRDFClass {
                 let hora=route.media[i].publicationTime.getHours();
                 let min=route.media[i].publicationTime.getMinutes();
                 let seg=route.media[i].publicationTime.getSeconds();
-                let completo='"'+año+'-'+mes+'-'+dia+"T"+hora+":"+min+":"+seg+'"'
+                let completo='"'+año+'-'+mes+'-'+dia+"T"+hora+":"+min+":"+seg+'"';
 
                 this.rdf+='schema:publishedDate '+completo+'^^xsd:dateTime ; ';
                 this.rdf+="schema:author <"+route.media[i].author+"> . ";
