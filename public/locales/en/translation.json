@@ -269,6 +269,10 @@
     "errorTipoFichero":"File not valid for the route",
     "errorMedia": "Files of media not valid, must be image or video",
     "errorNoFile":"You must upload a file for the route (geojson,gpx,kml)",
-    "uploadGood":"The route has been uploaded successfully!"
+    "uploadGood":"The route has been uploaded successfully!",
+    "nombre":"Name",
+    "descripcion":"Description",
+    "anadirFichero":"Add file",
+    "anadirMedia":"Add media"
   }
 }

@@ -18,7 +18,6 @@ const LoadFile = (props) => {
     let media = [];
     let name = React.createRef();
     let description = React.createRef();
-    let comment = React.createRef();
 
 
     const selectFile = (event) => {
@@ -59,7 +58,6 @@ const LoadFile = (props) => {
             //const nombre=fichero.name;
             let valueName=name.current.value;
             let valueDescription=description.current.value;
-            let valueComment=comment.current.value;
             if (valueName===""){
                 errorToaster(i18n.t('addFile.errorNoName'), 'Error', {
                 });
@@ -77,8 +75,7 @@ const LoadFile = (props) => {
                         return rutaClass
                     });
                     rutaClass.name=valueName
-                    rutaClass.description=valueDescription;
-                    rutaClass.comments=valueComment;    
+                    rutaClass.description=valueDescription; 
                     rutaClass.uuid=uuidv1().split("-").join("");
                     let loader = new MediaLoader();
                     const path_resources=webId.split("profile/card#me")[0] + "viade2Prueba1/resources/";
@@ -129,19 +126,19 @@ const LoadFile = (props) => {
                 <Form>
                 <Fo>
                     <Form.Group controlId="formBasicName">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>{i18n.t('addFile.nombre')}</Form.Label>
                         <Form.Control type="text" placeholder="Enter name" 
                         ref={name}/>
                     </Form.Group>
                     <br />
                     <Form.Group controlId="formBasicDescription">
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>{i18n.t('addFile.descripcion')}</Form.Label>
                         <Form.Control type="text" placeholder="Enter description"
                         ref={description} />
                     </Form.Group>
                     <br />
                     <Form.Group controlId="formBasicFichero">
-                        <Form.Label>Add file</Form.Label>
+                        <Form.Label>{i18n.t('addFile.anadirFichero')}</Form.Label>
                         <Form.File id="formcheck-api-regular">
                             
                             <Form.File.Input type="file" name="files[]" id="file" onChange={selectFile}/>
@@ -151,16 +148,8 @@ const LoadFile = (props) => {
                     </Fo>
                     <br />
                     <Fo>
-                        <Form.Group controlId="formBasicComment">
-                            <Form.Label>Comment</Form.Label>
-                            <Form.Control type="text" placeholder="Enter comment" 
-                            ref={comment}/>
-                            <Form.Text className="text-muted">
-                            You can add a comment if you want.
-                            </Form.Text>
-                        </Form.Group>
                         <Form.Group controlId="formBasicImage">
-                        <Form.Label>Add media</Form.Label>
+                        <Form.Label>{i18n.t('addFile.anadirMedia')}</Form.Label>
                         <Form.File id="formcheck-api-regular">
                             
                             <Form.File.Input type="file" name="media[]" red={media} id="media" accept={"image/*,video/*"}
@@ -176,6 +165,17 @@ const LoadFile = (props) => {
 
        
     );
+    /*
+    
+                        <Form.Group controlId="formBasicComment">
+                            <Form.Label>Comment</Form.Label>
+                            <Form.Control type="text" placeholder="Enter comment" 
+                            ref={comment}/>
+                            <Form.Text className="text-muted">
+                            You can add a comment if you want.
+                            </Form.Text>
+                        </Form.Group>
+    */
 }
 
 

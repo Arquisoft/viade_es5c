@@ -270,6 +270,11 @@
     "errorTipoFichero":"Fichero no válido para la ruta",
     "errorMedia": "Ficheros no válidos para adjuntar a la ruta, debe ser imagen o video",
     "errorNoFile":"Debe subir un fichero para la ruta (geojson,gpx,kml)",
-    "uploadGood":"¡Se ha subido bien la ruta!"
+    "uploadGood":"¡Se ha subido bien la ruta!",
+    "nombre":"Nombre",
+    "descripcion":"Descripcion",
+    "anadirFichero":"Añadir fichero",
+    "anadirMedia":"Añadir media"
+
   }
 }
