@@ -36,9 +36,11 @@ class CreateRoute extends React.Component {
     async handleSave(event) {
 
         if (this.title.current.value.length === 0) {
-            alert("La ruta tiene que tener un titulo.")
+            errorToaster(i18n.t('addFile.errorNoName'), 'Error', {
+            });
         } else if (this.state.points.length === 0) {
-            alert("No ha marcado ningún punto en el mapa.")
+            errorToaster(i18n.t('addFile.errorNopuntos'), 'Error', {
+            });
         } else {
             let descripcion="";
             if (this.description.current.value.length === 0) {
@@ -74,9 +76,6 @@ class CreateRoute extends React.Component {
                     route.media.push(new Media(path_resources+urlMedia,this.webID,new Date(),"video"));
                 }
             }
-            console.log(route);
-            
-            /*
 
             let parseadoRDF = await ParserRouteToRDF.parse(route);
 
@@ -87,8 +86,8 @@ class CreateRoute extends React.Component {
             const url = this.webID + "public/viade/routes/" + route.uuid+".ttl";
             const fc = new FC(auth);
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
-            alert("Ruta subida con éxito")
-            */
+            successToaster(i18n.t('addFile.uploadGood','Great'));
+            
 
         }
         event.preventDefault();
@@ -119,16 +118,16 @@ class CreateRoute extends React.Component {
         return (
             <RouteWrapper>
                 <Header>
-                    <h1 className={"text--white"}>Nueva Ruta</h1>
-                    <Label>Titulo</Label>
+                    <h1 className={"text--white"}>{i18n.t('addFile.nuevaRuta')}</h1>
+                    <Label>{i18n.t('addFile.nombre')}</Label>
                     <Input id="titulo" type="text" size="20" placeholder="Nueva ruta" ref={this.title}/>
-                    <Label>Descripcion</Label>
+                    <Label>{i18n.t('addFile.descripcion')}</Label>
                     <Input id="descripcion" type="text" size="100" placeholder="Descripcion" ref={this.description}/>
-                    <Label>Sube una foto</Label>
+                    <Label>{i18n.t('addFile.anadirMedia')}</Label>
                     <input type="file" ref={this.img} onChange={this.handleMedia} data-testid="input-img" id="input-img"
                            accept={"image/*,video/*"} multiple/>
                     <br/>
-                    <Button id="submitId" onClick={this.handleSave}> Guardar ruta </Button>
+                    <Button id="submitId" onClick={this.handleSave}>{i18n.t('addFile.saveRoute')}</Button>
                 </Header>
                 <CreateMap parentCallback={this.callbackFunction}/>
             </RouteWrapper>
