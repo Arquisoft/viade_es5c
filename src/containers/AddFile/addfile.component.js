@@ -32,6 +32,7 @@ const LoadFile = (props) => {
             }
     }
     const selectMedia = (event) => {
+        console.log(event.target)
         let z=0;
         for (var i=0;i<event.target.files.length;i++){
             if (event.target.files[i].type.split("/")[0]!=="image" && event.target.files[i].type.split("/")[0]!=="video"){
