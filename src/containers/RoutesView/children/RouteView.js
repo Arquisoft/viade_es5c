@@ -162,7 +162,10 @@ export const RouteView = props => {
                         closeOnDocumentClick>
                         <h3>Selecciona a que amigo deseas compartir</h3>
                         <div>
-
+                            {friends.map((friend) => (
+                                <p><Button onClick={null}
+                                           key={friend.webId}>{friend.name}</Button>
+                                </p>))}
                         </div>
                         <p><br></br></p>
                     </Popup>
