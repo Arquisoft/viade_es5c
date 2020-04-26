@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
-import Service from "../../Friends/Service/Service";
+import Service from "../../../Service/Service";
 
 
 export const RouteView = props => {
