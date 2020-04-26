@@ -4,8 +4,6 @@ import React, {useCallback} from 'react';
 import {useTranslation} from "react-i18next";
 import {useNotification} from '@inrupt/solid-react-components';
 
-
-
 export const RoutesView = props => {
     const {t} = useTranslation();
     const {rutas, friends} = props;
@@ -24,7 +22,6 @@ export const RoutesView = props => {
         [createNotification]
     );
 
-
     return (
         <RouteWrapper>
             <RouteContainer>
@@ -35,6 +32,5 @@ export const RoutesView = props => {
                 <div id="map"></div>
             </RouteContainer>
         </RouteWrapper>
-
     );
 };
