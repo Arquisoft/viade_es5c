@@ -81,6 +81,8 @@ export class RoutesList extends Component <Props> {
 
                     if (route.getString(schema.name) !== null) {
                         let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+                        ruta.setWebId(String(folder.files[i].url));
+
                         ruta.setMedia(medias);
                         rutas.push(ruta);
                     }

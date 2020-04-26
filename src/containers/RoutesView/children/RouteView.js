@@ -10,6 +10,7 @@ import Service from "../../Friends/Service/Service";
 
 export const RouteView = props => {
     const {data} = props;
+    const {shareRoute} = props;
     var ruta = data.ruta;
     var friends = data.friends;
     let comentario = "";
@@ -65,6 +66,10 @@ export const RouteView = props => {
             ReactDOM.render(<Card><Card.Body><Card.Title>No hay comentarios en esta
                 ruta</Card.Title></Card.Body></Card>, domContainer);
         }
+    }
+
+    function shareRoyute(routeWebId, friendWebId){
+        shareRoute.shareRoute()
     }
 
     return (
@@ -131,6 +136,19 @@ export const RouteView = props => {
 
                         <div id={"comentarios"}></div>
                     </Popup>
+                    <Popup
+                        trigger={<button className="button"><img src="../../../../img/icon/share.svg" width="20px"
+                                                                 alt="x"/></button>}
+                        modal
+                        closeOnDocumentClick>
+                        <h3>Selecciona a que amigo deseas compartir</h3>
+                        <div>
+
+                        </div>
+                        <p><br></br></p>
+                    </Popup>
+
+
                 </div>
             </RouteDetail>
         </RouteCard>

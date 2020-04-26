@@ -5,6 +5,7 @@ import FC from 'solid-file-client';
 import {ShareRouteService} from "../Service";
 import {NotificationTypes} from '@inrupt/solid-react-components';
 import {Button, H1, H2, Header, Input, LABEL} from "../../FriendRoutes/friendroute.style";
+import {RouteView} from "../../RoutesView/children/RouteView";
 
 class CreateShareRoute extends React.Component {
     constructor(props) {
@@ -48,33 +49,17 @@ class CreateShareRoute extends React.Component {
         e.preventDefault()
         //const values = JSON.stringify(this.state)
         //console.log(this.state.routeWebID + " " + this.state.friendWebID);
-        this.shareRoute();
+        //this.shareRoute();
     }
 
 
     render() {
-        const {routeWebID, friendWebID} = this.state
+        const shareRoute = {
+            shareRouteWith: this.shareRoute.bind(this)
+        };
+
         return (
-            <ShareWrapper>
-                <Header> <H1>Insert the following webID's to share the route</H1> </Header>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-
-                        <LABEL>
-                            <H2>Route's webID:</H2>
-                            <Input id="routeID" type="text" name="routeWebID" value={routeWebID} onChange={this.handleChange}/>
-                        </LABEL>
-                    </div>
-                    <div>
-                        <LABEL>
-                            <H2>Insert your friend's webID:</H2>
-                            <Input id="friendID" type="text" name="friendWebID" value={friendWebID} onChange={this.handleChange}/>
-                        </LABEL>
-                    </div>
-                    <Button id="submitId" type="submit">Send</Button>
-                </form>
-
-            </ShareWrapper>
+            <RouteView {...{shareRoute}}/>
         );
     }
 }
