@@ -41,7 +41,6 @@ export class RoutesList extends Component <Props> {
         const storage = profile.getRef(space.storage);
 
         let friends = await Service.getFriends();
-        friends.forEach(amigo => console.log(amigo));
 
         let folder;
         await fc.readFolder(storage + 'viade2Prueba1/routes').then((content) => {

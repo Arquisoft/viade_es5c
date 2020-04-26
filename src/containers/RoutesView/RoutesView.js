@@ -14,7 +14,7 @@ export const RoutesView = props => {
                 <Header>
                     <h1>{t('navBar.routes')}</h1>
                 </Header>
-                {rutas.map(ruta => <RouteView ruta={ruta}/>)}
+                {rutas.map(ruta => <RouteView data={{ruta, friends}}/>)}
                 <div id="map"></div>
             </RouteContainer>
         </RouteWrapper>

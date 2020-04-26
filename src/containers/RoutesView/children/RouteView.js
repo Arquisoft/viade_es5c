@@ -9,9 +9,10 @@ import Service from "../../Friends/Service/Service";
 
 
 export const RouteView = props => {
-    const {ruta} = props;
+    const {data} = props;
+    var ruta = data.ruta;
+    var friends = data.friends;
     let comentario = "";
-    let friends = Service.getFriends();
 
     function verMultimedia() {
         const loader = new MediaLoader();
@@ -47,7 +48,6 @@ export const RouteView = props => {
         event.preventDefault();
         comentario = event.target.value;
     }
-
 
     function comments() {
         if (ruta.comments.length !== 0) {
@@ -130,10 +130,7 @@ export const RouteView = props => {
                         </Button>
 
                         <div id={"comentarios"}></div>
-
                     </Popup>
-
-
                 </div>
             </RouteDetail>
         </RouteCard>
