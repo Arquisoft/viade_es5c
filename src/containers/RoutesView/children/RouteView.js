@@ -80,10 +80,13 @@ export const RouteView = props => {
                 title: "Route share",
                 summary: "has shared you a route.",
                 actor: session.webId,
-                object: routeWebID,
+                object: ruta.webId,
                 target: friendWebID
             };
-            console.log(await ShareRouteService.publish(sendNot, contentNotif, friendWebID, NotificationTypes.OFFER));
+            console.log(contentNotif);
+            /*
+            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER));
+            */
             console.log("se supone que subido");
         } catch (error) {
             console.log(error);
@@ -163,7 +166,7 @@ export const RouteView = props => {
                         <h3>Selecciona a que amigo deseas compartir</h3>
                         <div>
                             {friends.map((friend) => (
-                                <p><Button onClick={null}
+                                <p><Button onClick={()=>shareRoute(ruta.webId,friend.webId)}
                                            key={friend.webId}>{friend.name}</Button>
                                 </p>))}
                         </div>

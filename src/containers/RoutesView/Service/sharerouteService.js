@@ -1,10 +1,10 @@
 import {permissionHelper, storageHelper} from '@utils';
 import {AccessControlList, NotificationTypes} from '@inrupt/solid-react-components';
 
-export const publish = async (createNotification, discoverInbox, content, friendWebId, type) => {
+export const publish = async (createNotification, content, friendWebId, type) => {
     try {
 
-
+        
         type = type || NotificationTypes.ANNOUNCE;
         const appPath = await storageHelper.getAppStorage(friendWebId);
         const license = 'https://creativecommons.org/licenses/by-sa/4.0/';
@@ -22,13 +22,13 @@ export const publish = async (createNotification, discoverInbox, content, friend
             path: appPath + "inbox/",
             name: "Viade"
         };
-
+        
         /*
         const to = notification.getDefaultInbox(inboxes, "Viade", "Global");
                   console.log(to);
         console.log(to);
+        
         */
-
         if (to) {
             try {
                 await createNotification({
@@ -44,12 +44,13 @@ export const publish = async (createNotification, discoverInbox, content, friend
                 //Se le añade como amigo
                 //Se cambia el fichero .acl con los nuevos amigos
                 const routePath = content.object;
-                updatePermission(content.actor, friendWebId, routePath)
+                //updatePermission(content.actor, friendWebId, routePath)
             } catch (err) {
                 console.log(err);
             }
 
         }
+        
         return true;
     } catch (e) {
         console.error(e);
