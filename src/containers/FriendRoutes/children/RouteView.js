@@ -5,19 +5,12 @@ import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
-import auth from 'solid-auth-client';
-import {ShareRouteService} from "../Service";
-import {successToaster} from '@utils';
-import i18n from '../../../i18n';
-import {NotificationTypes} from '@inrupt/solid-react-components';
 
 
 export const RouteView = props => {
     const {data} = props;
     //const {shareRoute} = props;
-    const {sendNot}=props;
     var ruta = data.ruta;
-    var friends = data.friends;
     let comentario = "";
 
     function verMultimedia() {
@@ -73,26 +66,7 @@ export const RouteView = props => {
         }
     }
 
-    async function shareRoute(friendWebID){
-        try {
-            var session = await auth.currentSession();
-
-            const contentNotif = {
-                title: "Route share",
-                summary: "has shared you a route.",
-                actor: session.webId,
-                object: ruta.webId,
-                target: friendWebID
-            };
-            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER,ruta));
-            
-            console.log("se supone que subido");
-            successToaster(i18n.t('routeView.shareRouteGood','Great'));
-        } catch (error) {
-            console.log(error);
-            alert("Could not share the route");
-        }
-    }
+    
 
     return (
         <RouteCard className="card">
@@ -160,20 +134,7 @@ export const RouteView = props => {
 
                         <div id={"comentarios"}></div>
                     </Popup>
-                    <Popup
-                        trigger={<button className="button"><img src="../../../../img/icon/share.svg" width="20px"
-                                                                 alt="x"/></button>}
-                        modal
-                        closeOnDocumentClick>
-                        <h3>Selecciona a que amigo deseas compartir</h3>
-                        <div>
-                            {friends.map((friend) => (
-                                <p><Button onClick={()=>shareRoute(friend.webId)}
-                                           key={friend.webId}>{friend.name}</Button>
-                                </p>))}
-                        </div>
-                        <p><br></br></p>
-                    </Popup>
+                    
 
 
                 </div>

@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
 import {ShareWrapper} from "../ShareRoutes/shareroutes.style";
 import {H1, Header} from "./friendroute.style";
 import i18n from '../../i18n';
 import Button from "react-bootstrap/Button";
-import {RouteView} from "../RoutesView/children/RouteView";
+import {RouteView} from "./children/RouteView";
 
 const FriendRoute = (props) => {
     const {friends, routes, see} = props;
-
+    
+    
     function seeRoutes(friend) {
         see.getRoutesSharedWithMe(friend);
     }
@@ -22,7 +23,7 @@ const FriendRoute = (props) => {
                     <p><Button onClick={seeRoutes.bind(this, friend.webId)} key={friend.webId}>{friend.name}</Button>
                     </p>))}
                 <h2>Rutas:</h2>
-                {routes.map(ruta => <RouteView ruta={ruta}/>)}
+                {routes.map(ruta => <RouteView data={{ruta}}/>)}
                 <div id="map"></div>
             </div>
 

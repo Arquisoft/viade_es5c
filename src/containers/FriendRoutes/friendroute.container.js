@@ -111,6 +111,7 @@ export class FriendrouteContainer extends Component<Props> {
         const see = {
             getRoutesSharedWithMe: this.getRoutesSharedWithMe.bind(this)
         };
+        console.log(routes);
         return (
             <FriendRoute {...{friends, routes, see}} />
         );
