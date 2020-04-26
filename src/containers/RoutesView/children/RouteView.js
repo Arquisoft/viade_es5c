@@ -5,11 +5,13 @@ import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
+import Service from "../../Friends/Service/Service";
 
 
 export const RouteView = props => {
     const {ruta} = props;
     let comentario = "";
+    let friends = Service.getFriends();
 
     function verMultimedia() {
         const loader = new MediaLoader();

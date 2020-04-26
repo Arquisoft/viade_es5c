@@ -1,9 +1,10 @@
 import data from '@solid/query-ldflex';
 
+const auth = require('solid-auth-client');
+
 export async function listFriends() {
-    this.setState({isLoading: true});
-    const {webId} = this.props;
-    const user = data[webId];
+    const session = await auth.currentSession();
+    const user = data[session.webId];
     let friends = [];
 
     for await (const friend of user.friends) {
@@ -11,10 +12,11 @@ export async function listFriends() {
         const friend_data = data[friendWebId];
         const name = await friend_data.name;
 
-        var information = {
+        let information = {
             "webId": friendWebId,
             "name": name.toString()
         };
+
         friends.push(information);
     }
     return friends;

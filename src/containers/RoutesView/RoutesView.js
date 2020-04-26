@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 
 export const RoutesView = props => {
     const {t} = useTranslation();
-    const {rutas} = props;
+    const {rutas, friends} = props;
 
     return (
         <RouteWrapper>

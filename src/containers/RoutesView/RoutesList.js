@@ -8,6 +8,7 @@ import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 import data from '@solid/query-ldflex';
 import Media from "../../entities/Media";
+import Service from '../Friends/Service/Service';
 
 export class RoutesList extends Component <Props> {
 
@@ -15,7 +16,8 @@ export class RoutesList extends Component <Props> {
         super(props);
 
         this.state = {
-            rutas: []
+            rutas: [],
+            friends: []
         };
     }
 
@@ -26,7 +28,9 @@ export class RoutesList extends Component <Props> {
 
     componentDidUpdate(prevProps) {
         const {webId} = this.props;
-        if (webId && webId !== prevProps.webId) this.listRoutes();
+        if (webId && webId !== prevProps.webId) {
+            this.listRoutes();
+        }
     }
 
     listRoutes = async () => {
@@ -35,6 +39,9 @@ export class RoutesList extends Component <Props> {
         const profileDocument = await fetchDocument(webId);
         const profile = profileDocument.getSubject(webId);
         const storage = profile.getRef(space.storage);
+
+        let friends = await Service.getFriends();
+        friends.forEach(amigo => console.log(amigo));
 
         let folder;
         await fc.readFolder(storage + 'viade2Prueba1/routes').then((content) => {
@@ -46,7 +53,6 @@ export class RoutesList extends Component <Props> {
         if (folder) {
             for (let i = 0; i < folder.files.length; i++) {
                 let routeDocument;
-
                 await fetchDocument(folder.files[i].url).then((content) => {
                     routeDocument = content;
                 }).catch(err => routeDocument = null);
@@ -74,7 +80,7 @@ export class RoutesList extends Component <Props> {
                     points.forEach(point =>
                         pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
 
-                    if (route.getString(schema.name) !== null){
+                    if (route.getString(schema.name) !== null) {
                         let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
                         ruta.setMedia(medias);
                         rutas.push(ruta);
@@ -82,14 +88,14 @@ export class RoutesList extends Component <Props> {
                 }
             }
         }
-        this.setState({rutas});
+        this.setState({rutas:rutas, friends:friends});
     };
 
     render() {
-        const {rutas} = this.state;
+        const {rutas, friends} = this.state;
 
         return (<
-                RoutesView {...{rutas}}
+                RoutesView {...{rutas, friends}}
             />
         );
     }
