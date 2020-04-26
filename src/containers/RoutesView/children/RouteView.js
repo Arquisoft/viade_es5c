@@ -5,12 +5,16 @@ import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
-import Service from "../../../Service/Service";
+import auth from 'solid-auth-client';
+import {ShareRouteService} from "../Service";
+
+import {NotificationTypes} from '@inrupt/solid-react-components';
 
 
 export const RouteView = props => {
     const {data} = props;
-    const {shareRoute} = props;
+    //const {shareRoute} = props;
+    const {sendNot}=props;
     var ruta = data.ruta;
     var friends = data.friends;
     let comentario = "";
@@ -68,8 +72,23 @@ export const RouteView = props => {
         }
     }
 
-    function shareRoyute(routeWebId, friendWebId){
-        shareRoute.shareRoute()
+    async function shareRoute(routeWebID, friendWebID){
+        try {
+            var session = await auth.currentSession();
+
+            const contentNotif = {
+                title: "Route share",
+                summary: "has shared you a route.",
+                actor: session.webId,
+                object: routeWebID,
+                target: friendWebID
+            };
+            console.log(await ShareRouteService.publish(sendNot, contentNotif, friendWebID, NotificationTypes.OFFER));
+            console.log("se supone que subido");
+        } catch (error) {
+            console.log(error);
+            alert("Could not share the route");
+        }
     }
 
     return (
