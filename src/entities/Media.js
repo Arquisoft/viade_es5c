@@ -2,8 +2,8 @@ import React from "react";
 
 class Media {
 
-	constructor(iri, author, publicationTime,type) {
-		this.iri = iri;
+	constructor(contentUrl, author, publicationTime,type) {
+		this.contentUrl = contentUrl;
 		this.author = author;
 		
 		this.publicationTime = publicationTime;

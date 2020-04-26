@@ -1,7 +1,7 @@
 import {permissionHelper, storageHelper} from '@utils';
 import {AccessControlList, NotificationTypes} from '@inrupt/solid-react-components';
 
-export const publish = async (createNotification, content, friendWebId, type) => {
+export const publish = async (createNotification, content, friendWebId, type,ruta) => {
     try {
 
         
@@ -31,6 +31,7 @@ export const publish = async (createNotification, content, friendWebId, type) =>
         */
         if (to) {
             try {
+                
                 await createNotification({
                     title: content.title,
                     summary: content.summary,
@@ -38,13 +39,13 @@ export const publish = async (createNotification, content, friendWebId, type) =>
                     object: content.object,
                     target: content.target
                 }, to.path, type, license);
+                
                 console.log("bueno parece que si");
                 //Dar permiso a ese amigo 
                 //Sacar los amigos que tienen permiso 
                 //Se le añade como amigo
                 //Se cambia el fichero .acl con los nuevos amigos
-                const routePath = content.object;
-                //updatePermission(content.actor, friendWebId, routePath)
+                updatePermission(content.actor, friendWebId, ruta)
             } catch (err) {
                 console.log(err);
             }
@@ -58,13 +59,19 @@ export const publish = async (createNotification, content, friendWebId, type) =>
     }
 }
 
-const updatePermission = async (webId, friendWebId, routePath) => {
+const updatePermission = async (webId, friendWebId, ruta) => {
     //Miramos si tenemos control que deberíamos ya que es nuestra
     const hasControlPermissions = await permissionHelper.checkSpecificAppPermission(
         webId,
         AccessControlList.MODES.CONTROL
     );
     if (hasControlPermissions) {
-        await permissionHelper.setPermissionInRouteToFriend(webId, friendWebId, routePath);
+        await permissionHelper.setPermissionInRouteToFriend(webId, friendWebId, ruta.webId);
+        //Ahora se mira si tiene media
+        if (ruta.media.length>0){
+            for (var i=0;i<ruta.media.length;i++){
+                await permissionHelper.setPermissionInRouteToFriend(webId,friendWebId,ruta.media[i].contentUrl);
+            }
+        }
     }
 }

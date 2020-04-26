@@ -1,10 +1,8 @@
 import React from "react";
-import {ShareWrapper} from "../shareroutes.style";
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 import {ShareRouteService} from "../Service";
 import {NotificationTypes} from '@inrupt/solid-react-components';
-import {Button, H1, H2, Header, Input, LABEL} from "../../FriendRoutes/friendroute.style";
 import {RouteView} from "../../RoutesView/children/RouteView";
 
 class CreateShareRoute extends React.Component {

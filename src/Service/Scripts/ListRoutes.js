@@ -44,8 +44,7 @@ export async function listRoutes() {
                         let fechaMedia = ref.getDateTime(schema.publishedDate);
                         let autor = data[ref.getRef(schema.author)];
                         let image = ref.getRef(schema.contentUrl);
-
-                        medias.push(new Media(ref, autor, fechaMedia, image));
+                        medias.push(new Media(image, autor.value, fechaMedia, ""));
                     }
                 }
 
@@ -55,6 +54,7 @@ export async function listRoutes() {
 
                 if (route.getString(schema.name) !== null) {
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+                    ruta.setWebId(folder.files[i].url);
                     ruta.setMedia(medias);
                     rutas.push(ruta);
                 }

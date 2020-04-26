@@ -41,26 +41,26 @@ class ParserRouteToRDFClass {
         }
 
         if (route.media.length>0){
-            for (var i=0;i<route.media.length;i++){
-                this.rdf+="viade:hasMediaAttached :media"+(i+1);
-                if (i === route.media.length - 1) {
+            for (var j=0;j<route.media.length;j++){
+                this.rdf+="viade:hasMediaAttached :media"+(j+1);
+                if (j === route.media.length - 1) {
                     this.rdf+=". ";
                 }else{
                     this.rdf+="; ";
                 }
             }
-            for (var i=0;i<route.media.length;i++){
-                this.rdf+=":media"+(i+1)+" schema:contentUrl <"+route.media[i].iri+">; ";
-                let año=route.media[i].publicationTime.getFullYear();
-                let mes=route.media[i].publicationTime.getMonth();
-                let dia=route.media[i].publicationTime.getDate();
-                let hora=route.media[i].publicationTime.getHours();
-                let min=route.media[i].publicationTime.getMinutes();
-                let seg=route.media[i].publicationTime.getSeconds();
+            for (var z=0;z<route.media.length;z++){
+                this.rdf+=":media"+(z+1)+" schema:contentUrl <"+route.media[i].iri+">; ";
+                let año=route.media[z].publicationTime.getFullYear();
+                let mes=route.media[z].publicationTime.getMonth();
+                let dia=route.media[z].publicationTime.getDate();
+                let hora=route.media[z].publicationTime.getHours();
+                let min=route.media[z].publicationTime.getMinutes();
+                let seg=route.media[z].publicationTime.getSeconds();
                 let completo='"'+año+'-'+mes+'-'+dia+"T"+hora+":"+min+":"+seg+'"';
 
                 this.rdf+='schema:publishedDate '+completo+'^^xsd:dateTime ; ';
-                this.rdf+="schema:author <"+route.media[i].author+"> . ";
+                this.rdf+="schema:author <"+route.media[z].author+"> . ";
             }
         }
         return this.rdf.toString();

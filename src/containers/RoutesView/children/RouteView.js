@@ -83,10 +83,8 @@ export const RouteView = props => {
                 object: ruta.webId,
                 target: friendWebID
             };
-            console.log(contentNotif);
-            /*
-            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER));
-            */
+            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER,ruta));
+            
             console.log("se supone que subido");
         } catch (error) {
             console.log(error);
