@@ -278,5 +278,8 @@
     "anadirMedia":"Añadir media",
     "saveRoute":"Guardar ruta",
     "nuevaRuta":"Nueva ruta"
+  },
+  "routeView":{
+    "shareRouteGood":"¡Se ha compartido la ruta bien!"
   }
 }

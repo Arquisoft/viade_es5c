@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom';
 import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
 import auth from 'solid-auth-client';
 import {ShareRouteService} from "../Service";
+import {successToaster} from '@utils';
 
 import {NotificationTypes} from '@inrupt/solid-react-components';
 
@@ -72,7 +73,7 @@ export const RouteView = props => {
         }
     }
 
-    async function shareRoute(routeWebID, friendWebID){
+    async function shareRoute(friendWebID){
         try {
             var session = await auth.currentSession();
 
@@ -86,6 +87,7 @@ export const RouteView = props => {
             console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER,ruta));
             
             console.log("se supone que subido");
+            successToaster(i18n.t('routeView.shareRouteGood','Great'));
         } catch (error) {
             console.log(error);
             alert("Could not share the route");
@@ -164,7 +166,7 @@ export const RouteView = props => {
                         <h3>Selecciona a que amigo deseas compartir</h3>
                         <div>
                             {friends.map((friend) => (
-                                <p><Button onClick={()=>shareRoute(ruta.webId,friend.webId)}
+                                <p><Button onClick={()=>shareRoute(friend.webId)}
                                            key={friend.webId}>{friend.name}</Button>
                                 </p>))}
                         </div>

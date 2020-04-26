@@ -277,5 +277,8 @@
     "anadirMedia":"Add media",
     "saveRoute":"Save route",
     "nuevaRuta":"New route"
+  },
+  "routeView":{
+    "shareRouteGood":"The route has been shared great!"
   }
 }
