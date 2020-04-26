@@ -34,14 +34,13 @@ export async function listRoutes() {
             if (routeDocument != null) {
                 const route = routeDocument.getSubject("http://example.org/myRoute");
                 const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
-
                 const refs = route.getAllRefs('http://arquisoft.github.io/viadeSpec/hasMediaAttached');
+
                 var medias = [];
 
                 if (refs.length > 0) {
                     for (let i = 0; i < refs.length; i++) {
                         let ref = routeDocument.getSubject(refs[i]);
-
                         let fechaMedia = ref.getDateTime(schema.publishedDate);
                         let autor = data[ref.getRef(schema.author)];
                         let image = ref.getRef(schema.contentUrl);
