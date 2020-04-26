@@ -55,6 +55,7 @@ export async function listRoutes() {
 
                 if (route.getString(schema.name) !== null) {
                     let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+                    ruta.setWebId(folder.files[i].url);
                     ruta.setMedia(medias);
                     rutas.push(ruta);
                 }
