@@ -32,12 +32,6 @@ export const NavigationItems = [{
         to: '/routes/addRoute'
     },
     {
-        id: 'shareRoute',
-        icon: 'img/icon/share.svg',
-        label: 'navBar.shareRoute',
-        to: '/routes/shareRoute'
-    },
-    {
         id: 'friendRoute',
         icon: 'img/icon/amigolocalizado.svg',
         label: 'navBar.friendRoute',

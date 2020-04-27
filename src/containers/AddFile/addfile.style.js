@@ -1,6 +1,21 @@
 import styled from 'styled-components';
 import {media} from "../../utils";
 
+
+export const Fo = styled.div`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border: 20px solid white;
+  background: white;
+`;
+export const Fo_new = styled.div`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid blue;
+  background: white;
+`;
 export const Wrapper = styled.section`
   padding: 150px
   position: relative

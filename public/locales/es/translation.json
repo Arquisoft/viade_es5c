@@ -67,7 +67,7 @@
     },
     "notifications": {
       "global": "Global",
-      "tictactoe": "Gato",
+      "tictactoe": "Viade",
       "noinbox": "No se encontró ningún inbox en su POD, debes tener al menos uno para jugar.",
       "fetchingError": "Error en las notificaciones"
     },
@@ -261,10 +261,29 @@
   "friendRoutes": {
     "title": "Rutas compartidas contigo",
     "namePlaceHolder": "Nombre de amigo",
-    "buttonSee": "Ver rutas"
+    "buttonSee": "Ver rutas",
+    "routes": "Rutas"
   },
   "addFile": {
     "title": "Subir fichero",
-    "loadPod": "Cargar Pod"
+    "loadPod": "Cargar Pod",
+    "errorNoName":"Debe escribirse un nombre",
+    "errorTipoFichero":"Fichero no válido para la ruta",
+    "errorMedia": "Ficheros no válidos para adjuntar a la ruta, debe ser imagen o video",
+    "errorNopuntos":"Seleccione un punto en el mapa",
+    "errorNoFile":"Debe subir un fichero para la ruta (geojson,gpx,kml)",
+    "uploadGood":"¡Se ha subido bien la ruta!",
+    "nombre":"Nombre",
+    "descripcion":"Descripcion",
+    "anadirFichero":"Añadir fichero",
+    "anadirMedia":"Añadir media",
+    "saveRoute":"Guardar ruta",
+    "nuevaRuta":"Nueva ruta",
+    "errorWithTheRoute":"Ruta no válida, revise la estructura del fichero"
+  },
+  "routeView":{
+    "shareRouteGood":"¡Se ha compartido la ruta bien!",
+    "selectFriend": "Selecciona a que amigo deseas compartir",
+    "viewMedia": "Ver media"
   }
 }
