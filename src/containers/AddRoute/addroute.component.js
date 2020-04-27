@@ -139,7 +139,7 @@ class CreateRoute extends React.Component {
                     <br/>
                     <Button id="submitId" onClick={this.handleSave}>{i18n.t('addFile.saveRoute')}</Button>
                 </Header>
-                <CreateMap parentCallback={this.callbackFunction}/>
+                <CreateMap id="map" parentCallback={this.callbackFunction}/>
             </RouteWrapper>
         );
     }

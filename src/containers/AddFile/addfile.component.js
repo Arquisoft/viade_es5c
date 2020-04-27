@@ -61,6 +61,7 @@ const LoadFile = (props) => {
         if (files !== '') {
             e.preventDefault(); //Cancelar el evento
             const fichero = files[0];
+            const p =props;
             const {webId} = props;
             const fc = new FC(auth);
             //const nombre=fichero.name;
@@ -115,9 +116,8 @@ const LoadFile = (props) => {
                         await fc.createFile(url, parseadoRDF, "text/turtle", {});
                         console.log("subido");
                         successToaster(i18n.t('addFile.uploadGood','Great'));
-
-                        const domContainer = document.querySelector('#mapa');
-                        ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
+                        p.history.push('/routes/listRoutes');
+                       
                     
                     }
                     
