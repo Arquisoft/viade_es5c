@@ -151,7 +151,6 @@ class ParserToRouteClass {
 
     getCoordenadasKml = geoJson => {
         if (geoJson.features.length > 1) {
-            throw new Error("No es una ruta");
             return null;
         } else if (geoJson.features[0].geometry.type !== "LineString") {
             return null;
