@@ -22,14 +22,21 @@ const LoadFile = (props) => {
 
     const selectFile = (event) => {
         files = event.target.files;
-        let type = files[0].name.split(".")[1];
+        if (files.length!==0){
+            let type = files[0].name.split(".")[1];
                 
-        if (type!=="geojson" && type!=="gpx" && type!=="kml")
+            if (type!=="geojson" && type!=="gpx" && type!=="kml")
             {
              errorToaster(i18n.t('addFile.errorTipoFichero'), 'Error', {
                 });
                 event.target.value=null;
+                files='';
             }
+        }else{
+            files='';
+            
+        }
+        
     }
     const selectMedia = (event) => {
         let z=0;
@@ -74,36 +81,45 @@ const LoadFile = (props) => {
                     let rutaClass = await parseadoRuta.then((rutaClass) => {
                         return rutaClass
                     });
-                    rutaClass.name=valueName
-                    rutaClass.description=valueDescription; 
-                    rutaClass.uuid=uuidv1().split("-").join("");
-                    let loader = new MediaLoader();
-                    const path_resources=webId.split("profile/card#me")[0] + "viade2Prueba1/resources/";
-                    for (var i=0;i<media.length;i++){
-                        let extension="."+media[i].name.split(".").slice(-1)[0];
-                        let urlMedia=uuidv1().split("-").join("")+extension;
-                        //Subir la media
+                    if (rutaClass===null){
+                        errorToaster(i18n.t('addFile.errorWithTheRoute'), 'Error', {
+                        });
+                        media=null;
+                        files='';
+                    }else{
+                        rutaClass.name=valueName
+                        rutaClass.description=valueDescription; 
+                        rutaClass.uuid=uuidv1().split("-").join("");
+                        let loader = new MediaLoader();
+                        const path_resources=webId.split("profile/card#me")[0] + "viade2Prueba1/resources/";
+                        for (var i=0;i<media.length;i++){
+                            let extension="."+media[i].name.split(".").slice(-1)[0];
+                            let urlMedia=uuidv1().split("-").join("")+extension;
+                            //Subir la media
+                            
+                            loader.saveImage(path_resources+urlMedia, media[i],media[i].type);
+                            if (media[i].type.split("/")[0]==="image"){
+                                rutaClass.media.push(new Media(path_resources+urlMedia,webId,new Date(),"image"));
+                            }
+                            if (media[i].type.split("/")[0]==="video"){
+                                rutaClass.media.push(new Media(path_resources+urlMedia,webId,new Date(),"video"));
+                            }
                         
-                        loader.saveImage(path_resources+urlMedia, media[i],media[i].type);
-                        if (media[i].type.split("/")[0]==="image"){
-                            rutaClass.media.push(new Media(path_resources+urlMedia,webId,new Date(),"image"));
                         }
-                        if (media[i].type.split("/")[0]==="video"){
-                            rutaClass.media.push(new Media(path_resources+urlMedia,webId,new Date(),"video"));
-                        }
-                       
+                        
+                        let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
+
+                        
+                        const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.uuid + ".ttl";
+                        await fc.createFile(url, parseadoRDF, "text/turtle", {});
+                        console.log("subido");
+                        successToaster(i18n.t('addFile.uploadGood','Great'));
+
+                        const domContainer = document.querySelector('#mapa');
+                        ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
+                    
                     }
                     
-                    let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
-
-                    
-                    const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.uuid + ".ttl";
-                    await fc.createFile(url, parseadoRDF, "text/turtle", {});
-                    console.log("subido");
-                    successToaster(i18n.t('addFile.uploadGood','Great'));
-
-                    const domContainer = document.querySelector('#mapa');
-                    ReactDOM.render(<RouteVisualizer ruta={rutaClass}></RouteVisualizer>, domContainer);
                     
                 }
             
@@ -152,7 +168,7 @@ const LoadFile = (props) => {
                         <Form.Label>{i18n.t('addFile.anadirMedia')}</Form.Label>
                         <Form.File id="formcheck-api-regular">
                             
-                            <Form.File.Input type="file" name="media[]" red={media} id="media" accept={"image/*,video/*"}
+                            <Form.File.Input type="file" name="media[]" ref={media} id="media" accept={"image/*,video/*"}
                             onChange={selectMedia} multiple/>
                         </Form.File >
                     </Form.Group>

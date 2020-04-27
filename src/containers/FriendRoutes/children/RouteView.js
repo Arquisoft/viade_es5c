@@ -40,28 +40,9 @@ export const RouteView = props => {
        }    
     }
 
-    function addComment() {
-        if (comentario !== "") {
-            let date = new Date();
-            ruta.comments.push({
-                comment: {
-                    text: comentario,
-                    createdAt: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
-                }
-            });
-            comentario = "";
-            comments();
-            const domContainer = document.querySelector('#input-comentario');
-            domContainer.value = "";
-        } else {
-            alert("El comentario esta vacío")
-        }
-    }
+    
 
-    function handleCommentChange(event) {
-        event.preventDefault();
-        comentario = event.target.value;
-    }
+    
 
     function comments() {
         if (ruta.comments.length !== 0) {

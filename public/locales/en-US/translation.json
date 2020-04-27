@@ -278,7 +278,8 @@
     "anadirFichero":"Add file",
     "anadirMedia":"Add media",
     "saveRoute":"Save route",
-    "nuevaRuta":"New route"
+    "nuevaRuta":"New route",
+    "errorWithTheRoute":"Invalid route, check file structure"
   },
   "routeView":{
     "shareRouteGood":"The route has been shared great!",
