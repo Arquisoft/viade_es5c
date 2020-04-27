@@ -33,6 +33,15 @@ class CreateRoute extends React.Component {
         this.setState({points: childData})
     };
 
+    reset(){
+        this.media = [];
+        this.PhotoURL = '';
+        this.state.points=[];
+        this.title.current.value='';
+        this.description.current.value='';
+
+    }
+
     async handleSave(event) {
 
         if (this.title.current.value.length === 0) {
@@ -87,6 +96,7 @@ class CreateRoute extends React.Component {
             const fc = new FC(auth);
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             successToaster(i18n.t('addFile.uploadGood','Great'));
+            this.reset();
             
 
         }
