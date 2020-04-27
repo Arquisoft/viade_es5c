@@ -19,6 +19,7 @@ export const RouteView = props => {
     var ruta = data.ruta;
     var friends = data.friends;
     let comentario = "";
+    var i =0;
 
     function verMultimedia() {
         const loader = new MediaLoader();
@@ -29,34 +30,38 @@ export const RouteView = props => {
         if (ruta.media.length === 0) {
             ReactDOM.render(<p>{i18n.t('routeView.availability')}</p>, img);
         }
-
-        for (var i = 0; i < ruta.media.length; i++) {
-            if (ruta.media[i].type === "video") {
-                loader.loadMedia(ruta.media[i].contentUrl, function (file) {
-                    var imageUrl = URL.createObjectURL(file);
-                   // const img = document.querySelector('#img');
-                    ReactDOM.render(<video controls className="d-block route-img" src={imageUrl} width="500"
-                                           height="500"/>, img);
-                });
-            } else if (ruta.media[i].type === "image") {
-                loader.loadMedia(ruta.media[i].contentUrl, function (file) {
-                    var imageUrl = URL.createObjectURL(file);
-                   // const img = document.querySelector('#img');
-                    ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
-                });
-
-            }
-
-            ReactDOM.render(<button className="button" onClick={() => i++}><img
-                src="../../../../img/icon/flecha_izquierda.svg"
-                width="20px"
-                alt="x"/></button>, buttonL
-            );
-            ReactDOM.render(<button className="button" onClick={() => i--}>
-                <img src="../../../../img/icon/flecha_derecha.svg" width="20px"
-                     alt="x"/></button>, buttonR
-            );
+        if(i<0){
+            i=0;
         }
+        if(i>ruta.media.length-1){
+            i=ruta.media.length-1;
+        }
+        if (ruta.media[i].type === "video") {
+            loader.loadMedia(ruta.media[i].contentUrl, function (file) {
+                var imageUrl = URL.createObjectURL(file);
+                // const img = document.querySelector('#img');
+                ReactDOM.render(<video controls className="d-block route-img" src={imageUrl} width="500"
+                                           height="500"/>, img);
+            });
+        } else if (ruta.media[i].type === "image") {
+            loader.loadMedia(ruta.media[i].contentUrl, function (file) {
+                var imageUrl = URL.createObjectURL(file);
+                // const img = document.querySelector('#img');
+                ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
+            });
+
+        }
+
+        ReactDOM.render(<button className="button" onClick={() => {i--; verMultimedia()}}><img
+            src="../../../../img/icon/flecha_izquierda.svg"
+            width="20px"
+            alt="x"/></button>, buttonL
+        );
+        ReactDOM.render(<button className="button" onClick={() => {i++; verMultimedia()}}>
+            <img src="../../../../img/icon/flecha_derecha.svg" width="20px"
+                 alt="x"/></button>, buttonR
+        );
+
 
     }
 
