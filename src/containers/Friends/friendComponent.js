@@ -3,9 +3,9 @@ import {FriendCard, FriendContainer, FriendDetail, FriendWrapper, Header} from '
 import {Friend} from "./components/Entity/friend";
 import {useTranslation} from "react-i18next";
 
-export const FriendPage = propos => {
+export const FriendPage = props => {
     const {t} = useTranslation();
-    const {friends} = propos;
+    const {friends} = props;
 
     return (
         <FriendWrapper>

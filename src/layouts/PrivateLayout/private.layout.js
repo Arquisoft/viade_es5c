@@ -33,6 +33,16 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
         label: t('appPermission.link.label'),
         href: t('appPermission.link.href')
     };
+    let existeError=false;
+    const error=()=>{
+        if (existeError) {
+            return <Redirect to="/404"/>;
+                    
+        } else {
+            return (null);
+        }
+               
+    }
     const init = async () => {
         try {
             const path = await storageHelper.getAppStorage(webId);
@@ -69,9 +79,10 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
         if (webId) {
             permissionHelper.checkPermissions(webId, errorMessages).then(e => {
                 if (e === true) {
+                    existeError=false;
                     init();
                 } else {
-
+                    existeError=true;
                 }
             });
         }
@@ -165,7 +176,9 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
                     {...rest}
                     component={({history}) => (
                         <Content className="contentApp">
+                            
                             <AuthNavBar {...{location, webId, history}} />
+                            
                             <Switch>
                                 {routes.map(route => {
                                     const {component: RouteComponent} = route;
@@ -179,8 +192,8 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
                                         />
                                     );
                                 })}
-                                <Redirect to="/404"/>
                             </Switch>
+                            {error()}
                         </Content>
                     )}
                 />

@@ -24,11 +24,6 @@ const ShareRoute = (props) => {
         </div>
     );
 
-    return (
-        <div>
-            <CreateShareRoute sendNot={sendNotification}></CreateShareRoute>
-        </div>
-    );
 
 }
 
