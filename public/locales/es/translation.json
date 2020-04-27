@@ -284,6 +284,7 @@
   "routeView":{
     "shareRouteGood":"¡Se ha compartido la ruta bien!",
     "selectFriend": "Selecciona a que amigo deseas compartir",
-    "viewMedia": "Ver media"
+    "viewMedia": "Ver media",
+    "availability": "No existe"
   }
 }
