@@ -38,12 +38,20 @@ export const RouteView = props => {
             ReactDOM.render(<p>Media no disponible</p>, img);
        }
        for(var i=0;i<ruta.media.length;i++){
-           loader.loadMedia(ruta.media[i].contentUrl,function (file) {
-            var urlCreator = window.URL || window.webkitURL;
-            var imageUrl = URL.createObjectURL(file);
-            const img = document.querySelector('#img');
-            ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
-        });
+           if(ruta.media[i].type==="image"){
+            loader.loadMedia(ruta.media[i].contentUrl,function (file) {
+                var imageUrl = URL.createObjectURL(file);
+                const img = document.querySelector('#img');
+                ReactDOM.render(<video controls className="d-block route-img" src={imageUrl} width="500" height="500"/>, img);
+            });
+           }else if(ruta.media[i].type==="video"){
+            loader.loadMedia(ruta.media[i].contentUrl,function (file) {
+                var imageUrl = URL.createObjectURL(file);
+                const img = document.querySelector('#img');
+                ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
+            });
+           }
+           
        }    
     }
 
