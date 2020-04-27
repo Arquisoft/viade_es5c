@@ -36,7 +36,7 @@ class CreateRoute extends React.Component {
     reset(){
         this.media = [];
         this.PhotoURL = '';
-        this.state.points=[];
+        this.setState({points:[]})
         this.title.current.value='';
         this.description.current.value='';
         this.props.history.push('/routes/addRoute');

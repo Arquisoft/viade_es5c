@@ -2,13 +2,10 @@ import React from 'react';
 import auth from "solid-auth-client";
 import FC from 'solid-file-client';
 import {ParserRouteToRDF, ParserToRoute} from "../../parseo";
-import RouteVisualizer from '../../components/RouteVisualizer/RouteVisualizer.component'
-import ReactDOM from 'react-dom';
 import {Button, H1, Header, Wrapper,Fo} from "./addfile.style";
 import i18n from '../../i18n';
 import Form from "react-bootstrap/Form";
 import {errorToaster,successToaster} from '@utils';
-import { Redirect } from 'react-router-dom'
 import {v1 as uuidv1} from 'uuid';
 import Media from '../../entities/Media';
 import MediaLoader from "../../utils/MediaLoader";
