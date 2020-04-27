@@ -15,6 +15,7 @@ export const RouteView = props => {
     let comentario = "";
 
     function verMultimedia() {
+        /*
         const loader = new MediaLoader();
         const img = document.querySelector('#img');
         ReactDOM.render(<p>Media no disponible</p>, img);
@@ -24,6 +25,29 @@ export const RouteView = props => {
             const img = document.querySelector('#img');
             ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
         });
+        */
+       const loader = new MediaLoader();
+        const img = document.querySelector('#img');
+        
+       if (ruta.media.length===0){
+            ReactDOM.render(<p>Media no disponible</p>, img);
+       }
+       for(var i=0;i<ruta.media.length;i++){
+           if(ruta.media[i].type==="image"){
+            loader.loadMedia(ruta.media[i].contentUrl,function (file) {
+                var imageUrl = URL.createObjectURL(file);
+                const img = document.querySelector('#img');
+                ReactDOM.render(<video controls className="d-block route-img" src={imageUrl} width="500" height="500"/>, img);
+            });
+           }else if(ruta.media[i].type==="video"){
+            loader.loadMedia(ruta.media[i].contentUrl,function (file) {
+                var imageUrl = URL.createObjectURL(file);
+                const img = document.querySelector('#img');
+                ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
+            });
+           }
+           
+       }    
     }
 
     function addComment() {
