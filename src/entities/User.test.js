@@ -6,16 +6,16 @@ const user3 = new User();
 
 describe.only('Create a new User', () => {
 
-    test('create succesfully', async () => {
+    test('create succesfully', () => {
         expect(user1.getNombre() === 'nombre1').toBe(true);
         expect(user1.getWebId() === 'webid1').toBe(true);
         expect(user1.getFoto() === 'foto1').toBe(true);
     });
 
     test('change properties', () => {
-        user1.nombre = "nuevonombre"
-        user1.webId = 'nuevowebid'
-        user1.foto = 'nuevafoto'
+        user1.nombre = "nuevonombre";
+        user1.webId = 'nuevowebid';
+        user1.foto = 'nuevafoto';
 
         expect(user1.getNombre()).toBe('nuevonombre');
         expect(user1.getWebId()).toBe('nuevowebid');

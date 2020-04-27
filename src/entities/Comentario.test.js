@@ -7,7 +7,7 @@ const comment3 = new Comentario();
 
 describe.only('Create a new comment', () => {
 
-    test('create succesfully', async () => {
+    test('create succesfully',  () => {
         expect(comment1.getTexto() === 'comentario 1').toBe(true);
         expect(comment1.getFecha() === date).toBe(true);
     });

@@ -10,7 +10,7 @@ const route3 = new Route();
 
 describe.only('Create a new Route', () => {
 
-    test('create succesfully', async () => {
+    test('create succesfully',  () => {
         expect(route1.name === 'name1').toBe(true);
         expect(route1.getPoints() === '').toBe(true);
     });
@@ -26,6 +26,8 @@ describe.only('Create a new Route', () => {
         route1.setDistance('nuevadistance');
         route1.setRank('nuevorank');
         route1.setDate('nuevadate');
+        route1.setWebId('webid1');
+        route1.setMedia('media');
 
         expect(route1.getUUID()).not.toBe(null);
         expect(route1.name).toBe('nuevonombre');
@@ -35,6 +37,8 @@ describe.only('Create a new Route', () => {
         expect(route1.distance).toBe('nuevadistance');
         expect(route1.rank).toBe('nuevorank');
         expect(route1.date).toBe('nuevadate');
+        expect(route1.getWebId()).toBe('webid1');
+        expect(route1.media).toBe('media');
 
         route1.parseRoute();
         expect(route1.name).toBe('Nombre Ruta');
