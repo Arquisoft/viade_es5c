@@ -6,7 +6,7 @@ import {
 } from 'jest-cucumber';
 
 const feature = loadFeature('./e2e/features/login.feature');
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer');
 let browser = null;
 let page = null;
 
@@ -21,7 +21,7 @@ defineFeature(feature, test => {
         given('Soy un usuario intentando iniciar sesión', async () => {
             browser = await puppeteer.launch({
                 headless: false
-            })
+            });
 
             page = await browser.newPage()
             await page.goto("http://localhost:3000/#/login", {
@@ -33,7 +33,7 @@ defineFeature(feature, test => {
         when('introduzco mi webId', async () => {
 
             await page.waitForSelector(".sc-EHOje.cffgrt");
-            await page.type(".sc-EHOje.cffgrt", "https://fakeadri.solid.community/profile/card#me");
+            await page.type(".sc-EHOje.cffgrt", "https://viadees5c.solid.community/profile/card#me");
 
             await page.evaluate(() => {
                 let btns = [...document.querySelectorAll("button")];
@@ -54,11 +54,11 @@ defineFeature(feature, test => {
         and('relleno el formulario', async () => {
 
             await page.waitForSelector("[id='username']", {visible: true});
-            await page.type("[id='username']", "fakeAdri");
+            await page.type("[id='username']", "viadees5c");
 
             await page.waitFor(500);
             await page.waitForSelector("[id='password']", {visible: true});
-            await page.type("[id='password']", "9FakeAdri9*", {visible: true});
+            await page.type("[id='password']", "viadees5c*", {visible: true});
 
             await page.waitFor(500);
 
