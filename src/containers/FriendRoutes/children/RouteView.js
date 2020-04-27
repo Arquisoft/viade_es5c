@@ -20,8 +20,9 @@ export const RouteView = props => {
         const img = document.querySelector('#img');
         
        if (ruta.media.length===0){
-            ReactDOM.render(<p>Media no disponible</p>, img);
+            ReactDOM.render(<p>{i18n.t('routeView.availability')}</p>, img);
        }
+
        for(var i=0;i<ruta.media.length;i++){
            if(ruta.media[i].type==="video"){
             loader.loadMedia(ruta.media[i].contentUrl,function (file) {

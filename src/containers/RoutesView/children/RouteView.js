@@ -15,38 +15,51 @@ import {NotificationTypes} from '@inrupt/solid-react-components';
 export const RouteView = props => {
     const {data} = props;
     //const {shareRoute} = props;
-    const {sendNot}=props;
+    const {sendNot} = props;
     var ruta = data.ruta;
     var friends = data.friends;
     let comentario = "";
 
     function verMultimedia() {
-
-       const loader = new MediaLoader();
+        const loader = new MediaLoader();
         const img = document.querySelector('#img');
-        
-       if (ruta.media.length===0){
-            ReactDOM.render(<p>Media no disponible</p>, img);
-       }
-       for(var i=0;i<ruta.media.length;i++){
-           if(ruta.media[i].type==="video"){
-            loader.loadMedia(ruta.media[i].contentUrl,function (file) {
-                var imageUrl = URL.createObjectURL(file);
-                const img = document.querySelector('#img');
-                ReactDOM.render(<video controls className="d-block route-img" src={imageUrl} width="500" height="500"/>, img);
-            });
-           }else if(ruta.media[i].type==="image"){
-            loader.loadMedia(ruta.media[i].contentUrl,function (file) {
-                var imageUrl = URL.createObjectURL(file);
-                const img = document.querySelector('#img');
-                ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
-            });
-           }
-           
-       }    
+        const buttonR = document.querySelector('#buttonR');
+        const buttonL = document.querySelector('#buttonL');
+
+        if (ruta.media.length === 0) {
+            ReactDOM.render(<p>{i18n.t('routeView.availability')}</p>, img);
+        }
+
+        for (var i = 0; i < ruta.media.length; i++) {
+            if (ruta.media[i].type === "video") {
+                loader.loadMedia(ruta.media[i].contentUrl, function (file) {
+                    var imageUrl = URL.createObjectURL(file);
+                   // const img = document.querySelector('#img');
+                    ReactDOM.render(<video controls className="d-block route-img" src={imageUrl} width="500"
+                                           height="500"/>, img);
+                });
+            } else if (ruta.media[i].type === "image") {
+                loader.loadMedia(ruta.media[i].contentUrl, function (file) {
+                    var imageUrl = URL.createObjectURL(file);
+                   // const img = document.querySelector('#img');
+                    ReactDOM.render(<img src={imageUrl} alt={"foto" + ruta.fileName} width="500" height="500"/>, img);
+                });
+
+            }
+
+            ReactDOM.render(<button className="button" onClick={() => i++}><img
+                src="../../../../img/icon/flecha_izquierda.svg"
+                width="20px"
+                alt="x"/></button>, buttonL
+            );
+            ReactDOM.render(<button className="button" onClick={() => i--}>
+                <img src="../../../../img/icon/flecha_derecha.svg" width="20px"
+                     alt="x"/></button>, buttonR
+            );
+        }
+
     }
 
-    
 
     function comments() {
         if (ruta.comments.length !== 0) {
@@ -66,7 +79,7 @@ export const RouteView = props => {
         }
     }
 
-    async function shareRoute(friendWebID){
+    async function shareRoute(friendWebID) {
         try {
             var session = await auth.currentSession();
 
@@ -77,10 +90,10 @@ export const RouteView = props => {
                 object: ruta.webId,
                 target: friendWebID
             };
-            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER,ruta));
+            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER, ruta));
 
             console.log("se supone que subido");
-            successToaster(i18n.t('routeView.shareRouteGood','Great'));
+            successToaster(i18n.t('routeView.shareRouteGood', 'Great'));
         } catch (error) {
             console.log(error);
             alert("Could not share the route");
@@ -106,15 +119,20 @@ export const RouteView = props => {
 
                     </Popup>
                     <Popup
-                        trigger={<button className="button"> <img src="../../../../img/icon/addRoute.svg" width="20px"
-                                                                  alt="x"/> </button>}
+                        trigger={<button className="button"><img src="../../../../img/icon/addRoute.svg" width="20px"
+                                                                 alt="x"/></button>}
                         modal
                         closeOnDocumentClick
                     >
                         <p><br></br></p><p><br></br></p>
-                        <button className="button" onClick={() => verMultimedia()}>{i18n.t('routeView.viewMedia')}</button>
+                        <button className="button"
+                                onClick={() => verMultimedia()}>{i18n.t('routeView.viewMedia')}</button>
                         <p></p>
                         <div id={"img"}></div>
+                        <div id={"buttonL"}></div>
+                        <div id={"buttonR"}></div>
+
+
                         <p><br></br></p>
                     </Popup>
                     <Popup
@@ -125,7 +143,7 @@ export const RouteView = props => {
                         <h3>{i18n.t('routeView.selectFriend')}</h3>
                         <div>
                             {friends.map((friend) => (
-                                <p><Button onClick={()=>shareRoute(friend.webId)}
+                                <p><Button onClick={() => shareRoute(friend.webId)}
                                            key={friend.webId}>{friend.name}</Button>
                                 </p>))}
                         </div>

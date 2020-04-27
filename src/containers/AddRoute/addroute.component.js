@@ -83,7 +83,7 @@ class CreateRoute extends React.Component {
 
             //SUBIR AL POD
 
-            const url = this.webID + "public/viade/routes/" + route.uuid+".ttl";
+            const url = this.webID.split("profile/card#me")[0] + "viade2Prueba1/routes/" + route.uuid + ".ttl";
             const fc = new FC(auth);
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             successToaster(i18n.t('addFile.uploadGood','Great'));
