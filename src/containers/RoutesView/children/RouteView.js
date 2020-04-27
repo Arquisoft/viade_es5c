@@ -4,7 +4,7 @@ import RouteVisualizer from "../../../components/RouteVisualizer/RouteVisualizer
 import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
-import {Button, Card} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import auth from 'solid-auth-client';
 import {ShareRouteService} from "../Service";
 import {successToaster} from '@utils';
@@ -14,24 +14,20 @@ import {NotificationTypes} from '@inrupt/solid-react-components';
 
 export const RouteView = props => {
     const {data} = props;
-    //const {shareRoute} = props;
     const {sendNot} = props;
     var ruta = data.ruta;
     var friends = data.friends;
-    let comentario = "";
-    var i =0;
+    var i = 0;
 
     function verMultimedia() {
         const loader = new MediaLoader();
         const img = document.querySelector('#img');
         const buttonR = document.querySelector('#buttonR');
         const buttonL = document.querySelector('#buttonL');
-         
 
         if (ruta.media.length === 0) {
             ReactDOM.render(<p>{i18n.t('routeView.availability')}</p>, img);
         }else{
-            
             if(i<0){
                 i=0;
             }
@@ -55,38 +51,16 @@ export const RouteView = props => {
             }
         
             if(ruta.media.length>=2){
-                ReactDOM.render(<button className="button" onClick={() => {i--; verMultimedia()}}><img
+                ReactDOM.render(<button className="button" onClick={() => {i--; verMultimedia()}} style={{float:"left"}}><img
                 src="../../../../img/icon/flecha_izquierda.svg"
                 width="20px"
                 alt="x"/></button>, buttonL
             );
-            ReactDOM.render(<button className="button" onClick={() => {i++; verMultimedia()}}>
+            ReactDOM.render(<button className="button" onClick={() => {i++; verMultimedia()}} style={{float:"right"}}>
                 <img src="../../../../img/icon/flecha_derecha.svg" width="20px"
                     alt="x"/></button>, buttonR
             );
             }
-            
-        }
-
-
-    }
-
-
-    function comments() {
-        if (ruta.comments.length !== 0) {
-            let commentarios = [];
-            for (let i = 0; i < ruta.comments.length; i++) {
-                commentarios.push(<Card><Card.Body> <Card.Title>{ruta.comments[i].comment.text}</Card.Title>
-                    <footer className="blockquote-footer"> Publicado
-                        el: {ruta.comments[i].comment.createdAt}</footer>
-                </Card.Body> </Card>)
-            }
-            const domContainer = document.querySelector('#comentarios');
-            ReactDOM.render(commentarios, domContainer);
-        } else {
-            const domContainer = document.querySelector('#comentarios');
-            ReactDOM.render(<Card><Card.Body><Card.Title>No hay comentarios en esta
-                ruta</Card.Title></Card.Body></Card>, domContainer);
         }
     }
 
@@ -139,10 +113,10 @@ export const RouteView = props => {
                         <button className="button"
                                 onClick={() => verMultimedia()}>{i18n.t('routeView.viewMedia')}</button>
                         <p></p>
-                        <div id={"img"}></div>
                         <div id={"buttonL"}></div>
                         <div id={"buttonR"}></div>
-
+                        <p></p>
+                        <div id={"img"}></div>
 
                         <p><br></br></p>
                     </Popup>
