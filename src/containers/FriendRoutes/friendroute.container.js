@@ -86,10 +86,12 @@ export class FriendrouteContainer extends Component<Props> {
             var routeDocument;
             console.log("Cuantas rutas hay segun donde pincho: " + routes.length)
             console.log(route)
+            // eslint-disable-next-line
             await fetchDocument(Object(route)).then((content) => {
                 routeDocument = content;
                 console.log("routeDocument " + routeDocument);
                 console.log("content " + content)
+                // eslint-disable-next-line
             }).catch(err => routeDocument = null);
 
             if (routeDocument != null) {
