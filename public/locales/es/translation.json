@@ -261,7 +261,8 @@
   "friendRoutes": {
     "title": "Rutas compartidas contigo",
     "namePlaceHolder": "Nombre de amigo",
-    "buttonSee": "Ver rutas"
+    "buttonSee": "Ver rutas",
+    "routes": "Rutas"
   },
   "addFile": {
     "title": "Subir fichero",
@@ -280,6 +281,8 @@
     "nuevaRuta":"Nueva ruta"
   },
   "routeView":{
-    "shareRouteGood":"¡Se ha compartido la ruta bien!"
+    "shareRouteGood":"¡Se ha compartido la ruta bien!",
+    "selectFriend": "Selecciona a que amigo deseas compartir",
+    "viewMedia": "Ver media"
   }
 }

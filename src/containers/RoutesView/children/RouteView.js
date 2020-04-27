@@ -4,7 +4,7 @@ import RouteVisualizer from "../../../components/RouteVisualizer/RouteVisualizer
 import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
-import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import auth from 'solid-auth-client';
 import {ShareRouteService} from "../Service";
 import {successToaster} from '@utils';
@@ -99,7 +99,7 @@ export const RouteView = props => {
                 target: friendWebID
             };
             console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER,ruta));
-            
+
             console.log("se supone que subido");
             successToaster(i18n.t('routeView.shareRouteGood','Great'));
         } catch (error) {
@@ -112,7 +112,6 @@ export const RouteView = props => {
         <RouteCard className="card">
             <RouteDetail data-testid="welcome-detail">
                 <div className="modal">
-                    <label>{ruta.name}</label>
                     <br></br>
                     <Popup
                         trigger={<button className="button"> {ruta.name} </button>}
@@ -120,7 +119,6 @@ export const RouteView = props => {
                         closeOnDocumentClick
                     >
                         <span className="map"> <RouteVisualizer ruta={ruta}></RouteVisualizer></span>
-                        <button className="button" onClick={() => verMultimedia()}> Ver Media</button>
                         <div id={"img"}></div>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
@@ -129,57 +127,23 @@ export const RouteView = props => {
 
                     </Popup>
                     <Popup
-                        trigger={<button className="button"> Media </button>}
+                        trigger={<button className="button"> <img src="../../../../img/icon/addRoute.svg" width="20px"
+                                                                  alt="x"/> </button>}
                         modal
                         closeOnDocumentClick
                     >
                         <p><br></br></p><p><br></br></p>
-                        <button className="button" onClick={() => verMultimedia()}> Ver Media</button>
+                        <button className="button" onClick={() => verMultimedia()}>{i18n.t('routeView.viewMedia')}</button>
                         <p></p>
                         <div id={"img"}></div>
                         <p><br></br></p>
-                    </Popup>
-
-                    <Popup
-                        trigger={<button className="button"> Comentarios </button>}
-                        modal
-                        closeOnDocumentClick
-                    >
-                        <h4>Comentarios</h4>
-                        <p>Introduce el texto de tu comentario:</p>
-                        <InputGroup className="mb-3">
-                            <FormControl aria-describedby="basic-addon1" onChange={handleCommentChange}
-                                         id={"input-comentario"}/>
-                            <InputGroup.Prepend>
-                                <Button
-                                    variant="success"
-                                    data-testid="button-add-comment"
-                                    id="button-add-comment"
-                                    size="sm"
-                                    onClick={() => addComment()}
-                                >
-                                    Añadir comentario
-                                </Button>
-                            </InputGroup.Prepend>
-                        </InputGroup>
-                        <Button
-                            variant="success"
-                            data-testid="button-show-comment"
-                            id="button-show-comment"
-                            size="sm"
-                            onClick={() => comments()}
-                        >
-                            Ver Comentarios
-                        </Button>
-
-                        <div id={"comentarios"}></div>
                     </Popup>
                     <Popup
                         trigger={<button className="button"><img src="../../../../img/icon/share.svg" width="20px"
                                                                  alt="x"/></button>}
                         modal
                         closeOnDocumentClick>
-                        <h3>Selecciona a que amigo deseas compartir</h3>
+                        <h3>{i18n.t('routeView.selectFriend')}</h3>
                         <div>
                             {friends.map((friend) => (
                                 <p><Button onClick={()=>shareRoute(friend.webId)}
@@ -188,8 +152,6 @@ export const RouteView = props => {
                         </div>
                         <p><br></br></p>
                     </Popup>
-
-
                 </div>
             </RouteDetail>
         </RouteCard>

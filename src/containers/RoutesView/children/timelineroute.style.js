@@ -17,7 +17,7 @@ export const RouteCard = styled.div`
 
 export const RouteDetail = styled.div`
     border = 1em;
-  padding: 1rem 3.5rem;
+  padding: 10px 10px;
   p;
   .button{
   background-color: transparent;
