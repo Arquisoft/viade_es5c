@@ -50,7 +50,7 @@ class ParserRouteToRDFClass {
                 }
             }
             for (var z=0;z<route.media.length;z++){
-                this.rdf+=":media"+(z+1)+" schema:contentUrl <"+route.media[i].iri+">; ";
+                this.rdf+=":media"+(z+1)+" schema:contentUrl <"+route.media[z].contentUrl+">; ";
                 let año=route.media[z].publicationTime.getFullYear();
                 let mes=route.media[z].publicationTime.getMonth();
                 let dia=route.media[z].publicationTime.getDate();
