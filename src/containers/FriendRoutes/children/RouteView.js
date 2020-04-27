@@ -4,7 +4,8 @@ import RouteVisualizer from "../../../components/RouteVisualizer/RouteVisualizer
 import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
-import {Button, Card, FormControl, InputGroup} from "react-bootstrap";
+import {Card} from "react-bootstrap";
+import i18n from "../../../i18n";
 
 
 export const RouteView = props => {
@@ -66,13 +67,10 @@ export const RouteView = props => {
         }
     }
 
-    
-
     return (
         <RouteCard className="card">
             <RouteDetail data-testid="welcome-detail">
                 <div className="modal">
-                    <label>{ruta.name}</label>
                     <br></br>
                     <Popup
                         trigger={<button className="button"> {ruta.name} </button>}
@@ -80,63 +78,22 @@ export const RouteView = props => {
                         closeOnDocumentClick
                     >
                         <span className="map"> <RouteVisualizer ruta={ruta}></RouteVisualizer></span>
-                        <button className="button" onClick={() => verMultimedia()}> Ver Media</button>
                         <div id={"img"}></div>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
-
-
                     </Popup>
                     <Popup
-                        trigger={<button className="button"> Media </button>}
+                        trigger={<button className="button"> <img src="../../../../img/icon/addRoute.svg" width="20px" alt="x"/> </button>}
                         modal
                         closeOnDocumentClick
                     >
                         <p><br></br></p><p><br></br></p>
-                        <button className="button" onClick={() => verMultimedia()}> Ver Media</button>
+                        <button className="button" onClick={() => verMultimedia()}>{i18n.t('routeView.viewMedia')}</button>
                         <p></p>
                         <div id={"img"}></div>
                         <p><br></br></p>
                     </Popup>
-
-                    <Popup
-                        trigger={<button className="button"> Comentarios </button>}
-                        modal
-                        closeOnDocumentClick
-                    >
-                        <h4>Comentarios</h4>
-                        <p>Introduce el texto de tu comentario:</p>
-                        <InputGroup className="mb-3">
-                            <FormControl aria-describedby="basic-addon1" onChange={handleCommentChange}
-                                         id={"input-comentario"}/>
-                            <InputGroup.Prepend>
-                                <Button
-                                    variant="success"
-                                    data-testid="button-add-comment"
-                                    id="button-add-comment"
-                                    size="sm"
-                                    onClick={() => addComment()}
-                                >
-                                    Añadir comentario
-                                </Button>
-                            </InputGroup.Prepend>
-                        </InputGroup>
-                        <Button
-                            variant="success"
-                            data-testid="button-show-comment"
-                            id="button-show-comment"
-                            size="sm"
-                            onClick={() => comments()}
-                        >
-                            Ver Comentarios
-                        </Button>
-
-                        <div id={"comentarios"}></div>
-                    </Popup>
-                    
-
-
                 </div>
             </RouteDetail>
         </RouteCard>

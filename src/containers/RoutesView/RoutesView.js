@@ -28,8 +28,10 @@ export const RoutesView = props => {
                 <Header>
                     <h1>{t('navBar.routes')}</h1>
                 </Header>
-                {rutas.map(ruta => <RouteView data={{ruta, friends}} sendNot={{sendNotification}}/>)}
-                <div id="map"></div>
+                <div>
+                    {rutas.map(ruta => <RouteView data={{ruta, friends}} sendNot={{sendNotification}}/>)}
+                    <div id="map"></div>
+                </div>
             </RouteContainer>
         </RouteWrapper>
     );
