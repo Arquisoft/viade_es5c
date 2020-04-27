@@ -44,7 +44,15 @@ export async function listRoutes() {
                         let fechaMedia = ref.getDateTime(schema.publishedDate);
                         let autor = data[ref.getRef(schema.author)];
                         let image = ref.getRef(schema.contentUrl);
-                        medias.push(new Media(image, autor.value, fechaMedia, ""));
+                        let imagedoc=await getMedia(image);
+                        let tipo=imagedoc.type.split('/')[0];
+                        if (tipo==="image"){
+                            
+                            medias.push(new Media(image, autor.value, fechaMedia, "image"));
+                        }else if (tipo==="video"){
+                            medias.push(new Media(image, autor.value, fechaMedia, "video"));
+                        }
+                        
                     }
                 }
 
@@ -61,5 +69,13 @@ export async function listRoutes() {
             }
         }
     }
+    
     return rutas;
+}
+export async function getMedia(image) {
+
+    const fc = new FC(auth);
+    if (await fc.itemExists(image)) {
+        return await fc.readFile(image);
+    }
 }
