@@ -4,24 +4,18 @@ import RouteVisualizer from "../../../components/RouteVisualizer/RouteVisualizer
 import Popup from "reactjs-popup";
 import MediaLoader from "../../../utils/MediaLoader";
 import ReactDOM from 'react-dom';
-import {Button, Card} from "react-bootstrap";
-import auth from 'solid-auth-client';
-import {ShareRouteService} from "../Service";
-import {successToaster} from '@utils';
-import i18n from '../../../i18n';
-import {NotificationTypes} from '@inrupt/solid-react-components';
+import {Card} from "react-bootstrap";
+import i18n from "../../../i18n";
 
 
 export const RouteView = props => {
     const {data} = props;
     //const {shareRoute} = props;
-    const {sendNot}=props;
     var ruta = data.ruta;
-    var friends = data.friends;
     let comentario = "";
 
     function verMultimedia() {
-
+     
        const loader = new MediaLoader();
         const img = document.querySelector('#img');
         
@@ -48,6 +42,8 @@ export const RouteView = props => {
 
     
 
+    
+
     function comments() {
         if (ruta.comments.length !== 0) {
             let commentarios = [];
@@ -66,27 +62,6 @@ export const RouteView = props => {
         }
     }
 
-    async function shareRoute(friendWebID){
-        try {
-            var session = await auth.currentSession();
-
-            const contentNotif = {
-                title: "Route share",
-                summary: "has shared you a route.",
-                actor: session.webId,
-                object: ruta.webId,
-                target: friendWebID
-            };
-            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER,ruta));
-
-            console.log("se supone que subido");
-            successToaster(i18n.t('routeView.shareRouteGood','Great'));
-        } catch (error) {
-            console.log(error);
-            alert("Could not share the route");
-        }
-    }
-
     return (
         <RouteCard className="card">
             <RouteDetail data-testid="welcome-detail">
@@ -102,12 +77,9 @@ export const RouteView = props => {
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
                         <p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p><p><br></br></p>
-
-
                     </Popup>
                     <Popup
-                        trigger={<button className="button"> <img src="../../../../img/icon/addRoute.svg" width="20px"
-                                                                  alt="x"/> </button>}
+                        trigger={<button className="button"> <img src="../../../../img/icon/addRoute.svg" width="20px" alt="x"/> </button>}
                         modal
                         closeOnDocumentClick
                     >
@@ -115,20 +87,6 @@ export const RouteView = props => {
                         <button className="button" onClick={() => verMultimedia()}>{i18n.t('routeView.viewMedia')}</button>
                         <p></p>
                         <div id={"img"}></div>
-                        <p><br></br></p>
-                    </Popup>
-                    <Popup
-                        trigger={<button className="button"><img src="../../../../img/icon/share.svg" width="20px"
-                                                                 alt="x"/></button>}
-                        modal
-                        closeOnDocumentClick>
-                        <h3>{i18n.t('routeView.selectFriend')}</h3>
-                        <div>
-                            {friends.map((friend) => (
-                                <p><Button onClick={()=>shareRoute(friend.webId)}
-                                           key={friend.webId}>{friend.name}</Button>
-                                </p>))}
-                        </div>
                         <p><br></br></p>
                     </Popup>
                 </div>

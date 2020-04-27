@@ -36,19 +36,24 @@ class ParserToRouteClass {
                         const points = this.getCoordenadasGeoJSON(geoJSON);
                         var nombre = f.name.split(".")[0];
                         var descripcion = "";
-                        if (geoJSON.features[0].properties !== undefined) {
-                            if (geoJSON.features[0].properties.name !== undefined) {
-                                nombre = geoJSON.features[0].properties.name;
+                        if (points===null){
+                            resolve(null);
+                        }else{
+                            if (geoJSON.features[0].properties !== undefined) {
+                                if (geoJSON.features[0].properties.name !== undefined) {
+                                    nombre = geoJSON.features[0].properties.name;
+                                }
+                                if (geoJSON.features[0].properties.description !== undefined) {
+                                    descripcion = geoJSON.features[0].properties.description;
+                                }
+    
                             }
-                            if (geoJSON.features[0].properties.description !== undefined) {
-                                descripcion = geoJSON.features[0].properties.description;
-                            }
-
+    
+    
+                            const route = new Route(nombre, points, descripcion);
+                            resolve(route);
                         }
-
-
-                        const route = new Route(nombre, points, descripcion);
-                        resolve(route);
+                        
                     } catch (er) {
                         //Mirar por qué no es válido
                         console.log(er);
@@ -67,19 +72,23 @@ class ParserToRouteClass {
                         gpx = xmlParser.parseFromString(reader.result, "text/xml");
 
                         const points = this.getCoordenadasGPX(gpx);
+                        if (points===null){
+                            resolve(null);
+                        }else{
+                            var name = f.name.split(".")[0];
+                            /*
+                            var trk=gpx.getElementsByTagName("trk");
+                            if (trk.length>0){
+                                if (trk[0].getElementsByTagName("name").length>0){
+                                //Tiene nombre
+                                }
+                            }
+                            */
 
-                        var name = f.name.split(".")[0];
-                        /*
-              var trk=gpx.getElementsByTagName("trk");
-              if (trk.length>0){
-                if (trk[0].getElementsByTagName("name").length>0){
-                  //Tiene nombre
-                }
-              }
-             */
-
-                        const route = new Route(name, points);
-                        resolve(route);
+                            const route = new Route(name, points);
+                            resolve(route);
+                        }
+                        
                     } catch (er) {
 
                     }
@@ -98,23 +107,28 @@ class ParserToRouteClass {
                                 geojson = (togeojson.kml(kml));
                                 console.log(geojson);
                                 const points = this.getCoordenadasKml(geojson);
-                                var nombre = f.name.split(".")[0];
-                                var descripcion = "";
-                                if (geojson.features[0].properties !== undefined) {
-                                    if (geojson.features[0].properties.name !== undefined) {
-                                        nombre = geojson.features[0].properties.name;
+                                if (points ===null){
+                                    resolve(null);
+                                }else{
+                                    var nombre = f.name.split(".")[0];
+                                    var descripcion = "";
+                                    if (geojson.features[0].properties !== undefined) {
+                                        if (geojson.features[0].properties.name !== undefined) {
+                                            nombre = geojson.features[0].properties.name;
+                                        }
+                                        if (geojson.features[0].properties.description !== undefined) {
+                                            descripcion = geojson.features[0].properties.description;
+                                        }
+    
                                     }
-                                    if (geojson.features[0].properties.description !== undefined) {
-                                        descripcion = geojson.features[0].properties.description;
-                                    }
-
+    
+    
+                                    const route = new Route(nombre, points, descripcion);
+    
+    
+                                    resolve(route);
                                 }
-
-
-                                const route = new Route(nombre, points, descripcion);
-
-
-                                resolve(route);
+                                
                             } catch (err) {
 
                             }
@@ -137,10 +151,9 @@ class ParserToRouteClass {
 
     getCoordenadasKml = geoJson => {
         if (geoJson.features.length > 1) {
-            throw new Error("No es una ruta");
+            return null;
         } else if (geoJson.features[0].geometry.type !== "LineString") {
-
-            //
+            return null;
         } else {
 
             var array = new Array(geoJson.features[0].geometry.coordinates.length);
@@ -183,10 +196,16 @@ class ParserToRouteClass {
                     }
                     return array;
 
+                }else{
+                    return null;
                 }
 
+            }else{
+                return null;
             }
 
+        }else{
+            return  null;
         }
 
 
@@ -200,10 +219,10 @@ class ParserToRouteClass {
 
         if (geoJson.features.length > 1) {
             //Error de que hay más de una unión y no se puede
-            throw new Error("No es una ruta");
+            return null;
         } else if (geoJson.features[0].geometry.type !== "LineString") {
             //
-
+            return null;
         } else {
 
             var array = new Array(geoJson.features[0].geometry.coordinates.length);
