@@ -39,6 +39,7 @@ class CreateRoute extends React.Component {
         this.state.points=[];
         this.title.current.value='';
         this.description.current.value='';
+        this.props.history.push('/routes/addRoute');
 
     }
 
