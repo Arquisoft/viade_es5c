@@ -1,8 +1,8 @@
 class User {
     constructor(nombre, webId, foto) {
-        this.nombre = nombre
-        this.webId = webId
-        this.foto = foto
+        this.nombre = nombre;
+        this.webId = webId;
+        this.foto = foto;
     }
 
     getNombre() {
@@ -18,9 +18,9 @@ class User {
     }
 
     toString() {
-        console.log('-Nombre: ' + this.nombre)
-        console.log('-WebID: ' + this.webId)
-        console.log('-Foto: ' + this.foto)
+        console.log('-Nombre: ' + this.nombre);
+        console.log('-WebID: ' + this.webId);
+        console.log('-Foto: ' + this.foto);
     }
 }
 

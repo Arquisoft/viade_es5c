@@ -1,117 +1,117 @@
 import React from 'react';
-import {cleanup, queryByAttribute, fireEvent, render} from 'react-testing-library';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {cleanup, fireEvent, queryByAttribute, render} from 'react-testing-library';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import CreateRoute from './addroute.component';
-import CreateMap from "../../components/Mapa/map.component";
+import CreateMap from "../../components/MapCreate/Map";
+import {RoutesList} from "../RoutesView/RoutesList";
+import {RoutesView} from "../RoutesView/RoutesView";
 
 configure({adapter: new Adapter()});
 
 const getById = queryByAttribute.bind(null, 'id');
-/*const { container } = render(
+const webId = 'https://viadees5c.solid.community/profile/card#me';
+const mockChange = jest.fn();
+const {container} = render(
     <Router>
-        <CreateRoute />
+        <CreateRoute webId={webId}/>
     </Router>
-);*/
+);
+const nameInput = getById(container, 'titulo');
+const nameQuery = 'Nuevo titulo de ruta';
+const descriptionInput = getById(container, 'descripcion');
+const descriptionQuery = 'Nueva descripcion de la ruta';
+const imgInput = getById(container, 'input-img');
+const img = new File(["(⌐□_□)"], "img.png", {type: "image/png"});
+const mapa = getById(container, 'map');
+const submitButton = getById(container, 'submitId');
 
 afterAll(cleanup);
 
 test('App renders without crashing', () => {
-    //expect(container).toBeTruthy();
-    expect(true).toBeTruthy();
+    expect(container).toBeTruthy();
 });
-/*
+
 test('render correctamente con enzyme', () => {
-    const wrapper = mount(<CreateRoute/>);
+    const wrapper = mount(<CreateRoute webId={webId}/>);
     expect(wrapper.find(CreateRoute)).toBeDefined();
+    expect(wrapper.find(CreateMap)).toBeDefined();
 });
 
 test('Inputs render correctamente', async () => {
-    const nameInput = getById(container, 'titulo');
-    const descriptionInput = getById(container, 'descripcion');
-    const imgInput = getById(container, 'input-img');
-
     expect(nameInput).not.toBe(null);
     expect(descriptionInput).not.toBe(null);
     expect(imgInput).not.toBe(null);
 });
 
 test('Input name changes value', async () => {
-    const nameInput = getById(container, 'titulo');
-    const query = 'Nuevo titulo de ruta';
-    const mockChange = jest.fn();
     expect(nameInput.value).toEqual('');
     nameInput.onChange = mockChange;
 
-    fireEvent.change(nameInput, { target: { value: query } });
+    fireEvent.change(nameInput, {target: {value: nameQuery}});
     expect(nameInput.value).toEqual('Nuevo titulo de ruta');
 });
 
 test('Input description changes value', async () => {
-    const descriptionInput = getById(container, 'descripcion');
-    const query = 'Nueva descripcion de la ruta';
-    const mockChange = jest.fn();
     expect(descriptionInput.value).toEqual('');
     descriptionInput.onChange = mockChange;
 
-    fireEvent.change(descriptionInput, { target: { value: query } });
+    fireEvent.change(descriptionInput, {target: {value: descriptionQuery}});
     expect(descriptionInput.value).toEqual('Nueva descripcion de la ruta');
 });
 
-test('Submit simulation', function(){
+test('Submit simulation con errores', function () {
+    //reinicio
+    fireEvent.change(nameInput, {target: {value: ''}});
+    fireEvent.change(descriptionInput, {target: {value: ''}});
+
     // Cojo el input de titulo y le meto un titulo
-    const nameInput = getById(container, 'titulo');
-    const query = 'Nuevo titulo de ruta';
-    const mockChange = jest.fn();
     expect(nameInput.value).toEqual('');
     nameInput.onChange = mockChange;
-    fireEvent.change(nameInput, { target: { value: query } });
+    fireEvent.change(nameInput, {target: {value: nameQuery}});
 
     // Cojo el input de descripcion y le meto una descripcion
-    const descriptionInput = getById(container, 'descripcion');
-    const query = 'Nueva descripcion de la ruta';
-    const mockChange = jest.fn();
     expect(descriptionInput.value).toEqual('');
     descriptionInput.onChange = mockChange;
-    fireEvent.change(descriptionInput, { target: { value: query } });
+    fireEvent.change(descriptionInput, {target: {value: descriptionQuery}});
+
+    // Click en boton, falla porque falta el mapa
+    fireEvent.click(submitButton);
+    expect(nameInput.value).not.toEqual('');
+});
+
+test('Submit simulation', function () {
+//reinicio
+    fireEvent.change(nameInput, {target: {value: ''}});
+    fireEvent.change(descriptionInput, {target: {value: ''}});
+
+    // Cojo el input de titulo y le meto un titulo
+    expect(nameInput.value).toEqual('');
+    nameInput.onChange = mockChange;
+    fireEvent.change(nameInput, {target: {value: nameQuery}});
+
+    // Cojo el input de descripcion y le meto una descripcion
+    expect(descriptionInput.value).toEqual('');
+    descriptionInput.onChange = mockChange;
+    fireEvent.change(descriptionInput, {target: {value: descriptionQuery}});
 
     // Cojo el input de file y le meto un file
-    const imgInput = getById(container, 'input-img');
-    const img = new File(["(⌐□_□)"], "img.png", {
-            type: "image/png"
-    });
-    Object.defineProperty(input_img, "files", {
-            value: [img]
-        });
-    fireEvent.change(input_img);
+    Object.defineProperty(imgInput, "files", {value: [img]});
+    fireEvent.change(imgInput);
 
-    const mockChange = jest.fn();
-    imgInput.onChange = mockChange;
+    // Cojo el mapa y selecciono los distintos puntos
+    var points = {points: [[-5.09765625,39.90973623453719],[3.427734375,46.195042108660154],[14.414062499999998,51.28940590271679]]};
+    let wrapper = mount(<CreateRoute webId={webId}/>);
+    let instance = wrapper.instance();
 
-    // Click en boton
-    const submitButton = getById(container, 'submitId');
+    instance.render();
+    instance.callbackFunction(points);
+    expect(instance.state.points).toBeTruthy();
+
+    render(<CreateMap sendData={instance.callbackFunction(points)} />);
+
+    // Click en boton, OK
     fireEvent.click(submitButton);
+    expect(nameInput.value).not.toEqual('');
 });
-test('Submit simulation comprobacion errores', function(){
-    // Cojo el input de titulo y NO le meto un titulo, al final deberá fallar
-    const nameInput = getById(container, 'titulo');
-    const query = 'Nuevo titulo de ruta';
-    const mockChange = jest.fn();
-    expect(nameInput.value).toEqual('');
-    nameInput.onChange = mockChange;
-    fireEvent.change(nameInput, { target: { value: query } });
-
-    // Cojo el input de descripcion y le meto una descripcion
-    const descriptionInput = getById(container, 'descripcion');
-    const query = 'Nueva descripcion de la ruta';
-    const mockChange = jest.fn();
-    expect(descriptionInput.value).toEqual('');
-    descriptionInput.onChange = mockChange;
-    fireEvent.change(descriptionInput, { target: { value: query } });
-
-    // Click en boton y compruebo fallo (falta el título)
-    const submitButton = getById(container, 'submitId');
-    fireEvent.click(submitButton);
-});
-*/
