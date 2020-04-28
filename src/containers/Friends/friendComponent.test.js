@@ -36,7 +36,7 @@ function setUp() {
 
 const {container} = render(
     <Router>
-        <FriendsComponent webId={'https://uo237133.solid.community/profile/card#me'}/>
+        <FriendsComponent webId={'https://viadees5c.solid.community/profile/card#me'}/>
     </Router>
 );
 
