@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="phpGPX PRAMES S.A." version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata/>
+<wpt lat="42.510754" lon="0.467682">
+<ele>1230.77099609375</ele><name>ERMITA NUESTRA SEÑORA DE GRACIA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.58805" lon="0.491742">
+<ele>1079.89099121094</ele><name>ERISTE</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.588064" lon="0.491715">
+<ele>1079.89099121094</ele><name>ERISTE - FIN</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.574974" lon="0.465111">
+<ele>1083.05798339844</ele><name>SAHUN</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.58804" lon="0.491771">
+<ele>1080</ele><name>ERISTE</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.576209" lon="0.467047">
+<ele>1094.96899414062</ele><name>SAHUN</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.576037" lon="0.467048">
+<ele>1089.94201660156</ele><name>SAHUN - INICIO</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.547257" lon="0.460916">
+<ele>1015.61199951172</ele><name>VILLANOVA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.581689" lon="0.471013">
+<ele>1097.69104003906</ele><name>SANTUARIO DE GUAYENTE</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.52199" lon="0.46455">
+<ele>1219.64501953125</ele><name>CHIA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.486996" lon="0.432726">
+<ele>984.215026855469</ele><name>ERMITA DE LA PIEDAD</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.576039" lon="0.467046">
+<ele>1089.94201660156</ele><name>SAHUN</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.520551" lon="0.46558">
+<ele>1193.12097167969</ele><name>CHIA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.520124" lon="0.466097">
+<ele>1188.00305175781</ele><name>CHIA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.4809" lon="0.429994">
+<ele>866.177978515625</ele><name>SEIRA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.522291" lon="0.464345">
+<ele>1220.0439453125</ele><name>CHIA</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<wpt lat="42.587725" lon="0.492258">
+<ele>1080.92102050781</ele><name>A ERISTE</name>
+<cmt></cmt>
+<desc><![CDATA[]]></desc>
+</wpt>
+<trk>
+<name>PR-HU 51. Seira – Chía – Villanova – Sahún - Eriste</name>
+<desc></desc>
+<trkseg>
+<trkpt lat="42.4809" lon="0.429994"><ele>866.177978515625</ele></trkpt>
+<trkpt lat="42.481052" lon="0.429961"><ele>870.650024414062</ele></trkpt>
+<trkpt lat="42.481207" lon="0.430114"><ele>875.153991699219</ele></trkpt>
+<trkpt lat="42.481312" lon="0.430203"><ele>872.718017578125</ele></trkpt>
+<trkpt lat="42.481444" lon="0.430227"><ele>879.148010253906</ele></trkpt>
+
+</trkseg>
+</trk>
+</gpx>
