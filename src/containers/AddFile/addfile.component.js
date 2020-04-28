@@ -35,7 +35,7 @@ const LoadFile = (props) => {
             
         }
         
-    }
+    };
     const selectMedia = (event) => {
         let z=0;
         for (var i=0;i<event.target.files.length;i++){
@@ -52,7 +52,7 @@ const LoadFile = (props) => {
             errorToaster(i18n.t('addFile.errorMedia'), 'Error', {
             });
         }
-    }
+    };
 
     const handlerUpload = async (e) => {
         if (files !== '') {
@@ -86,7 +86,7 @@ const LoadFile = (props) => {
                         media=null;
                         files='';
                     }else{
-                        rutaClass.name=valueName
+                        rutaClass.name=valueName;
                         rutaClass.description=valueDescription; 
                         rutaClass.uuid=uuidv1().split("-").join("");
                         let loader = new MediaLoader();
@@ -127,7 +127,7 @@ const LoadFile = (props) => {
             });
         }
 
-    }
+    };
 
 
     return (
@@ -141,13 +141,13 @@ const LoadFile = (props) => {
                 <Fo>
                     <Form.Group controlId="formBasicName">
                         <Form.Label>{i18n.t('addFile.nombre')}</Form.Label>
-                        <Form.Control type="text" placeholder="Enter name" 
+                        <Form.Control id="nombre" type="text" placeholder="Enter name"
                         ref={name}/>
                     </Form.Group>
                     <br />
                     <Form.Group controlId="formBasicDescription">
                         <Form.Label>{i18n.t('addFile.descripcion')}</Form.Label>
-                        <Form.Control type="text" placeholder="Enter description"
+                        <Form.Control id="descripcion" type="text" placeholder="Enter description"
                         ref={description} />
                     </Form.Group>
                     <br />
@@ -190,7 +190,7 @@ const LoadFile = (props) => {
                             </Form.Text>
                         </Form.Group>
     */
-}
+};
 
 
 export default LoadFile;
