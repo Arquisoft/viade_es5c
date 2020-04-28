@@ -63,7 +63,7 @@ test('render correctamente con arrays vacios', () => {
 test('render correctamente con arrays llenos', () => {
     const wrapper = mount(<RoutesView rutas={rutas} friends={friends} webId={'viadees5c'}/>);
     expect(wrapper.find(RoutesView)).toBeDefined();
-    expect(wrapper.find(RouteView).length).not.toBe(0);
+    expect(wrapper.find(RouteView).length).toBe(3);
 });
 
 
