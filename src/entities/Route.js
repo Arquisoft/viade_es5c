@@ -9,6 +9,7 @@ class Route {
         this.points = points;
         this.description = description;
         this.comments = comments;
+        this.description=description;
         this.media = [];
         this.img = '';
         this.distance = 0;

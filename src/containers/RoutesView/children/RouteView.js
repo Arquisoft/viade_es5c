@@ -20,6 +20,7 @@ export const RouteView = props => {
     var i = 0;
 
     function verMultimedia() {
+        
         const loader = new MediaLoader();
         const img = document.querySelector('#img');
         const buttonR = document.querySelector('#buttonR');
@@ -62,6 +63,7 @@ export const RouteView = props => {
             );
             }
         }
+        
     }
 
     async function shareRoute(friendWebID) {
