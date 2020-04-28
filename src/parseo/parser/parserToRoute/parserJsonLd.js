@@ -33,10 +33,10 @@ class JsonldToRouteParser{
             let contador=1;
             jsonld.points.forEach(function (point) {
                 if (point["elevation"]===undefined){
-                    points.push(new Point(point["latitude"].toString(),point["longitude"].toString(),contador));
+                    points.push(new Point(point["latitude"],point["longitude"],contador));
                 }else{
-                    points.push(new Point(point["latitude"].toString(),point["longitude"].toString(),contador,
-                    point["elevation"].toString()));
+                    points.push(new Point(point["latitude"],point["longitude"],contador,
+                    point["elevation"]));
                 }
                 contador=contador+1;
                 
