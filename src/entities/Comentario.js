@@ -1,7 +1,7 @@
 class Comentario {
     constructor(fecha, texto) {
-        this.fecha = fecha
-        this.texto = texto
+        this.fecha = fecha;
+        this.texto = texto;
     }
 
     getFecha() {
@@ -29,7 +29,7 @@ class Comentario {
     }
 
     getFormattedDate() {
-        let commentDate = ''
+        let commentDate = '';
         if (this.fecha != null) {
             commentDate = this.fecha.getDate() + '/' +
                 (this.fecha.getMonth() + 1) + '/' +
@@ -42,9 +42,9 @@ class Comentario {
     }
 
     toString() {
-        console.log('Comentario:')
-        console.log('-Autor: ' + this.autor.getWebId())
-        console.log('-Texto: ' + this.texto)
+        console.log('Comentario:');
+        console.log('-Autor: ' + this.autor.getWebId());
+        console.log('-Texto: ' + this.texto);
     }
 }
 

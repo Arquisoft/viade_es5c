@@ -3,8 +3,6 @@ import Register, {RegistrationSuccess} from './Register';
 import PageNotFound from './PageNotFound';
 import Welcome from './Welcome';
 import Profile from './Profile';
-import TextEditor from './TextEditor';
-import {FormModelConverter, FormModelRenderer} from './FormModel';
 import AddFile from "./AddFile";
 import Friends from "./Friends";
 import AddRoute from "./AddRoute";
@@ -20,9 +18,6 @@ export {
     PageNotFound,
     Welcome,
     Profile,
-    FormModelConverter,
-    FormModelRenderer,
-    TextEditor,
     Friends,
     RoutesList,
     AddFile,

@@ -1,9 +1,10 @@
   
 import Route from "../../../entities/Route";
+import Point from "../../../entities/Point";
+import Media from "../../../entities/Media";
 
 class JsonldToRouteParser{
-    constructor(webID, file) {
-        this.webID = webID;
+    constructor(file) {
         this.file = file;
     }
 
@@ -12,40 +13,37 @@ class JsonldToRouteParser{
         let name = jsonld.name;
         let description = jsonld.description;
         let points = [];
-        let commentsAux = jsonld.comments;
         let media = jsonld.media;
         let images = [];
-        let comments = [];
         try {
-            media.map(function (media) {
-                if (media["@id"].toString().includes(".jpg")) {
-                    images.push(media["@id"]);
+            media.forEach(function (media) {
+                if (media["@id"].toString().includes(".jpg")||media["@id"].toString().includes(".png")
+                ||media["@id"].toString().includes(".gif")||media["@id"].toString().includes(".jpeg")) {
+                    images.push(new Media(media["@id"],"","","image"));
                 }
-                if (media["@id"].toString().includes(".png")) {
-                    images.push(media["@id"]);
+                if (media["@id"].toString().includes(".avi")||media["@id"].toString().includes(".mp4")) {
+                    images.push(new Media(media["@id"],"","","video"));
                 }
 
             });
         } catch (e) {}
+        
 
         try {
-            commentsAux.map(function (comment) {
-                if (comment.text != null && comment.createdAt != null) {
-                    let text = comment.text;
-                    let createdAt = comment.createdAt;
-                    let comentario = {comment: {text: text, createdAt: createdAt}};
-                    comments.push(comentario)
+            let contador=1;
+            jsonld.points.forEach(function (point) {
+                if (point["elevation"]===undefined){
+                    points.push(new Point(point["latitude"],point["longitude"],contador));
+                }else{
+                    points.push(new Point(point["latitude"],point["longitude"],contador,
+                    point["elevation"]));
                 }
+                contador=contador+1;
+                
             });
         } catch (e) {}
-
-        try {
-            jsonld.points.map(function (point) {
-                points.push({position: {lat: point.latitude, lng: point.longitude}});
-            });
-        } catch (e) {}
-        let ruta =new Route(name,points, description, comments);
-        ruta.setImg(images[0]);
+        let ruta =new Route(name,points, description, "");
+        ruta.media=images;
         return ruta;
     }
 

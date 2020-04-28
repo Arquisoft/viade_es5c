@@ -6,7 +6,12 @@ import {fetchDocument} from "tripledoc";
 import {schema} from "rdf-namespaces";
 import Point from "../../entities/Point";
 import Route from "../../entities/Route";
+import Media from "../../entities/Media";
+import FC from "solid-file-client";
+import JsonldToRouteParser from "../../parseo/parser/parserToRoute/parserJsonLd";
 
+
+const auth = require('solid-auth-client');
 
 export class FriendrouteContainer extends Component<Props> {
 
@@ -16,6 +21,7 @@ export class FriendrouteContainer extends Component<Props> {
             friends: [],
             routes: []
         }
+
     }
 
     componentDidMount() {
@@ -59,12 +65,15 @@ export class FriendrouteContainer extends Component<Props> {
         this.setState({isLoading: true});
         const {webId} = this.props;
         console.log("Mi webId " + webId)
-        const user = data[webId];
+        //const user = data[webId];
 
         let routes = []
-        for await (const friend of user.friends) {
+
+        /*for await (const friend of user.friends) {
             routes = await getRouteShareByFriend(webId, friendWebId)
-        }
+        }*/
+
+        routes = await getRouteShareByFriend(webId, friendWebId);
 
         if (routes.length !== 0) {
             var ruta = []
@@ -75,44 +84,94 @@ export class FriendrouteContainer extends Component<Props> {
 
         var rutas = [];
 
-        for (const route of routes) {
-            var routeDocument;
-            console.log("Cuantas rutas hay segun donde pincho: " + routes.length)
-            console.log(route)
-            await fetchDocument(Object(route)).then((content) => {
-                routeDocument = content;
-                console.log("routeDocument " + routeDocument);
-                console.log("content " + content)
-            }).catch(err => routeDocument = null);
+        for await (const route of routes) {
+            let tipo=route.split(".");
+            if (tipo[tipo.length-1]==="jsonld"){
+                var jsonFriend;
+                // eslint-disable-next-line
+                await getJSON(ruta).then(function (result) {
+                jsonFriend = result;
+                });
+                let parser=new JsonldToRouteParser(jsonFriend);
+                let ruta=parser.parse();
+                ruta.setWebId(ruta);
+                rutas.push(ruta);
+            }else{
+                var routeDocument;
+                console.log("Cuantas rutas hay segun donde pincho: " + routes.length)
+                console.log(route)
+                
+                // eslint-disable-next-line
+                await fetchDocument(Object(route)).then((content) => {
+                    routeDocument = content;
+                    console.log("routeDocument " + routeDocument);
+                    console.log("content " + content)
+                    // eslint-disable-next-line
+                }).catch(err => routeDocument = null);
 
-            console.log("routeDocument2 " + routeDocument);
+                if (routeDocument != null) {
+                    const route = routeDocument.getSubject("http://example.org/myRoute");
+                    const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
+                    const refs = route.getAllRefs('http://arquisoft.github.io/viadeSpec/hasMediaAttached');
 
-            if (routeDocument != null) {
-                const route = routeDocument.getSubject("http://example.org/myRoute");
-                const points = route.getAllLocalSubjects('http://arquisoft.github.io/viadeSpec/point');
+                    var medias = [];
 
-                console.log("He pasao el if del routeDocument != null");
+                    if (refs.length > 0) {
+                        for (let i = 0; i < refs.length; i++) {
+                            let ref = routeDocument.getSubject(refs[i]);
+                            let fechaMedia = ref.getDateTime(schema.publishedDate);
+                            let autor = data[ref.getRef(schema.author)];
+                            let image = ref.getRef(schema.contentUrl);
+                            let imagedoc=await this.getMedia(image);
+                            let tipo=imagedoc.type.split('/')[0];
+                            if (tipo==="image"){
+                                medias.push(new Media(image, autor.value, fechaMedia, "image"));
+                            }else if (tipo==="video"){
+                                medias.push(new Media(image, autor.value, fechaMedia, "video"));
+                            }
 
-                let pointsArray = [];
-                points.forEach(point =>
-                    pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
-                console.log("por el medio a ver si pasa")
-                if (route.getString(schema.name) !== null) {
-                    rutas.push(new Route(route.getString(schema.name), pointsArray, route.getString(schema.description)));
-                    console.log(rutas.length)
+                        }
+                    }
+
+                    let pointsArray = [];
+                    points.forEach(point =>
+                        pointsArray.push(new Point(point.getDecimal(schema.latitude), point.getDecimal(schema.longitude))));
+
+                    if (route.getString(schema.name) !== null) {
+                        let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
+                        ruta.setWebId(route);
+                        ruta.setMedia(medias);
+                        console.log(medias)
+                        rutas.push(ruta);
+                    }
                 }
             }
+            
         }
         this.setState({routes: rutas});
     };
+    
+    async getMedia(image) {
+        const fc = new FC(auth);
+        if (await fc.itemExists(image)) {
+            return await fc.readFile(image);
+        }
+    }
 
     render() {
         const {friends, routes} = this.state;
         const see = {
             getRoutesSharedWithMe: this.getRoutesSharedWithMe.bind(this)
         };
+        console.log(routes);
         return (
             <FriendRoute {...{friends, routes, see}} />
         );
     }
+}
+
+export const getJSON = async (jsonUrl) => {
+    const fc = new FC(auth);
+    return await fc.readFile(jsonUrl);
+    
 }

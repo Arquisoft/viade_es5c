@@ -29,19 +29,9 @@ export const Input = styled.input`
     padding: 30px 20px;
 `;
 
-export const RouteList = styled.p`
-    border: 2px solid orange;
-`;
-
 export const H1 = styled.h1`
-    color:white;
-`;
-
-export const H2 = styled.h2`
-    color: black;
-    font-size: medium;
-`;
-
-export const LABEL = styled.label`
-    padding: 15px;
+    color: white;
+    font-weight: bold;
+    font : Verdana;
+  }
 `;
