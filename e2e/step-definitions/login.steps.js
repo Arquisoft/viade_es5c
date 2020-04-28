@@ -23,7 +23,7 @@ defineFeature(feature, test => {
                 headless: false
             });
 
-            page = await browser.newPage()
+            page = await browser.newPage();
             await page.goto("http://localhost:3000/#/login", {
                 waitUntil: 'networkidle2'
             });
@@ -38,7 +38,7 @@ defineFeature(feature, test => {
             await page.evaluate(() => {
                 let btns = [...document.querySelectorAll("button")];
                 btns.forEach(function (btn) {
-                    if (btn.innerText == "Iniciar sesión"){
+                    if (btn.innerText === "Iniciar sesión"){
                         btn.click();
                     }
 
@@ -58,14 +58,14 @@ defineFeature(feature, test => {
 
             await page.waitFor(500);
             await page.waitForSelector("[id='password']", {visible: true});
-            await page.type("[id='password']", "viadees5c*", {visible: true});
+            await page.type("[id='password']", "viadees5c", {visible: true});
 
             await page.waitFor(500);
 
             await page.evaluate(() => {
                 let btns = [...document.querySelector(".form-horizontal.login-up-form").querySelectorAll("button")];
                 btns.forEach(function (btn) {
-                    if (btn.innerText == "Log In")
+                    if (btn.innerText === "Log In")
                         btn.click();
                 });
             });
