@@ -1,17 +1,11 @@
 import React from "react";
-import {
-    FriendWrapper,
-    FriendContainer,
-    FriendCard,
-    FriendDetail
-} from './friend.style';
+import {FriendCard, FriendContainer, FriendDetail, FriendWrapper, Header} from './friend.style';
 import {Friend} from "./components/Entity/friend";
 import {useTranslation} from "react-i18next";
-import {Header} from "./friend.style"
 
-export const FriendPage = propos => {
+export const FriendPage = props => {
     const {t} = useTranslation();
-    const {friends} = propos;
+    const {friends} = props;
 
     return (
         <FriendWrapper>
@@ -27,7 +21,6 @@ export const FriendPage = propos => {
                             </table>
                         </FriendDetail>
                     </FriendCard>))}
-
             </FriendContainer>
         </FriendWrapper>);
 };

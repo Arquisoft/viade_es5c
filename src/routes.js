@@ -4,20 +4,18 @@ import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 
 import {
     AddFile,
-    FormModelConverter,
-    FormModelRenderer,
+    AddRoute,
+    FriendRoute,
     Friends,
     Login,
     PageNotFound,
     Profile,
     Register,
     RegistrationSuccess,
-    TextEditor,
-    AddRoute,
-    Welcome, ShareRoute
-
+    RoutesList,
+    Welcome
 } from './containers';
-import {Rutas} from "./parseo"
+
 const privateRoutes = [
     {
         id: 'welcome',
@@ -30,48 +28,31 @@ const privateRoutes = [
         component: Profile
     },
     {
-        id: 'text-editor',
-        path: '/text-editor',
-        component: TextEditor
-    },
-    {
-        id: 'formmodelconverter',
-        path: '/formmodel/converter',
-        component: FormModelConverter
-    },
-    {
-        id: 'formmodelrenderer',
-        path: '/formmodel/renderer',
-        component: FormModelRenderer
-    },
-    {
-        id: 'listRoutes',
-        path: '/listRoutes',
-        component: Rutas
-    },
-    {
-        id: 'addFile',
-        path: '/addFile',
-        component: AddFile
-
-    },
-    {
         id: 'friends',
-        path: '/friends',
+        path: '/friends/listFriends',
         component: Friends
-
     },
     {
         id: 'addRoute',
-        path: '/addRoute',
+        path: '/routes/addRoute',
         component: AddRoute
-
     },
     {
-        id: 'shareRoute',
-        path: '/shareRoute',
-        component: ShareRoute
+        id: 'listRoutes',
+        path: '/routes/listRoutes',
+        component: RoutesList
+    },
+    {
+        id: 'addFile',
+        path: '/routes/addFile',
+        component: AddFile
+    },
+    {
+        id: 'friendRoute',
+        path: '/friendRoute',
+        component: FriendRoute
     }
+
 
 ];
 

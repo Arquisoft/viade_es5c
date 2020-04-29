@@ -58,6 +58,7 @@
     "addFile": "Add file",
     "addRoute": "Add route",
     "shareRoute": "Share route",
+    "friendRoute": "Friends routes",
     "routes": "Routes",
     "lenguage": "Language",
     "languages": {
@@ -66,11 +67,12 @@
     },
     "notifications": {
       "global": "Global",
-      "tictactoe": "TicTacToe Game",
+      "tictactoe": "Viade",
       "noinbox": "Global inbox not found. Please create one and try again.",
       "fetchingError": "Error fetching notifications from Pod"
     },
-    "tictactoe": "Game"
+    "tictactoe": "Game",
+    "inboxCreated":"Inbox have been created, reload the page to update the notifications panel"
   },
   "footer": {
     "version": "Version"
@@ -83,7 +85,6 @@
   "welcome": {
     "welcome": "Welcome",
     "doneMessage": "All done ?",
-
     "title": "<0>Viade_es5c</0>",
     "description": "<0>Viade_es5c is a decentralized route management system based on Solid specifications.</0>",
     "integrantesEquipo": "Project members:\n",
@@ -94,7 +95,6 @@
     "integrante5": "Borja Rodriguez Lorenzo",
     "integrante6": "Bernardo Begega Calleja",
     "informacionEquipo": "Lab group L05. Oviedo University. Computer Engineering School.",
-
     "fairUsageText": "The Solid and inrupt logos included in the Generator are for the purposes of example and attribution. We expect application developers will fork the design system and customize to include your own brand in your Solid application projects, or override the example theme in your application code.",
     "contactUsTitle": "Contact Us",
     "contactUsText": "<0>If you have additional questions about the use of the Solid React SDK by inrupt, the Application Generator, or inrupt’s brand, please contact <1>support@inrupt.com<1>.</0>",
@@ -258,5 +258,34 @@
   },
   "friends": {
     "title": "This are your solid Friends"
+  },
+  "friendRoutes": {
+    "title": "Routes shared with you",
+    "namePlaceHolder": "Friend name",
+    "buttonSee": "Show routes",
+    "routes": "Routes"
+  },
+  "addFile": {
+    "title": "Upload file",
+    "loadPod": "Load Pod",
+    "errorNoName":"You must put a name",
+    "errorTipoFichero":"File not valid for the route",
+    "errorMedia": "Files of media not valid, must be image or video",
+    "errorNopuntos":"Select a point in the map",
+    "errorNoFile":"You must upload a file for the route (geojson,gpx,kml)",
+    "uploadGood":"The route has been uploaded successfully!",
+    "nombre":"Name",
+    "descripcion":"Description",
+    "anadirFichero":"Add file",
+    "anadirMedia":"Add media",
+    "saveRoute":"Save route",
+    "nuevaRuta":"New route",
+    "errorWithTheRoute":"Invalid route, check file structure"
+  },
+  "routeView":{
+    "shareRouteGood":"The route has been shared great!",
+    "selectFriend": "Select which friend you want to share",
+    "viewMedia": "View media",
+    "availability": "Does not exist"
   }
 }

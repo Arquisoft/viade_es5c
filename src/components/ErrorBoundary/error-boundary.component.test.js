@@ -1,0 +1,38 @@
+/* eslint-disable no-console */
+import React from 'react';
+import {cleanup, render} from 'react-testing-library';
+import ErrorBoundary from './error-boundary.component';
+
+import 'jest-dom/extend-expect';
+
+const ErrorComponent = () => {
+    throw Error('Error');
+};
+
+// This a hack to avoid error console when we run test
+const shallowErrors = codeRun => {
+    const {error} = console;
+
+    console.error = () => {
+    };
+
+    codeRun();
+
+    console.error = error;
+};
+
+afterAll(cleanup);
+
+describe('ErrorBoundary component', () => {
+    test('caches error and display messages', () => {
+        shallowErrors(() => {
+            const {container} = render(
+                <ErrorBoundary component={() => <h2>Error Message</h2>}>
+                    <ErrorComponent/>
+                </ErrorBoundary>
+            );
+
+            expect(container).toHaveTextContent('Error Message');
+        });
+    });
+});
