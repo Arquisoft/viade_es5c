@@ -27,7 +27,6 @@ defineFeature(feature, test => {
             await page.goto("http://localhost:3000/#/login", {
                 waitUntil: 'networkidle2'
             });
-
         });
 
         when('introduzco mi webId', async () => {
@@ -41,14 +40,8 @@ defineFeature(feature, test => {
                     if (btn.innerText === "Iniciar sesión"){
                         btn.click();
                     }
-
                 });
             });
-
-            await page.waitForNavigation({
-                waitUntil: 'networkidle2'
-            });
-
         });
 
         and('relleno el formulario', async () => {
@@ -69,7 +62,6 @@ defineFeature(feature, test => {
                         btn.click();
                 });
             });
-
         });
 
         then('nos redirige a la página de bienvenida', async () => {
@@ -78,8 +70,8 @@ defineFeature(feature, test => {
                 waitUntil: 'networkidle2'
             });
 
-            expect(page.url()).toBe("http://localhost:3000/#/welcome")
-
+            expect(page.url()).toBe("http://localhost:3000/#/welcome");
+            await browser.close();
         });
     });
 });
