@@ -57,7 +57,7 @@ const privateRoutes = [
 ];
 
 const Routes = () => (
-    <Router basename={"viade_es5c/"}>
+    <Router>
         <Fragment>
             <Switch>
                 <NotLoggedInLayout component={Login} path="/login" exact/>
