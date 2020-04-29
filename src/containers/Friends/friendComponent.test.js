@@ -1,10 +1,11 @@
 import React from 'react';
-import {cleanup} from 'react-testing-library';
+import {cleanup, render} from 'react-testing-library';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {FriendPage} from './friendComponent';
 import {Friend} from './components/Entity/friend';
 import FriendsComponent from './index';
+import {BrowserRouter as Router} from "react-router-dom";
 
 configure({adapter: new Adapter()});
 
@@ -33,9 +34,14 @@ function setUp() {
     friends.push(friend3);
 }
 
+const {container} = render(
+    <Router>
+        <FriendsComponent webId={'https://viadees5c.solid.community/profile/card#me'}/>
+    </Router>
+);
+
 test('render', () => {
-    const wrapper = mount(<FriendsComponent />);
-    expect(wrapper.find(FriendsComponent)).toBeDefined();
+    expect(container).toBeTruthy();
 });
 
 test('render correctamente', () => {

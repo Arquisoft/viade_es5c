@@ -6,16 +6,16 @@ const point3 = new Point();
 
 describe.only('Create a new Point', () => {
 
-    test('create succesfully', async () => {
+    test('create succesfully',  () => {
         expect(point1.getLat() === 'lat1').toBe(true);
         expect(point1.getLng() === 'lon1').toBe(true);
         expect(point1.order === 1).toBe(true);
     });
 
     test('change properties', () => {
-        point1.latitud = "nuevalat"
-        point1.longitud = 'nuevalng'
-        point1.order = 'nuevoord'
+        point1.latitud = "nuevalat";
+        point1.longitud = 'nuevalng';
+        point1.order = 'nuevoord';
 
         expect(point1.getLat()).toBe('nuevalat');
         expect(point1.getLng()).toBe('nuevalng');

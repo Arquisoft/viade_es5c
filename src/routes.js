@@ -5,8 +5,6 @@ import {HashRouter as Router, Redirect, Switch} from "react-router-dom";
 import {
     AddFile,
     AddRoute,
-    FormModelConverter,
-    FormModelRenderer,
     FriendRoute,
     Friends,
     Login,
@@ -16,7 +14,6 @@ import {
     RegistrationSuccess,
     RoutesList,
     ShareRoute,
-    TextEditor,
     Welcome
 } from './containers';
 
@@ -30,21 +27,6 @@ const privateRoutes = [
         id: 'profile',
         path: '/profile',
         component: Profile
-    },
-    {
-        id: 'text-editor',
-        path: '/text-editor',
-        component: TextEditor
-    },
-    {
-        id: 'formmodelconverter',
-        path: '/formmodel/converter',
-        component: FormModelConverter
-    },
-    {
-        id: 'formmodelrenderer',
-        path: '/formmodel/renderer',
-        component: FormModelRenderer
     },
     {
         id: 'friends',
