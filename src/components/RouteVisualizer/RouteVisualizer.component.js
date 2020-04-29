@@ -67,5 +67,6 @@ export class RouteVisualizer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyAvIiRezGEiWzjKcmje9tzq56ePzFC5hVI'
+    apiKey: 'AIzaSyCOAPsIpth-pvZtOeXXB_9B7iVGi9RFAAE'
+    //apiKey: 'AIzaSyAvIiRezGEiWzjKcmje9tzq56ePzFC5hVI'
 })(RouteVisualizer);
