@@ -53,12 +53,12 @@ export const RouteView = props => {
         
             if(ruta.media.length>=2){
                 ReactDOM.render(<button id="mediaIzq" className="button" onClick={() => {i--; verMultimedia()}} style={{float:"left"}}><img
-                src="../../../../img/icon/flecha_izquierda.svg"
+                src="img/icon/flecha_izquierda.svg"
                 width="20px"
                 alt="x"/></button>, buttonL
             );
             ReactDOM.render(<button id="mediaDer" className="button" onClick={() => {i++; verMultimedia()}} style={{float:"right"}}>
-                <img src="../../../../img/icon/flecha_derecha.svg" width="20px"
+                <img src="img/icon/flecha_derecha.svg" width="20px"
                     alt="x"/></button>, buttonR
             );
             }
@@ -105,7 +105,7 @@ export const RouteView = props => {
 
                     </Popup>
                     <Popup
-                        trigger={<button id="mediaRuta" className="button"><img src="../../../../img/icon/addRoute.svg" width="20px"
+                        trigger={<button id="mediaRuta" className="button"><img src="img/icon/addRoute.svg" width="20px"
                                                                  alt="x"/></button>}
                         modal
                         closeOnDocumentClick
@@ -122,7 +122,7 @@ export const RouteView = props => {
                         <p><br></br></p>
                     </Popup>
                     <Popup
-                        trigger={<button id="compartirRuta" className="button"><img src="../../../../img/icon/share.svg" width="20px"
+                        trigger={<button id="compartirRuta" className="button"><img src="img/icon/share.svg" width="20px"
                                                                  alt="x"/></button>}
                         modal
                         closeOnDocumentClick>
