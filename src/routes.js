@@ -13,7 +13,6 @@ import {
     Register,
     RegistrationSuccess,
     RoutesList,
-    ShareRoute,
     Welcome
 } from './containers';
 
@@ -47,11 +46,6 @@ const privateRoutes = [
         id: 'addFile',
         path: '/routes/addFile',
         component: AddFile
-    },
-    {
-        id: 'shareRoute',
-        path: '/routes/shareRoute',
-        component: ShareRoute
     },
     {
         id: 'friendRoute',

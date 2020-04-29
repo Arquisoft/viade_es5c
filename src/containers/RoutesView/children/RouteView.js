@@ -77,9 +77,8 @@ export const RouteView = props => {
                 object: ruta.webId,
                 target: friendWebID
             };
-            console.log(await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER, ruta));
+            await ShareRouteService.publish(sendNot.sendNotification, contentNotif, friendWebID, NotificationTypes.OFFER, ruta);
 
-            console.log("se supone que subido");
             successToaster(i18n.t('routeView.shareRouteGood', 'Great'));
         } catch (error) {
             console.log(error);

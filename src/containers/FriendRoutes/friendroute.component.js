@@ -1,6 +1,5 @@
 import React from 'react';
-import {ShareWrapper, ShareContainer} from "../ShareRoutes/shareroutes.style";
-import {Header} from "./friendroute.style";
+import {Header,ShareWrapper, ShareContainer} from "./friendroute.style";
 import i18n from '../../i18n';
 import Button from "react-bootstrap/Button";
 import {RouteView} from "./children/RouteView";
