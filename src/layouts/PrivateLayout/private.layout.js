@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import {AccessControlList, withAuthorization} from '@inrupt/solid-react-components';
 import {AuthNavBar, Footer} from '@components';
@@ -33,16 +33,6 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
         label: t('appPermission.link.label'),
         href: t('appPermission.link.href')
     };
-    let existeError=false;
-    const error=()=>{
-        if (existeError) {
-            return <Redirect to="/404"/>;
-                    
-        } else {
-            return (null);
-        }
-               
-    }
     const init = async () => {
         try {
             const path = await storageHelper.getAppStorage(webId);
@@ -79,11 +69,8 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
         if (webId) {
             permissionHelper.checkPermissions(webId, errorMessages).then(e => {
                 if (e === true) {
-                    existeError=false;
                     init();
-                } else {
-                    existeError=true;
-                }
+                } 
             });
         }
     }, [webId]);
@@ -193,7 +180,6 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
                                     );
                                 })}
                             </Switch>
-                            {error()}
                         </Content>
                     )}
                 />
