@@ -3,7 +3,7 @@ class ParserRouteToRDFClass {
     parse = route => {
         this.rdf = "";
         this.rdf = "@prefix viade: <http://arquisoft.github.io/viadeSpec/>. ";
-        this.rdf += "@prefix: <http://example.org/>. ";
+        this.rdf += "@prefix : <http://example.org/>. ";
         this.rdf += "@prefix schema: <http://schema.org/>. ";
         this.rdf += "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>. ";
         this.rdf += "@prefix xsd: <http://www.w3.org/2001/XMLSchema#>. ";

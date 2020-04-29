@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import auth from 'solid-auth-client';
 import FC from 'solid-file-client';
 
+import i18n from '../../i18n';
+
 
 const Container = styled.div`
   display: flex;
@@ -118,7 +120,8 @@ const PrivateLayout = ({routes, webId, location, history, ...rest}) => {
             }
 
             if (!await ldflexHelper.resourceExists(inboxPath)) {
-
+                errorToaster(i18n.t('navBar.inboxCreated'), 'Error', {
+                });
                 await fc.createFolder(inboxPath, {createPath: true});
             }
             // Check for CONTROL permissions to see if we can set permissions or not

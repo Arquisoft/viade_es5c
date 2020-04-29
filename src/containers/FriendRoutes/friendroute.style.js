@@ -1,5 +1,33 @@
 import styled from 'styled-components';
 
+export const ShareWrapper = styled.section`
+  padding: 150px
+  position: relative
+  display: flex;
+  flex: 1 0 auto;
+  display: block;
+  text-align: center;
+  flex-direction:row !important;
+  background-image: url('img/concentric-hex-pattern_2x.png');
+  background-repeat: repeat;
+  height: inherit;
+  width: 100vw !important;
+`;
+
+export const ShareContainer = styled.div`
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  max-width: 90%;
+  margin: 0 20px;
+  width: 100%;
+  flex: 1 0 auto;
+   h1 {
+    color: black;
+      font-weight: bold;
+      font : Verdana;
+  }
+`;
+
 export const Header = styled.div`
     display: flex;
     position: relative;

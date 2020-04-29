@@ -19,7 +19,7 @@ export async function listRoutes() {
 
     let folder;
 
-    await fc.readFolder(storage + 'viade2Prueba1/routes').then((content) => {
+    await fc.readFolder(storage + 'viade/routes').then((content) => {
         folder = content;
     }).catch(err => folder = null);
 

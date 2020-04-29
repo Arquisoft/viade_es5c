@@ -109,9 +109,8 @@ const LoadFile = (props) => {
                         let parseadoRDF = ParserRouteToRDF.parse(rutaClass);
 
                         
-                        const url = webId.split("profile/card#me")[0] + "viade2Prueba1/routes/" + rutaClass.uuid + ".ttl";
+                        const url = webId.split("profile/card#me")[0] + "viade/routes/" + rutaClass.uuid + ".ttl";
                         await fc.createFile(url, parseadoRDF, "text/turtle", {});
-                        console.log("subido");
                         successToaster(i18n.t('addFile.uploadGood','Great'));
                         p.history.push('/routes/listRoutes');
                        

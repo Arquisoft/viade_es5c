@@ -71,7 +71,8 @@
       "noinbox": "No se encontró ningún inbox en su POD, debes tener al menos uno para jugar.",
       "fetchingError": "Error en las notificaciones"
     },
-    "tictactoe": "Juego"
+    "tictactoe": "Juego",
+    "inboxCreated":"Se acaba de crear la bandeja de entrada, recarga la página para actualizar el panel de notificaciones."
   },
   "footer": {
     "version": "Versión"

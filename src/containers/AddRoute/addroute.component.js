@@ -18,7 +18,6 @@ class CreateRoute extends React.Component {
     constructor({webId}: Props) {
         super();
         this.webID = webId.replace("profile/card#me", "");
-        console.log(this.webID);
         this.handleSave = this.handleSave.bind(this);
         this.title = React.createRef();
         this.description = React.createRef();
@@ -89,11 +88,9 @@ class CreateRoute extends React.Component {
 
             let parseadoRDF = await ParserRouteToRDF.parse(route);
 
-            console.log(parseadoRDF);
-
             //SUBIR AL POD
 
-            const url = this.webID.split("profile/card#me")[0] + "viade2Prueba1/routes/" + route.uuid + ".ttl";
+            const url = this.webID.split("profile/card#me")[0] + "viade/routes/" + route.uuid + ".ttl";
             const fc = new FC(auth);
             await fc.createFile(url, parseadoRDF, "text/turtle", {});
             successToaster(i18n.t('addFile.uploadGood','Great'));

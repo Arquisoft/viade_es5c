@@ -5,7 +5,7 @@ import {createDoc, createDocument, resourceExists} from './ldflex-helper';
 import {errorToaster, permissionHelper, storageHelper} from '@utils';
 import * as N3 from 'n3';
 
-const appPath = "viade2Prueba1/";
+const appPath = "viade/";
 
 const PREFIXES = {
     terms: 'https://www.w3.org/ns/solid/terms#',

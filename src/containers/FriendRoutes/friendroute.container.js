@@ -54,17 +54,13 @@ export class FriendrouteContainer extends Component<Props> {
             }
             friends.push(information);
         }
-        console.log("He sacao tus amigos")
         this.setState({friends: friends});
     }
 
     getRoutesSharedWithMe = async (friendWebId) => {
-        console.log("Voy a intentar sacar la ruta del amigo al que pinches")
-        console.log("Has pinchao a tu amigo " + friendWebId)
 
         this.setState({isLoading: true});
         const {webId} = this.props;
-        console.log("Mi webId " + webId)
         //const user = data[webId];
 
         let routes = []
@@ -98,14 +94,10 @@ export class FriendrouteContainer extends Component<Props> {
                 rutas.push(ruta);
             }else{
                 var routeDocument;
-                console.log("Cuantas rutas hay segun donde pincho: " + routes.length)
-                console.log(route)
                 
                 // eslint-disable-next-line
                 await fetchDocument(Object(route)).then((content) => {
                     routeDocument = content;
-                    console.log("routeDocument " + routeDocument);
-                    console.log("content " + content)
                     // eslint-disable-next-line
                 }).catch(err => routeDocument = null);
 
@@ -141,7 +133,6 @@ export class FriendrouteContainer extends Component<Props> {
                         let ruta = new Route(route.getString(schema.name), pointsArray, route.getString(schema.description));
                         ruta.setWebId(route);
                         ruta.setMedia(medias);
-                        console.log(medias)
                         rutas.push(ruta);
                     }
                 }
@@ -163,7 +154,6 @@ export class FriendrouteContainer extends Component<Props> {
         const see = {
             getRoutesSharedWithMe: this.getRoutesSharedWithMe.bind(this)
         };
-        console.log(routes);
         return (
             <FriendRoute {...{friends, routes, see}} />
         );
