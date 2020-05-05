@@ -1,15 +1,72 @@
 [[section-building-block-view]]
 == Building Block View
+The building block view shows the static decomposition of our system into building blocks. Each level is more specific than the previous one.
 
-=== Whitebox Overall System
+=== Level 1
 
-image:05_building_bloc_view.png["WhiteBox Diagram"]
+image:05_building_bloc_view_1.png["Level 1"]
+[cols=2*,options="header"]
+|===
+|Name
+|Responsability
 
+|Viade Application
+|It allows users to add and store information and media about routes, and share with their friends.
 
-*Level 1* It contains the general structure of the arquitecture: user, application, pod server and solid.
+|Solid Server
+|It provides users information and their PODs, that store the information.
 
-*Level 2* Zoom in the main parts of the application: app, test and libraries.
+|Google Maps API
+|It provides the different services to use a map in our application.
+|===
 
-*Level 3* Specific parts of application and tests.
+=== Level 2
 
-*Lever 4* The most basic level of architecture: models, services and components.
+image:05_building_bloc_view_2.png["Level 2"]
+[cols=2*,options="header"]
+|===
+|Name
+|Responsability
+
+|Interface
+|Generate the code to show the page using React.
+
+|Parser
+|Transform the object Route in order to managment our app.
+|===
+
+=== Level 3
+
+image:05_building_bloc_view_3.png["Level 3"]
+[cols=2*,options="header"]
+|===
+|Name
+|Responsability
+
+|Components
+|Parts of the visual architecture of the app.
+
+|Containers
+|It contains all the visual information and you can interactive with them.
+
+|Entities
+|The basic data model used in the app.
+
+|Helpers
+|Services that manage the main methods.
+
+|GeoJSON to Route
+|We transform GeoJSON into an object Route to use in our app.
+
+|GPX to Route
+|We transform GPX into an object Route to use in our app.
+
+|KML to Route
+|We transform KML into an object RoutE to use in our app.
+
+|Route to RDF
+|We transform de object Route into RDF to be able to upload it to a Solid Pod.
+
+|JSONld to Route
+|We download JSONld object and transform it into object Route to use in our app.
+|===
