@@ -16,7 +16,7 @@ image:6.1.PNG["Login"]
 
 * Shows how a route is created in the application.
 
-* The user wants to create a route. In the navigation bar there is an option to create a route. The user must indicate the name and mark on a map the points that will make up the route apart from optional data such as the description. Once the necessary data has been added, the create button will be pressed to verify that it has valid data and the route will be uploaded to the POD. From here, two situations can occur:
+* The user wants to upload a route. In the navigation bar there are two options to upload a route. One to upload a file and another to create your route from a map. If the user wants to upload the file, they only have to indicate the name and description of the file, optionally they can upload photos or videos. On the other hand, if you want to create your own route, the user must indicate the name and mark on a map the points that will form the route, apart from the optional data, such as the description. Once the necessary data has been added, the Create button will be pressed to verify that it has valid data and the route is loaded into the POD. From here, two situations can occur:
 
 ** That the route has been saved successfully and you receive a message that it was saved successfully.
 
@@ -34,4 +34,5 @@ image:6.2.PNG["Create a new route"]
 
 ** Or that you don't want to accept the shared route.
 
-image:6.3.PNG["Share route"]
+image:6.3.1.PNG["Share route"]
+image:6.3.2.PNG["Share route"]
